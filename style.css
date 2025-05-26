@@ -1,0 +1,621 @@
+/* Biến màu toàn cục (giống phong cách Crunchyroll) */
+:root {
+    --primary-color: #f47521; /* Màu cam chủ đạo của Crunchyroll */
+    --background-color: #23252b; /* Màu nền tối */
+    --card-background-color: #2d3038; /* Màu nền cho các card */
+    --text-color: #ffffff;
+    --text-secondary-color: #adb0b5;
+    --navbar-background: #1a1a1d;
+    --border-color: #4a4d57;
+    --hover-color: #e6600d;
+}
+
+/* Reset cơ bản và thiết lập font chữ */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif; /* Font giống Crunchyroll */
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style-type: none;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+.container {
+    max-width: 1280px; /* Giới hạn chiều rộng nội dung */
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* --- Header & Navbar --- */
+.navbar {
+    background-color: var(--navbar-background);
+    padding: 15px 0;
+    border-bottom: 1px solid var(--border-color);
+    position: sticky; /* Giữ navbar ở trên cùng khi cuộn */
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-logo {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.navbar-nav {
+    display: flex;
+}
+
+.navbar-nav li {
+    margin-left: 25px;
+}
+
+.navbar-nav li a {
+    color: var(--text-secondary-color);
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.navbar-nav li a:hover,
+.navbar-nav li a.active /* Class 'active' cho trang hiện tại */ {
+    color: var(--primary-color);
+}
+
+.navbar-actions {
+    display: flex;
+    align-items: center;
+}
+
+.search-icon {
+    background: none;
+    border: none;
+    color: var(--text-secondary-color);
+    cursor: pointer;
+    padding: 8px;
+    margin-right: 15px;
+}
+.search-icon svg {
+    stroke: var(--text-secondary-color);
+    transition: stroke 0.3s ease;
+}
+.search-icon:hover svg {
+    stroke: var(--primary-color);
+}
+
+.login-button {
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    padding: 8px 15px;
+    border-radius: 4px;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+.login-button:hover {
+    background-color: var(--hover-color);
+}
+
+/* --- Main Content --- */
+main {
+    padding-top: 20px; /* Khoảng cách với navbar */
+}
+
+/* --- Hero Section - Slideshow --- */
+.hero-section {
+    margin-bottom: 40px; /* Giữ khoảng cách với section tiếp theo */
+    padding-bottom: 0; /* Bỏ padding dưới nếu đã có margin-bottom */
+    width: 100%; /* Đảm bảo hero section chiếm toàn bộ chiều rộng */
+    overflow: hidden; /* Tránh thanh cuộn ngang nếu có lỗi nhỏ về kích thước */
+}
+
+.slideshow-container {
+    width: 100%; /* Chiếm toàn bộ chiều rộng của hero-section */
+    position: relative;
+    margin: auto;
+    background-color: var(--card-background-color);
+    /* aspect-ratio: 16 / 7; /* Tỉ lệ khung hình mong muốn cho banner, ví dụ */
+    /* min-height: 450px; /* Đảm bảo banner có chiều cao tối thiểu */
+    /* max-height: 600px; */
+    /* overflow: hidden; /* Đảm bảo các slide con không tràn ra ngoài */
+}
+
+.hero-slide {
+    display: none; /* Mặc định ẩn tất cả các slide */
+    position: relative;
+    width: 100%;
+    height: 0; /* Để sử dụng padding-bottom trick cho aspect ratio */
+    padding-bottom: 41.66%; /* (7 / 17) * 100%  ~= 1920x800 hoặc (9/21.6)*100% cho giống Crunchyroll */
+                                /* Hoặc 56.25% cho 16:9, 41.66% là gần với banner Crunchyroll hơn */
+    overflow: hidden; /* Đảm bảo nội dung không tràn ra ngoài khi dùng padding-bottom trick */
+}
+
+.hero-slide-bg { /* Ảnh nền chính của slide */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ảnh sẽ che phủ toàn bộ, có thể bị cắt bớt */
+    display: block;
+}
+
+.hero-slide .hero-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 3% 5% 5% 5%; /* Sử dụng % để responsive hơn với chiều cao của slide */
+    background: linear-gradient(to top, rgba(19,20,23,1) 0%, rgba(19,20,23,0.95) 20%, rgba(19,20,23,0.7) 40%, rgba(19,20,23,0) 100%);
+    box-sizing: border-box;
+    color: var(--text-color);
+    z-index: 2; /* Đảm bảo nội dung nổi trên ảnh */
+}
+
+.hero-slide .hero-anime-logo {
+    max-width: 320px;
+    max-height: 100px;
+    margin-bottom: 20px;
+    object-fit: contain;
+    display: block; /* Đảm bảo margin bottom hoạt động */
+}
+
+.hero-slide .hero-meta {
+    font-size: 0.95em;
+    color: var(--text-secondary-color);
+    margin-bottom: 12px;
+    font-weight: 500;
+}
+
+.hero-slide .hero-description {
+    font-size: 1.05em;
+    margin-bottom: 25px;
+    color: #e0e0e0;
+    max-width: 45%; /* Giới hạn chiều rộng mô tả */
+    line-height: 1.5;
+    display: -webkit-box;
+
+   -webkit-box-orient: vertical;
+   overflow: hidden;
+   text-overflow: ellipsis;
+}
+
+.hero-slide .hero-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.hero-slide .btn-primary {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 25px;
+    font-size: 1em;
+    font-weight: 700; /* Chữ đậm hơn */
+    border-radius: 3px; /* Bo góc nhỏ hơn */
+}
+
+.hero-slide .btn-icon { /* SVG icon trong nút */
+   width: 18px;
+   height: 18px;
+}
+
+.hero-slide .btn-secondary.btn-icon-only {
+    background-color: rgba(45, 48, 56, 0.8);
+    border: 1px solid rgba(128, 128, 128, 0.3);
+    color: var(--text-color);
+    padding: 10px;
+    border-radius: 3px;
+    width: 46px;
+    height: 46px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+.hero-slide .btn-secondary.btn-icon-only svg {
+    stroke: var(--text-color);
+    width: 20px;
+    height: 20px;
+}
+
+.hero-slide .btn-secondary.btn-icon-only:hover {
+    background-color: rgba(60, 63, 71, 0.9);
+    border-color: var(--primary-color);
+}
+.hero-slide .btn-secondary.btn-icon-only:hover svg {
+    stroke: var(--primary-color);
+}
+
+
+/* Nút Previous & Next */
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 12px 15px; /* Giảm padding một chút */
+    margin-top: -25px; /* Điều chỉnh cho vừa với padding mới */
+    color: white;
+    font-weight: bold;
+    font-size: 22px; /* Giảm kích thước font */
+    transition: 0.3s ease;
+    border-radius: 50%; /* Nút tròn */
+    user-select: none;
+    background-color: rgba(20,20,20,0.5);
+    z-index: 10;
+    width: 40px; /* Kích thước nút */
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid transparent; /* Để hover có border */
+}
+
+.next {
+    right: 20px; /* Khoảng cách từ cạnh phải */
+}
+.prev {
+    left: 20px; /* Khoảng cách từ cạnh trái */
+}
+
+.prev:hover, .next:hover {
+    background-color: rgba(10,10,10,0.8);
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+}
+
+/* Chấm tròn chỉ báo */
+.slide-dots {
+    text-align: center;
+    position: absolute;
+    bottom: 20px; /* Khoảng cách từ dưới cùng của slideshow-container */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 15;
+    display: flex; /* Dùng flex để dễ căn chỉnh */
+    gap: 8px; /* Khoảng cách giữa các dot */
+}
+
+.dot {
+    cursor: pointer;
+    height: 8px; /* Giảm kích thước dot */
+    width: 24px; /* Dot hình chữ nhật ngang */
+    /* margin: 0 5px; */ /* Bỏ margin vì đã có gap */
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 4px; /* Bo góc cho dot chữ nhật */
+    display: inline-block;
+    transition: background-color 0.3s ease, width 0.3s ease;
+}
+
+.active-dot, .dot:hover {
+    background-color: var(--primary-color);
+    /* width: 30px; /* Dot active có thể rộng hơn */
+}
+
+/* Hiệu ứng Fading animation */
+.fade {
+    animation-name: fade;
+    animation-duration: 0.8s; /* Giảm thời gian hiệu ứng */
+}
+
+@keyframes fade {
+    from {opacity: .6}
+    to {opacity: 1}
+}
+
+/* Responsive cho slideshow */
+@media (max-width: 1024px) {
+    .hero-slide .hero-description {
+        max-width: 60%;
+
+    }
+    .hero-slide .hero-anime-logo {
+        max-width: 280px;
+        max-height: 80px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-slide {
+        padding-bottom: 56.25%; /* 16:9 cho tablet/mobile */
+    }
+    .hero-slide .hero-content {
+        padding: 4% 5% 6% 5%;
+        background: linear-gradient(to top, rgba(19,20,23,1) 10%, rgba(19,20,23,0.95) 30%, rgba(19,20,23,0.7) 50%, rgba(19,20,23,0) 100%);
+    }
+    .hero-slide .hero-anime-logo {
+        max-width: 200px;
+        max-height: 60px;
+        margin-bottom: 10px;
+    }
+    .hero-slide .hero-meta {
+        font-size: 0.9em;
+        margin-bottom: 8px;
+    }
+    .hero-slide .hero-description {
+        font-size: 0.95em;
+        max-width: 85%;
+        margin-bottom: 15px;
+
+    }
+    .hero-slide .hero-actions .btn-primary {
+        padding: 10px 18px;
+        font-size: 0.9em;
+    }
+    .hero-slide .btn-secondary.btn-icon-only {
+        width: 40px;
+        height: 40px;
+        padding: 8px;
+    }
+    .prev, .next {
+        font-size: 18px;
+        padding: 10px;
+        width: 36px;
+        height: 36px;
+        margin-top: -20px;
+        right: 10px; /* Gần hơn ở màn hình nhỏ */
+    }
+    .prev {
+        left: 10px;
+    }
+    .dot {
+        height: 6px;
+        width: 18px;
+    }
+    .slide-dots {
+        bottom: 15px;
+        gap: 6px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-slide .hero-anime-logo {
+        max-width: 160px;
+        max-height: 45px;
+    }
+     .hero-slide .hero-meta {
+        font-size: 0.8em;
+    }
+    .hero-slide .hero-description {
+
+       font-size: 0.85em;
+       max-width: 100%;
+    }
+    .hero-slide .hero-actions {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    .hero-slide .hero-actions .btn-primary {
+        font-size: 0.85em;
+        padding: 8px 15px;
+    }
+     .hero-slide .btn-secondary.btn-icon-only {
+        width: 36px;
+        height: 36px;
+    }
+
+    .dot {
+        height: 5px;
+        width: 15px;
+    }
+    .slide-dots {
+        bottom: 10px;
+    }
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: var(--text-color);
+}
+
+.btn-primary:hover {
+    background-color: var(--hover-color);
+}
+
+/* --- Anime Row & Grid --- */
+.anime-row {
+    margin-bottom: 40px;
+}
+
+.anime-row h2 {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+    border-left: 4px solid var(--primary-color);
+    padding-left: 10px;
+}
+
+.anime-grid {
+    display: grid;
+    /* 
+       Hiển thị càng nhiều cột càng tốt, mỗi cột tối thiểu 180px, tối đa 1fr (chia đều không gian còn lại).
+       Bạn có thể điều chỉnh 180px thành kích thước mong muốn cho card.
+    */
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 20px; /* Khoảng cách giữa các card */
+}
+
+.anime-card {
+    background-color: var(--card-background-color);
+    border-radius: 6px;
+    overflow: hidden;
+    transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+    position: relative; /* Để định vị overlay */
+}
+
+.anime-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.anime-card a:first-child { /* Link bọc ảnh */
+    display: block; /* Để overlay hoạt động đúng */
+    position: relative;
+}
+
+.anime-card img {
+    width: 100%;
+    /* Giữ tỉ lệ khung hình cho ảnh thumbnail (ví dụ 2:3) */
+    aspect-ratio: 2 / 3;
+    object-fit: cover;
+}
+
+.anime-card-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; /* Chiều cao bằng với thẻ a bọc nó (hoặc ảnh) */
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0; /* Mặc định ẩn */
+    transition: opacity 0.3s ease;
+}
+
+.anime-card a:first-child:hover .anime-card-overlay {
+    opacity: 1; /* Hiện khi hover vào link chứa ảnh */
+}
+
+.play-icon {
+    font-size: 3em; /* Kích thước icon play */
+    color: var(--primary-color);
+}
+
+
+.anime-card h3 {
+    font-size: 1.1em;
+    margin: 10px 10px 5px;
+}
+.anime-card h3 a {
+    color: var(--text-color);
+}
+.anime-card h3 a:hover {
+    color: var(--primary-color);
+}
+
+.anime-card p {
+    font-size: 0.9em;
+    color: var(--text-secondary-color);
+    margin: 0 10px 10px;
+}
+
+/* --- Footer --- */
+footer {
+    background-color: var(--navbar-background);
+    color: var(--text-secondary-color);
+    padding: 30px 0;
+    margin-top: 50px; /* Khoảng cách với nội dung cuối */
+    border-top: 1px solid var(--border-color);
+    text-align: center;
+}
+
+.footer-links {
+    margin-bottom: 15px;
+}
+
+.footer-links a {
+    margin: 0 10px;
+    color: var(--text-secondary-color);
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: var(--primary-color);
+}
+
+/* --- Responsive cơ bản --- */
+@media (max-width: 768px) {
+    .navbar .container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .navbar-nav {
+        margin-top: 10px;
+        flex-direction: column;
+        width: 100%;
+    }
+    .navbar-nav li {
+        margin-left: 0;
+        margin-bottom: 5px;
+        width: 100%;
+    }
+    .navbar-nav li a {
+        display: block;
+        padding: 8px 0;
+    }
+    .navbar-actions {
+        margin-top: 10px;
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .hero-content h2 {
+        font-size: 1.8em;
+    }
+    .hero-content p {
+        font-size: 1em;
+    }
+
+    .anime-grid {
+        /* Hiển thị ít cột hơn trên màn hình nhỏ */
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 15px;
+    }
+    .anime-card h3 {
+        font-size: 1em;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-content {
+        padding: 15px;
+    }
+    .hero-content h2 {
+        font-size: 1.5em;
+    }
+    .hero-content p {
+        display: none; /* Ẩn mô tả trên màn hình rất nhỏ để tiết kiệm không gian */
+    }
+    .btn {
+        padding: 8px 15px;
+        font-size: 0.9em;
+    }
+    .anime-grid {
+        /* Có thể 2 cột trên điện thoại */
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
