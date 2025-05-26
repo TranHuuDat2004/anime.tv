@@ -1,0 +1,518 @@
+/* anime-detail-style.css */
+
+    /* --- Detail Hero Section --- */
+    .detail-hero-section {
+        position: relative;
+        width: 100%;
+        min-height: 500px;
+        /* Chiều cao tối thiểu cho hero */
+        display: flex;
+        align-items: flex-end;
+        /* Căn nội dung xuống dưới */
+        color: var(--text-color);
+        padding-bottom: 40px;
+        /* Khoảng đệm dưới cho nội dung */
+        box-sizing: border-box;
+        overflow: hidden;
+    }
+
+    .detail-hero-background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+        z-index: 1;
+    }
+
+    .detail-hero-background::after {
+        /* Lớp phủ gradient trên ảnh nền */
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to top, rgba(19, 20, 23, 1) 15%, rgba(19, 20, 23, 0.8) 35%, rgba(19, 20, 23, 0) 70%);
+        z-index: 2;
+    }
+
+    .detail-hero-overlay {
+        /* Lớp phủ màu nhẹ nếu cần, hoặc dùng gradient ở trên */
+        /* position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 2; */
+    }
+
+    .detail-hero-content {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+    }
+
+    .detail-hero-main {
+        max-width: 60%;
+        /* Giới hạn chiều rộng của khối nội dung chính */
+    }
+
+    .detail-anime-logo {
+        max-width: 350px;
+        max-height: 120px;
+        object-fit: contain;
+        margin-bottom: 15px;
+        display: block;
+    }
+
+    .detail-title {
+        /* Sẽ được ẩn nếu có logo, hoặc là fallback */
+        font-size: 2.8em;
+        font-weight: 900;
+        margin-bottom: 10px;
+        /* display: none; /* Ẩn nếu logo được hiển thị */
+    }
+
+    .detail-crunchy-tags {
+        margin-bottom: 15px;
+        font-size: 0.95em;
+        color: var(--text-secondary-color);
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    .detail-crunchy-tags .tag-item {
+        font-weight: 500;
+        color: #e0e0e0;
+    }
+
+    .detail-crunchy-tags .tag-separator {
+        margin: 0 8px;
+        color: var(--text-secondary-color);
+    }
+
+
+    .detail-short-description {
+        font-size: 1.05em;
+        line-height: 1.6;
+        margin-bottom: 25px;
+        color: #dadada;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        /* Giới hạn 3 dòng */
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .detail-actions {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .detail-actions .btn-lg {
+        /* Nút to hơn */
+        padding: 12px 28px;
+        font-size: 1.05em;
+        font-weight: 700;
+    }
+
+    .detail-actions .btn-primary.btn-lg {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .detail-actions .btn-secondary.btn-icon-only.btn-lg {
+        width: 50px;
+        height: 50px;
+        padding: 0;
+        /* Reset padding */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: rgba(45, 48, 56, 0.8);
+        border: 1px solid rgba(128, 128, 128, 0.3);
+    }
+
+    .detail-actions .btn-secondary.btn-icon-only.btn-lg:hover {
+        background-color: rgba(60, 63, 71, 0.9);
+        border-color: var(--primary-color);
+    }
+
+    .detail-actions .btn-secondary.btn-icon-only.btn-lg:hover svg {
+        stroke: var(--primary-color);
+    }
+
+
+    /* --- Detail Content Section (Tabs) --- */
+    .detail-content-section {
+        padding-top: 30px;
+        padding-bottom: 50px;
+    }
+
+    .detail-tabs {
+        border-bottom: 1px solid var(--border-color);
+        margin-bottom: 30px;
+        display: flex;
+        gap: 5px;
+    }
+
+    .tab-link {
+        background-color: transparent;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        padding: 14px 20px;
+        transition: color 0.3s, border-bottom 0.3s;
+        font-size: 1.1em;
+        font-weight: 600;
+        color: var(--text-secondary-color);
+        border-bottom: 3px solid transparent;
+        margin-bottom: -1px;
+        /* Để border bottom đè lên border của .detail-tabs */
+    }
+
+    .tab-link:hover {
+        color: var(--text-color);
+    }
+
+    .tab-link.active {
+        color: var(--primary-color);
+        border-bottom: 3px solid var(--primary-color);
+    }
+
+    .tab-content {
+        display: none;
+        animation: fadeIn 0.5s;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Overview Tab */
+    .overview-grid {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        /* Mô tả rộng hơn chi tiết */
+        gap: 40px;
+    }
+
+    .overview-description h2,
+    .overview-details h2,
+    #episodesTab h2,
+    #relatedTab h2 {
+        font-size: 1.6em;
+        margin-bottom: 15px;
+        border-left: 3px solid var(--primary-color);
+        padding-left: 10px;
+    }
+
+    .overview-description p {
+        line-height: 1.7;
+        color: var(--text-secondary-color);
+        white-space: pre-line;
+        /* Giữ nguyên các xuống dòng trong mô tả */
+    }
+
+    .overview-details p {
+        margin-bottom: 10px;
+        font-size: 0.95em;
+        color: var(--text-secondary-color);
+    }
+
+    .overview-details p strong {
+        color: var(--text-color);
+        min-width: 120px;
+        display: inline-block;
+    }
+
+    /* Episodes Tab */
+    .season-block {
+        margin-bottom: 30px;
+    }
+
+    .season-block h3 {
+        font-size: 1.4em;
+        margin-bottom: 15px;
+        color: var(--text-color);
+    }
+
+    .episode-list {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .episode-item {
+        display: flex;
+        align-items: center;
+        background-color: var(--card-background-color);
+        border-radius: 4px;
+        padding: 10px;
+        transition: background-color 0.2s ease;
+        color: var(--text-color);
+        text-decoration: none;
+        position: relative;
+        /* For play icon */
+    }
+
+    .episode-item:hover:not(.disabled) {
+        background-color: #3a3e47;
+    }
+
+    .episode-item.disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+    }
+
+
+    .episode-thumbnail {
+        width: 160px;
+        /* Chiều rộng cố định */
+        height: 90px;
+        /* Giữ tỉ lệ 16:9 */
+        object-fit: cover;
+        border-radius: 3px;
+        margin-right: 15px;
+        flex-shrink: 0;
+        /* Ngăn thumbnail co lại */
+    }
+
+    .episode-info {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        /* Khoảng cách giữa các dòng text trong info */
+        overflow: hidden;
+        /* Để text-overflow hoạt động */
+    }
+
+    .episode-number {
+        font-size: 0.9em;
+        color: var(--text-secondary-color);
+        font-weight: 600;
+    }
+
+    .episode-title {
+        font-size: 1.05em;
+        font-weight: 500;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin: 0;
+        /* Reset margin h4 */
+        color: var(--text-color);
+    }
+
+    .episode-duration {
+        font-size: 0.85em;
+        color: var(--text-secondary-color);
+    }
+
+    .episode-subdub {
+        font-size: 0.85em;
+        color: var(--primary-color);
+        font-weight: 600;
+    }
+
+    .play-icon-list {
+        font-size: 1.8em;
+        color: var(--primary-color);
+        margin-left: 15px;
+        opacity: 0;
+        transition: opacity 0.2s ease;
+    }
+
+    .episode-item:hover:not(.disabled) .play-icon-list {
+        opacity: 1;
+    }
+
+    /* Related Anime Tab */
+    .related-anime-grid .anime-card {
+        /* Kế thừa từ style.css, có thể tùy chỉnh thêm nếu muốn */
+    }
+
+
+    /* --- Responsive cho trang chi tiết --- */
+    @media (max-width: 992px) {
+        .detail-hero-main {
+            max-width: 75%;
+        }
+
+        .overview-grid {
+            grid-template-columns: 1fr;
+            /* Stack các cột */
+            gap: 30px;
+        }
+
+        .overview-details {
+            margin-top: 20px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .detail-hero-section {
+            min-height: 400px;
+            padding-bottom: 30px;
+        }
+
+        .detail-hero-main {
+            max-width: 90%;
+        }
+
+        .detail-anime-logo {
+            max-width: 280px;
+            max-height: 100px;
+        }
+
+        .detail-title {
+            font-size: 2.2em;
+        }
+
+        .detail-short-description {
+            font-size: 1em;
+            -webkit-line-clamp: 2;
+        }
+
+        .detail-actions .btn-lg {
+            padding: 10px 20px;
+            font-size: 0.95em;
+        }
+
+        .detail-actions .btn-secondary.btn-icon-only.btn-lg {
+            width: 44px;
+            height: 44px;
+        }
+
+        .tab-link {
+            padding: 12px 15px;
+            font-size: 1em;
+        }
+
+        .episode-thumbnail {
+            width: 120px;
+            height: 67px;
+            /* 16:9 */
+            margin-right: 10px;
+        }
+
+        .episode-title {
+            font-size: 0.95em;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .detail-hero-section {
+            min-height: 350px;
+        }
+
+        .detail-hero-main {
+            max-width: 100%;
+        }
+
+        .detail-anime-logo {
+            max-width: 220px;
+            max-height: 80px;
+            margin-bottom: 10px;
+        }
+
+        .detail-title {
+            font-size: 1.8em;
+        }
+
+        .detail-short-description {
+            font-size: 0.9em;
+            margin-bottom: 20px;
+        }
+
+        .detail-actions {
+            flex-wrap: wrap;
+            /* Cho phép nút xuống dòng nếu không đủ chỗ */
+        }
+
+        .detail-actions .btn-lg {
+            font-size: 0.9em;
+        }
+
+        .detail-tabs {
+            gap: 0;
+            /* Loại bỏ gap để các tab sát nhau hơn trên mobile */
+            overflow-x: auto;
+            /* Cho phép cuộn ngang các tab nếu không đủ chỗ */
+            white-space: nowrap;
+            padding-bottom: 5px;
+            /* Khoảng cách cho thanh cuộn nếu có */
+        }
+
+        .tab-link {
+            padding: 10px;
+            font-size: 0.9em;
+            flex-shrink: 0;
+            /* Ngăn tab co lại */
+        }
+
+        .episode-item {
+            flex-direction: column;
+            /* Stack thumbnail và info trên mobile */
+            align-items: flex-start;
+            padding: 12px;
+        }
+
+        .episode-thumbnail {
+            width: 100%;
+            /* Thumbnail chiếm toàn bộ chiều rộng */
+            height: auto;
+            /* Giữ tỉ lệ */
+            aspect-ratio: 16 / 9;
+            margin-right: 0;
+            margin-bottom: 10px;
+        }
+
+        .play-icon-list {
+            position: absolute;
+            top: 50%;
+            right: 15px;
+            transform: translateY(-50%);
+            opacity: 0.7;
+            /* Luôn hiển thị nhẹ trên mobile */
+        }
+
+        .episode-item:hover:not(.disabled) .play-icon-list {
+            opacity: 1;
+        }
+    }
+
+    .btn.disabled {
+        background-color: #555 !important;
+        border-color: #444 !important;
+        cursor: not-allowed;
+        opacity: 0.7;
+    }
+
+    .btn.disabled:hover {
+        background-color: #555 !important;
+    }
+
+    a.disabled {
+        pointer-events: none;
+        /* Ngăn click */
+        opacity: 0.6;
+    }
