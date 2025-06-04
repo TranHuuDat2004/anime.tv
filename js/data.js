@@ -73,8 +73,8 @@ const animeData = [
         title: "Thiên Sứ Nhà Bên",
         altTitle: "Otonari no Tenshi-sama ni Itsunomanika Dame Ningen ni Sareteita Ken",
         posterImage: "images/thien-su-nha-ben/poster.webp", // Bạn có thể tìm poster phù hợp sau
-        bannerImage: "images/thien-su-nha-ben/flim.jpg", // Bạn có thể tìm banner phù hợp sau
-        logoImage: "", // Bạn có thể tìm logo phù hợp sau
+        bannerImage: "images/thien-su-nha-ben/mahiru_banner.webp", // Bạn có thể tìm banner phù hợp sau
+        logoImage: "images/thien-su-nha-ben/logo.webp", // Logo (nếu có)
         description: "Amane Fujimiya là một học sinh trung học bình thường, sống một mình trong một căn hộ. Hàng xóm của cậu là Mahiru Shiina, một cô gái xinh đẹp và nổi tiếng nhất trường, được mệnh danh là \"Thiên thần\". Một ngày mưa, Amane bắt gặp Mahiru ngồi một mình dưới mưa và đã cho cô mượn ô của mình. Từ đó, mối quan hệ giữa hai người bắt đầu thay đổi, Mahiru thường xuyên đến nhà Amane để chăm sóc và nấu ăn cho cậu, dần dần biến Amane từ một người sống luộm thuộm trở thành một \"con người vô dụng\" theo một cách đáng yêu.",
         genres: ["Slice of Life", "Romance", "Comedy", "School"],
         rating: "13+",
@@ -107,5 +107,82 @@ const animeData = [
         },
         crunchyrollTags: ["Sub", "Slice of Life", "Romance", "Comedy"],
         relatedAnime: []
+    },
+    { // ANIME MỚI: YOUR NAME
+        id: "your-name", // URL-friendly ID
+        title: "Your Name.",
+        altTitle: "Kimi no Na wa. (君の名は。)",
+        posterImage: "images/your-name/your-name.jpg", // Bạn có thể tìm poster phù hợp sau
+        bannerImage: "images/your-name/your-name-banner.jpg", // Bạn có thể tìm poster phù hợp sau
+        logoImage: "images/your-name/logo.svg", // Logo (nếu có)
+        description: "Mitsuha Miyamizu, một nữ sinh trung học ở một vùng nông thôn buồn tẻ, mơ ước cuộc sống nhộn nhịp ở Tokyo. Taki Tachibana, một nam sinh trung học ở Tokyo, làm thêm tại một nhà hàng Ý và khao khát trở thành kiến trúc sư hoặc nghệ sĩ. Một ngày nọ, hai người đột nhiên hoán đổi cơ thể cho nhau. Họ phải tìm cách thích nghi với cuộc sống mới và giao tiếp qua những ghi chú. Khi họ bắt đầu hiểu nhau hơn, một sự kiện bất ngờ xảy ra và mối liên kết của họ bị thử thách.",
+        genres: ["Drama", "Romance", "Supernatural", "School"],
+        rating: "PG-13", // Ước lượng
+        type: "Movie", // Đây là phim lẻ
+        status: "Hoàn thành",
+        releaseYear: 2016,
+        episodes: {
+            total: 1, // Phim lẻ có 1 "tập"
+            availableOnSite: 1,
+            seasons: [
+                {
+                    seasonNum: 1, // Coi như season 1
+                    seasonTitle: "", // Để trống cho phim lẻ
+                    episodes: [
+                        {
+                            epNumOverall: 1, epNumInSeason: 1, title: "Your Name. (Dub)", // Tiêu đề dựa trên iframe
+                            thumbnail: "images/your-name/your-name-banner.webp", // Lấy thumbnail từ Vimeo nếu có, hoặc placeholder
+                            duration: "1 hr 46 min", // Thời lượng phim
+                            videoUrl: "https://player.vimeo.com/video/1090443440?h=31b8824f10&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479",
+                            sub: false, // Dựa trên title "Dub"
+                            dub: true
+                        }
+                    ]
+                }
+            ]
+        },
+        crunchyrollTags: ["Dub", "Drama", "Romance", "Supernatural"],
+        relatedAnime: [
+            { id: "weathering-with-you", title: "Weathering With You", posterImage: "https://m.media-amazon.com/images/M/MV5BNzE4ZWRhNTgtYjQ4Mi00鮮やかでYTMwLTliZTY1YmQ0MTM0L2ltYWdlXkEyXkFqcGdeQXVyNzYxODU5OQ@@._V1_.jpg" } // Ví dụ
+        ]
+    },
+
+    { // ANIME MỚI: WEATHERING WITH YOU
+        id: "weathering-with-you", // URL-friendly ID
+        title: "Weathering With You",
+        altTitle: "Tenki no Ko (天気の子)",
+        posterImage: "images/weathering-with-you/weathering-with-you-poster.jpg", // Bạn có thể tìm poster phù hợp sau
+        bannerImage: "images/weathering-with-you/weathering-with-you-banner.jpg", // Bạn có thể tìm poster phù hợp sau
+        logoImage: "images/weathering-with-you/logo.webp", // Logo (nếu có)
+        description: "Hodaka Morishima, một nam sinh trung học, bỏ nhà ở một hòn đảo xa xôi để đến Tokyo. Cậu nhanh chóng rơi vào cảnh túng thiếu và tìm được việc làm tại một tạp chí nhỏ chuyên viết về những điều huyền bí. Một ngày nọ, Hodaka gặp Hina Amano, một cô gái có khả năng kỳ diệu: điều khiển thời tiết. Cùng nhau, họ bắt đầu một công việc kinh doanh \"cô gái nắng\" để mang lại ánh nắng cho mọi người, nhưng sức mạnh của Hina lại đi kèm với một cái giá.",
+        genres: ["Drama", "Fantasy", "Romance", "Slice of Life"],
+        rating: "PG-13", // Ước lượng
+        type: "Movie", // Đây là phim lẻ
+        status: "Hoàn thành",
+        releaseYear: 2019,
+        episodes: {
+            total: 1, // Phim lẻ có 1 "tập"
+            availableOnSite: 1,
+            seasons: [
+                {
+                    seasonNum: 1, // Coi như season 1
+                    seasonTitle: "", // Để trống cho phim lẻ
+                    episodes: [
+                        {
+                            epNumOverall: 1, epNumInSeason: 1, title: "Weathering With You (Dub)", // Tiêu đề dựa trên iframe
+                            thumbnail: "images/weathering-with-you/weathering-with-you-banner.webp", // Lấy thumbnail từ Vimeo nếu có, hoặc placeholder
+                            duration: "1 hr 52 min", // Thời lượng phim
+                            videoUrl: "https://player.vimeo.com/video/1090443652?h=f8160e0172&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479",
+                            sub: false, // Dựa trên title "Dub"
+                            dub: true
+                        }
+                    ]
+                }
+            ]
+        },
+        crunchyrollTags: ["Dub", "Drama", "Fantasy", "Romance"],
+        relatedAnime: [
+             { id: "your-name", title: "Your Name.", posterImage: "https://m.media-amazon.com/images/M/MV5BODRmZDVmNzUtZDA4ZC00NjhkLWI2M2UtN2M0ZDIzNDcxYThjL2ltYWdlXkEyXkFqcGdeQXVyNTk0MzMzODA@._V1_FMjpg_UX1000_.jpg" }
+        ]
     }
 ];
