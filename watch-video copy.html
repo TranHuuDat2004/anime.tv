@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xem Phim</title> <!-- Sẽ được cập nhật bằng JavaScript -->
+    <link rel="stylesheet" href="css/style.css"> <!-- Style chung -->
+    <link rel="stylesheet" href="css/watch-video-style.css"> <!-- Style riêng cho trang xem phim -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <a href="index.html" class="navbar-logo">ANIME.TV</a>
+                <!-- Có thể ẩn bớt menu ở trang xem phim cho tập trung -->
+                <ul class="navbar-nav">
+                    <li><a href="index.html">Trang Chủ</a></li>
+                </ul>
+                <div class="navbar-actions">
+                    <!-- Có thể giữ lại hoặc bỏ đi tùy ý -->
+                    <button class="search-icon" style="visibility: hidden;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
+                    </button>
+                    <a href="#" class="login-button" style="visibility: hidden;">Đăng Nhập</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- watch-video.html -->
+
+
+    <main id="watch-page">
+        <!-- Xóa iframe tĩnh từ HTML, chỉ để lại container -->
+                <!-- THAY THẾ THẺ <video> BẰNG THẺ <iframe> NÀY -->
+        <iframe id="googleDrivePlayer"
+                 width="640" height="480" allow="autoplay">
+        </iframe>
+
+        <iframe src="https://drive.google.com/file/d/15aUKmE4qUpzfRRt6OKt-uQNP3_rJTKUT/preview" width="640" height="480" allow="autoplay"></iframe>
+
+        <div class="container video-info-controls">
+            <div class="episode-details">
+                <h1 id="animeTitleWatchPage">Tên Anime</h1>
+                <h2 id="episodeTitleWatchPage">Tập X: Tên tập phim</h2>
+                <p id="episodeSubDubWatchPage" class="episode-subdub-info"></p>
+            </div>
+            <div class="episode-navigation">
+                <a href="#" id="prevEpisodeBtn" class="btn btn-secondary disabled">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="15 18 9 12 15 6"></polyline>
+                    </svg>
+                    Tập Trước
+                </a>
+                <a href="anime-detail.html" id="backToDetailBtn" class="btn btn-secondary">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <list></list>
+                        <path d="M20 11.5v8a2 2 0 01-2 2H6a2 2 0 01-2-2v-13a2 2 0 012-2h4.5"></path>
+                        <path d="M18 2l4 4M12.5 2.5L10.25 4L8 2.5"></path>
+                        <path d="M10.25 4L8 5.5"></path>
+                        <path d="M10.25 4L12.5 5.5"></path>
+                    </svg>
+                    DS Tập
+                </a>
+                <a href="#" id="nextEpisodeBtn" class="btn btn-primary disabled">
+                    Tập Tiếp Theo
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <!-- ... (Footer giữ nguyên) ... -->
+    </footer>
+
+    <script src="js/data.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+    // Lấy params từ URL
+    const params = new URLSearchParams(window.location.search);
+    const animeId = params.get("id"); // ex: "thien-su-nha-ben"
+    const epNum = parseInt(params.get("ep")) || 1; // ex: 3
+
+    // Tìm anime từ data
+    const anime = animeData.find(a => a.id === animeId);
+    if (!anime) {
+        console.error("Anime không tồn tại");
+        return;
+    }
+
+    // Tìm tập phim
+    const allEpisodes = anime.episodes.seasons.flatMap(season => season.episodes);
+    const episode = allEpisodes.find(ep => ep.epNumOverall === epNum);
+    if (!episode) {
+        console.error("Tập phim không tồn tại");
+        return;
+    }
+
+    // Gán video vào iframe
+    const iframe = document.getElementById("googleDrivePlayer");
+    iframe.src = episode.videoUrl;
+
+    // Gán tiêu đề trang
+    document.title = `${episode.title} | ${anime.title}`;
+})
+
+        // Cập nhật thông tin tập phim
+        const episodeTitle = document.getElementById("episodeTitleWatchPage");
+        const animeTitle = document.getElementById("animeTitleWatchPage");
+        const episodeSubDub = document.getElementById("episodeSubDubWatchPage");
+
+        episodeTitle.textContent = `Tập ${episode.epNumOverall}: ${episode.title}`;
+        animeTitle.textContent = anime.title;
+        episodeSubDub.textContent = `Phụ đề: ${episode.sub ? "Có" : "Không"} | Lồng ghép: ${episode.dub ? "Có" : "Không"}`;
+
+        // Cập nhật nút điều hướng
+        const prevEpisodeBtn = document.getElementById("prevEpisodeBtn");
+        const nextEpisodeBtn = document.getElementById("nextEpisodeBtn");
+
+        // Tìm tập trước và sau
+        const prevEpisode = allEpisodes.find(ep => ep.epNumOverall === epNum - 1);
+        const nextEpisode = allEpisodes.find(ep => ep.epNumOverall === epNum + 1);
+
+        if (prevEpisode) {
+            prevEpisodeBtn.classList.remove("disabled");
+            prevEpisodeBtn.href = `watch-video.html?id=${animeId}&ep=${prevEpisode.epNumOverall}`;
+            prevEpisodeBtn.querySelector("svg").style.display = "inline";
+            prevEpisodeBtn.textContent = `Tập Trước`;
+        } else {
+            prevEpisodeBtn.classList.add("disabled");
+            prevEpisodeBtn.href = "#";
+            prevEpisodeBtn.querySelector("svg").style.display = "none";
+            prevEpisodeBtn.textContent = `Tập Trước (Không có)`;
+        }
+
+        if (nextEpisode) {
+            nextEpisodeBtn.classList.remove("disabled");
+            nextEpisodeBtn.href = `watch-video.html?id=${animeId}&ep=${nextEpisode.epNumOverall}`;
+            nextEpisodeBtn.querySelector("svg").style.display = "inline";
+            nextEpisodeBtn.textContent = `Tập Tiếp Theo`;
+        } else {
+            nextEpisodeBtn.classList.add("disabled");
+            nextEpisodeBtn.href = "#";
+            nextEpisodeBtn.querySelector("svg").style.display = "none";
+            nextEpisodeBtn.textContent = `Tập Tiếp Theo (Không có)`;
+        }
+    </script>
+
+</body>
+
+</html>

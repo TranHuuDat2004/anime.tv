@@ -1,123 +1,160 @@
   /* watch-video-style.css */
-body {
-    background-color: #000; /* Nền đen cho trang xem phim */
-    color: var(--text-color);
-}
+  body {
+      background-color: #000;
+      /* Nền đen cho trang xem phim */
+      color: var(--text-color);
 
-#watch-page {
-    padding-top: 20px;
-}
+  }
 
-.video-player-container {
-    width: 100%;
-    /* Tỷ lệ khung hình 16:9, có thể điều chỉnh nếu cần */
-    position: relative;
-    padding-bottom: 56.25%; /* 16:9 Aspect Ratio (9 / 16 * 100) */
-    height: 0;
-    background-color: #111; /* Màu nền cho vùng video player */
-    margin-bottom: 20px;
-}
-
-.video-player-container iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: none; /* Loại bỏ border của iframe */
-}
-
-.video-info-controls {
-    padding-bottom: 30px;
-}
-
-.episode-details {
-    margin-bottom: 25px;
-    text-align: left;
-}
-
-.episode-details #animeTitleWatchPage {
-    font-size: 1.4em;
-    color: var(--text-secondary-color);
-    margin-bottom: 5px;
-    font-weight: 500;
-}
-
-.episode-details #episodeTitleWatchPage {
-    font-size: 1.8em;
-    font-weight: 700;
-    margin-bottom: 8px;
-    color: var(--text-color);
-}
-.episode-details #episodeSubDubWatchPage {
-    font-size: 0.9em;
-    color: var(--primary-color);
-    font-weight: 600;
-}
-
-.episode-navigation {
+  #watch-page {
+      padding-top: 20px;
+      /* Nếu bạn dùng flex cho body để căn giữa toàn trang:
+    flex-grow: 1;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 15px;
-    border-top: 1px solid var(--border-color);
-    padding-top: 20px;
-}
+    flex-direction: column;
+    width: 100%; */
+  }
 
-.episode-navigation .btn {
-    display: inline-flex; /* Để icon và text căn giữa tốt hơn */
-    align-items: center;
-    gap: 8px;
-    font-size: 0.95em;
-    padding: 10px 18px;
-}
-.episode-navigation .btn svg {
-    width: 18px;
-    height: 18px;
-}
+  .video-player-container {
+      width: 100%;
 
-.episode-navigation .btn.disabled {
-    background-color: #333;
-    border-color: #222;
-    color: #777;
-    cursor: not-allowed;
-    opacity: 0.7;
-}
-.episode-navigation .btn.disabled:hover {
-    background-color: #333;
-    border-color: #222;
-    color: #777;
-}
+      margin-bottom: 20px;
 
-/* Navbar trên trang xem phim có thể đơn giản hơn */
-.navbar {
-    background-color: #101010; /* Hơi khác màu nền một chút */
-    border-bottom: 1px solid #252525;
-}
+      /* Sử dụng Flexbox để căn giữa iframe con */
+      display: flex;
+      justify-content: center;
+      /* Căn giữa theo chiều ngang */
+      align-items: center;
 
 
-@media (max-width: 768px) {
-    .episode-details #animeTitleWatchPage {
-        font-size: 1.2em;
-    }
-    .episode-details #episodeTitleWatchPage {
-        font-size: 1.5em;
-    }
-    .episode-navigation {
-        flex-wrap: wrap; /* Cho các nút xuống dòng nếu không đủ chỗ */
-        justify-content: center; /* Căn giữa các nút khi xuống dòng */
-    }
-    .episode-navigation .btn {
-        flex-basis: calc(50% - 10px); /* 2 nút trên một hàng */
-        justify-content: center;
-        margin-bottom: 10px;
-    }
-    .episode-navigation #backToDetailBtn { /* Nút ở giữa có thể chiếm toàn bộ hàng */
-        flex-basis: 100%;
-    }
-}
-@media (max-width: 480px) {
-     .episode-navigation .btn {
-        flex-basis: 100%; /* 1 nút trên một hàng */
-    }
-}
+  }
+
+  .video-player-container iframe {
+
+      width: 80%;
+
+      height: 80%;
+
+      border: none;
+
+      max-width: 1280px;
+
+      max-height: 720px;
+
+      aspect-ratio: 16 / 9;
+
+  }
+
+  .video-info-controls {
+      padding-bottom: 30px;
+  }
+
+  .video-info-controls {
+      padding-bottom: 30px;
+  }
+
+  .episode-details {
+      margin-bottom: 25px;
+      text-align: left;
+  }
+
+  .episode-details #animeTitleWatchPage {
+      font-size: 1.4em;
+      color: var(--text-secondary-color);
+      margin-bottom: 5px;
+      font-weight: 500;
+  }
+
+  .episode-details #episodeTitleWatchPage {
+      font-size: 1.8em;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--text-color);
+  }
+
+  .episode-details #episodeSubDubWatchPage {
+      font-size: 0.9em;
+      color: var(--primary-color);
+      font-weight: 600;
+  }
+
+  .episode-navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+      border-top: 1px solid var(--border-color);
+      padding-top: 20px;
+  }
+
+  .episode-navigation .btn {
+      display: inline-flex;
+      /* Để icon và text căn giữa tốt hơn */
+      align-items: center;
+      gap: 8px;
+      font-size: 0.95em;
+      padding: 10px 18px;
+  }
+
+  .episode-navigation .btn svg {
+      width: 18px;
+      height: 18px;
+  }
+
+  .episode-navigation .btn.disabled {
+      background-color: #333;
+      border-color: #222;
+      color: #777;
+      cursor: not-allowed;
+      opacity: 0.7;
+  }
+
+  .episode-navigation .btn.disabled:hover {
+      background-color: #333;
+      border-color: #222;
+      color: #777;
+  }
+
+  /* Navbar trên trang xem phim có thể đơn giản hơn */
+  .navbar {
+      background-color: #101010;
+      /* Hơi khác màu nền một chút */
+      border-bottom: 1px solid #252525;
+  }
+
+
+  @media (max-width: 768px) {
+      .episode-details #animeTitleWatchPage {
+          font-size: 1.2em;
+      }
+
+      .episode-details #episodeTitleWatchPage {
+          font-size: 1.5em;
+      }
+
+      .episode-navigation {
+          flex-wrap: wrap;
+          /* Cho các nút xuống dòng nếu không đủ chỗ */
+          justify-content: center;
+          /* Căn giữa các nút khi xuống dòng */
+      }
+
+      .episode-navigation .btn {
+          flex-basis: calc(50% - 10px);
+          /* 2 nút trên một hàng */
+          justify-content: center;
+          margin-bottom: 10px;
+      }
+
+      .episode-navigation #backToDetailBtn {
+          /* Nút ở giữa có thể chiếm toàn bộ hàng */
+          flex-basis: 100%;
+      }
+  }
+
+  @media (max-width: 480px) {
+      .episode-navigation .btn {
+          flex-basis: 100%;
+          /* 1 nút trên một hàng */
+      }
+  }

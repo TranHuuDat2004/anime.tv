@@ -107,22 +107,6 @@
                 <h2>Danh Sách Tập</h2>
                 <div id="seasonContainer">
                     <!-- Các season và tập sẽ được load vào đây bằng JavaScript -->
-                    <!-- Ví dụ một season:
-                    <div class="season-block">
-                        <h3>Season 1: Tên Season</h3>
-                        <div class="episode-list">
-                            <a href="#" class="episode-item">
-                                <img src="https://via.placeholder.com/160x90?text=Ep+Thumb" alt="Episode Thumbnail" class="episode-thumbnail">
-                                <div class="episode-info">
-                                    <span class="episode-number">Tập 1</span>
-                                    <h4 class="episode-title">Tên tập phim rất dài dòng và chi tiết</h4>
-                                    <span class="episode-duration">24 min</span>
-                                </div>
-                                <span class="play-icon-list">►</span>
-                            </a>
-                        </div>
-                    </div>
-                    -->
                 </div>
             </div>
 
@@ -143,22 +127,12 @@
                 <a href="#">Điều khoản sử dụng</a>
                 <a href="#">Chính sách riêng tư</a>
             </div>
-            <p>© 2024 Anime Của Tôi. Dựa trên ý tưởng từ Crunchyroll.</p>
+            <p>© 2024 ANIME.TV. Dựa trên ý tưởng từ Crunchyroll.</p>
         </div>
     </footer>
 
     <script src="js/data.js"></script> <!-- Tải dữ liệu anime trước -->
     <script>
-        // Trong anime-detail.html, cập nhật nút Xem Ngay
-        const firstSeason = anime.episodes.seasons[0];
-        if (firstSeason && firstSeason.episodes[0] && firstSeason.episodes[0].videoUrl && firstSeason.episodes[0].videoUrl !== "#") {
-            const firstEpisode = firstSeason.episodes[0];
-            document.getElementById('watchNowButton').href = `watch-video.html?animeId=${anime.id}&season=${firstSeason.seasonNum}&ep=${firstEpisode.epNumInSeason}`;
-            document.getElementById('watchNowButton').classList.remove('disabled');
-        } else {
-            document.getElementById('watchNowButton').href = "#";
-            document.getElementById('watchNowButton').classList.add('disabled');
-        }
         // JavaScript để xử lý trang chi tiết
         document.addEventListener('DOMContentLoaded', function () {
             const urlParams = new URLSearchParams(window.location.search);
@@ -175,7 +149,6 @@
             if (!anime) {
                 document.getElementById('animeTitle').textContent = `Không tìm thấy Anime với ID: ${animeId}`;
                 document.getElementById('fullDescription').textContent = "Anime bạn tìm kiếm không tồn tại trong cơ sở dữ liệu.";
-                // Ẩn các phần không cần thiết
                 document.querySelector('.detail-hero-section').style.display = 'none';
                 document.querySelector('.detail-content-section .detail-tabs').style.display = 'none';
                 return;
@@ -186,41 +159,48 @@
 
             // --- HERO SECTION ---
             document.querySelector('.detail-hero-background').style.backgroundImage = `url('${anime.bannerImage}')`;
-            if (anime.logoImage) {
+            if (anime.logoImage && anime.logoImage !== "") { // Kiểm tra logo có tồn tại và không rỗng
                 document.getElementById('animeLogo').src = anime.logoImage;
                 document.getElementById('animeLogo').alt = `${anime.title} Logo`;
+                document.getElementById('animeLogo').style.display = 'block'; // Đảm bảo logo hiển thị
             } else {
-                document.getElementById('animeLogo').style.display = 'none'; // Ẩn nếu không có logo
+                document.getElementById('animeLogo').style.display = 'none';
             }
             document.getElementById('animeTitle').textContent = anime.title;
 
             const crunchyTagsContainer = document.getElementById('animeCrunchyTags');
+            crunchyTagsContainer.innerHTML = ''; // Xóa tag cũ
             if (anime.crunchyrollTags && anime.crunchyrollTags.length > 0) {
-                anime.crunchyrollTags.forEach(tagText => {
+                anime.crunchyrollTags.forEach((tagText, index) => {
                     const tagSpan = document.createElement('span');
                     tagSpan.className = 'tag-item';
                     tagSpan.textContent = tagText;
                     crunchyTagsContainer.appendChild(tagSpan);
-                    if (anime.crunchyrollTags.indexOf(tagText) < anime.crunchyrollTags.length - 1) {
+                    if (index < anime.crunchyrollTags.length - 1) {
                         const separator = document.createElement('span');
                         separator.className = 'tag-separator';
                         separator.textContent = '•';
                         crunchyTagsContainer.appendChild(separator);
                     }
                 });
+                crunchyTagsContainer.style.display = 'flex'; // Đảm bảo hiển thị
             } else {
                 crunchyTagsContainer.style.display = 'none';
             }
 
+            document.getElementById('animeShortDescription').textContent = anime.description.substring(0, 200) + (anime.description.length > 200 ? "..." : "");
 
-            document.getElementById('animeShortDescription').textContent = anime.description.substring(0, 200) + "..."; // Mô tả ngắn
-            // Nút Xem Ngay (link tới tập đầu tiên nếu có)
-            const firstEpisodeLink = anime.episodes.seasons[0]?.episodes[0]?.videoUrl || "#";
-            document.getElementById('watchNowButton').href = firstEpisodeLink;
-            if (firstEpisodeLink === "#" || !anime.episodes.seasons[0]?.episodes[0]) {
-                document.getElementById('watchNowButton').classList.add('disabled'); // Vô hiệu hóa nếu không có link
+            // Cập nhật nút Xem Ngay (ĐÃ DI CHUYỂN VÀO ĐÂY)
+            const watchNowButton = document.getElementById('watchNowButton');
+            const firstSeason = anime.episodes.seasons[0];
+            if (firstSeason && firstSeason.episodes[0] && firstSeason.episodes[0].videoUrl && firstSeason.episodes[0].videoUrl !== "#") {
+                const firstEpisode = firstSeason.episodes[0];
+                watchNowButton.href = `watch-video.html?animeId=${anime.id}&season=${firstSeason.seasonNum}&ep=${firstEpisode.epNumInSeason}`;
+                watchNowButton.classList.remove('disabled');
+            } else {
+                watchNowButton.href = "#";
+                watchNowButton.classList.add('disabled');
             }
-
 
             // --- OVERVIEW TAB ---
             document.getElementById('fullDescription').textContent = anime.description;
@@ -241,7 +221,7 @@
                     seasonBlock.className = 'season-block';
 
                     const seasonTitle = document.createElement('h3');
-                    seasonTitle.textContent = `Season ${season.seasonNum}: ${season.seasonTitle || ''}`;
+                    seasonTitle.textContent = `Season ${season.seasonNum}${season.seasonTitle ? (': ' + season.seasonTitle) : ''}`;
                     seasonBlock.appendChild(seasonTitle);
 
                     const episodeList = document.createElement('div');
@@ -250,13 +230,12 @@
                     season.episodes.forEach(ep => {
                         const episodeItem = document.createElement('a');
                         episodeItem.href = `watch-video.html?animeId=${anime.id}&season=${season.seasonNum}&ep=${ep.epNumInSeason}`;
-                        // Nếu ep.videoUrl là "#" hoặc không có, thì vẫn nên thêm class disabled
+                        
                         if (!ep.videoUrl || ep.videoUrl === "#") {
                             episodeItem.classList.add('disabled');
                         } else {
-                            episodeItem.classList.remove('disabled'); // Đảm bảo xóa class disabled nếu có link
+                            episodeItem.classList.remove('disabled');
                         }
-
 
                         const epThumbnail = document.createElement('img');
                         epThumbnail.src = ep.thumbnail || 'https://via.placeholder.com/160x90?text=No+Thumb';
@@ -269,7 +248,6 @@
                         const epNumber = document.createElement('span');
                         epNumber.className = 'episode-number';
                         epNumber.textContent = `Tập ${ep.epNumInSeason} (Tổng: ${ep.epNumOverall})`;
-
 
                         const epTitle = document.createElement('h4');
                         epTitle.className = 'episode-title';
@@ -286,12 +264,10 @@
                         if (ep.dub) subDubText.push("Dub");
                         epSubDub.textContent = subDubText.join(' | ');
 
-
                         epInfo.appendChild(epNumber);
                         epInfo.appendChild(epTitle);
                         epInfo.appendChild(epDuration);
                         if (subDubText.length > 0) epInfo.appendChild(epSubDub);
-
 
                         const playIcon = document.createElement('span');
                         playIcon.className = 'play-icon-list';
@@ -314,12 +290,11 @@
             relatedGrid.innerHTML = '';
             if (anime.relatedAnime && anime.relatedAnime.length > 0) {
                 anime.relatedAnime.forEach(rel => {
-                    // Tìm thông tin chi tiết của anime liên quan (nếu có trong js/data.js)
                     const relatedDetails = animeData.find(a => a.id === rel.id);
                     const poster = relatedDetails ? relatedDetails.posterImage : (rel.posterImage || 'https://via.placeholder.com/200x300?text=N/A');
 
                     const animeCard = document.createElement('div');
-                    animeCard.className = 'anime-card'; // Tái sử dụng style từ index
+                    animeCard.className = 'anime-card';
                     animeCard.innerHTML = `
                         <a href="anime-detail.html?id=${rel.id}">
                             <img src="${poster}" alt="${rel.title}">
