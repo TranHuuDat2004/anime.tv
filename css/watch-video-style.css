@@ -122,6 +122,185 @@
       border-bottom: 1px solid #252525;
   }
 
+/* anime-detail-style.css */
+
+/* ... (các style khác) ... */
+
+/* Episodes Tab - Phần này sẽ được tái sử dụng */
+#episodesTab .season-block h3, /* Thêm #episodesTab để tăng độ cụ thể nếu cần */
+#watchPageSeasonContainer .season-block h3 { /* Thêm selector cho trang watch */
+    font-size: 1.4em;
+    margin-bottom: 20px;
+    color: var(--text-color);
+}
+
+#episodesTab .episode-list-container,
+#watchPageSeasonContainer .episode-list-container {
+    /* overflow-x: auto;  /* Bỏ đi nếu dùng grid và muốn xuống dòng */
+    /* white-space: nowrap; */
+    padding-bottom: 15px;
+}
+
+#episodesTab .episode-list,
+#watchPageSeasonContainer .episode-list {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr); /* Mặc định 6 cột cho màn hình lớn */
+    gap: 15px; /* Giảm gap một chút cho nhiều item hơn */
+}
+
+#episodesTab .episode-item,
+#watchPageSeasonContainer .episode-item {
+    background-color: var(--card-background-color);
+    border-radius: 6px;
+    transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+    color: var(--text-color);
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+    display: block;
+}
+#episodesTab .episode-item:hover:not(.disabled),
+#watchPageSeasonContainer .episode-item:hover:not(.disabled) {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+}
+#episodesTab .episode-item.disabled,
+#watchPageSeasonContainer .episode-item.disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Style cho thumbnail và thông tin bên trong .episode-item */
+/* Đảm bảo các selector này cũng đủ cụ thể */
+#episodesTab .episode-thumbnail-wrapper,
+#watchPageSeasonContainer .episode-thumbnail-wrapper {
+    position: relative;
+    display: block;
+}
+
+#episodesTab .episode-thumbnail,
+#watchPageSeasonContainer .episode-thumbnail {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    display: block;
+}
+
+#episodesTab .episode-thumbnail-wrapper .play-icon-list,
+#watchPageSeasonContainer .episode-thumbnail-wrapper .play-icon-list {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2.5em; /* Điều chỉnh kích thước icon */
+    color: var(--primary-color);
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    background-color: rgba(0,0,0,0.5);
+    border-radius: 50%;
+    width: 50px; /* Điều chỉnh kích thước icon */
+    height: 50px; /* Điều chỉnh kích thước icon */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+}
+
+#episodesTab .episode-thumbnail-wrapper:hover .play-icon-list,
+#watchPageSeasonContainer .episode-thumbnail-wrapper:hover .play-icon-list {
+    opacity: 1;
+}
+
+#episodesTab .episode-info,
+#watchPageSeasonContainer .episode-info {
+    padding: 10px; /* Giảm padding một chút */
+}
+
+#episodesTab .episode-number,
+#watchPageSeasonContainer .episode-number {
+    font-size: 0.8em; /* Giảm font */
+    color: var(--text-secondary-color);
+    font-weight: 600;
+    display: block;
+    margin-bottom: 3px;
+}
+
+#episodesTab .episode-title,
+#watchPageSeasonContainer .episode-title {
+    font-size: 0.9em; /* Giảm font */
+    font-weight: 600;
+    margin: 0 0 4px 0;
+    color: var(--text-color);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-height: 2.2em; /* Điều chỉnh cho 2 dòng với font 0.9em */
+    line-height: 1.2;
+}
+#episodesTab .episode-title:hover,
+#watchPageSeasonContainer .episode-title:hover {
+    color: var(--primary-color);
+}
+
+/* Bỏ duration và subdub trên watch-page để tiết kiệm không gian, nếu muốn */
+#watchPageSeasonContainer .episode-duration-subdub-wrapper {
+    display: none; /* Ẩn hẳn đi trên trang watch */
+}
+/* Hoặc chỉ ẩn duration
+#watchPageSeasonContainer .episode-duration {
+    display: none;
+}
+*/
+
+/* Responsive cho danh sách tập trên watch-page (nếu cần khác với detail-page) */
+/* Ví dụ, bạn muốn ít cột hơn trên màn hình nhỏ cho watch-page */
+@media (max-width: 1199px) { /* Dưới 1200px (trước khi đạt 6 cột) */
+    #watchPageSeasonContainer .episode-list {
+        grid-template-columns: repeat(5, 1fr);
+    }
+}
+@media (max-width: 991px) {
+    #watchPageSeasonContainer .episode-list {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+@media (max-width: 767px) {
+    #watchPageSeasonContainer .episode-list {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px; /* Giảm gap trên mobile */
+    }
+    #watchPageSeasonContainer .episode-info {
+        padding: 8px;
+    }
+    #watchPageSeasonContainer .episode-title {
+        font-size: 0.85em;
+        min-height: 2.1em;
+    }
+    #watchPageSeasonContainer .episode-number {
+        font-size: 0.75em;
+    }
+}
+@media (max-width: 575px) {
+    #watchPageSeasonContainer .episode-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Style cho tập đang phát trên watch-page (nếu bạn thêm class 'playing-now') */
+#watchPageSeasonContainer .episode-item.playing-now {
+    border: 2px solid var(--primary-color);
+    box-shadow: 0 0 8px rgba(var(--primary-color-rgb), 0.7); /* Giả sử bạn có --primary-color-rgb */
+    /* Hoặc dùng box-shadow: 0 0 8px var(--primary-color); */
+    transform: none;
+}
+#watchPageSeasonContainer .episode-item.playing-now:hover {
+    transform: none;
+}
 
   @media (max-width: 768px) {
       .episode-details #animeTitleWatchPage {
