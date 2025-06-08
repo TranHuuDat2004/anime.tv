@@ -127,7 +127,7 @@ const animeData = [
             seasons: [
                 {
                     seasonNum: 1, // Coi như season 1
-                    seasonTitle: "", // Để trống cho phim lẻ
+                    seasonTitle: "Movie", // Để trống cho phim lẻ
                     episodes: [
                         {
                             epNumOverall: 1, epNumInSeason: 1, title: "Your Name. (Dub)", // Tiêu đề dựa trên iframe
@@ -166,7 +166,7 @@ const animeData = [
             seasons: [
                 {
                     seasonNum: 1, // Coi như season 1
-                    seasonTitle: "", // Để trống cho phim lẻ
+                    seasonTitle: "Movie", // Để trống cho phim lẻ
                     episodes: [
                         {
                             epNumOverall: 1, epNumInSeason: 1, title: "Weathering With You (Dub)", // Tiêu đề dựa trên iframe
@@ -184,5 +184,45 @@ const animeData = [
         relatedAnime: [
              { id: "your-name", title: "Your Name.", posterImage: "https://m.media-amazon.com/images/M/MV5BODRmZDVmNzUtZDA4ZC00NjhkLWI2M2UtN2M0ZDIzNDcxYThjL2ltYWdlXkEyXkFqcGdeQXVyNTk0MzMzODA@._V1_FMjpg_UX1000_.jpg" }
         ]
+    },
+    { // ANIME MỚI: BLUE ARCHIVE THE ANIMATION
+        id: "blue-archive-animation", // URL-friendly ID
+        title: "Blue Archive The Animation",
+        altTitle: "ブルーアーカイブ The Animation",
+        posterImage: "images/blue-archive/poster.jpg", // Cần ảnh poster
+        bannerImage: "images/blue-archive/banner.webp", // Cần ảnh banner
+        logoImage: "images/blue-archive/Balogo.png",   // Cần ảnh logo (nếu có)
+        description: "Câu chuyện lấy bối cảnh tại thành phố học viện Kivotos. Tại đây, hàng ngàn học viện được tập hợp lại. Hội đồng Chủ tịch Chung đóng vai trò quản lý các học viện. Tuy nhiên, khả năng lãnh đạo của Hội đồng Chủ tịch Chung đã bị đình trệ kể từ khi Chủ tịch đột ngột biến mất. Vô số vấn đề bắt đầu nảy sinh khắp Kivotos. Để tránh thảm họa, Hội đồng Chủ tịch Chung đã yêu cầu sự trợ giúp từ Câu lạc bộ Điều tra Liên bang, còn được gọi là Schale. Trên thực tế, Schale là câu lạc bộ mới nhất của thành phố và là câu lạc bộ cuối cùng được phê duyệt trước khi Chủ tịch biến mất. Để hoàn thành nhiệm vụ của mình, Schale dựa vào sự hướng dẫn của một Sensei, người sẽ giúp họ giải quyết các sự cố xung quanh Kivotos.",
+        genres: ["Action", "Comedy", "School", "Sci-Fi"],
+        rating: "PG-13", // Ước lượng
+        type: "Series",
+        status: "Hoàn thành", // Giả sử 12 tập là hết mùa 1
+        releaseYear: 2024, // Năm phát hành
+        episodes: {
+            total: 12,
+            availableOnSite: 12,
+            seasons: [
+                {
+                    seasonNum: 1,
+                    seasonTitle: "Abidos Mùa Hè", // Hoặc Season 1
+                    episodes: [
+                        { epNumOverall: 1, epNumInSeason: 1, title: "Tổ Biện Pháp Đối Phó Trường Trung Học Abidos", thumbnail: "images/blue-archive/tap1.jpg", duration: "23 min", videoUrl: "https://player.vimeo.com/video/1091393446?h=5b3fe452de&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479", sub: true, dub: false },
+                        { epNumOverall: 2, epNumInSeason: 2, title: "Tôi Không Chấp Nhận!", thumbnail: "images/blue-archive/tap2.jpg", duration: "23 min", videoUrl: "https://player.vimeo.com/video/1091393462?h=34ebda9761&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479", sub: true, dub: false },
+                        { epNumOverall: 3, epNumInSeason: 3, title: "Nếu Cậu Muốn Làm Gì Cứ Việc Nhờ Tớ", thumbnail: "images/blue-archive/tap3.jpg", duration: "23 min", videoUrl: "https://player.vimeo.com/video/1091393482?h=d9b97588bc&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479", sub: true, dub: false },
+                        { epNumOverall: 4, epNumInSeason: 4, title: "Đội Đặc Nhiệm Mặt Nạ Tắm Biển", thumbnail: "images/blue-archive/tap4.jpg", duration: "23 min", videoUrl: "https://player.vimeo.com/video/1091393500?h=7c35553c69&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479", sub: true, dub: false },
+                        { epNumOverall: 5, epNumInSeason: 5, title: "Đây Không Phải Là Nơi Dành Cho Bạn Bè!", thumbnail: "images/blue-archive/tap5.jpg", duration: "23 min", videoUrl: "https://player.vimeo.com/video/1091393525?h=69769e8a29&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479", sub: true, dub: false },
+                        { epNumOverall: 6, epNumInSeason: 6, title: "Ủy Ban Kỷ Luật Gehenna", thumbnail: "images/blue-archive/tap6.jpg", duration: "23 min", videoUrl: "https://player.vimeo.com/video/1091393543?h=85088e825b&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479", sub: true, dub: false },
+                        { epNumOverall: 7, epNumInSeason: 7, title: "Không Thể Tiến Lên Phía Trước", thumbnail: "images/blue-archive/tap7.jpg", duration: "23 min", videoUrl: "https://player.vimeo.com/video/1091393553?h=7fae8ab154&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479", sub: true, dub: false },
+                        { epNumOverall: 8, epNumInSeason: 8, title: "Bí Mật", thumbnail: "images/blue-archive/tap8.jpg", duration: "23 min", videoUrl: "https://player.vimeo.com/video/1091393581?h=63af5132e3&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479", sub: true, dub: false },
+                        { epNumOverall: 9, epNumInSeason: 9, title: "Đến Nơi Không Thể Chạm Tới", thumbnail: "images/blue-archive/tap9.jpg", duration: "23 min", videoUrl: "https://player.vimeo.com/video/1091393596?h=dff02906e6&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479", sub: true, dub: false },
+                        { epNumOverall: 10, epNumInSeason: 10, title: "Sensei Duy Nhất Có Ý Nghĩa", thumbnail: "images/blue-archive/tap10.jpg", duration: "23 min", videoUrl: "https://player.vimeo.com/video/1091393373?h=56da202bfe&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479", sub: true, dub: false },
+                        { epNumOverall: 11, epNumInSeason: 11, title: "Điều Tớ Muốn Làm Là Ở Bên Cậu", thumbnail: "images/blue-archive/tap11.jpg", duration: "23 min", videoUrl: "https://player.vimeo.com/video/1091393404?h=73f37e871a&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479", sub: true, dub: false },
+                        { epNumOverall: 12, epNumInSeason: 12, title: "Vì Chúng Ta Luôn Ở Bên Nhau", thumbnail: "images/blue-archive/tap12.jpg", duration: "23 min", videoUrl: "https://player.vimeo.com/video/1091393432?h=47c62ff523&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479", sub: true, dub: false }
+                    ]
+                }
+            ]
+        },
+        crunchyrollTags: ["Sub", "Action", "School", "Comedy"], // Các tag phù hợp
+        relatedAnime: [] // (Tùy chọn)
     }
 ];
