@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bộ Sưu Tập GIF Anime - ANIME.TV</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/gif.css"> <!-- CSS của trang GIF (đã chỉnh sửa) -->
+    <!-- Link tới Font Awesome nếu bạn dùng icon, hoặc bỏ đi -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> -->
+    <!-- Link tới font của ANIME.TV nếu có -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet"> <!-- Ví dụ font Lato -->
+    <link rel="icon" href="PATH_TO_YOUR_ANIME_TV_FAVICON.png" type="image/x-icon"> <!-- Favicon của ANIME.TV -->
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <a href="index.html" class="navbar-logo"><img src="images/logo.png" height="80"></a>
+                <ul class="navbar-nav">
+                    <li><a href="index.html" class="active">Trang Chủ</a></li>
+                    <li><a href="#">Bộ sưu tập</a></li>
+                    <li><a href="#">Ảnh GIF</a></li>
+                    <li><a href="#">Manga</a></li>
+                    <li><a href="#">Games</a></li>
+                    <li><a href="#">Giới thiệu</a></li>
+                </ul>
+                <div class="navbar-actions">
+                    <a href="search.html"> <button class="search-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                            </svg>
+                        </button>
+                    </a>
+                    <a href="#" id="loginButton" class="login-button">Đăng Nhập</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <!-- KẾT THÚC NAVBAR MỚI -->
+
+    <div class="full-width-content">
+        <div class="controls-container inner-container">
+            <h1 style="text-align: center; margin-bottom: 25px; font-size: 2.2em; color: var(--anime-tv-text);">Bộ Sưu Tập Ảnh GIF</h1>
+            <div id="series-navigation">
+                <!-- Các nút lọc series -->
+            </div>
+            <div id="view-options">
+                <p>Chọn kích thước ảnh:</p>
+                <button data-size="small">Ảnh Nhỏ</button>
+                <button data-size="medium" class="active">Ảnh Vừa</button> <!-- active class được JS quản lý -->
+                <button data-size="large">Ảnh Lớn</button>
+            </div>
+            <input type="text" id="search-bar" placeholder="Tìm kiếm GIF theo tên nhân vật, series hoặc tag...">
+        </div>
+
+        <div id="gif-gallery" class="view-medium inner-container"> <!-- Thêm inner-container để gallery cũng được giới hạn chiều rộng -->
+            <p class="placeholder-text" id="loading-message">Đang tải danh sách GIF...</p>
+        </div>
+    </div>
+
+    <footer>
+        <div class="inner-container">
+            <p>© 2024 ANIME.TV - Bộ Sưu Tập GIF</p>
+        </div>
+    </footer>
+
+    <script src="js/data-gif.js"></script> <!-- Dữ liệu GIF của bạn -->
+    <script src="js/fetch-gif.js"></script> <!-- Script của trang GIF -->
+
+</body>
+</html>

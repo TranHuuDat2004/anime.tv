@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tìm Kiếm Anime - ANIME.TV</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Bạn có thể tạo một file CSS riêng cho trang search nếu cần nhiều style phức tạp -->
+    <link rel="stylesheet" href="css/search-style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="icon" href="images/favicon.png" type="image/x-icon">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <a href="index.html" class="navbar-logo"><img src="images/logo.png" height="80"></a>
+                <ul class="navbar-nav">
+                    <li><a href="index.html">Trang Chủ</a></li>
+                    <li><a href="#">Bộ sưu tập</a></li>
+                    <li><a href="search.html" class="active">Ảnh GIF</a></li>
+                    <li><a href="#">Manga</a></li>
+                    <li><a href="#">Games</a></li>
+                    <li><a href="#">Giới thiệu</a></li>
+                </ul>
+                <div class="navbar-actions">
+                    <a href="search.html"> <button class="search-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                            </svg>
+                        </button>
+                    </a>
+                    <a href="#" id="loginButton" class="login-button">Đăng Nhập</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main id="search-page">
+        <div class="container">
+            <section class="search-form-section">
+                <h1>Tìm Kiếm Anime</h1>
+                <div class="search-bar-container">
+                    <input type="text" id="searchInput" placeholder="Nhập tên anime, thể loại...">
+                    <button id="searchButton" class="btn btn-primary">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                        Tìm
+                    </button>
+                </div>
+            </section>
+
+            <section class="search-results-section">
+                <h2>Kết quả tìm kiếm</h2>
+                <div id="searchResultsGrid" class="anime-grid">
+                    <!-- Kết quả tìm kiếm sẽ được chèn vào đây bởi JavaScript -->
+                    <p id="noResultsMessage" style="display: none; color: var(--text-secondary-color); text-align: center; width: 100%;">Không tìm thấy kết quả nào phù hợp.</p>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <!-- ... Footer như cũ ... -->
+    </footer>
+
+    <div id="featureNotification" class="notification">
+        Tính năng này đang được cập nhật!
+    </div>
+
+    <script src="js/data.js"></script>
+    <script>
+        // JavaScript cho trang tìm kiếm
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('searchInput');
+            const searchButton = document.getElementById('searchButton');
+            const searchResultsGrid = document.getElementById('searchResultsGrid');
+            const noResultsMessage = document.getElementById('noResultsMessage');
+
+            // Hàm tạo anime card (tái sử dụng từ script.js của index.html nếu có thể, hoặc định nghĩa lại)
+            function createAnimeCard(anime) {
+                const card = document.createElement('div');
+                card.className = 'anime-card';
+
+                const link = document.createElement('a');
+                link.href = `anime-detail.html?id=${anime.id}`;
+
+                const img = document.createElement('img');
+                img.src = anime.posterImage || 'https://via.placeholder.com/200x300?text=Poster';
+                img.alt = anime.title;
+                link.appendChild(img);
+
+                const overlay = document.createElement('div');
+                overlay.className = 'anime-card-overlay';
+                const playIcon = document.createElement('span');
+                playIcon.className = 'play-icon';
+                playIcon.innerHTML = '►'; // Hoặc '►'
+                overlay.appendChild(playIcon);
+                link.appendChild(overlay);
+                card.appendChild(link);
+
+                const titleLink = document.createElement('a');
+                titleLink.href = `anime-detail.html?id=${anime.id}`;
+                const titleH3 = document.createElement('h3');
+                titleH3.appendChild(titleLink);
+                titleLink.textContent = anime.title;
+                card.appendChild(titleH3);
+
+                const infoP = document.createElement('p');
+                let infoText = anime.type || '';
+                if (anime.episodes && anime.episodes.total) {
+                     infoText += (infoText ? ' • ' : '') + (typeof anime.episodes.total === 'number' ? `${anime.episodes.total} Tập` : anime.episodes.total);
+                }
+                infoP.textContent = infoText || 'N/A';
+                card.appendChild(infoP);
+
+                return card;
+            }
+
+            function performSearch() {
+                const searchTerm = searchInput.value.trim().toLowerCase();
+                searchResultsGrid.innerHTML = ''; // Xóa kết quả cũ
+                noResultsMessage.style.display = 'none'; // Ẩn thông báo không có kết quả
+
+                if (!searchTerm) {
+                    // Nếu không có từ khóa, không hiển thị gì hoặc hiển thị gợi ý
+                    return;
+                }
+
+                if (typeof animeData === 'undefined' || !animeData) {
+                    console.error("animeData không tồn tại.");
+                    noResultsMessage.textContent = "Lỗi tải dữ liệu anime.";
+                    noResultsMessage.style.display = 'block';
+                    return;
+                }
+
+                const results = animeData.filter(anime => {
+                    // Ảnh GIF trong title, altTitle
+                    if (anime.title && anime.title.toLowerCase().includes(searchTerm)) {
+                        return true;
+                    }
+                    if (anime.altTitle && anime.altTitle.toLowerCase().includes(searchTerm)) {
+                        return true;
+                    }
+                    // Ảnh GIF trong genres (thể loại)
+                    if (anime.genres && anime.genres.some(genre => genre.toLowerCase().includes(searchTerm))) {
+                        return true;
+                    }
+                    // (Tùy chọn) Ảnh GIF trong description
+                    // if (anime.description && anime.description.toLowerCase().includes(searchTerm)) {
+                    //     return true;
+                    // }
+                    return false;
+                });
+
+                if (results.length > 0) {
+                    results.forEach(anime => {
+                        const card = createAnimeCard(anime);
+                        searchResultsGrid.appendChild(card);
+                    });
+                } else {
+                    noResultsMessage.textContent = `Không tìm thấy kết quả nào cho "${searchInput.value.trim()}".`;
+                    noResultsMessage.style.display = 'block';
+                }
+            }
+
+            searchButton.addEventListener('click', performSearch);
+
+            // Cho phép tìm kiếm khi nhấn Enter trong ô input
+            searchInput.addEventListener('keypress', function(event) {
+                if (event.key === 'Enter') {
+                    performSearch();
+                }
+            });
+
+            // Tự động tìm kiếm khi người dùng gõ (debounce nếu cần cho hiệu suất)
+            // let debounceTimeout;
+            // searchInput.addEventListener('input', function() {
+            //     clearTimeout(debounceTimeout);
+            //     debounceTimeout = setTimeout(performSearch, 300); // Đợi 300ms sau khi gõ xong
+            // });
+
+
+            // Xử lý Notification cho nút Đăng Nhập (tái sử dụng)
+            const loginButtonSearch = document.getElementById('loginButton');
+            const notificationElementSearch = document.getElementById('featureNotification');
+            let notificationTimeoutSearch;
+
+            if (loginButtonSearch && notificationElementSearch) {
+                loginButtonSearch.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    if (notificationTimeoutSearch) clearTimeout(notificationTimeoutSearch);
+                    notificationElementSearch.textContent = "Tính năng Đăng Nhập đang được cập nhật!";
+                    notificationElementSearch.classList.remove('hide');
+                    notificationElementSearch.classList.add('show');
+                    notificationTimeoutSearch = setTimeout(() => {
+                        notificationElementSearch.classList.remove('show');
+                        notificationElementSearch.classList.add('hide');
+                    }, 3000);
+                });
+            }
+        });
+    </script>
+</body>
+</html>

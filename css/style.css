@@ -38,6 +38,37 @@ img {
     display: block;
 }
 
+/* --- Notification --- */
+.notification {
+    position: fixed; /* Để nó nổi trên các nội dung khác */
+    bottom: 20px;    /* Cách đáy 20px */
+    left: 50%;       /* Căn giữa theo chiều ngang */
+    transform: translateX(-50%); /* Điều chỉnh để thực sự ở giữa */
+    background-color: var(--primary-color); /* Màu cam chủ đạo */
+    color: var(--text-color); /* Màu chữ trắng */
+    padding: 12px 25px;
+    border-radius: 5px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    z-index: 1001; /* Đảm bảo nó nổi trên navbar (nếu navbar có z-index 1000) */
+    opacity: 0; /* Mặc định ẩn */
+    visibility: hidden; /* Mặc định ẩn hoàn toàn */
+    transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out, transform 0.3s ease-out;
+    font-size: 0.95em;
+    font-weight: 500;
+}
+
+.notification.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0); /* Hiệu ứng trượt lên nhẹ */
+}
+
+.notification.hide {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(-50%) translateY(20px); /* Hiệu ứng trượt xuống khi ẩn */
+}
+
 .container {
     max-width: 1280px; /* Giới hạn chiều rộng nội dung */
     margin: 0 auto;

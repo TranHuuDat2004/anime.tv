@@ -1,0 +1,211 @@
+/* styles.css (của trang GIF Anime Collection) */
+
+/* --- BIẾN MÀU (Lấy từ style.css của ANIME.TV) --- */
+:root {
+    --anime-tv-bg: #23252b; /* THAY THẾ bằng màu nền tối của ANIME.TV */
+    --anime-tv-text: #e0e0e0; /* THAY THẾ bằng màu chữ chính */
+    --anime-tv-text-secondary: #adb0b5; /* THAY THẾ bằng màu chữ phụ */
+    --anime-tv-primary: #f47521; /* THAY THẾ bằng màu cam nhấn */
+    --anime-tv-primary-hover: #e6600d; /* THAY THẾ bằng màu cam hover */
+    --anime-tv-card-bg: #2d3038; /* THAY THẾ bằng màu nền card/item */
+    --anime-tv-border: #4a4d57; /* THAY THẾ bằng màu border */
+    /* Thêm font chữ nếu có */
+    /* --anime-tv-font: 'Lato', sans-serif; */
+}
+
+/* --- RESET CƠ BẢN VÀ BODY --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif; /* THAY THẾ bằng var(--anime-tv-font) nếu có */
+    background-color: var(--anime-tv-bg);
+    color: var(--anime-tv-text);
+    line-height: 1.6;
+}
+
+/* --- HEADER MỚI (GIỐNG ANIME.TV) --- */
+/* Bỏ header cũ nếu nó quá khác biệt */
+/* header {
+    background-color: #333;
+    color: white;
+    padding: 1em 0;
+    text-align: center;
+    margin-bottom: 20px;
+}
+header h1 {
+    margin: 0;
+    font-size: 2em;
+} */
+
+/* Navbar mới (tái sử dụng class từ ANIME.TV nếu có thể) */
+.navbar-gif-page { /* Class mới để tránh xung đột nếu bạn copy CSS từ ANIME.TV */
+    background-color: var(--anime-tv-bg); /* Hoặc màu navbar của ANIME.TV */
+    padding: 10px 0;
+    border-bottom: 1px solid var(--anime-tv-border);
+    position: fixed; /* Để navbar luôn ở trên cùng */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    height: 70px; /* Chiều cao navbar, điều chỉnh cho phù hợp với logo */
+}
+
+.navbar-gif-page .inner-container, /* Hoặc .container nếu bạn dùng class đó từ ANIME.TV */
+.navbar-gif-page .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1280px; /* Giống container của ANIME.TV */
+    margin: 0 auto;
+    padding: 0 20px;
+    height: 100%;
+}
+
+.navbar-logo-gif { /* Class mới cho logo */
+    font-size: 1.8em;
+    font-weight: bold;
+    color: var(--anime-tv-primary);
+    text-decoration: none;
+}
+.navbar-logo-gif img { /* Nếu logo là ảnh */
+    height: 50px; /* Điều chỉnh chiều cao logo */
+    vertical-align: middle;
+}
+
+/* --- INNER CONTAINER (Để giới hạn chiều rộng nội dung) --- */
+.inner-container {
+    max-width: 1280px; /* Giống container của ANIME.TV */
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.full-width-content { /* Section này sẽ không bị giới hạn max-width */
+    width: 100%;
+}
+
+/* --- CONTROLS CONTAINER --- */
+.controls-container {
+    padding-top: 20px; /* Khoảng cách với navbar */
+    padding-bottom: 20px;
+    background-color: var(--anime-tv-card-bg); /* Nền cho khu vực control */
+    margin-bottom: 30px;
+    border-radius: 8px; /* Bo góc nhẹ */
+}
+
+#series-navigation {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+    justify-content: center;
+}
+
+#series-navigation button,
+#view-options button {
+    background-color: #444; /* Màu nền nút tối hơn */
+    color: var(--anime-tv-text-secondary);
+    border: 1px solid var(--anime-tv-border);
+    padding: 8px 15px;
+    border-radius: 20px; /* Bo tròn nút */
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+    font-weight: 500;
+}
+
+#series-navigation button:hover,
+#view-options button:hover {
+    background-color: #555;
+    color: var(--anime-tv-text);
+    border-color: var(--anime-tv-primary);
+}
+
+#series-navigation button.active,
+#view-options button.active {
+    background-color: var(--anime-tv-primary);
+    color: white;
+    border-color: var(--anime-tv-primary-hover);
+}
+
+#view-options {
+    text-align: center;
+    margin-bottom: 20px;
+}
+#view-options p {
+    margin-bottom: 10px;
+    color: var(--anime-tv-text-secondary);
+}
+
+#search-bar {
+    width: 100%;
+    padding: 12px 15px;
+    margin: 0 auto 20px auto; /* Căn giữa và có margin dưới */
+    display: block;
+    border: 1px solid var(--anime-tv-border);
+    border-radius: 25px;
+    background-color: var(--anime-tv-bg); /* Nền tối hơn cho search bar */
+    color: var(--anime-tv-text);
+    font-size: 1em;
+    max-width: 600px; /* Giới hạn chiều rộng search bar */
+}
+#search-bar::placeholder {
+    color: var(--anime-tv-text-secondary);
+}
+
+
+/* --- GIF GALLERY --- */
+#gif-gallery {
+    display: grid;
+    gap: 15px; /* Khoảng cách giữa các GIF */
+    padding: 0 15px; /* Padding cho gallery */
+}
+
+/* Các class view-size (có thể giữ nguyên hoặc điều chỉnh padding/gap) */
+.view-small { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); }
+.view-medium { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
+.view-large { grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); }
+
+
+.gif-item {
+    background-color: var(--anime-tv-card-bg); /* Nền cho từng item */
+    border-radius: 8px; /* Bo góc */
+    overflow: hidden; /* Đảm bảo ảnh không tràn ra ngoài bo góc */
+    cursor: pointer;
+    transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+    border: 1px solid transparent; /* Để có hiệu ứng border khi hover */
+}
+
+.gif-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    border-color: var(--anime-tv-primary);
+}
+
+.gif-item img {
+    width: 100%;
+    height: auto; /* Giữ tỷ lệ khung hình */
+    display: block; /* Loại bỏ khoảng trắng thừa dưới ảnh */
+    aspect-ratio: 1 / 1; /* Làm cho GIF vuông, bạn có thể bỏ nếu GIF có tỷ lệ khác */
+    object-fit: cover; /* Đảm bảo ảnh che phủ, có thể bị cắt */
+}
+
+.placeholder-text {
+    grid-column: 1 / -1; /* Để text chiếm toàn bộ chiều rộng grid */
+    text-align: center;
+    padding: 40px 20px;
+    font-size: 1.2em;
+    color: var(--anime-tv-text-secondary);
+}
+
+/* --- FOOTER --- */
+footer {
+    background-color: var(--anime-tv-bg); /* Hoặc màu navbar của ANIME.TV */
+    color: var(--anime-tv-text-secondary);
+    text-align: center;
+    padding: 25px 0;
+    margin-top: 40px;
+    border-top: 1px solid var(--anime-tv-border);
+}

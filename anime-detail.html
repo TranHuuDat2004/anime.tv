@@ -21,25 +21,30 @@
                 <a href="index.html" class="navbar-logo"><img src="images/logo.png" height="80"></a>
                 <ul class="navbar-nav">
                     <li><a href="index.html">Trang Chủ</a></li>
-                    <li><a href="#">Tìm kiếm</a></li>
+                    <li><a href="#">Bộ sưu tập</a></li>
+                    <li><a href="#">Ảnh GIF</a></li>
                     <li><a href="#">Manga</a></li>
                     <li><a href="#">Games</a></li>
                     <li><a href="#">Giới thiệu</a></li>
                 </ul>
                 <div class="navbar-actions">
-                    <button class="search-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="11" cy="11" r="8"></circle>
-                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                        </svg>
-                    </button>
-                    <a href="#" class="login-button">Đăng Nhập</a>
+                    <a href="search.html"> <button class="search-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                            </svg>
+                        </button>
+                    </a>
+                    <a href="#" id="loginButton" class="login-button">Đăng Nhập</a>
                 </div>
             </div>
         </nav>
     </header>
-
+    <div id="featureNotification" class="notification">
+        Tính năng này đang được cập nhật!
+    </div>
     <main id="anime-detail-page">
         <section class="detail-hero-section">
             <div class="detail-hero-background">
@@ -231,7 +236,7 @@
                     season.episodes.forEach(ep => {
                         const episodeItem = document.createElement('a');
                         episodeItem.href = `watch-video.html?animeId=${anime.id}&season=${season.seasonNum}&ep=${ep.epNumInSeason}`;
-                        
+
                         if (!ep.videoUrl || ep.videoUrl === "#") {
                             episodeItem.classList.add('disabled');
                         } else {
@@ -327,6 +332,34 @@
             document.getElementById(tabName).style.display = "block";
             evt.currentTarget.className += " active";
         }
+
+        // --- Xử lý Notification cho nút Đăng Nhập ---
+        const loginButton = document.getElementById('loginButton');
+        const notificationElement = document.getElementById('featureNotification');
+        let notificationTimeout; // Biến để lưu timeout
+
+        if (loginButton && notificationElement) {
+            loginButton.addEventListener('click', function (event) {
+                event.preventDefault(); // Ngăn chặn hành vi mặc định của thẻ <a>
+
+                // Xóa timeout cũ nếu có (để tránh nhiều notification chồng chéo)
+                if (notificationTimeout) {
+                    clearTimeout(notificationTimeout);
+                }
+
+                // Hiển thị notification
+                notificationElement.textContent = "Tính năng Đăng Nhập đang được cập nhật!"; // Bạn có thể tùy chỉnh nội dung
+                notificationElement.classList.remove('hide'); // Xóa class hide (nếu có từ lần trước)
+                notificationElement.classList.add('show');
+
+                // Tự động ẩn notification sau một khoảng thời gian
+                notificationTimeout = setTimeout(() => {
+                    notificationElement.classList.remove('show');
+                    notificationElement.classList.add('hide');
+                }, 3000); // Ẩn sau 3 giây (3000ms)
+            });
+        }
+        // --- Kết thúc xử lý Notification ---
     </script>
 </body>
 

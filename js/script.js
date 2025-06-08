@@ -114,7 +114,7 @@ function createSlideshow(slideshowContainerId, animeList) {
         const firstSeason = anime.episodes.seasons[0];
         let watchLink = `anime-detail.html?id=${anime.id}`; // Default to detail page
         if (firstSeason && firstSeason.episodes[0] && firstSeason.episodes[0].videoUrl && firstSeason.episodes[0].videoUrl !== "#") {
-             watchLink = `watch-video.html?animeId=${anime.id}&season=${firstSeason.seasonNum}&ep=${firstSeason.episodes[0].epNumInSeason}`;
+            watchLink = `watch-video.html?animeId=${anime.id}&season=${firstSeason.seasonNum}&ep=${firstSeason.episodes[0].epNumInSeason}`;
         }
         watchButton.href = watchLink;
 
@@ -143,13 +143,13 @@ function createSlideshow(slideshowContainerId, animeList) {
         const prevButton = document.createElement('a');
         prevButton.className = 'prev';
         prevButton.innerHTML = '❮';
-        prevButton.onclick = function() { plusSlides(-1); };
+        prevButton.onclick = function () { plusSlides(-1); };
         slideshowContainer.appendChild(prevButton);
 
         const nextButton = document.createElement('a');
         nextButton.className = 'next';
         nextButton.innerHTML = '❯';
-        nextButton.onclick = function() { plusSlides(1); };
+        nextButton.onclick = function () { plusSlides(1); };
         slideshowContainer.appendChild(nextButton);
     }
 
@@ -160,7 +160,7 @@ function createSlideshow(slideshowContainerId, animeList) {
         slidesData.forEach((_, index) => {
             const dotSpan = document.createElement('span');
             dotSpan.className = 'dot';
-            dotSpan.onclick = function() { currentSlide(index + 1); };
+            dotSpan.onclick = function () { currentSlide(index + 1); };
             dotsDiv.appendChild(dotSpan);
         });
         slideshowContainer.appendChild(dotsDiv);
@@ -213,7 +213,7 @@ function createAnimeCard(anime) {
             infoText += (infoText ? ' • ' : '') + `${firstSeason.episodes.length} Tập`;
         }
     } else if (anime.episodes && typeof anime.episodes.total === 'number') {
-         infoText += (infoText ? ' • ' : '') + `${anime.episodes.total} Tập`;
+        infoText += (infoText ? ' • ' : '') + `${anime.episodes.total} Tập`;
     }
 
     infoP.textContent = infoText || 'Thông tin chưa cập nhật';
@@ -239,19 +239,19 @@ function populateAnimeGrid(gridId, animeList, count = 6) { // Mặc định hi�
 
 
 // --- KHỞI CHẠY KHI TRANG TẢI XONG ---
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     // Kiểm tra xem animeData có tồn tại và có dữ liệu không
     if (typeof animeData !== 'undefined' && animeData.length > 0) {
         // Tạo slideshow (ví dụ: lấy 5 anime đầu tiên, hoặc anime có đánh dấu "featured")
         // Bạn có thể tạo một mảng riêng trong data.js cho anime nổi bật trên slideshow
-        const featuredAnimeForSlideshow = animeData.filter(a => a.bannerImage && a.logoImage).slice(0,5); // Ví dụ lấy anime có banner và logo
+        const featuredAnimeForSlideshow = animeData.filter(a => a.bannerImage && a.logoImage).slice(0, 5); // Ví dụ lấy anime có banner và logo
         createSlideshow('mainSlideshow', featuredAnimeForSlideshow.length > 0 ? featuredAnimeForSlideshow : animeData);
 
         // Điền dữ liệu cho các grid
         // Ví dụ: Top Picks có thể là những anime được đánh giá cao hoặc xem nhiều (cần thêm trường này vào data.js)
         // Hiện tại, chúng ta sẽ lấy ngẫu nhiên hoặc theo thứ tự
         populateAnimeGrid('topPicksGrid', [...animeData].sort(() => 0.5 - Math.random()), 6); // Xáo trộn và lấy 6
-        populateAnimeGrid('newUpdatesGrid', animeData.sort((a,b) => b.releaseYear - a.releaseYear), 6); // Sắp xếp theo năm mới nhất, lấy 6
+        populateAnimeGrid('newUpdatesGrid', animeData.sort((a, b) => b.releaseYear - a.releaseYear), 6); // Sắp xếp theo năm mới nhất, lấy 6
 
         // Ví dụ thêm cho thể loại hành động (cần có animeData với genre "Action")
         // const actionAnime = animeData.filter(anime => anime.genres && anime.genres.map(g => g.toLowerCase()).includes('action'));
@@ -269,4 +269,33 @@ document.addEventListener('DOMContentLoaded', function() {
         const newUpdatesGrid = document.getElementById('newUpdatesGrid');
         if (newUpdatesGrid) newUpdatesGrid.innerHTML = "<p style='color: white;'>Không có dữ liệu.</p>";
     }
+
+
+    // --- Xử lý Notification cho nút Đăng Nhập ---
+    const loginButton = document.getElementById('loginButton');
+    const notificationElement = document.getElementById('featureNotification');
+    let notificationTimeout; // Biến để lưu timeout
+
+    if (loginButton && notificationElement) {
+        loginButton.addEventListener('click', function (event) {
+            event.preventDefault(); // Ngăn chặn hành vi mặc định của thẻ <a>
+
+            // Xóa timeout cũ nếu có (để tránh nhiều notification chồng chéo)
+            if (notificationTimeout) {
+                clearTimeout(notificationTimeout);
+            }
+
+            // Hiển thị notification
+            notificationElement.textContent = "Tính năng Đăng Nhập đang được cập nhật!"; // Bạn có thể tùy chỉnh nội dung
+            notificationElement.classList.remove('hide'); // Xóa class hide (nếu có từ lần trước)
+            notificationElement.classList.add('show');
+
+            // Tự động ẩn notification sau một khoảng thời gian
+            notificationTimeout = setTimeout(() => {
+                notificationElement.classList.remove('show');
+                notificationElement.classList.add('hide');
+            }, 3000); // Ẩn sau 3 giây (3000ms)
+        });
+    }
+    // --- Kết thúc xử lý Notification ---
 });
