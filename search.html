@@ -185,25 +185,9 @@
             // });
 
 
-            // Xử lý Notification cho nút Đăng Nhập (tái sử dụng)
-            const loginButtonSearch = document.getElementById('loginButton');
-            const notificationElementSearch = document.getElementById('featureNotification');
-            let notificationTimeoutSearch;
-
-            if (loginButtonSearch && notificationElementSearch) {
-                loginButtonSearch.addEventListener('click', function(event) {
-                    event.preventDefault();
-                    if (notificationTimeoutSearch) clearTimeout(notificationTimeoutSearch);
-                    notificationElementSearch.textContent = "Tính năng Đăng Nhập đang được cập nhật!";
-                    notificationElementSearch.classList.remove('hide');
-                    notificationElementSearch.classList.add('show');
-                    notificationTimeoutSearch = setTimeout(() => {
-                        notificationElementSearch.classList.remove('show');
-                        notificationElementSearch.classList.add('hide');
-                    }, 3000);
-                });
-            }
+            
         });
     </script>
+        <script src="js/notification.js"></script> <!-- Script cho thông báo -->
 </body>
 </html>

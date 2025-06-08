@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi Tiết GIF - ANIME.TV</title> <!-- Sẽ được cập nhật bằng JavaScript -->
+    <link rel="stylesheet" href="css/style.css"> <!-- CSS CHUNG CỦA ANIME.TV -->
+    <link rel="stylesheet" href="css/gif-detail-custom.css"> <!-- CSS RIÊNG CHO TRANG NÀY -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="icon" href="images/favicon.png" type="image/x-icon"> <!-- Favicon của ANIME.TV -->
+</head>
+
+<body>
+    <!-- NAVBAR TỪ ANIME.TV -->
+    <header>
+        <nav class="navbar"> <!-- Sử dụng class navbar từ style.css chung -->
+            <div class="container">
+                <a href="index.html" class="navbar-logo"><img src="images/logo.png" height="80" alt="ANIME.TV Logo"></a>
+                <ul class="navbar-nav">
+                    <li><a href="index.html">Trang Chủ</a></li>
+                    <li><a href="LINK_DEN_BO_SUU_TAP_CUA_BAN.html">Bộ sưu tập</a></li> <!-- Cập nhật link -->
+                    <li><a href="gif-collection.html" class="active">Ảnh GIF</a></li>
+                    <!-- Link lại trang GIF Collection, đặt active -->
+                    <li><a href="#">Manga</a></li>
+                    <li><a href="#">Games</a></li>
+                    <li><a href="#">Giới thiệu</a></li>
+                </ul>
+                <div class="navbar-actions">
+                    <a href="search.html"> <button class="search-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                            </svg>
+                        </button>
+                    </a>
+                    <a href="#" id="loginButton" class="login-button">Đăng Nhập</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <!-- KẾT THÚC NAVBAR -->
+
+    <main id="gif-detail-page">
+        <div class="container" id="detailMainContainer"> <!-- Container chính -->
+            <!-- Nội dung sẽ được JavaScript chèn vào đây, hoặc thông báo lỗi -->
+            <p id="loadingDetailMessage"
+                style="text-align:center; padding: 50px; color: var(--anime-tv-text-secondary);">Đang tải chi tiết
+                GIF...</p>
+        </div>
+    </main>
+
+    <!-- FOOTER TỪ ANIME.TV -->
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="#">Về chúng tôi</a>
+                <a href="#">Trợ giúp/FAQ</a>
+                <a href="#">Điều khoản sử dụng</a>
+                <a href="#">Chính sách riêng tư</a>
+            </div>
+            <p>© 2024 ANIME.TV. Dựa trên ý tưởng từ Crunchyroll.</p>
+        </div>
+    </footer>
+    <!-- KẾT THÚC FOOTER -->
+
+    <div id="featureNotification" class="notification">
+        Tính năng này đang được cập nhật!
+    </div>
+
+    <!-- ĐẢM BẢO ĐƯỜNG DẪN ĐÚNG -->
+    <script src="js/data-gif.js"></script> <!-- Hoặc data.js nếu bạn dùng chung -->
+    <script src="js/notification.js"></script> <!-- Nếu bạn tách ra file riêng -->
+    <script>
+        // JavaScript cho detail-gif.html (đã sửa)
+        document.addEventListener('DOMContentLoaded', () => {
+            const detailMainContainer = document.getElementById('detailMainContainer');
+            const loadingDetailMessage = document.getElementById('loadingDetailMessage'); // ID đã sửa
+
+            const params = new URLSearchParams(window.location.search);
+            const gifId = params.get('id');
+
+            function showError(message) {
+                if (loadingDetailMessage) loadingDetailMessage.remove();
+                detailMainContainer.innerHTML = `<p class="error-message" style="text-align:center; padding: 50px;">${message}</p>`;
+            }
+
+            if (!gifId) {
+                showError('Lỗi: Không tìm thấy ID của GIF trong URL.');
+                return;
+            }
+
+            // Đảm bảo animeGifData (hoặc tên biến dữ liệu GIF của bạn) đã được tải
+            if (typeof animeGifData === 'undefined' || Object.keys(animeGifData).length === 0) {
+                console.error("Lỗi: animeGifData không được định nghĩa hoặc rỗng.");
+                showError('Lỗi tải dữ liệu GIF.');
+                return;
+            }
+
+            let foundGif = null;
+            let seriesName = '';
+            let seriesKeyForFoundGif = '';
+            let fullUrl = '';
+
+            for (const seriesKey in animeGifData) {
+                const series = animeGifData[seriesKey];
+                // So sánh ID dạng chuỗi
+                const gif = series.gifs.find(g => String(g.id) === String(gifId));
+                if (gif) {
+                    foundGif = gif;
+                    seriesName = series.displayName;
+                    seriesKeyForFoundGif = seriesKey;
+                    fullUrl = series.isExternal ? gif.url : (series.folder + gif.fileName);
+                    break;
+                }
+            }
+
+            if (loadingDetailMessage) loadingDetailMessage.remove();
+
+            if (foundGif) {
+                document.title = `${foundGif.title || 'Chi Tiết GIF'} - ANIME.TV`;
+
+                // Tạo cấu trúc HTML mới cho chi tiết GIF
+                const gifDetailHTML = `
+                    <div class="gif-detail-container">
+                        <div class="gif-image-wrapper">
+                            <img id="gifDetailImage" src="${fullUrl}" alt="${foundGif.title || 'Ảnh GIF'}">
+                        </div>
+                        <div class="gif-info-wrapper">
+                            <h1 id="gifDetailTitle">${foundGif.title || 'Không có tiêu đề'}</h1>
+                            <p class="gif-detail-series"><strong>Series:</strong> <span id="gifDetailSeriesName">${seriesName || 'Không rõ'}</span></p>
+                            <div class="gif-detail-tags">
+                                <strong>Tags:</strong>
+                                <div id="gifDetailTagsContainer">
+                                    ${foundGif.tags && foundGif.tags.length > 0
+                        ? foundGif.tags.map(tag => `<span class="tag-item-detail">${tag}</span>`).join('')
+                        : '<span style="color: var(--anime-tv-text-secondary);">Không có tags</span>'
+                    }
+                                </div>
+                            </div>
+                            <a href="${fullUrl}" id="downloadGifButton" class="btn btn-primary btn-download" download>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="btn-icon"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                                Tải Xuống GIF
+                            </a>
+                        </div>
+                    </div>
+
+                    <section class="related-gifs-section" style="margin-top: 40px;">
+                        <h2>GIF Khác Từ Series Này</h2>
+                        <div id="relatedGifsGrid" class="gif-gallery view-small">
+                            <!-- GIF liên quan -->
+                        </div>
+                    </section>
+                `;
+                detailMainContainer.innerHTML = gifDetailHTML; // Chèn HTML vào container chính
+
+                // Thiết lập tên file download sau khi HTML được chèn
+                const downloadButton = document.getElementById('downloadGifButton');
+                if (downloadButton) {
+                    let downloadFileName;
+                    const currentSeriesInfo = animeGifData[seriesKeyForFoundGif];
+                    const isExternal = currentSeriesInfo ? currentSeriesInfo.isExternal : (foundGif.url && !foundGif.fileName);
+
+                    if (!isExternal && foundGif.fileName) {
+                        downloadFileName = foundGif.fileName;
+                    } else if (foundGif.url) {
+                        const cleanTitle = (foundGif.title || 'gif').replace(/[^a-z0-9\s]/gi, '').replace(/\s+/g, '_').toLowerCase();
+                        let baseName = `${foundGif.id}_${cleanTitle}`;
+                        let extension = '.gif';
+                        try {
+                            const urlPath = new URL(foundGif.url).pathname;
+                            const lastSegment = urlPath.substring(urlPath.lastIndexOf('/') + 1);
+                            if (lastSegment.includes('.')) {
+                                const detectedExtension = lastSegment.substring(lastSegment.lastIndexOf('.'));
+                                if (['.gif', '.webp', '.png', '.jpg', '.jpeg', '.mp4'].includes(detectedExtension.toLowerCase())) {
+                                    extension = detectedExtension.toLowerCase();
+                                }
+                            }
+                        } catch (e) { console.warn("Could not parse URL to detect extension:", foundGif.url); }
+                        downloadFileName = baseName + extension;
+                    } else {
+                        downloadFileName = `${foundGif.id}_download.gif`;
+                    }
+                    downloadButton.setAttribute('download', downloadFileName);
+                }
+
+                // Trong detail-gif.html, bên trong hàm DOMContentLoaded, sau khi đã tìm thấy targetGif
+
+                // ... (code hiển thị chi tiết GIF chính và nút download) ...
+
+                // Hiển thị GIF liên quan (Đã cập nhật)
+                const relatedGifsGridElement = document.getElementById('relatedGifsGrid');
+                const relatedGifsSection = document.querySelector('.related-gifs-section');
+
+                if (seriesKeyForFoundGif && animeGifData[seriesKeyForFoundGif] && relatedGifsGridElement && relatedGifsSection) {
+                    relatedGifsGridElement.innerHTML = ''; // Xóa kết quả cũ
+                    const seriesData = animeGifData[seriesKeyForFoundGif];
+
+                    // Lọc ra tất cả GIF khác trong cùng series
+                    let otherGifsInSeries = seriesData.gifs.filter(g => String(g.id) !== String(gifId));
+
+                    // Xáo trộn mảng otherGifsInSeries
+                    function shuffleArray(array) {
+                        for (let i = array.length - 1; i > 0; i--) {
+                            const j = Math.floor(Math.random() * (i + 1));
+                            [array[i], array[j]] = [array[j], array[i]];
+                        }
+                    }
+                    shuffleArray(otherGifsInSeries);
+
+                    // Lấy tối đa 20 GIF đã xáo trộn
+                    const relatedGifs = otherGifsInSeries.slice(0, 20);
+
+                    if (relatedGifs.length > 0) {
+                        relatedGifsSection.style.display = 'block'; // Hiện section
+
+                        relatedGifs.forEach(relatedGif => {
+                            const gifItemLink = document.createElement('a'); // Dùng thẻ <a> để click được
+                            gifItemLink.href = `gif-detail.html?id=${relatedGif.id}`;
+                            gifItemLink.classList.add('gif-item'); // Tái sử dụng class từ gif-collection
+
+                            // Thêm wrapper cho ảnh và tiêu đề (nếu muốn hiển thị tiêu đề nhỏ bên dưới)
+                            const gifItemContent = document.createElement('div');
+                            // gifItemContent.classList.add('related-gif-content'); // Class riêng nếu cần style khác
+
+                            const img = document.createElement('img');
+                            img.src = seriesData.isExternal ? relatedGif.url : (seriesData.folder + relatedGif.fileName);
+                            img.alt = relatedGif.title || 'Related GIF';
+                            img.loading = 'lazy';
+                            // Không cần đặt width/height ở đây nếu CSS đã xử lý aspect-ratio
+
+                            gifItemContent.appendChild(img);
+
+                            // (Tùy chọn) Hiển thị tiêu đề nhỏ cho GIF liên quan
+                            // const titleP = document.createElement('p');
+                            // titleP.classList.add('related-gif-title');
+                            // titleP.textContent = relatedGif.title || 'GIF';
+                            // gifItemContent.appendChild(titleP);
+
+                            gifItemLink.appendChild(gifItemContent);
+                            relatedGifsGridElement.appendChild(gifItemLink);
+                        });
+                    } else {
+                        relatedGifsSection.style.display = 'none'; // Ẩn section nếu không có GIF liên quan
+                    }
+                } else if (relatedGifsSection) { // Ẩn nếu không có series key hoặc data
+                    relatedGifsSection.style.display = 'none';
+                }
+
+
+
+            } else { // Không tìm thấy GIF
+                showError(`Không tìm thấy GIF với ID: ${gifId}`);
+            }
+        });
+    </script>
+</body>
+
+</html>

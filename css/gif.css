@@ -163,12 +163,72 @@ header h1 {
     padding: 0 15px; /* Padding cho gallery */
 }
 
-/* Các class view-size (có thể giữ nguyên hoặc điều chỉnh padding/gap) */
-.view-small { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); }
-.view-medium { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
-.view-large { grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); }
+
+/* ---- KÍCH THƯỚC LƯỚI MẶC ĐỊNH (MOBILE) ---- */
+/* Ảnh Nhỏ trên Mobile (ví dụ 3 cột) */
+#gif-gallery.view-small {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+}
+/* Ảnh Vừa trên Mobile (ví dụ 2 cột) */
+#gif-gallery.view-medium { /* Class này có thể là mặc định của bạn */
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+/* Ảnh Lớn trên Mobile (ví dụ 1 cột) */
+#gif-gallery.view-large {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 12px;
+}
 
 
+/* ---- TABLET (ví dụ: từ 600px trở lên) ---- */
+@media (min-width: 600px) {
+    #gif-gallery.view-small {
+        grid-template-columns: repeat(5, 1fr); /* Ảnh Nhỏ: 5 cột */
+        gap: 10px;
+    }
+    #gif-gallery.view-medium {
+        grid-template-columns: repeat(3, 1fr); /* Ảnh Vừa: 3 cột */
+        gap: 12px;
+    }
+    #gif-gallery.view-large {
+        grid-template-columns: repeat(2, 1fr); /* Ảnh Lớn: 2 cột */
+        gap: 15px;
+    }
+}
+
+/* ---- DESKTOP NHỎ / TABLET LỚN (ví dụ: từ 992px trở lên) ---- */
+@media (min-width: 992px) {
+    #gif-gallery.view-small {
+        grid-template-columns: repeat(7, 1fr); /* Ảnh Nhỏ: 7 cột */
+        gap: 10px;
+    }
+    #gif-gallery.view-medium {
+        grid-template-columns: repeat(4, 1fr); /* Ảnh Vừa: 4 cột */
+        gap: 12px;
+    }
+    #gif-gallery.view-large {
+        grid-template-columns: repeat(3, 1fr); /* Ảnh Lớn: 3 cột */
+        gap: 15px;
+    }
+}
+
+/* ---- DESKTOP LỚN (ví dụ: từ 1200px trở lên, khớp với inner-container) ---- */
+@media (min-width: 1200px) {
+    #gif-gallery.view-small {
+        grid-template-columns: repeat(8, 1fr); /* Ảnh Nhỏ: 10 cột như bạn muốn */
+        gap: 10px;
+    }
+    #gif-gallery.view-medium {
+        grid-template-columns: repeat(5, 1fr);  /* Ảnh Vừa: 5 cột như bạn muốn */
+        gap: 12px;
+    }
+    #gif-gallery.view-large {
+        grid-template-columns: repeat(3, 1fr);  /* Ảnh Lớn: 3 cột như bạn muốn */
+        gap: 15px;
+    }
+}
 .gif-item {
     background-color: var(--anime-tv-card-bg); /* Nền cho từng item */
     border-radius: 8px; /* Bo góc */

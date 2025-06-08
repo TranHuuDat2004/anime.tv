@@ -41,32 +41,43 @@ img {
 /* --- Notification --- */
 .notification {
     position: fixed; /* Để nó nổi trên các nội dung khác */
-    bottom: 20px;    /* Cách đáy 20px */
-    left: 50%;       /* Căn giữa theo chiều ngang */
-    transform: translateX(-50%); /* Điều chỉnh để thực sự ở giữa */
-    background-color: var(--primary-color); /* Màu cam chủ đạo */
-    color: var(--text-color); /* Màu chữ trắng */
-    padding: 12px 25px;
+    /* THAY ĐỔI VỊ TRÍ */
+    top: 20px;       /* Cách đỉnh 20px */
+    right: 20px;      /* Cách phải 20px */
+    /* Bỏ left và transform: translateX(-50%) */
+    /* left: 50%; */
+    /* transform: translateX(-50%); */
+
+    /* THAY ĐỔI MÀU SẮC */
+    background-color: #28a745; /* Màu xanh lá (Bootstrap success green) */
+    /* Hoặc một màu xanh lá bạn thích, ví dụ: #4CAF50, #32CD32 (LimeGreen) */
+    color: #ffffff; /* Màu chữ trắng để nổi bật trên nền xanh */
+
+    padding: 12px 20px; /* Giảm padding ngang một chút nếu muốn gọn hơn */
     border-radius: 5px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    z-index: 1001; /* Đảm bảo nó nổi trên navbar (nếu navbar có z-index 1000) */
-    opacity: 0; /* Mặc định ẩn */
-    visibility: hidden; /* Mặc định ẩn hoàn toàn */
-    transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out, transform 0.3s ease-out;
-    font-size: 0.95em;
+    z-index: 1001;
+    opacity: 0;
+    visibility: hidden;
+    /* THAY ĐỔI HIỆU ỨNG TRANSFORM CHO VỊ TRÍ MỚI */
+    transform: translateY(-30px); /* Mặc định ẩn và hơi dịch lên trên */
+    transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out, transform 0.4s ease-in-out;
+    font-size: 0.9em; /* Có thể điều chỉnh font size */
     font-weight: 500;
+    max-width: 400px; /* Giới hạn chiều rộng để không quá dài */
+    text-align: left; /* Căn chữ trái nếu nội dung dài */
 }
 
 .notification.show {
     opacity: 1;
     visibility: visible;
-    transform: translateX(-50%) translateY(0); /* Hiệu ứng trượt lên nhẹ */
+    transform: translateY(0); /* Trượt xuống vị trí cuối cùng */
 }
 
-.notification.hide {
+.notification.hide { /* Khi ẩn, nó sẽ trượt lên lại */
     opacity: 0;
     visibility: hidden;
-    transform: translateX(-50%) translateY(20px); /* Hiệu ứng trượt xuống khi ẩn */
+    transform: translateY(-30px);
 }
 
 .container {

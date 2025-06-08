@@ -1,0 +1,203 @@
+/* css/gif-detail-style.css */
+
+#gif-detail-page .container {
+    padding-top: 40px;
+    padding-bottom: 50px;
+}
+
+.gif-detail-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr; /* Ảnh GIF chiếm 2 phần, thông tin 1 phần */
+    gap: 30px;
+    background-color: var(--anime-tv-card-bg); /* Nền giống card */
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.gif-image-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #1a1c20; /* Nền tối hơn cho ảnh GIF */
+    border-radius: 6px;
+    overflow: hidden; /* Đảm bảo GIF không tràn */
+    padding: 10px; /* Khoảng đệm nhỏ quanh GIF */
+}
+
+#gifDetailImage {
+    max-width: 100%;
+    max-height: 70vh; /* Giới hạn chiều cao tối đa của GIF */
+    object-fit: contain; /* Đảm bảo toàn bộ GIF được hiển thị */
+    border-radius: 4px;
+}
+
+.gif-info-wrapper {
+    display: flex;
+    flex-direction: column;
+    color: var(--anime-tv-text);
+}
+
+#gifDetailTitle {
+    font-size: 2.2em;
+    color: var(--anime-tv-primary); /* Màu nhấn cho tiêu đề */
+    margin-bottom: 15px;
+    line-height: 1.3;
+}
+
+.gif-detail-series {
+    font-size: 1.1em;
+    margin-bottom: 20px;
+    color: var(--anime-tv-text-secondary);
+}
+.gif-detail-series strong {
+    color: var(--anime-tv-text);
+}
+
+.gif-detail-tags {
+    margin-bottom: 30px;
+}
+.gif-detail-tags strong {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 1.1em;
+}
+
+#gifDetailTagsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.tag-item-detail {
+    background-color: #3a3f4b; /* Màu nền tag */
+    color: var(--anime-tv-text-secondary);
+    padding: 5px 10px;
+    border-radius: 15px; /* Bo tròn tag */
+    font-size: 0.9em;
+    transition: background-color 0.2s;
+}
+.tag-item-detail:hover {
+    background-color: var(--anime-tv-primary);
+    color: white;
+}
+
+.btn-download {
+    margin-top: auto; /* Đẩy nút download xuống dưới cùng nếu flex container cao */
+    padding: 12px 25px !important; /* Ghi đè padding của .btn nếu cần */
+    font-size: 1.1em !important;
+    text-align: center;
+}
+
+/* Style cho phần GIF liên quan (nếu có) */
+.related-gifs-section h2 {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+    border-left: 4px solid var(--anime-tv-primary);
+    padding-left: 10px;
+    color: var(--text-color);
+}
+
+/* Tái sử dụng .gif-gallery và .gif-item từ gif-collection.html CSS */
+/* Bạn có thể cần điều chỉnh grid-template-columns cho #relatedGifsGrid nếu muốn khác */
+#relatedGifsGrid.gif-gallery {
+    /* Ví dụ: hiển thị ít cột hơn cho GIF liên quan */
+    /* grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); */
+}
+#relatedGifsGrid .gif-item img {
+    /* aspect-ratio: 16 / 9; /* Hoặc tỷ lệ khác cho thumbnail GIF liên quan */
+}
+
+
+
+
+/* css/gif-detail-custom.css */
+
+/* ... (các style hiện tại của bạn cho chi tiết GIF chính) ... */
+
+/* Section GIF liên quan */
+.related-gifs-section {
+    margin-top: 50px; /* Tăng khoảng cách */
+    border-top: 1px solid var(--anime-tv-border);
+    padding-top: 30px;
+}
+
+.related-gifs-section h2 {
+    font-size: 1.6em; /* Có thể nhỏ hơn tiêu đề chính */
+    margin-bottom: 25px; /* Tăng khoảng cách */
+    border-left: 3px solid var(--anime-tv-primary);
+    padding-left: 10px;
+    color: var(--anime-tv-text);
+}
+
+/* Style cho lưới GIF liên quan */
+/* #relatedGifsGrid kế thừa từ .gif-gallery (đã có display: grid) */
+/* Bạn có thể muốn số cột khác ở đây so với gallery chính */
+#relatedGifsGrid.gif-gallery {
+    /* Ví dụ: Hiển thị 4-6 cột tùy màn hình, tương tự như trang collection */
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Ảnh nhỏ hơn một chút */
+    gap: 15px; /* Khoảng cách giữa các GIF liên quan */
+}
+
+/* Style cho từng item GIF liên quan */
+/* #relatedGifsGrid .gif-item kế thừa từ .gif-item của trang collection */
+#relatedGifsGrid .gif-item {
+    /* Các style chung như background, border-radius, transition đã được kế thừa */
+    /* Bạn có thể ghi đè hoặc thêm style cụ thể ở đây nếu muốn */
+    /* Ví dụ: đảm bảo ảnh chiếm hết không gian và giữ tỷ lệ */
+}
+
+#relatedGifsGrid .gif-item img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1; /* Giữ ảnh vuông, hoặc tỷ lệ khác nếu GIF của bạn khác */
+    object-fit: cover;
+    display: block;
+    border-radius: 4px; /* Bo góc nhẹ cho ảnh */
+    background-color: #2a2a2a; /* Màu nền placeholder cho ảnh */
+}
+
+/* (Tùy chọn) Style cho tiêu đề nhỏ của GIF liên quan nếu bạn hiển thị nó */
+
+#relatedGifsGrid .related-gif-title {
+    font-size: 0.8em;
+    color: var(--anime-tv-text-secondary);
+    text-align: center;
+    padding: 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+/* Responsive */
+@media (max-width: 992px) {
+    .gif-detail-container {
+        grid-template-columns: 1fr; /* Stack ảnh và thông tin trên màn hình nhỏ hơn */
+    }
+    #gifDetailImage {
+        max-height: 50vh;
+    }
+    .gif-info-wrapper {
+        margin-top: 20px;
+    }
+    .btn-download {
+        margin-top: 20px; /* Reset margin-top auto */
+    }
+}
+
+@media (max-width: 576px) {
+    #gifDetailTitle {
+        font-size: 1.8em;
+    }
+    .gif-detail-series, .gif-detail-tags strong {
+        font-size: 1em;
+    }
+    .tag-item-detail {
+        font-size: 0.85em;
+    }
+    .btn-download {
+        font-size: 1em !important;
+        padding: 10px 20px !important;
+    }
+}
