@@ -16,26 +16,26 @@
     <header>
         <nav class="navbar">
             <div class="container">
-                <a href="index.html" class="navbar-logo"><img src="images/logo.png" height="80"></a>
-                <ul class="navbar-nav">
-                    <li><a href="index.html">Trang Chủ</a></li>
-                    <li><a href="#">Bộ sưu tập</a></li>
-                    <li><a href="search.html" class="active">Ảnh GIF</a></li>
-                    <li><a href="#">Manga</a></li>
-                    <li><a href="#">Games</a></li>
-                    <li><a href="#">Giới thiệu</a></li>
-                </ul>
-                <div class="navbar-actions">
-                    <a href="search.html"> <button class="search-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round">
-                                <circle cx="11" cy="11" r="8"></circle>
-                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                            </svg>
-                        </button>
-                    </a>
-                    <a href="#" id="loginButton" class="login-button">Đăng Nhập</a>
+                <a href="index.html" class="navbar-logo"><img src="images/logo.png" height="60"></a>
+                <button class="hamburger" id="hamburger">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                </button>
+                <div class="navbar-menu" id="navbarMenu">
+                    <ul class="navbar-nav">
+                        <li><a href="index.html" class="active">Trang Chủ</a></li>
+                        <li><a href="#">Bộ sưu tập</a></li>
+                        <li><a href="gif-collection.html">Ảnh GIF</a></li>
+                        <li><a href="#">Manga</a></li>
+                        <li><a href="#">Games</a></li>
+                        <li><a href="#">Giới thiệu</a></li>
+                        <li><a href="search.html">Tìm kiếm</a></li>
+                        <li style="padding-left: 40px;"><a  href="#" id="loginButton" class="login-button">Đăng Nhập</a></li>
+                    </ul>
                 </div>
             </div>
         </nav>
@@ -189,5 +189,7 @@
         });
     </script>
         <script src="js/notification.js"></script> <!-- Script cho thông báo -->
+
+            <script src="js/navbar.js"></script> <!-- Script cho navbar (hamburger menu) -->
 </body>
 </html>

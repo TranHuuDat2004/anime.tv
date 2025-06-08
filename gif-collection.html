@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,33 +12,36 @@
     <!-- Link tới font của ANIME.TV nếu có -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet"> <!-- Ví dụ font Lato -->
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+    <!-- Ví dụ font Lato -->
     <link rel="icon" href="PATH_TO_YOUR_ANIME_TV_FAVICON.png" type="image/x-icon"> <!-- Favicon của ANIME.TV -->
 </head>
+
 <body>
     <header>
         <nav class="navbar">
             <div class="container">
-                <a href="index.html" class="navbar-logo"><img src="images/logo.png" height="80"></a>
-                <ul class="navbar-nav">
-                    <li><a href="index.html" class="active">Trang Chủ</a></li>
-                    <li><a href="#">Bộ sưu tập</a></li>
-                    <li><a href="#">Ảnh GIF</a></li>
-                    <li><a href="#">Manga</a></li>
-                    <li><a href="#">Games</a></li>
-                    <li><a href="#">Giới thiệu</a></li>
-                </ul>
-                <div class="navbar-actions">
-                    <a href="search.html"> <button class="search-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round">
-                                <circle cx="11" cy="11" r="8"></circle>
-                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                            </svg>
-                        </button>
-                    </a>
-                    <a href="#" id="loginButton" class="login-button">Đăng Nhập</a>
+                <a href="index.html" class="navbar-logo"><img src="images/logo.png" height="60"></a>
+                <button class="hamburger" id="hamburger">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                </button>
+                <div class="navbar-menu" id="navbarMenu">
+                    <ul class="navbar-nav">
+                        <li><a href="index.html">Trang Chủ</a></li>
+                        <li><a href="#">Bộ sưu tập</a></li>
+                        <li><a class="active" href="gif-collection.html">Ảnh GIF</a></li>
+                        <li><a href="#">Manga</a></li>
+                        <li><a href="#">Games</a></li>
+                        <li><a href="#">Giới thiệu</a></li>
+                        <li><a href="search.html">Tìm kiếm</a></li>
+                        <li style="padding-left: 40px;"><a href="#" id="loginButton" class="login-button">Đăng Nhập</a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </nav>
@@ -46,7 +50,8 @@
 
     <div class="full-width-content">
         <div class="controls-container inner-container">
-            <h1 style="text-align: center; margin-bottom: 25px; font-size: 2.2em; color: var(--anime-tv-text);">Bộ Sưu Tập Ảnh GIF</h1>
+            <h1 style="text-align: center; margin-bottom: 25px; font-size: 2.2em; color: var(--anime-tv-text);">Bộ Sưu
+                Tập Ảnh GIF</h1>
             <div id="series-navigation">
                 <!-- Các nút lọc series -->
             </div>
@@ -59,8 +64,15 @@
             <input type="text" id="search-bar" placeholder="Tìm kiếm GIF theo tên nhân vật, series hoặc tag...">
         </div>
 
-        <div id="gif-gallery" class="view-medium inner-container"> <!-- Thêm inner-container để gallery cũng được giới hạn chiều rộng -->
+        <div id="gif-gallery" class="view-medium inner-container">
+            <!-- Thêm inner-container để gallery cũng được giới hạn chiều rộng -->
             <p class="placeholder-text" id="loading-message">Đang tải danh sách GIF...</p>
+        </div>
+        <!-- NÚT XEM THÊM -->
+        <div id="load-more-container" class="inner-container"
+            style="text-align: center; margin-top: 30px; margin-bottom: 30px; display: none;">
+            <button id="loadMoreButton" class="btn btn-primary">Xem Thêm GIF</button>
+            <!-- Tái sử dụng class btn từ ANIME.TV nếu có -->
         </div>
     </div>
 
@@ -72,6 +84,7 @@
 
     <script src="js/data-gif.js"></script> <!-- Dữ liệu GIF của bạn -->
     <script src="js/fetch-gif.js"></script> <!-- Script của trang GIF -->
-
+    <script src="js/navbar.js"></script> <!-- Script cho navbar (hamburger menu) -->
 </body>
+
 </html>
