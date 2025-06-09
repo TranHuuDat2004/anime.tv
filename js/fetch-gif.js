@@ -15,18 +15,19 @@ const loadingMessage = document.getElementById('loading-message');
 const viewOptionsButtons = document.querySelectorAll('#view-options button');
 const loadMoreContainer = document.getElementById('load-more-container'); // Nút xem thêm container
 const loadMoreButton = document.getElementById('loadMoreButton');       // Nút xem thêm
+const allGifsLoadedMessage = document.getElementById('all-gifs-loaded-message'); // Thêm element này
 
 let currentFilter = 'OtonariNoTenshi'; // Mặc định series (NHỚ THAY KEY ĐÚNG)
 let currentSearchTerm = '';          // Lưu trữ từ khóa tìm kiếm hiện tại
 let allGifsMasterList = [];        // Danh sách CHÍNH chứa tất cả GIF (không bị xáo trộn ở đây)
 let currentlyDisplayedGifs = [];   // Danh sách GIF đang được hiển thị (sau khi lọc và xáo trộn)
 let displayedGifsCount = 0;        // Số GIF đã hiển thị
-const gifsPerLoad = 50;            // Số GIF tải mỗi lần
+const gifsPerLoad = 40;            // Số GIF tải mỗi lần
 
 // --- FUNCTIONS ---
 
 function populateSeriesNavigation() {
-    // ... (giữ nguyên)
+
     const allButton = document.createElement('button');
     allButton.textContent = 'Tất Cả Series';
     allButton.dataset.seriesKey = 'all';
@@ -80,11 +81,14 @@ function prepareAllGifs() { // Chỉ chuẩn bị danh sách gốc
 function displayGifs(gifsToDisplay, append = false) {
     if (!append) {
         gifGallery.innerHTML = ''; // Xóa nếu không phải là append
+
+        if (allGifsLoadedMessage) allGifsLoadedMessage.style.display = 'none'; // Ẩn thông báo khi hiển thị lại từ đầu
     }
 
     if (gifsToDisplay.length === 0 && !append) { // Chỉ hiện "Không tìm thấy" nếu đây là lần hiển thị đầu tiên và không có gì
         gifGallery.innerHTML = '<p class="placeholder-text">Không tìm thấy GIF nào phù hợp.</p>';
-        loadMoreContainer.style.display = 'none'; // Ẩn nút Xem thêm
+        if (loadMoreContainer) loadMoreContainer.style.display = 'none';
+        if (allGifsLoadedMessage) allGifsLoadedMessage.style.display = 'none'; // Cũng ẩn ở đây
         return;
     }
 
@@ -110,11 +114,20 @@ function displayGifs(gifsToDisplay, append = false) {
         });
     });
 
-    // Cập nhật trạng thái nút "Xem thêm"
+    // Cập nhật trạng thái nút "Xem thêm" VÀ thông báo "Đã tải hết"
     if (displayedGifsCount < currentlyDisplayedGifs.length) {
-        loadMoreContainer.style.display = 'block';
+        if (loadMoreContainer) loadMoreContainer.style.display = 'block';
+        if (allGifsLoadedMessage) allGifsLoadedMessage.style.display = 'none'; // Ẩn nếu còn GIF để tải
     } else {
-        loadMoreContainer.style.display = 'none';
+        if (loadMoreContainer) loadMoreContainer.style.display = 'none';
+        // Chỉ hiển thị thông báo "đã tải hết" nếu có ít nhất 1 GIF đã được hiển thị
+        if (currentlyDisplayedGifs.length > 0 && allGifsLoadedMessage) {
+            allGifsLoadedMessage.style.display = 'block';
+        } else if (allGifsLoadedMessage) {
+            // Nếu không có GIF nào trong danh sách hiện tại (ví dụ, tìm kiếm không ra kết quả)
+            // thì không nên hiển thị "đã xem hết"
+            allGifsLoadedMessage.style.display = 'none';
+        }
     }
 }
 
@@ -142,16 +155,18 @@ function applyFiltersAndGetList() {
 }
 
 function resetAndDisplayGifs() {
-    currentlyDisplayedGifs = applyFiltersAndGetList(); // Lấy danh sách đã lọc và xáo trộn
-    displayedGifsCount = 0; // Reset số lượng đã hiển thị
-    gifGallery.innerHTML = ''; // Xóa gallery cũ
-    loadMoreGifs(); // Tải và hiển thị batch đầu tiên
+    currentlyDisplayedGifs = applyFiltersAndGetList();
+    displayedGifsCount = 0;
+    gifGallery.innerHTML = '';
+    if (allGifsLoadedMessage) allGifsLoadedMessage.style.display = 'none'; // Reset thông báo
+    loadMoreGifs();
 }
 
 function loadMoreGifs() {
     const gifsToLoadNow = currentlyDisplayedGifs.slice(displayedGifsCount, displayedGifsCount + gifsPerLoad);
     displayGifs(gifsToLoadNow, displayedGifsCount > 0); // append = true nếu không phải lần tải đầu tiên
     displayedGifsCount += gifsToLoadNow.length;
+    // Không cần kiểm tra lại ở đây vì displayGifs đã xử lý việc hiển thị/ẩn nút và thông báo
 }
 
 function applyViewSize(size) {
@@ -211,4 +226,9 @@ viewOptionsButtons.forEach(button => {
     });
 });
 
-loadMoreButton.addEventListener('click', loadMoreGifs);
+// Kiểm tra xem loadMoreButton có tồn tại không trước khi thêm event listener
+if (loadMoreButton) {
+    loadMoreButton.addEventListener('click', loadMoreGifs);
+} else {
+    console.warn("Element with ID 'loadMoreButton' not found.");
+}

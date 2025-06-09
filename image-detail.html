@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi Tiết Hình Ảnh - ANIME.TV</title> <!-- Sẽ được cập nhật bằng JS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/image-detail-style.css"> <!-- CSS riêng cho trang này -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="icon" href="images/favicon.png" type="image/x-icon">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <a href="index.html" class="navbar-logo"><img src="images/logo.png" height="80"></a>
+                <ul class="navbar-nav">
+                    <li><a href="index.html">Trang Chủ</a></li>
+                    <li><a href="image-gallery.html">Ảnh Anime</a></li>
+                    <li><a href="gif-collection.html">GIF Collection</a></li>
+                </ul>
+                <div class="navbar-actions">
+                    <button class="search-icon" style="visibility: hidden;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
+                    </button>
+                    <a href="#" class="login-button" style="visibility: hidden;">Đăng Nhập</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main id="image-detail-page">
+        <div class="container">
+            <div class="image-detail-container">
+                <div class="image-view-area">
+                    <img id="detailed-image" src="https://via.placeholder.com/800x500?text=Loading+Image..."
+                        alt="Hình ảnh chi tiết">
+                    <!-- (Tùy chọn) Nút điều hướng qua lại giữa các ảnh trong cùng series -->
+                    <button id="prev-image" class="nav-arrow prev-arrow" title="Ảnh trước"
+                        style="display: none;">❮</button>
+                    <button id="next-image" class="nav-arrow next-arrow" title="Ảnh kế tiếp"
+                        style="display: none;">❯</button>
+                </div>
+                <div class="image-info-area">
+                    <h1 id="image-title">Tiêu đề ảnh</h1>
+                    <p class="series-name">Series: <span id="image-series-name">Tên Series</span></p>
+                    <div class="tags-container">
+                        <strong>Tags:</strong> <span id="image-tags">Không có tags</span>
+                    </div>
+                    <div class="actions-container">
+                        <a id="download-image-button" href="#" download class="btn btn-primary">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="btn-icon">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="7 10 12 15 17 10"></polyline>
+                                <line x1="12" y1="15" x2="12" y2="3"></line>
+                            </svg>
+                            Tải Ảnh Về
+                        </a>
+                        <!-- <button id="copy-image-url-button" class="btn btn-secondary">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="btn-icon"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                            Sao chép URL
+                        </button> -->
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- PHẦN MỚI: CÁC ẢNH KHÁC CÙNG SERIES -->
+            <section class="other-images-in-series-section">
+                <h2 class="section-title">Ảnh khác trong series <span id="other-images-series-name"></span></h2>
+                <div id="other-images-gallery" class="image-gallery view-small">
+                    <!-- Các ảnh thu nhỏ sẽ được chèn vào đây -->
+                </div>
+            </section>
+            <!-- KẾT THÚC PHẦN MỚI -->
+            <div class="navigation-back">
+                <a href="image-gallery.html" class="btn btn-outline">← Quay lại Bộ Sưu Tập</a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="inner-container">
+            <p>© 2024 ANIME.TV - Bộ Sưu Tập </p>
+        </div>
+    </footer>
+
+    <script src="js/data-img.js"></script>
+    <script src="js/image-detail-script.js"></script> <!-- File JavaScript mới cho trang này -->
+</body>
+
+</html>

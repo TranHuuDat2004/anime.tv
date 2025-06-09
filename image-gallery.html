@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bộ Sưu Tập Ảnh Anime - ANIME.TV</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/image-gallery-style.css"> <!-- CSS riêng cho trang này -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="icon" href="images/favicon.png" type="image/x-icon">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <a href="index.html" class="navbar-logo"><img src="images/logo.png" height="80"></a>
+                <ul class="navbar-nav">
+                    <li><a href="index.html">Trang Chủ</a></li>
+                    <li><a href="image-gallery.html" class="active">Ảnh Anime</a></li> <!-- Link tới trang này -->
+                    <li><a href="#">GIF Collection</a></li> <!-- Nếu bạn có trang GIF -->
+                    <!-- Thêm các link khác nếu cần -->
+                </ul>
+                <div class="navbar-actions">
+                    <button class="search-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                    </button>
+                    <a href="#" class="login-button">Đăng Nhập</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main id="image-gallery-page">
+        <div class="container">
+            <h1 class="page-title">Bộ Sưu Tập Ảnh Anime</h1>
+
+            <div class="gallery-controls">
+                <input type="text" id="image-search-bar" class="search-bar" placeholder="Tìm kiếm ảnh theo tiêu đề, tags, series...">
+                <div id="image-series-navigation" class="series-navigation">
+                    <!-- Nút lọc series sẽ được tạo bởi JavaScript -->
+                </div>
+                <div id="image-view-options" class="view-options">
+                    <button data-size="small" title="Ảnh nhỏ"><svg viewBox="0 0 24 24"><path d="M3 11h8V3H3v8zm0 10h8v-8H3v8zM13 3v8h8V3h-8zm0 10h8v-8h-8v8z"></path></svg></button>
+                    <button data-size="medium" class="active" title="Ảnh vừa"><svg viewBox="0 0 24 24"><path d="M4 10h4V4H4v6zm0 10h4v-6H4v6zM10 4v6h4V4h-4zm0 10h4v-6h-4v6zM16 4v6h4V4h-4zm0 10h4v-6h-4v6z"></path></svg></button>
+                    <button data-size="large" title="Ảnh lớn"><svg viewBox="0 0 24 24"><path d="M4 4h16v6H4zm0 8h16v6H4z"></path></svg></button>
+                </div>
+            </div>
+
+            <div id="image-collection-gallery" class="image-gallery view-medium">
+                <!-- Các mục ảnh sẽ được chèn vào đây bởi JavaScript -->
+            </div>
+
+            <div id="image-load-more-container" style="display: none;">
+                <button id="imageLoadMoreButton" class="btn">Xem thêm ảnh</button>
+            </div>
+            <div id="all-images-loaded-message" class="placeholder-text" style="display: none;">
+                Bạn đã xem hết tất cả ảnh rồi! 🖼️
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="#">Về chúng tôi</a>
+                <a href="#">Trợ giúp/FAQ</a>
+                <a href="#">Điều khoản sử dụng</a>
+                <a href="#">Chính sách riêng tư</a>
+            </div>
+            <p>© 2024 ANIME.TV. Dựa trên ý tưởng từ Crunchyroll.</p>
+        </div>
+    </footer>
+
+    <script src="js/data-img.js"></script> <!-- File dữ liệu ảnh mới -->
+    <script src="js/image-gallery-script.js"></script> <!-- File JavaScript mới cho trang này -->
+</body>
+</html>

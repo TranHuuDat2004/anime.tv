@@ -1,0 +1,181 @@
+/* css/image-gallery-style.css */
+
+#image-gallery-page .page-title {
+    font-size: 2.2em;
+    margin-bottom: 25px;
+    border-left: 5px solid var(--primary-color);
+    padding-left: 15px;
+    color: var(--text-color);
+}
+
+/* Tái sử dụng hoặc điều chỉnh style cho gallery-controls, search-bar, series-navigation, view-options
+   từ file style.css của trang GIF nếu bạn có, hoặc định nghĩa mới. */
+
+.gallery-controls {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 30px;
+    gap: 15px;
+}
+
+.search-bar { /* Chung cho cả image và gif search bar */
+    padding: 10px 15px;
+    border: 1px solid var(--border-color);
+    background-color: var(--card-background-color);
+    color: var(--text-color);
+    border-radius: 5px;
+    font-size: 1em;
+    flex-grow: 1; /* Cho phép search bar co giãn */
+    min-width: 250px; /* Chiều rộng tối thiểu */
+}
+.search-bar:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(var(--primary-color-rgb), 0.3); /* Giả sử bạn có --primary-color-rgb */
+}
+
+
+.series-navigation {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px; /* Khoảng cách nếu xuống dòng */
+    margin-bottom: 10px;
+}
+.series-navigation button {
+    padding: 8px 15px;
+    background-color: var(--card-background-color);
+    color: var(--text-secondary-color);
+    border: 1px solid var(--border-color);
+    border-radius: 20px; /* Bo tròn hơn */
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+    font-weight: 500;
+}
+.series-navigation button:hover {
+    background-color: #3a3e47;
+    color: var(--text-color);
+}
+.series-navigation button.active {
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    border-color: var(--primary-color);
+    font-weight: bold;
+}
+
+
+.view-options {
+    display: flex;
+    gap: 5px;
+}
+.view-options button {
+    background-color: var(--card-background-color);
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary-color);
+    padding: 8px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.view-options button svg {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+}
+.view-options button:hover {
+    background-color: #3a3e47;
+    color: var(--text-color);
+}
+.view-options button.active {
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    border-color: var(--primary-color);
+}
+
+
+/* --- Image Gallery Styles --- */
+.image-gallery {
+    display: grid;
+    gap: 15px; /* Khoảng cách giữa các ảnh */
+    margin-bottom: 30px;
+}
+
+.image-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 6px;
+    background-color: var(--card-background-color); /* Nền cho ảnh nếu ảnh chưa tải */
+    cursor: pointer; /* Có thể mở ảnh full screen sau này */
+    transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+}
+.image-item:hover {
+    transform: scale(1.03);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+}
+
+.image-item img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Đảm bảo ảnh lấp đầy mà không bị méo */
+    transition: opacity 0.3s ease-in-out;
+}
+.image-item img:not([src]) { /* Khi src chưa được gán (ví dụ lazy loading) */
+    opacity: 0;
+}
+
+
+/* View sizes for image gallery */
+.image-gallery.view-small {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+}
+.image-gallery.view-medium {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+}
+.image-gallery.view-large {
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+}
+
+/* Style cho nút "Xem thêm" và thông báo đã tải hết (có thể tái sử dụng từ trang GIF) */
+#image-load-more-container {
+    text-align: center;
+    margin-top: 20px;
+}
+#imageLoadMoreButton { /* ID đã đổi */
+    /* Style nút giống các nút btn khác */
+}
+
+#all-images-loaded-message { /* ID đã đổi */
+    /* Style như trong file GIF */
+}
+
+.placeholder-text { /* chung cho các thông báo */
+    text-align: center;
+    margin-top: 20px;
+    padding: 15px;
+    background-color: var(--card-background-color, #2d3038);
+    border-radius: 5px;
+    color: var(--text-secondary-color, #adb0b5);
+}
+
+/* Responsive cho gallery controls nếu cần */
+@media (max-width: 768px) {
+    .gallery-controls {
+        flex-direction: column;
+        align-items: stretch; /* Các control chiếm toàn bộ chiều rộng */
+    }
+    .search-bar {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    .series-navigation {
+        justify-content: center; /* Căn giữa các nút series */
+    }
+    .view-options {
+        align-self: center; /* Căn giữa view options */
+    }
+}

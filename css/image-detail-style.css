@@ -1,0 +1,225 @@
+/* css/image-detail-style.css */
+
+#image-detail-page .container {
+    max-width: 1200px;
+    /* Hoặc kích thước bạn muốn */
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.image-detail-container {
+    display: flex;
+    flex-direction: column;
+    /* Mặc định, sẽ thay đổi cho màn hình lớn */
+    gap: 25px;
+    background-color: var(--card-background-color);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.image-view-area {
+    position: relative;
+    /* Để định vị nút prev/next */
+    background-color: #000;
+    /* Nền đen cho vùng ảnh */
+    display: flex;
+    /* Căn giữa ảnh */
+    justify-content: center;
+    align-items: center;
+    border-radius: 6px;
+    overflow: hidden;
+    /* Đảm bảo ảnh không tràn ra ngoài */
+    min-height: 300px;
+    /* Chiều cao tối thiểu để placeholder hiển thị */
+}
+
+#detailed-image {
+    max-width: 100%;
+    max-height: 80vh;
+    /* Giới hạn chiều cao ảnh bằng 80% viewport height */
+    object-fit: contain;
+    /* Hiển thị toàn bộ ảnh, không cắt xén */
+    border-radius: 4px;
+    /* Bo góc nhẹ cho ảnh */
+    display: block;
+    /* Để loại bỏ khoảng trắng thừa */
+}
+
+.image-view-area .nav-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 1.5em;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: background-color 0.2s;
+    z-index: 10;
+    opacity: 0.7;
+}
+
+.image-view-area .nav-arrow:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+    opacity: 1;
+}
+
+.image-view-area .prev-arrow {
+    left: 15px;
+}
+
+.image-view-area .next-arrow {
+    right: 15px;
+}
+
+
+.image-info-area {
+    color: var(--text-color);
+}
+
+#image-title {
+    font-size: 2em;
+    margin-bottom: 10px;
+    color: var(--text-color);
+}
+
+.image-info-area .series-name {
+    font-size: 1.1em;
+    color: var(--text-secondary-color);
+    margin-bottom: 15px;
+}
+
+.image-info-area .series-name span {
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+.tags-container {
+    margin-bottom: 20px;
+    font-size: 0.95em;
+}
+
+.tags-container strong {
+    color: var(--text-color);
+}
+
+#image-tags .tag {
+    display: inline-block;
+    background-color: var(--primary-color-transparent, rgba(244, 117, 33, 0.2));
+    /* Giả sử bạn có biến này */
+    color: var(--primary-color);
+    padding: 4px 10px;
+    border-radius: 15px;
+    margin-right: 8px;
+    margin-bottom: 8px;
+    font-size: 0.9em;
+}
+
+#image-tags .tag:hover {
+    background-color: var(--primary-color);
+    color: var(--text-color);
+}
+
+
+.actions-container {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+    /* Cho phép xuống dòng trên mobile */
+}
+
+.actions-container .btn {
+    /* Style chung cho nút đã có trong style.css */
+}
+
+.actions-container .btn svg {
+    margin-right: 8px;
+}
+
+.navigation-back {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.btn.btn-outline {
+    background-color: transparent;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+}
+
+.btn.btn-outline:hover {
+    background-color: var(--primary-color);
+    color: var(--text-color);
+}
+
+/* Thêm vào css/image-detail-style.css */
+
+.other-images-in-series-section {
+    margin-top: 40px;
+    /* Khoảng cách với phần chi tiết ảnh chính */
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color);
+    /* Đường kẻ phân cách nhẹ */
+}
+
+.other-images-in-series-section .section-title {
+    font-size: 1.6em;
+    margin-bottom: 20px;
+    color: var(--text-color);
+    /* border-left: 4px solid var(--primary-color);
+    padding-left: 10px; */
+    /* Có thể bỏ border này nếu muốn khác với trang detail */
+}
+
+#other-images-gallery.view-small {
+    /* CSS cho .image-gallery.view-small đã có trong image-gallery-style.css */
+    /* Nếu bạn muốn nó nhỏ hơn nữa hoặc khác đi, có thể override ở đây */
+    /* Ví dụ: */
+    /* grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); */
+    gap: 10px;
+}
+
+#other-images-gallery .image-item {
+    /* Có thể thêm style cụ thể cho các item thumbnail này nếu cần */
+    /* Ví dụ: giảm box-shadow khi hover */
+    transition: transform 0.15s ease-out;
+    /* Hover nhẹ hơn */
+}
+
+#other-images-gallery .image-item:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive cho layout màn hình lớn hơn */
+@media (min-width: 992px) {
+    .image-detail-container {
+        flex-direction: row;
+        /* Sắp xếp ảnh và thông tin ngang nhau */
+        align-items: flex-start;
+        /* Căn theo đỉnh */
+    }
+
+    .image-view-area {
+        flex: 2;
+        /* Ảnh chiếm nhiều không gian hơn */
+        max-width: 60%;
+        /* Giới hạn chiều rộng ảnh */
+    }
+
+    #detailed-image {
+        max-height: calc(100vh - 200px);
+        /* Đảm bảo ảnh không quá cao */
+    }
+
+    .image-info-area {
+        flex: 1;
+        /* Thông tin chiếm ít không gian hơn */
+        padding-left: 25px;
+        /* Khoảng cách giữa ảnh và thông tin */
+    }
+}
