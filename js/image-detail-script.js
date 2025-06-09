@@ -4,61 +4,60 @@ document.addEventListener('DOMContentLoaded', () => {
     const urlParams = new URLSearchParams(window.location.search);
     const imageId = urlParams.get('id');
 
+    // Lấy tất cả các DOM elements cần thiết ở đầu
     const detailedImageElement = document.getElementById('detailed-image');
     const imageTitleElement = document.getElementById('image-title');
     const imageSeriesNameElement = document.getElementById('image-series-name');
     const imageTagsElement = document.getElementById('image-tags');
     const downloadButton = document.getElementById('download-image-button');
-
+    const copyUrlButton = document.getElementById('copy-image-url-button'); // Lấy element này
     const prevImageButton = document.getElementById('prev-image');
     const nextImageButton = document.getElementById('next-image');
     const backToGalleryLink = document.querySelector('.navigation-back a');
-
-    // Elements cho phần "Ảnh khác trong series"
     const otherImagesSeriesNameElement = document.getElementById('other-images-series-name');
     const otherImagesGalleryElement = document.getElementById('other-images-gallery');
 
     if (!imageId || typeof animeImageData === 'undefined') {
         if (imageTitleElement) imageTitleElement.textContent = "Lỗi";
         if (detailedImageElement) detailedImageElement.alt = "Không tìm thấy ID ảnh hoặc dữ liệu ảnh.";
-        if (document.querySelector('.image-detail-container')) {
-            document.querySelector('.image-detail-container').innerHTML = '<p class="placeholder-text">Không tìm thấy ID ảnh hoặc dữ liệu ảnh không tồn tại.</p>';
+        const detailContainer = document.querySelector('.image-detail-container');
+        if (detailContainer) {
+            detailContainer.innerHTML = '<p class="placeholder-text">Không tìm thấy ID ảnh hoặc dữ liệu ảnh không tồn tại.</p>';
         }
+        const otherImagesSection = document.querySelector('.other-images-in-series-section');
+        if (otherImagesSection) otherImagesSection.style.display = 'none'; // Ẩn luôn phần ảnh khác
         return;
     }
 
     let currentImage = null;
     let currentSeriesKey = null;
-    let imagesInSeries = [];
-    let currentImageIndex = -1;
+    let allImagesInCurrentSeries = []; // Sử dụng tên này nhất quán
+    let currentImageIndexInSeries = -1;  // Sử dụng tên này nhất quán
 
     // Tìm ảnh và series tương ứng
     for (const seriesKey in animeImageData) {
         const series = animeImageData[seriesKey];
-        const foundImage = series.images.find(img => img.id === imageId);
-        if (foundImage) {
-            currentImage = {
-                ...foundImage, // Sao chép tất cả thuộc tính của ảnh
-                seriesName: series.displayName,
-                seriesKey: seriesKey,
-                // Xây dựng fullUrl một lần nữa (đảm bảo tính nhất quán)
-                fullUrl: (foundImage.isExternalOverride || (series.isExternal && !foundImage.hasOwnProperty('isExternalOverride'))) ?
-                    foundImage.url :
-                    (series.folder || '') + foundImage.fileName
-            };
+        // Lấy tất cả ảnh trong series này và xây dựng fullUrl
+        const tempImagesInSeries = series.images.map(img => ({
+            ...img,
+            fullUrl: (img.isExternalOverride || (series.isExternal && !img.hasOwnProperty('isExternalOverride'))) ?
+                     img.url :
+                     (series.folder || '') + img.fileName
+        }));
+
+        const foundImageIndex = tempImagesInSeries.findIndex(img => img.id === imageId);
+
+        if (foundImageIndex !== -1) {
+            currentImage = tempImagesInSeries[foundImageIndex]; // Lấy ảnh đã có fullUrl
             currentSeriesKey = seriesKey;
-            // Lấy tất cả ảnh trong series hiện tại để điều hướng
-            imagesInSeries = series.images.map(img => ({
-                ...img,
-                fullUrl: (img.isExternalOverride || (series.isExternal && !img.hasOwnProperty('isExternalOverride'))) ?
-                    img.url :
-                    (series.folder || '') + img.fileName
-            }));
-            currentImageIndex = imagesInSeries.findIndex(img => img.id === imageId);
+            allImagesInCurrentSeries = tempImagesInSeries; // Gán danh sách ảnh của series
+            currentImageIndexInSeries = foundImageIndex;   // Gán index
+            // Thêm seriesName vào currentImage nếu chưa có (do map ở trên)
+            currentImage.seriesName = series.displayName;
+            currentImage.seriesKey = seriesKey;
             break;
         }
     }
-
 
     if (currentImage) {
         document.title = `${currentImage.title} - ${currentImage.seriesName} - ANIME.TV`;
@@ -71,13 +70,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (imageTagsElement) {
             if (currentImage.tags && currentImage.tags.length > 0) {
-                imageTagsElement.innerHTML = ''; // Xóa nội dung cũ
+                imageTagsElement.innerHTML = '';
                 currentImage.tags.forEach(tag => {
                     const tagElement = document.createElement('span');
                     tagElement.className = 'tag';
                     tagElement.textContent = tag;
-                    // (Tùy chọn) Thêm link cho tag để lọc trên trang gallery
-                    // tagElement.onclick = () => window.location.href = `image-gallery.html?search=${encodeURIComponent(tag)}`;
                     imageTagsElement.appendChild(tagElement);
                 });
             } else {
@@ -85,54 +82,48 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        // Nút tải về
         if (downloadButton) {
             downloadButton.href = currentImage.fullUrl;
-            // Đặt tên file tải về (nếu là ảnh cục bộ và có fileName)
-            // Trình duyệt có thể không luôn tuân theo thuộc tính download cho link cross-origin
-            downloadButton.download = currentImage.fileName || currentImage.title.replace(/[^a-z0-9_.-]/gi, '_') + (currentImage.fullUrl.includes('.png') ? '.png' : '.jpg');
+            downloadButton.download = currentImage.fileName || currentImage.title.replace(/[^a-z0-9_.-]/gi, '_') + (currentImage.fullUrl.includes('.png') ? '.png' : (currentImage.fullUrl.includes('.webp') ? '.webp' : '.jpg'));
         }
 
-        // Nút sao chép URL
-        // if (copyUrlButton) {
-        //     copyUrlButton.addEventListener('click', () => {
-        //         navigator.clipboard.writeText(currentImage.fullUrl)
-        //             .then(() => {
-        //                 alert('Đã sao chép URL ảnh!');
-        //             })
-        //             .catch(err => {
-        //                 console.error('Không thể sao chép URL: ', err);
-        //                 alert('Lỗi: Không thể sao chép URL.');
-        //             });
-        //     });
-        // }
+        // Nút sao chép URL (bỏ bình luận và đảm bảo copyUrlButton được lấy ở trên)
+        if (copyUrlButton) {
+            copyUrlButton.addEventListener('click', () => {
+                navigator.clipboard.writeText(currentImage.fullUrl)
+                    .then(() => {
+                        alert('Đã sao chép URL ảnh!');
+                    })
+                    .catch(err => {
+                        console.error('Không thể sao chép URL: ', err);
+                        alert('Lỗi: Không thể sao chép URL.');
+                    });
+            });
+        }
 
-        // Cập nhật tên series cho phần "Ảnh khác"
         if (otherImagesSeriesNameElement) {
             otherImagesSeriesNameElement.textContent = currentImage.seriesName;
         }
 
         // HIỂN THỊ CÁC ẢNH KHÁC TRONG CÙNG SERIES
+        const otherImagesSection = document.querySelector('.other-images-in-series-section'); // Lấy section để ẩn/hiện
         if (otherImagesGalleryElement && allImagesInCurrentSeries.length > 1) {
-            otherImagesGalleryElement.innerHTML = ''; // Xóa nội dung cũ
+            otherImagesGalleryElement.innerHTML = '';
 
-            // Lọc ra các ảnh khác (không phải ảnh đang xem)
             const otherImages = allImagesInCurrentSeries.filter(img => img.id !== currentImage.id);
-
-            // Giới hạn số lượng ảnh khác hiển thị (ví dụ: 6 ảnh)
-            const displayLimit = 6;
+            const displayLimit = 20; // Giới hạn số ảnh hiển thị
             const imagesToShow = otherImages.slice(0, displayLimit);
 
-
             if (imagesToShow.length > 0) {
+                if(otherImagesSection) otherImagesSection.style.display = 'block'; // Hiện section
                 imagesToShow.forEach(imgData => {
-                    const imageItemLink = document.createElement('a'); // Mỗi ảnh là một link
+                    const imageItemLink = document.createElement('a');
                     imageItemLink.href = `image-detail.html?id=${imgData.id}`;
-                    imageItemLink.classList.add('image-item'); // Tái sử dụng class từ image-gallery.html
+                    imageItemLink.classList.add('image-item');
                     imageItemLink.title = imgData.title;
 
                     const imgElement = document.createElement('img');
-                    imgElement.src = imgData.fullUrl;
+                    imgElement.src = imgData.fullUrl; // Đã có fullUrl từ allImagesInCurrentSeries
                     imgElement.alt = imgData.title;
                     imgElement.loading = 'lazy';
 
@@ -140,52 +131,45 @@ document.addEventListener('DOMContentLoaded', () => {
                     otherImagesGalleryElement.appendChild(imageItemLink);
                 });
             } else {
-                 // Ẩn section nếu không có ảnh nào khác (hoặc chỉ có 1 ảnh trong series)
-                if (document.querySelector('.other-images-in-series-section')) {
-                    document.querySelector('.other-images-in-series-section').style.display = 'none';
-                }
+                if(otherImagesSection) otherImagesSection.style.display = 'none';
             }
         } else {
-            // Ẩn section nếu không có gallery element hoặc series chỉ có 1 ảnh
-             if (document.querySelector('.other-images-in-series-section')) {
-                document.querySelector('.other-images-in-series-section').style.display = 'none';
-            }
+             if(otherImagesSection) otherImagesSection.style.display = 'none';
         }
 
-        
-        // Cập nhật link quay lại bộ sưu tập (có thể thêm filter series nếu muốn)
         if (backToGalleryLink && currentSeriesKey) {
             backToGalleryLink.href = `image-gallery.html?series=${currentSeriesKey}`;
         }
 
-
-        // Logic nút Previous/Next Image
+        // Logic nút Previous/Next Image (ĐÃ SỬA TÊN BIẾN)
         function updateNavButtons() {
             if (prevImageButton) {
-                prevImageButton.style.display = currentImageIndex > 0 ? 'block' : 'none';
-                if (currentImageIndex > 0) {
+                prevImageButton.style.display = currentImageIndexInSeries > 0 ? 'block' : 'none';
+                if (currentImageIndexInSeries > 0) {
                     prevImageButton.onclick = () => {
-                        window.location.href = `image-detail.html?id=${imagesInSeries[currentImageIndex - 1].id}`;
+                        window.location.href = `image-detail.html?id=${allImagesInCurrentSeries[currentImageIndexInSeries - 1].id}`;
                     };
                 }
             }
             if (nextImageButton) {
-                nextImageButton.style.display = currentImageIndex < imagesInSeries.length - 1 ? 'block' : 'none';
-                if (currentImageIndex < imagesInSeries.length - 1) {
+                nextImageButton.style.display = currentImageIndexInSeries < allImagesInCurrentSeries.length - 1 ? 'block' : 'none';
+                if (currentImageIndexInSeries < allImagesInCurrentSeries.length - 1) {
                     nextImageButton.onclick = () => {
-                        window.location.href = `image-detail.html?id=${imagesInSeries[currentImageIndex + 1].id}`;
+                        window.location.href = `image-detail.html?id=${allImagesInCurrentSeries[currentImageIndexInSeries + 1].id}`;
                     };
                 }
             }
         }
         updateNavButtons();
 
-
     } else {
         if (imageTitleElement) imageTitleElement.textContent = "Không tìm thấy ảnh";
         if (detailedImageElement) detailedImageElement.alt = "Ảnh không tồn tại";
-        if (document.querySelector('.image-detail-container')) {
-            document.querySelector('.image-detail-container').innerHTML = '<p class="placeholder-text">Rất tiếc, hình ảnh bạn tìm kiếm không tồn tại.</p>';
+        const detailContainer = document.querySelector('.image-detail-container');
+        if (detailContainer) {
+            detailContainer.innerHTML = '<p class="placeholder-text">Rất tiếc, hình ảnh bạn tìm kiếm không tồn tại.</p>';
         }
+        const otherImagesSection = document.querySelector('.other-images-in-series-section');
+        if (otherImagesSection) otherImagesSection.style.display = 'none';
     }
 });

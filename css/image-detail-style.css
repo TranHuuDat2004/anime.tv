@@ -170,16 +170,15 @@
     font-size: 1.6em;
     margin-bottom: 20px;
     color: var(--text-color);
-    /* border-left: 4px solid var(--primary-color);
-    padding-left: 10px; */
+    border-left: 4px solid var(--primary-color);
+    padding-left: 10px;
     /* Có thể bỏ border này nếu muốn khác với trang detail */
 }
 
 #other-images-gallery.view-small {
-    /* CSS cho .image-gallery.view-small đã có trong image-gallery-style.css */
-    /* Nếu bạn muốn nó nhỏ hơn nữa hoặc khác đi, có thể override ở đây */
-    /* Ví dụ: */
-    /* grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); */
+    display: grid;
+    /* Sử dụng grid để hiển thị các ảnh thumbnail */
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 10px;
 }
 
