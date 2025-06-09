@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="vi"> <!-- Mặc định tiếng Việt, JS sẽ cập nhật -->
+
+<head>
+    <title data-translate="docTitle">Game Xếp Hình - ANIME.TV</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS của ANIME.TV -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- CSS riêng cho trang game (nếu cần) -->
+    <link rel="stylesheet" href="css/game-style.css">
+    <!-- Google Fonts (nếu bạn dùng chung font) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="icon" href="images/favicon.png" type="image/x-icon"> <!-- Đường dẫn favicon -->
+</head>
+
+<body>
+    <!-- Navbar (Giống các trang khác của ANIME.TV) -->
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <a href="index.html" class="navbar-logo"><img src="images/logo.png" alt="ANIME.TV Logo" height="50"></a>
+                <ul class="navbar-nav">
+                    <li><a href="index.html" data-translate-nav="home">Trang Chủ</a></li>
+                    <li><a href="image-gallery.html" data-translate-nav="imageGallery">Ảnh Anime</a></li>
+                    <li><a href="gif-collection.html" data-translate-nav="gifCollection">GIF Collection</a></li>
+                    <li><a href="game.html" class="active" data-translate-nav="puzzleGame">Game Xếp Hình</a></li>
+                </ul>
+                <div class="navbar-actions">
+                    <button class="search-icon" title="Tìm kiếm" style="visibility: hidden;"> <!-- Thêm title -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
+                    </button>
+                    <a href="#" class="login-button" data-translate-nav="login" style="visibility: hidden;">Đăng
+                        Nhập</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Language Switcher (Có thể đặt ở vị trí khác nếu muốn) -->
+    <div class="lang-switcher-container" style="top: 15px; right: 15px; z-index: 1050;">
+        <div class="lang-switcher btn-group" role="group">
+            <button type="button" class="btn btn-sm btn-outline-secondary lang-btn" data-lang="vi">VI</button>
+            <button type="button" class="btn btn-sm btn-outline-secondary lang-btn" data-lang="en">EN</button>
+        </div>
+    </div>
+
+    <main id="game-page" class="container"> <!-- Thêm class container để giới hạn chiều rộng -->
+        <div class="game-title-area text-center my-4"> <!-- Căn giữa và thêm margin -->
+            <h1 class="page-title" data-translate="gameTitle">Game Xếp Hình</h1>
+            <p class="text-secondary" data-translate="gameSubtitle">Click vào ảnh để xoay. Kéo thả ảnh vào đúng vị trí.
+            </p>
+            <button class="btn btn-outline-primary mt-2" id="insBtn" data-translate="howToPlayButton">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-question-circle" viewBox="0 0 16 16" style="margin-right: 5px;">
+                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                    <path
+                        d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.11.248-.247V5.324c0-.137-.11-.247-.248-.247H5.5A.237.237 0 0 0 5.255 5.324zM8 4.466c.753 0 1.342.404 1.476.965H8.974c-.11-.246-.346-.466-.657-.466-.426 0-.758.305-.758.748 0 .243.127.41.386.546.27.146.627.334.968.498.408.198.785.415.975.745.069.121.105.26.105.413 0 .396-.252.696-.696.696-.334 0-.63-.163-.793-.403H6.037c.121.363.465.666.993.666.666 0 1.196-.403 1.196-1.076 0-.408-.287-.666-.53-.793a.97.97 0 0 0-.577-.17A1.99 1.99 0 0 1 7.2 7.08V6.75c0-.28.208-.514.502-.614.24-.082.496-.12.708-.12.183 0 .358.026.47.065.153.05.225.13.225.27G0 0h24v24H0z" />
+                </svg>
+                Hướng dẫn
+            </button>
+        </div>
+
+        <!-- Sidebar Hướng dẫn (Giữ nguyên cấu trúc, CSS sẽ điều chỉnh) -->
+        <div id="insSidebar" class="game-ins-sidebar"> <!-- Thêm class riêng -->
+            <div class="ins-header">
+                <p><strong data-translate="sidebarTitle">Bí Kíp Xếp Hình</strong></p>
+                <span id="closeSidebar" class="close-btn">x</span>
+            </div>
+            <div class="ins-content" data-translate="sidebarContentHTML">
+                <!-- Nội dung hướng dẫn giữ nguyên -->
+            </div>
+        </div>
+
+        <div class="game-mode-selection">
+            <strong><span data-translate="modeTitle">Chế độ chơi:</span></strong>
+            <input type="radio" id="mode-classic" name="gameMode" value="classic" checked>
+            <label for="mode-classic" data-translate="modeClassic">Cổ điển</label>
+
+            <input type="radio" id="mode-countdown" name="gameMode" value="countdown">
+            <label for="mode-countdown" data-translate="modeCountdown">Đếm ngược</label>
+
+            <div id="countdown-duration-group" style="display: none;">
+                <label for="countdown-seconds" data-translate="modeSeconds">Giây:</label>
+                <input type="range" id="countdown-seconds" class="custom-range" value="30" min="20" max="60" step="5">
+                <span id="countdown-value">30</span> <span class="seconds-unit-text"
+                    data-translate="secondsUnit">s</span>
+            </div>
+        </div>
+
+        <div class="game-layout-container">
+            <div class="reference-section">
+                <h5 data-translate="refTitle">Ảnh Gốc</h5>
+                <img src="AnhXepHinh/paimon/Genshin_Impact.jpg" alt="Ảnh gốc tham khảo" class="reference-image"
+                    data-translate="refAlt">
+            </div>
+
+            <div class="main-game-section">
+                <div id="timer-display" data-translate-dynamic="timerLabelPrefix">Thời gian: 00:00</div>
+                <div id="game-table">
+                    <!-- 9 ô mục tiêu -->
+                    <div class="image-cell target-cell" id="cell-0" ondragover="allowDrop(event, this)"
+                        ondrop="receiveData(event)" ondragleave="dragLeave(event, this)"></div>
+                    <!-- ... (8 ô còn lại) ... -->
+                    <div class="image-cell target-cell" id="cell-1" ondragover="allowDrop(event, this)"
+                        ondrop="receiveData(event)" ondragleave="dragLeave(event, this)"></div>
+                    <div class="image-cell target-cell" id="cell-2" ondragover="allowDrop(event, this)"
+                        ondrop="receiveData(event)" ondragleave="dragLeave(event, this)"></div>
+                    <div class="image-cell target-cell" id="cell-3" ondragover="allowDrop(event, this)"
+                        ondrop="receiveData(event)" ondragleave="dragLeave(event, this)"></div>
+                    <div class="image-cell target-cell" id="cell-4" ondragover="allowDrop(event, this)"
+                        ondrop="receiveData(event)" ondragleave="dragLeave(event, this)"></div>
+                    <div class="image-cell target-cell" id="cell-5" ondragover="allowDrop(event, this)"
+                        ondrop="receiveData(event)" ondragleave="dragLeave(event, this)"></div>
+                    <div class="image-cell target-cell" id="cell-6" ondragover="allowDrop(event, this)"
+                        ondrop="receiveData(event)" ondragleave="dragLeave(event, this)"></div>
+                    <div class="image-cell target-cell" id="cell-7" ondragover="allowDrop(event, this)"
+                        ondrop="receiveData(event)" ondragleave="dragLeave(event, this)"></div>
+                    <div class="image-cell target-cell" id="cell-8" ondragover="allowDrop(event, this)"
+                        ondrop="receiveData(event)" ondragleave="dragLeave(event, this)"></div>
+                </div>
+            </div>
+
+            <div id="image-list-container" class="source-pieces-section">
+                <h5 data-translate="piecesTitle">Các Mảnh Ghép</h5>
+                <div id="image-list">
+                    <!-- Các mảnh ghép sẽ được load bởi JS, hoặc giữ Paimon làm mặc định -->
+                    <div class="image-cell source-cell"><img src="AnhXepHinh/paimon/anh-1.jpg" id="paimon-image01"
+                            data-correct-cell="cell-0" draggable="true" /></div>
+                    <!-- ... (8 mảnh Paimon còn lại) ... -->
+                    <div class="image-cell source-cell"><img src="AnhXepHinh/paimon/anh-2.jpg" id="paimon-image02"
+                            data-correct-cell="cell-1" draggable="true" /></div>
+                    <div class="image-cell source-cell"><img src="AnhXepHinh/paimon/anh-3.jpg" id="paimon-image03"
+                            data-correct-cell="cell-2" draggable="true" /></div>
+                    <div class="image-cell source-cell"><img src="AnhXepHinh/paimon/anh-4.jpg" id="paimon-image04"
+                            data-correct-cell="cell-3" draggable="true" /></div>
+                    <div class="image-cell source-cell"><img src="AnhXepHinh/paimon/anh-5.jpg" id="paimon-image05"
+                            data-correct-cell="cell-4" draggable="true" /></div>
+                    <div class="image-cell source-cell"><img src="AnhXepHinh/paimon/anh-6.jpg" id="paimon-image06"
+                            data-correct-cell="cell-5" draggable="true" /></div>
+                    <div class="image-cell source-cell"><img src="AnhXepHinh/paimon/anh-7.jpg" id="paimon-image07"
+                            data-correct-cell="cell-6" draggable="true" /></div>
+                    <div class="image-cell source-cell"><img src="AnhXepHinh/paimon/anh-8.jpg" id="paimon-image08"
+                            data-correct-cell="cell-7" draggable="true" /></div>
+                    <div class="image-cell source-cell"><img src="AnhXepHinh/paimon/anh-9.jpg" id="paimon-image09"
+                            data-correct-cell="cell-8" draggable="true" /></div>
+                </div>
+            </div>
+        </div><!-- End .game-layout-container -->
+
+        <div id="puzzle-selection" class="mt-5"> <!-- Thêm margin top -->
+            <h3 class="section-title" data-translate="selectPuzzleTitle">Chọn Ảnh Khác</h3>
+            <div id="selection-list" class="puzzle-selection-grid">
+                <!-- Danh sách các bộ hình sẽ được load bởi JS -->
+            </div>
+        </div>
+
+        <!-- Modal thông báo chiến thắng -->
+        <div class="modal fade" id="winModal" tabindex="-1" role="dialog" aria-labelledby="winModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="winModalLabel" data-translate="winModalTitle">🎉 Chúc Mừng! 🎉</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">×</span></button>
+                    </div>
+                    <div class="modal-body" data-translate="winModalBodyHTML">
+                        Bạn đã hoàn thành bức tranh! <br>
+                        Thời gian của bạn là: <strong id="final-time"></strong>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                            data-translate="winModalClose">Đóng</button>
+                        <button type="button" class="btn btn-primary" onclick="location.reload()"
+                            data-translate="winModalPlayAgain">Chơi Lại</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== MODAL THÔNG BÁO THUA CUỘC ===== -->
+        <div class="modal fade" id="loseModal" tabindex="-1" role="dialog" aria-labelledby="loseModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header bg-danger text-white">
+                        <h5 class="modal-title" id="loseModalLabel" data-translate="loseModalTitle"> Rất Tiếc! Đã Hết
+                            Giờ</h5>
+                        <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">×</span></button>
+                    </div>
+                    <div class="modal-body" data-translate="loseModalBodyHTML">
+                        Bạn đã không hoàn thành bức tranh trong thời gian quy định. <br>
+                        Hãy cố gắng hơn ở lần chơi sau nhé!
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                            data-translate="loseModalClose">Đóng</button>
+                        <button type="button" class="btn btn-primary" onclick="resetGame()"
+                            data-translate="loseModalPlayAgain">Chơi Lại</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ==================================== -->
+    </main>
+
+    <!-- Footer (Giống các trang khác của ANIME.TV) -->
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="#" data-translate-footer="about">Về chúng tôi</a>
+                <a href="#" data-translate-footer="help">Trợ giúp/FAQ</a>
+                <a href="#" data-translate-footer="terms">Điều khoản sử dụng</a>
+                <a href="#" data-translate-footer="privacy">Chính sách riêng tư</a>
+            </div>
+            <p data-translate-footer="copyright">© <span id="currentYear"></span> ANIME.TV. Dựa trên ý tưởng từ
+                Crunchyroll.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS và jQuery (Cần cho Modal) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- Script đa ngôn ngữ và game -->
+    <script src="js/lang-game.js"></script> <!-- File i18n riêng cho game nếu cần -->
+    <script src="js/puzzlesData.js"></script>
+    <script src="js/game.js"></script>
+</body>
+
+</html>

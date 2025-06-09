@@ -1,0 +1,518 @@
+/* css/game-style.css */
+
+/* Kế thừa các biến màu từ style.css chính của ANIME.TV nếu có */
+
+:root {
+    --primary-color: #f47521;
+    --background-color: #23252b;
+    --card-background-color: #2d3038;
+    --text-color: #ffffff;
+    --text-secondary-color: #adb0b5;
+    --border-color: #4a4d57;
+} 
+
+body {
+    background-color: var(--background-color); /* Nền tối giống ANIME.TV */
+    color: var(--text-color);
+    font-family: 'Lato', sans-serif; /* Font chung */
+}
+
+#game-page.container {
+    padding-top: 20px;
+    padding-bottom: 40px;
+}
+
+/* Tiêu đề trang game */
+.game-title-area {
+    text-align: center; /* Đã thêm vào HTML */
+    margin-bottom: 30px; 
+}
+.page-title { /* Style chung cho tiêu đề trang, có thể đã có trong style.css */
+    font-size: 2.2em;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+.game-title-area .text-secondary { /* Mô tả phụ */
+    color: var(--text-secondary-color) !important;
+}
+.game-title-area .btn-outline-primary { /* Nút hướng dẫn */
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+.game-title-area .btn-outline-primary:hover {
+    background-color: var(--primary-color);
+    color: var(--text-color);
+}
+
+/* Sidebar hướng dẫn */
+.game-ins-sidebar {
+    background-color: var(--card-background-color); /* Nền tối hơn */
+    color: var(--text-secondary-color);
+    border-left: 1px solid var(--border-color);
+    /* Các thuộc tính khác của .ins-sidebar giữ nguyên từ code mẫu của bạn */
+    height: 100%; width: 0; position: fixed; top: 0; right: 0;
+    overflow-x: hidden;
+    transition: 0.5s; padding-top: 0; /* Bỏ padding-top mặc định */
+    box-shadow: -2px 0px 10px rgba(0,0,0,0.3); z-index: 1040; /* Đảm bảo z-index phù hợp */
+}
+.game-ins-sidebar.open {
+    width: 320px; /* Hoặc kích thước bạn muốn */
+}
+.game-ins-sidebar .ins-header {
+    background-color: var(--navbar-background, #1a1a1d); /* Nền header sidebar */
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border-color);
+}
+.game-ins-sidebar .ins-header p strong {
+    font-size: 1.2em;
+    color: var(--primary-color);
+    margin: 0;
+}
+.game-ins-sidebar .close-btn {
+    font-size: 1.8em;
+    color: var(--text-secondary-color);
+    cursor: pointer;
+    line-height: 1;
+}
+.game-ins-sidebar .close-btn:hover {
+    color: var(--text-color);
+}
+.game-ins-sidebar .ins-content {
+    padding: 20px;
+    max-height: calc(100vh - 70px); /* Điều chỉnh dựa trên header sidebar */
+    overflow-y: auto;
+}
+.game-ins-sidebar .ins-content p {
+    margin-bottom: 0.8rem;
+    line-height: 1.6;
+}
+.game-ins-sidebar .ins-content strong {
+    color: var(--text-color);
+}
+
+/* Lựa chọn chế độ chơi */
+.game-mode-selection {
+    background-color: var(--card-background-color);
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+.game-mode-selection strong {
+    margin-right: 15px;
+    color: var(--text-color);
+}
+.game-mode-selection label {
+    margin-right: 15px;
+    margin-left: 5px;
+    cursor: pointer;
+    color: var(--text-secondary-color);
+}
+.game-mode-selection input[type="radio"] {
+    cursor: pointer;
+    margin-right: 3px;
+    vertical-align: middle;
+}
+.game-mode-selection input[type="radio"]:checked + label {
+    color: var(--primary-color);
+    font-weight: bold;
+}
+#countdown-duration-group {
+    display: inline-flex;
+    align-items: center;
+    margin-left: 10px;
+    vertical-align: middle;
+}
+#countdown-duration-group label {
+    font-size: 0.9em;
+    margin-bottom: 0;
+}
+#countdown-seconds.custom-range { /* Cần style cho custom-range để giống theme */
+    width: auto;
+    max-width: 150px;
+    vertical-align: middle;
+    margin: 0 5px;
+    cursor: pointer;
+    /* Thêm style cho range input nếu cần */
+}
+#countdown-value {
+    font-weight: bold;
+    min-width: 25px; /* Tăng chút */
+    display: inline-block;
+    text-align: right;
+    color: var(--primary-color);
+}
+.seconds-unit-text {
+    font-size: 0.9em;
+    color: var(--text-secondary-color);
+}
+
+
+/* Layout chính của game */
+.game-layout-container {
+    display: flex; /* Kích hoạt Flexbox */
+    flex-wrap: wrap; /* Cho phép các section xuống dòng nếu không đủ chỗ */
+    gap: 20px; /* Khoảng cách giữa các section */
+    justify-content: center; /* Căn giữa các item nếu có không gian thừa */
+    margin-bottom: 30px; /* Khoảng cách với phần chọn ảnh khác */
+}
+
+/* Section chứa Ảnh Gốc và Bảng Xếp Hình (Hai cột chính) */
+.game-core-area { /* Thêm một div wrapper nếu cần, hoặc áp dụng flex cho game-layout-container */
+    display: flex;
+    flex-wrap: wrap; /* Cho phép xuống dòng trên màn hình nhỏ */
+    gap: 20px;
+    width: 100%; /* Chiếm toàn bộ chiều rộng để các con bên trong có thể chia cột */
+    justify-content: center; /* Căn giữa 2 cột chính nếu chúng không chiếm hết */
+}
+
+.reference-section {
+    background-color: var(--card-background-color);
+    padding: 15px;
+    border-radius: 8px;
+    /* flex-basis: 40%; /* Cột trái chiếm khoảng 40% */
+    flex: 1 1 300px; /* Co giãn, cơ sở 300px, có thể co lại nếu cần */
+    min-width: 250px; /* Chiều rộng tối thiểu */
+    text-align: center; /* Căn giữa nội dung bên trong */
+}
+
+.main-game-section {
+    background-color: var(--card-background-color);
+    padding: 15px;
+    border-radius: 8px;
+    /* flex-basis: 55%; /* Cột phải chiếm khoảng 55% */
+    flex: 1 1 350px; /* Co giãn, cơ sở 350px */
+    min-width: 320px; /* Chiều rộng tối thiểu */
+    display: flex;
+    flex-direction: column; /* Sắp xếp timer và game-table theo chiều dọc */
+    align-items: center; /* Căn giữa timer và game-table */
+}
+
+/* Section chứa Các Mảnh Ghép */
+.source-pieces-section {
+    background-color: var(--card-background-color);
+    padding: 15px;
+    border-radius: 8px;
+    width: 30%; /* Chiếm toàn bộ chiều rộng của .game-layout-container */
+    max-width: 700px; /* Giới hạn chiều rộng tối đa cho dễ nhìn */
+    margin-left: auto; /* Căn giữa nếu .game-layout-container rộng hơn */
+    margin-right: auto;
+}
+
+#image-list-container {
+    /* Không cần style đặc biệt ở đây nữa */
+}
+#image-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)); /* Responsive cho các mảnh ghép */
+    gap: 10px;
+    justify-content: center; /* Căn giữa các mảnh nếu không đủ 1 hàng */
+}
+#image-list .image-cell {
+    border-style: solid;
+    border-color: var(--border-color);
+    padding: 3px;
+    aspect-ratio: 1 / 1; /* Giữ các ô mảnh ghép vuông */
+}
+
+
+/* Phần chọn bộ hình khác */
+#puzzle-selection {
+    width: 100%;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+    background-color: var(--card-background-color);
+    border-radius: 8px;
+}
+.puzzle-selection-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 15px;
+}
+.puzzle-selection-grid .puzzle-option {
+    background-color: var(--background-color);
+    border: 2px solid var(--border-color); /* Tăng độ dày border gốc một chút để dễ thấy hơn */
+    border-radius: 6px;
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s; /* Thêm transition cho border-color */
+    position: relative; /* Để có thể thêm pseudo-element nếu cần */
+}
+.puzzle-selection-grid .puzzle-option:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+    border-color: var(--primary-color); /* Khi hover cũng đổi màu viền */
+}
+.puzzle-selection-grid .puzzle-option img {
+    width: 100%;
+    max-height: 120px;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    display: block; /* Để không có khoảng trống thừa */
+}
+.puzzle-selection-grid .puzzle-option p {
+    margin: 0;
+    font-weight: 500;
+    color: var(--text-color);
+    font-size: 0.9em;
+}
+
+/* === PHẦN CSS MỚI ĐỂ HIGHLIGHT PUZZLE ĐANG CHỌN === */
+.puzzle-selection-grid .puzzle-option.active-puzzle {
+    border-color: var(--primary-color); /* Viền cam cho ảnh đang chọn */
+    box-shadow: 0 0 10px rgba(var(--primary-color-rgb), 0.5); /* Đổ bóng màu cam nhẹ, giả sử bạn có biến --primary-color-rgb */
+    /* Hoặc dùng: box-shadow: 0 0 10px var(--primary-color); */
+    transform: translateY(-2px); /* Hiệu ứng nổi nhẹ */
+}
+/* (Tùy chọn) Thêm một dấu tick hoặc biểu tượng nhỏ cho item đang active */
+.puzzle-selection-grid .puzzle-option.active-puzzle::after {
+    content: '✔';
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8em;
+    font-weight: bold;
+}
+
+
+.reference-image {
+    max-width: 100%;
+    height: auto;
+    max-height: 300px; /* Giới hạn chiều cao ảnh gốc */
+    object-fit: contain; /* Hiển thị toàn bộ ảnh */
+    border-radius: 4px;
+    border: 1px solid var(--border-color);
+    margin: 0 auto; /* Căn giữa ảnh gốc */
+}
+
+#timer-display { /* Style riêng cho timer */
+    font-size: 1.5em;
+    font-weight: bold;
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 15px;
+    padding: 10px;
+    background-color: rgba(0,0,0,0.2);
+    border-radius: 5px;
+    width: auto; /* Để vừa với nội dung */
+    min-width: 180px; /* Chiều rộng tối thiểu */
+}
+
+#game-table {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 5px;
+    /* Đặt kích thước dựa trên container cha hoặc viewport */
+    width: clamp(270px, 80vmin, 360px); /* Responsive width */
+    height: clamp(270px, 80vmin, 360px);/* Responsive height, giữ vuông */
+    border: 2px solid var(--border-color);
+    background-color: rgba(0,0,0,0.1);
+    /* margin: 0 auto; /* Đã được căn giữa bởi .main-game-section */
+    padding: 5px;
+    border-radius: 4px;
+}
+
+#game-table.game-lost { /* Style khi thua */
+    border: 3px solid #dc3545; /* Bootstrap danger color */
+    box-shadow: 0 0 15px #dc3545;
+}
+#game-table.game-lost .image-cell {
+    border-color: #dc3545;
+    opacity: 0.7;
+}
+#game-table.game-lost img {
+    cursor: not-allowed !important;
+}
+
+
+.image-cell {
+    width: 100%;
+    height: 100%;
+    border: 1px dashed var(--text-secondary-color); /* Đường viền cho ô */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255,255,255,0.05); /* Nền mờ cho ô */
+    overflow: hidden; /* Để ảnh không tràn ra ngoài nếu lớn hơn ô */
+    border-radius: 3px;
+}
+.image-cell.drag-over { /* Khi kéo mảnh ghép qua ô đích */
+    background-color: rgba(var(--primary-color-rgb), 0.3); /* Màu highlight, giả sử có --primary-color-rgb */
+    border-style: solid;
+    border-color: var(--primary-color);
+}
+.image-cell img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover; /* Hoặc contain tùy bạn muốn */
+    cursor: grab;
+    user-select: none; /* Ngăn chọn text khi kéo */
+    border-radius: 2px;
+}
+.image-cell img:active {
+    cursor: grabbing;
+}
+
+#image-list-container {
+    background-color: var(--card-background-color);
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px; /* Khoảng cách với các phần khác */
+}
+#image-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 cột cho các mảnh ghép */
+    gap: 10px;
+}
+#image-list .image-cell { /* Style cho các mảnh ghép nguồn */
+    border-style: solid;
+    border-color: var(--border-color);
+    padding: 3px; /* Để có khoảng cách nhẹ giữa ảnh và viền */
+}
+
+
+/* Phần chọn bộ hình khác */
+#puzzle-selection {
+    /* margin-top: 40px; */ /* Đã thêm vào HTML */
+    padding: 20px;
+    background-color: var(--card-background-color);
+    border-radius: 8px;
+}
+.puzzle-selection-grid { /* Sử dụng lại style của image-gallery */
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Responsive */
+    gap: 15px;
+}
+.puzzle-selection-grid .puzzle-option {
+    background-color: var(--background-color); /* Nền hơi khác */
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.puzzle-selection-grid .puzzle-option:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+    border-color: var(--primary-color);
+}
+.puzzle-selection-grid .puzzle-option img {
+    width: 100%;
+    max-height: 120px; /* Giới hạn chiều cao ảnh thumbnail */
+    object-fit: cover;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+.puzzle-selection-grid .puzzle-option p {
+    margin: 0;
+    font-weight: 500;
+    color: var(--text-color);
+    font-size: 0.9em;
+}
+
+/* Modal (Bootstrap đã có style, bạn có thể tùy chỉnh thêm nếu muốn) */
+.modal-content {
+    background-color: var(--card-background-color);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+}
+.modal-header {
+    border-bottom: 1px solid var(--border-color);
+}
+.modal-header .close {
+    color: var(--text-color);
+    opacity: 0.8;
+}
+.modal-header .close:hover {
+    opacity: 1;
+}
+.modal-title {
+    color: var(--primary-color);
+}
+.modal-footer {
+    border-top: 1px solid var(--border-color);
+}
+.modal-footer .btn-secondary { /* Nút Đóng */
+    background-color: #5a6268;
+    border-color: #545b62;
+}
+.modal-footer .btn-secondary:hover {
+    background-color: #4e555b;
+    border-color: #484e53;
+}
+
+
+/* Language switcher (Giữ nguyên hoặc điều chỉnh) */
+.lang-switcher-container {
+    position: fixed;
+    top: 15px; /* Điều chỉnh lại cho phù hợp với navbar mới */
+    right: 15px;
+    z-index: 1050; /* Cao hơn navbar */
+}
+.lang-switcher .btn {
+    margin: 0 2px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    min-width: 40px;
+    padding: 0.2rem 0.4rem;
+    font-size: 0.75rem;
+    background-color: rgba(var(--card-background-color-rgb), 0.8); /* Nền mờ, giả sử có --card-background-color-rgb */
+    border: 1px solid rgba(var(--border-color-rgb), 0.5); /* Giả sử có --border-color-rgb */
+    color: var(--text-secondary-color);
+}
+.lang-switcher .btn.active {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: var(--text-color);
+    font-weight: bold;
+}
+.lang-switcher .btn:not(.active):hover {
+    background-color: rgba(var(--card-background-color-rgb), 1);
+    color: var(--text-color);
+}
+
+/* Responsive cho game layout */
+@media (max-width: 992px) {
+    .game-layout-container {
+        flex-direction: column;
+        align-items: center; /* Căn giữa các cột khi stack */
+    }
+    .reference-section, .main-game-section, .source-pieces-section {
+        width: 100%;
+        max-width: 500px; /* Giới hạn chiều rộng tối đa khi stack */
+    }
+    #game-table {
+        width: 90vw; /* Chiếm % chiều rộng viewport */
+        height: 90vw; /* Giữ vuông */
+        max-width: 400px; /* Giới hạn kích thước bảng tối đa */
+        max-height: 400px;
+    }
+}
+@media (max-width: 576px) {
+    #game-table {
+        width: 270px; /* Kích thước nhỏ hơn cho mobile */
+        height: 270px;
+    }
+     #image-list {
+        grid-template-columns: repeat(3, 1fr); /* Có thể giảm xuống 2 hoặc 3 cột */
+    }
+    .game-title-area h1 { font-size: 1.8em; }
+}
