@@ -74,25 +74,112 @@ img {
     padding: 0 20px;
 }
 
-.navbar {
-    background-color: var(--navbar-background);
-    padding: 15px 0;
-    border-bottom: 1px solid var(--border-color);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+/* Style chung cho Navbar - Áp dụng cho cả Desktop và Mobile (trừ khi bị ghi đè trong media query) */
+header nav.navbar { /* Tăng độ cụ thể bằng cách thêm 'header nav' */
+    background-color: var(--navbar-background) !important;
+    padding: 10px 0 !important; /* Giảm padding để logo không quá to */
+    border-bottom: 1px solid var(--border-color) !important;
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 1000 !important;
 }
 
-.navbar .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+header nav.navbar .container {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    /* max-width và padding của container bạn nên định nghĩa chung ở style.css
+       và ghi đè nếu Bootstrap thay đổi nó, ví dụ:
+       max-width: 1280px !important;
+       padding-left: 15px !important;
+       padding-right: 15px !important;
+    */
 }
 
-.navbar-logo {
-    font-size: 1.8em;
-    font-weight: bold;
-    color: var(--primary-color);
+header nav.navbar .navbar-logo img { /* Style cho ảnh logo */
+    height: 50px !important; /* Điều chỉnh chiều cao logo nếu cần */
+    /* width: auto; */ /* Để giữ tỷ lệ */
+    display: block !important;
+}
+/* Bỏ .navbar-logo { font-size, font-weight, color } nếu bạn chỉ dùng ảnh */
+
+
+header nav.navbar .hamburger {
+    display: none; /* Mặc định ẩn trên desktop */
+    background: none !important;
+    border: none !important;
+    color: var(--text-secondary-color) !important;
+    cursor: pointer !important;
+    padding: 8px !important;
+    z-index: 1001; /* Cao hơn menu một chút để không bị che */
+}
+
+header nav.navbar .hamburger svg {
+    stroke: var(--text-secondary-color) !important;
+    transition: stroke 0.3s ease !important;
+}
+
+header nav.navbar .hamburger:hover svg {
+    stroke: var(--primary-color) !important;
+}
+
+/* Style cho menu trên desktop */
+header nav.navbar .navbar-menu {
+    display: flex !important; /* Đảm bảo hiển thị trên desktop */
+    align-items: center !important;
+    /* Các thuộc tính khác như position, top, left, right, background-color
+       sẽ không cần thiết cho desktop nếu nó là inline menu */
+}
+
+header nav.navbar .navbar-nav {
+    display: flex !important; /* Items nằm ngang */
+    flex-direction: row !important; /* Đảm bảo là row trên desktop */
+    /* width: auto !important; */ /* Để tự co giãn theo nội dung */
+}
+
+header nav.navbar .navbar-nav li {
+    margin-left: 25px !important;
+    margin-bottom: 0 !important; /* Bỏ margin bottom trên desktop */
+}
+
+header nav.navbar .navbar-nav li a {
+    color: white !important; /* Hoặc var(--text-secondary-color) nếu bạn muốn màu xám hơn */
+    font-weight: 500 !important;
+    transition: color 0.3s ease !important;
+    padding: 10px 0px !important; /* Điều chỉnh padding cho link desktop */
+    /* display: inline-block !important; */ /* Mặc định của thẻ a là inline */
+    font-size: 1em !important; /* Reset font-size */
+}
+
+header nav.navbar .navbar-nav li a:hover,
+header nav.navbar .navbar-nav li a.active {
+    color: var(--primary-color) !important;
+}
+
+header nav.navbar .navbar-actions {
+    display: flex !important;
+    align-items: center !important;
+    /* flex-direction: row !important; */ /* Mặc định của flex */
+    /* width: auto !important; */
+    margin-top: 0 !important; /* Reset margin-top */
+}
+
+header nav.navbar .navbar-actions .search-icon {
+    display: block !important; /* Đảm bảo search icon hiện trên desktop */
+    /* Style khác nếu cần */
+}
+
+.login-button {
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    margin: 8px 15px;
+    border-radius: 4px;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+.login-button:hover {
+    background-color: var(--hover-color);
 }
 
 .hamburger {
@@ -113,35 +200,6 @@ img {
     stroke: var(--primary-color);
 }
 
-.navbar-menu {
-    display: flex;
-    align-items: center;
-}
-
-.navbar-nav {
-    display: flex;
-}
-
-.navbar-nav li {
-    margin-left: 25px;
-}
-
-.navbar-nav li a {
-    color: white;
-    font-weight: 500;
-    transition: color 0.3s ease;
-}
-
-.navbar-nav li a:hover,
-.navbar-nav li a.active {
-    color: var(--primary-color);
-}
-
-.navbar-actions {
-    display: flex;
-    align-items: center;
-}
-
 .search-icon {
     background: none;
     border: none;
@@ -160,67 +218,77 @@ img {
     stroke: var(--primary-color);
 }
 
-.login-button {
-    background-color: var(--primary-color);
-    color: var(--text-color);
-    padding: 8px 15px;
-    border-radius: 4px;
-    font-weight: 500;
-    transition: background-color 0.3s ease;
-}
 
-.login-button:hover {
-    background-color: var(--hover-color);
-}
 
 /* --- Hamburger Menu Styles for Mobile --- */
 @media (max-width: 768px) {
     .hamburger {
-        display: block;
+        display: block !important;
     }
 
-    .navbar-menu {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        background-color: var(--navbar-background);
-        flex-direction: column;
-        padding: 20px;
-        border-top: 1px solid var(--border-color);
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    /* Navbar menu khi ở dạng dọc trên mobile */
+    header nav.navbar .navbar-menu { /* Tăng độ cụ thể */
+        display: none !important; /* Mặc định ẩn */
+        position: absolute !important;
+        top: 100% !important; /* Ngay dưới navbar */
+        left: 0 !important;
+        right: 0 !important;
+        background-color: var(--navbar-background) !important;
+        flex-direction: column !important;
+        padding: 20px !important;
+        border-top: 1px solid var(--border-color) !important;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2) !important;
+        z-index: 999 !important; /* Dưới navbar chính nhưng trên nội dung khác */
     }
 
-    .navbar-menu.active {
-        display: flex;
+    header nav.navbar .navbar-menu.active { /* Khi menu được mở */
+        display: flex !important;
     }
 
-    .navbar-nav {
-        flex-direction: column;
-        width: 100%;
+    header nav.navbar .navbar-nav { /* Bên trong menu mobile */
+        flex-direction: column !important;
+        width: 100% !important;
     }
 
-    .navbar-nav li {
-        margin-left: 0;
-        margin-bottom: 15px;
+    header nav.navbar .navbar-nav li {
+        margin-left: 0 !important;
+        margin-bottom: 15px !important;
     }
 
-    .navbar-nav li a {
-        display: block;
-        padding: 10px 0;
-        font-size: 1.1em;
+    header nav.navbar .navbar-nav li a {
+        display: block !important;
+        padding: 10px 0 !important;
+        font-size: 1.1em !important;
+        color: white !important; /* Đảm bảo màu chữ */
+    }
+    header nav.navbar .navbar-nav li a:hover,
+    header nav.navbar .navbar-nav li a.active {
+        color: var(--primary-color) !important;
     }
 
-    .navbar-actions {
-        flex-direction: column;
-        width: 100%;
-        align-items: flex-start;
+
+    /* Phần navbar-actions trên mobile (nếu bạn vẫn muốn hiển thị nó trong menu dropdown) */
+    /* Nếu bạn muốn nó ẩn hoàn toàn trên mobile, bạn có thể đặt display: none !important; */
+    header nav.navbar .navbar-actions {
+        display: flex !important; /* Hoặc none nếu muốn ẩn */
+        flex-direction: column !important;
+        width: 100% !important;
+        align-items: flex-start !important; /* Hoặc center nếu muốn */
+        margin-top: 15px !important; /* Khoảng cách với nav-items */
     }
 
-    .navbar-actions a {
-        width: 100%;
+    header nav.navbar .navbar-actions a.login-button { /* Style riêng cho nút login trong dropdown */
+        width: auto !important; /* Cho vừa nội dung */
+        padding: 8px 15px !important; /* Padding giống desktop */
+        display: inline-block !important;
+        text-align: center;
+        margin-top: 10px;
     }
+    /* Bỏ search icon trong dropdown nếu không cần thiết hoặc style lại */
+    header nav.navbar .navbar-actions .search-icon {
+        display: none !important; /* Ví dụ: ẩn search icon trong dropdown */
+    }
+
 
     .search-icon {
         margin-right: 0;

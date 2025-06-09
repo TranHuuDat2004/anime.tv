@@ -290,6 +290,9 @@ body {
     font-weight: bold;
 }
 
+.modal {
+    display: none; /* Bootstrap sẽ đổi thành 'block' khi có class 'show' */
+}
 
 .reference-image {
     max-width: 100%;

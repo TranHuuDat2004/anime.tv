@@ -6,6 +6,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- CSS của ANIME.TV -->
+
+         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
     <!-- CSS riêng cho trang game (nếu cần) -->
     <link rel="stylesheet" href="css/game-style.css">
@@ -13,35 +15,41 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+
     <link rel="icon" href="images/favicon.png" type="image/x-icon"> <!-- Đường dẫn favicon -->
 </head>
 
 <body>
-    <!-- Navbar (Giống các trang khác của ANIME.TV) -->
     <header>
         <nav class="navbar">
             <div class="container">
-                <a href="index.html" class="navbar-logo"><img src="images/logo.png" alt="ANIME.TV Logo" height="50"></a>
-                <ul class="navbar-nav">
-                    <li><a href="index.html" data-translate-nav="home">Trang Chủ</a></li>
-                    <li><a href="image-gallery.html" data-translate-nav="imageGallery">Ảnh Anime</a></li>
-                    <li><a href="gif-collection.html" data-translate-nav="gifCollection">GIF Collection</a></li>
-                    <li><a href="game.html" class="active" data-translate-nav="puzzleGame">Game Xếp Hình</a></li>
-                </ul>
-                <div class="navbar-actions">
-                    <button class="search-icon" title="Tìm kiếm" style="visibility: hidden;"> <!-- Thêm title -->
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="11" cy="11" r="8"></circle>
-                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                        </svg>
-                    </button>
-                    <a href="#" class="login-button" data-translate-nav="login" style="visibility: hidden;">Đăng
-                        Nhập</a>
+                <a href="index.html" class="navbar-logo"><img src="images/logo.png" height="60"></a>
+                <button class="hamburger" id="hamburger">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                </button>
+                <div class="navbar-menu" id="navbarMenu">
+                    <ul class="navbar-nav">
+                        <li><a href="index.html" class="active">Trang Chủ</a></li>
+                        <li><a href="image-gallery.html">Bộ sưu tập</a></li>
+                        <li><a href="gif-collection.html">Ảnh GIF</a></li>
+                        <li><a href="#">Manga</a></li>
+                        <li><a href="game.html">Games</a></li>
+                        <li><a href="#">Giới thiệu</a></li>
+                        <li><a href="search.html">Tìm kiếm</a></li>
+                        <!-- <li style="padding-left: 40px;"><a  href="#" id="loginButton" class="login-button">Đăng Nhập</a></li> -->
+                    </ul>
                 </div>
             </div>
         </nav>
     </header>
+    <div id="featureNotification" class="notification">
+        Tính năng này đang được cập nhật!
+    </div>
 
     <!-- Language Switcher (Có thể đặt ở vị trí khác nếu muốn) -->
     <div class="lang-switcher-container" style="top: 15px; right: 15px; z-index: 1050;">
