@@ -15,24 +15,33 @@
     <header>
         <nav class="navbar">
             <div class="container">
-                <a href="index.html" class="navbar-logo"><img src="images/logo.png" alt="ANIME.TV Logo" height="50"></a>
-                <ul class="navbar-nav">
-                    <li><a href="index.html">Trang Chủ</a></li>
-                    <li><a href="image-gallery.html">Ảnh Anime</a></li>
-                    <li><a href="gif-collection.html">GIF Collection</a></li>
-                    <li><a href="game.html">Game Xếp Hình</a></li>
-                    <li><a href="manga.html">Truyện Tranh</a></li>
-                    <li><a href="about.html" class="active">Giới Thiệu</a></li> <!-- Active link -->
-                </ul>
-                <div class="navbar-actions">
-                     <button class="search-icon" title="Tìm kiếm" style="visibility: hidden;">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-                    </button>
-                    <a href="#" class="login-button" style="visibility: hidden;">Đăng Nhập</a>
+                <a href="index.html" class="navbar-logo"><img src="images/logo.png" height="60"></a>
+                <button class="hamburger" id="hamburger">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                </button>
+                <div class="navbar-menu" id="navbarMenu">
+                    <ul class="navbar-nav">
+                        <li><a href="index.html" >Trang Chủ</a></li>
+                        <li><a href="image-gallery.html">Bộ sưu tập</a></li>
+                        <li><a href="gif-collection.html">Ảnh GIF</a></li>
+                        <li><a href="manga.html">Manga</a></li>
+                        <li><a href="game.html">Games</a></li>
+                        <li><a href="about.html" class="active">Giới thiệu</a></li>
+                        <li style="padding-right: 40px;"><a href="search.html">Tìm kiếm</a></li>
+                        <!-- <li style="padding-left: 40px;"><a  href="#" id="loginButton" class="login-button">Đăng Nhập</a></li> -->
+                    </ul>
                 </div>
             </div>
         </nav>
     </header>
+    <div id="featureNotification" class="notification">
+        Tính năng này đang được cập nhật!
+    </div>
 
     <main id="about-page">
         <div class="container">
