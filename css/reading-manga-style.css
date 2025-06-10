@@ -1,0 +1,154 @@
+/* css/reading-manga-style.css */
+body {
+    background-color: #111; /* Nền tối cho trải nghiệm đọc */
+    color: var(--text-color, #fff);
+    font-family: 'Lato', sans-serif;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.manga-reader-header .navbar {
+    background-color: var(--navbar-background, #1a1a1d);
+    padding: 5px 0; /* Giảm padding cho header nhỏ hơn */
+    border-bottom: 1px solid var(--border-color);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+.manga-reader-header .navbar-logo img {
+    height: 35px; /* Logo nhỏ hơn */
+}
+.reader-title-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    color: var(--text-color);
+    flex-grow: 1;
+    margin: 0 10px;
+}
+.reader-title-info #mangaReaderTitle {
+    font-size: 1.1em;
+    font-weight: 600;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 300px; /* Giới hạn chiều rộng tên truyện */
+}
+.reader-title-info #currentPageInfo {
+    font-size: 0.8em;
+    color: var(--text-secondary-color);
+}
+.reader-actions .btn-sm {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.8rem;
+}
+
+#manga-reader-main {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* Bắt đầu từ trên xuống */
+    padding: 15px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.manga-page-container {
+    max-width: 850px; /* Giới hạn chiều rộng tối đa của ảnh trang truyện */
+    width: 100%;
+    margin-bottom: 15px;
+    text-align: center; /* Căn giữa ảnh nếu nó nhỏ hơn container */
+    background-color: #000; /* Nền đen cho vùng ảnh */
+    border: 1px solid var(--border-color, #333);
+    box-shadow: 0 0 15px rgba(0,0,0,0.5);
+}
+
+#mangaPageImage {
+    display: block; /* Để loại bỏ khoảng trống thừa */
+    max-width: 100%;
+    height: auto; /* Giữ tỷ lệ khung hình */
+    min-height: 300px; /* Để placeholder hiển thị */
+    object-fit: contain; /* Đảm bảo toàn bộ trang được hiển thị */
+    margin: 0 auto; /* Căn giữa ảnh nếu nó không chiếm hết 100% width */
+}
+
+.manga-navigation-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    padding: 10px;
+    background-color: var(--navbar-background, #1a1a1d);
+    border-radius: 8px;
+    position: sticky; /* Giữ thanh điều khiển ở cuối màn hình */
+    bottom: 15px;
+    z-index: 900;
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.3);
+}
+
+.manga-navigation-controls .btn-nav {
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.2s;
+}
+.manga-navigation-controls .btn-nav:hover:not(:disabled) {
+    background-color: var(--hover-color, #e6600d);
+}
+.manga-navigation-controls .btn-nav:disabled {
+    background-color: var(--border-color, #4a4d57);
+    color: var(--text-secondary-color, #888);
+    cursor: not-allowed;
+}
+
+.page-selector-dropdown {
+    padding: 8px 10px;
+    background-color: var(--card-background-color, #2d3038);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    cursor: pointer;
+    min-width: 100px;
+    text-align: center;
+}
+.page-selector-dropdown:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .reader-title-info #mangaReaderTitle {
+        max-width: 150px;
+        font-size: 0.9em;
+    }
+    .reader-title-info #currentPageInfo {
+        font-size: 0.7em;
+    }
+    .manga-navigation-controls {
+        gap: 10px;
+        padding: 8px;
+        bottom: 10px; /* Sát đáy hơn trên mobile */
+    }
+    .manga-navigation-controls .btn-nav {
+        padding: 6px 10px;
+        font-size: 0.9em;
+    }
+    .page-selector-dropdown {
+        padding: 6px 8px;
+        font-size: 0.9em;
+        min-width: 80px;
+    }
+    #manga-reader-main {
+        padding: 10px;
+    }
+}

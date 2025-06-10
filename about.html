@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giới Thiệu - ANIME.TV</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/about-style.css"> <!-- CSS riêng cho trang này -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="icon" href="images/favicon.png" type="image/x-icon">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <a href="index.html" class="navbar-logo"><img src="images/logo.png" alt="ANIME.TV Logo" height="50"></a>
+                <ul class="navbar-nav">
+                    <li><a href="index.html">Trang Chủ</a></li>
+                    <li><a href="image-gallery.html">Ảnh Anime</a></li>
+                    <li><a href="gif-collection.html">GIF Collection</a></li>
+                    <li><a href="game.html">Game Xếp Hình</a></li>
+                    <li><a href="manga.html">Truyện Tranh</a></li>
+                    <li><a href="about.html" class="active">Giới Thiệu</a></li> <!-- Active link -->
+                </ul>
+                <div class="navbar-actions">
+                     <button class="search-icon" title="Tìm kiếm" style="visibility: hidden;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                    </button>
+                    <a href="#" class="login-button" style="visibility: hidden;">Đăng Nhập</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main id="about-page">
+        <div class="container">
+            <div class="about-header">
+                <h1 class="page-title">Về ANIME.TV</h1>
+                <p class="tagline">Nơi đam mê Anime và Manga được chia sẻ và khám phá.</p>
+            </div>
+
+            <section class="about-section">
+                <h2>Sứ Mệnh Của Chúng Tôi</h2>
+                <p>ANIME.TV được tạo ra với mục đích xây dựng một không gian trực tuyến thân thiện và tiện lợi cho cộng đồng yêu thích Anime và Manga tại Việt Nam. Chúng tôi mong muốn mang đến một nơi bạn có thể dễ dàng tìm kiếm, lưu trữ những khoảnh khắc đáng nhớ từ các bộ anime yêu thích, khám phá những hình ảnh đẹp mắt, và giải trí với những trò chơi nhẹ nhàng liên quan đến thế giới anime.</p>
+                <p>Dự án này được phát triển như một sản phẩm cá nhân với niềm đam mê dành cho văn hóa Nhật Bản, đặc biệt là Anime và Manga. Mọi nội dung video và truyện tranh được nhúng từ các nguồn chính thức và có bản quyền (ví dụ: YouTube, Vimeo, các nền tảng đọc truyện hợp pháp) nhằm tôn trọng quyền sở hữu trí tuệ của các tác giả và nhà sản xuất.</p>
+                <!-- DÒNG MỚI THÊM VÀO ĐÂY -->
+                <p><strong>Lưu ý quan trọng:</strong> Trang web này được xây dựng với mục đích chính là rèn luyện kỹ năng, học hỏi và ghi lại quá trình làm web cá nhân. Trang web hoàn toàn không có mục đích thương mại hóa hay thu lợi nhuận.</p>
+            </section>
+
+            <section class="about-section">
+                <h2>Người Phát Triển</h2>
+                <div class="developer-info">
+                    <!-- Bạn có thể thay ảnh này bằng ảnh của bạn hoặc một avatar -->
+                    <img src="https://via.placeholder.com/150?text=Avatar" alt="Ảnh đại diện người phát triển" class="developer-avatar">
+                    <div>
+                        <h3>Trần Hữu Đạt</h3>
+                        <p>Là một người yêu thích công nghệ và văn hóa anime, tôi đã xây dựng ANIME.TV như một dự án cá nhân để rèn luyện kỹ năng lập trình web (HTML, CSS, JavaScript) và đồng thời tạo ra một không gian giải trí cho riêng mình cũng như chia sẻ với những người cùng sở thích.</p>
+                        <p>Nếu bạn có bất kỳ góp ý hoặc muốn liên hệ, đừng ngần ngại!</p>
+                        <!-- (Tùy chọn) Thêm link mạng xã hội hoặc portfolio -->
+                        <!-- <div class="social-links">
+                            <a href="#" target="_blank" title="GitHub"><svg>...</svg></a>
+                            <a href="#" target="_blank" title="LinkedIn"><svg>...</svg></a>
+                        </div> -->
+                        
+                    </div>
+                </div>
+            </section>
+
+            <section class="about-section">
+                <h2>Công Nghệ Sử Dụng</h2>
+                <ul class="tech-list">
+                    <li><strong>HTML5:</strong> Cho cấu trúc nền tảng của trang web.</li>
+                    <li><strong>CSS3:</strong> Để tạo kiểu dáng và giao diện người dùng (bao gồm Flexbox và Grid Layout cho bố cục responsive).</li>
+                    <li><strong>JavaScript (Vanilla JS):</strong> Xử lý logic, tương tác người dùng, tải dữ liệu động và xây dựng các thành phần trên trang.</li>
+                    <li><strong>GitHub Pages:</strong> Để lưu trữ và triển khai website tĩnh này một cách miễn phí.</li>
+                    <li><strong>Vimeo / YouTube API (Embed):</strong> Để nhúng và phát video.</li>
+                    <li><strong>Font:</strong> Lato (từ Google Fonts).</li>
+                    <li><strong>Icons:</strong> Bootstrap</li>
+                </ul>
+                <p>Trang web được thiết kế để có thể chạy hoàn toàn phía client (client-side), không yêu cầu backend phức tạp.</p>
+            </section>
+
+            <section class="about-section">
+                <h2>Lời Cảm Ơn</h2>
+                <p>Xin chân thành cảm ơn các nguồn tài liệu, cộng đồng lập trình viên đã chia sẻ kiến thức, và đặc biệt là những người đã tạo ra những bộ anime/manga tuyệt vời đã truyền cảm hứng cho dự án này.</p>
+                <p>Cảm ơn bạn đã ghé thăm ANIME.TV!</p>
+            </section>
+
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid"> <!-- Sử dụng grid để chia cột -->
+                <div class="footer-column footer-about">
+                    <a href="index.html" class="footer-logo-link">
+                        <img src="images/logo.png" alt="ANIME.TV Logo" class="footer-logo">
+                    </a>
+                    <p class="footer-tagline">ANIME.TV - Stream Your Dreams. Nơi đam mê Anime và Manga được chia sẻ và khám phá.</p>
+                    <p class="footer-note">Trang web được xây dựng với mục đích rèn luyện, học hỏi và không có tính thương mại hóa.</p>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Khám Phá</h4>
+                    <ul>
+                        <li><a href="index.html">Trang Chủ</a></li>
+                        <li><a href="manga.html">Truyện Tranh</a></li>
+                        <li><a href="image-gallery.html">Ảnh Anime</a></li>
+                        <li><a href="gif-collection.html">GIF Collection</a></li>
+                        <li><a href="game.html">Game Xếp Hình</a></li>
+                        <!-- Thêm link đến các trang "Duyệt", "Manga", "Games", "Tin tức" trên navbar nếu chúng khác với các link trên -->
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Thông Tin</h4>
+                    <ul>
+                        <li><a href="about.html">Về ANIME.TV</a></li>
+                        <li><a href="#">Trợ giúp / FAQ</a></li>
+                        <li><a href="#">Điều khoản sử dụng</a></li>
+                        <li><a href="#">Chính sách riêng tư</a></li>
+                        <!-- Thêm link "Liên hệ" nếu có -->
+                    </ul>
+                </div>
+
+                <div class="footer-column footer-social"> <!-- (Tùy chọn) Cho mạng xã hội hoặc thông tin thêm -->
+                    <h4>Kết Nối</h4>
+                    <div class="social-icons">
+                        <a href="#" title="Facebook" target="_blank" rel="noopener noreferrer"><svg><!-- Icon Facebook --></svg></a>
+                        <a href="#" title="Twitter" target="_blank" rel="noopener noreferrer"><svg><!-- Icon Twitter --></svg></a>
+                        <a href="#" title="GitHub" target="_blank" rel="noopener noreferrer"><svg><!-- Icon GitHub --></svg></a>
+                        <!-- Thêm các icon khác -->
+                    </div>
+                    <p class="mt-3">Email liên hệ: <a href="mailto:your-email@example.com">your-email@example.com</a></p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© <span id="footerCurrentYear">2024</span> ANIME.TV. Dựa trên ý tưởng từ Crunchyroll. Phát triển bởi Trần Hữu Đạt.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script có thể không cần thiết cho trang này nếu nó hoàn toàn tĩnh,
+         nhưng giữ lại nếu bạn có ý định thêm tương tác sau này -->
+    <!-- <script src="js/about-script.js"></script> -->
+</body>
+</html>

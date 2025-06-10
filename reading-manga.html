@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đọc Truyện - ANIME.TV</title> <!-- Sẽ được cập nhật bằng JS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/reading-manga-style.css"> <!-- CSS riêng cho trang này -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="icon" href="images/favicon.png" type="image/x-icon">
+</head>
+<body>
+    <header class="manga-reader-header"> <!-- Header có thể khác một chút -->
+        <nav class="navbar">
+            <div class="container">
+                <a href="index.html" class="navbar-logo"><img src="images/logo.png" alt="ANIME.TV Logo" height="40"></a>
+                <div class="reader-title-info">
+                    <h1 id="mangaReaderTitle">Tên Truyện</h1>
+                    <span id="currentPageInfo">Trang X / Y</span>
+                </div>
+                <div class="reader-actions">
+                    <a href="manga.html" id="backToMangaList" class="btn btn-sm btn-outline-secondary">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list-ul" viewBox="0 0 16 16" style="margin-right: 5px;"><path fill-rule="evenodd" d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m-2-4A.5.5 0 0 1 3.5 7h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m-2-4A.5.5 0 0 1 1.5 3h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5"/></svg>
+                        DS Truyện
+                    </a>
+                    <!-- Có thể thêm nút cài đặt (chế độ đọc,...) sau -->
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main id="manga-reader-main">
+        <div class="manga-page-container">
+            <img id="mangaPageImage" src="https://via.placeholder.com/800x1200?text=Loading+Page..." alt="Trang truyện hiện tại">
+        </div>
+
+        <div class="manga-navigation-controls">
+            <button id="prevPageButton" class="btn btn-nav" title="Trang trước">❮ Trang Trước</button>
+            <select id="pageSelector" class="page-selector-dropdown"></select>
+            <button id="nextPageButton" class="btn btn-nav" title="Trang kế">Trang Kế ❯</button>
+        </div>
+    </main>
+
+    <!-- Footer có thể ẩn đi trên trang đọc truyện để tập trung hơn -->
+    <!-- <footer> ... </footer> -->
+
+    <script src="js/data-manga.js"></script>
+    <script src="js/reading-manga-script.js"></script>
+</body>
+</html>

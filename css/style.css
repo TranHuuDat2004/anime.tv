@@ -696,27 +696,118 @@ main {
     margin: 0 10px 10px;
 }
 
+/* Trong style.css */
+
 footer {
-    background-color: var(--navbar-background);
+    margin-top: 20px;
+    padding-top: 20px;
+    background-color: var(--navbar-background); /* Hoặc màu nền tối hơn */
     color: var(--text-secondary-color);
-    padding: 30px 0;
-    margin-top: 50px;
+    padding: 50px 0 20px; /* Tăng padding trên */
     border-top: 1px solid var(--border-color);
-    text-align: center;
+    font-size: 0.9em;
+    line-height: 1.6;
 }
 
-.footer-links {
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Responsive columns */
+    gap: 30px; /* Khoảng cách giữa các cột */
+    margin-bottom: 30px;
+}
+
+.footer-column h4 {
+    color: var(--text-color);
+    font-size: 1.1em;
+    font-weight: 600;
+    margin-bottom: 15px;
+    position: relative;
+    padding-bottom: 8px;
+}
+.footer-column h4::after { /* Đường gạch chân nhỏ dưới tiêu đề cột */
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 40px;
+    height: 2px;
+    background-color: var(--primary-color);
+}
+
+.footer-column ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.footer-column ul li {
+    margin-bottom: 8px;
+}
+
+.footer-column ul li a {
+    color: var(--text-secondary-color);
+    text-decoration: none;
+    transition: color 0.2s ease, padding-left 0.2s ease;
+}
+.footer-column ul li a:hover {
+    color: var(--primary-color);
+    padding-left: 5px; /* Hiệu ứng thụt vào khi hover */
+}
+
+.footer-about .footer-logo-link {
+    display: inline-block;
     margin-bottom: 15px;
 }
-
-.footer-links a {
-    margin: 0 10px;
-    color: var(--text-secondary-color);
-    transition: color 0.3s ease;
+.footer-about .footer-logo {
+    max-height: 45px; /* Điều chỉnh kích thước logo footer */
+}
+.footer-about .footer-tagline {
+    font-size: 0.95em;
+    margin-bottom: 10px;
+    color: var(--text-color); /* Tagline có thể nổi bật hơn */
+}
+.footer-about .footer-note {
+    font-size: 0.85em;
+    font-style: italic;
+    opacity: 0.8;
 }
 
-.footer-links a:hover {
+.footer-social .social-icons {
+    display: flex;
+    gap: 15px; /* Khoảng cách giữa các icon */
+}
+.footer-social .social-icons a {
+    color: var(--text-secondary-color);
+    font-size: 1.5em; /* Kích thước icon */
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+.footer-social .social-icons a:hover {
     color: var(--primary-color);
+    transform: translateY(-2px);
+}
+.footer-social .social-icons svg { /* Điều chỉnh kích thước SVG nếu dùng */
+    width: 24px;
+    height: 24px;
+    fill: currentColor;
+}
+
+.footer-social p a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+.footer-social p a:hover {
+    text-decoration: underline;
+}
+
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color);
+    font-size: 0.85em;
+    color: var(--text-secondary-color);
+}
+.footer-bottom p {
+    margin-bottom: 5px;
 }
 
 @media (max-width: 768px) {

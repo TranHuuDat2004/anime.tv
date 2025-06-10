@@ -261,12 +261,3 @@ header h1 {
     color: var(--anime-tv-text-secondary);
 }
 
-/* --- FOOTER --- */
-footer {
-    background-color: var(--anime-tv-bg); /* Hoặc màu navbar của ANIME.TV */
-    color: var(--anime-tv-text-secondary);
-    text-align: center;
-    padding: 25px 0;
-    margin-top: 40px;
-    border-top: 1px solid var(--anime-tv-border);
-}

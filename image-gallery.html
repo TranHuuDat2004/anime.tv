@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,6 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
     <link rel="icon" href="images/favicon.png" type="image/x-icon">
 </head>
+
 <body>
     <header>
         <nav class="navbar">
@@ -26,13 +28,13 @@
                 </button>
                 <div class="navbar-menu" id="navbarMenu">
                     <ul class="navbar-nav">
-                        <li><a href="index.html" class="active">Trang Chủ</a></li>
+                        <li><a href="index.html">Trang Chủ</a></li>
                         <li><a href="image-gallery.html">Bộ sưu tập</a></li>
                         <li><a href="gif-collection.html">Ảnh GIF</a></li>
-                        <li><a href="#">Manga</a></li>
-                        <li><a href="game.html">Games</a></li>
-                        <li><a href="#">Giới thiệu</a></li>
-                        <li><a href="search.html">Tìm kiếm</a></li>
+                        <li><a href="manga.html">Manga</a></li>
+                        <li><a href="game.html" class="active">Games</a></li>
+                        <li><a href="about.html">Giới thiệu</a></li>
+                        <li style="padding-right: 40px;"><a href="search.html">Tìm kiếm</a></li>
                         <!-- <li style="padding-left: 40px;"><a  href="#" id="loginButton" class="login-button">Đăng Nhập</a></li> -->
                     </ul>
                 </div>
@@ -47,14 +49,23 @@
             <h1 class="page-title">Bộ Sưu Tập Ảnh Anime</h1>
 
             <div class="gallery-controls">
-                <input type="text" id="image-search-bar" class="search-bar" placeholder="Tìm kiếm ảnh theo tiêu đề, tags, series...">
+                <input type="text" id="image-search-bar" class="search-bar"
+                    placeholder="Tìm kiếm ảnh theo tiêu đề, tags, series...">
                 <div id="image-series-navigation" class="series-navigation">
                     <!-- Nút lọc series sẽ được tạo bởi JavaScript -->
                 </div>
                 <div id="image-view-options" class="view-options">
-                    <button data-size="small" title="Ảnh nhỏ"><svg viewBox="0 0 24 24"><path d="M3 11h8V3H3v8zm0 10h8v-8H3v8zM13 3v8h8V3h-8zm0 10h8v-8h-8v8z"></path></svg></button>
-                    <button data-size="medium" class="active" title="Ảnh vừa"><svg viewBox="0 0 24 24"><path d="M4 10h4V4H4v6zm0 10h4v-6H4v6zM10 4v6h4V4h-4zm0 10h4v-6h-4v6zM16 4v6h4V4h-4zm0 10h4v-6h-4v6z"></path></svg></button>
-                    <button data-size="large" title="Ảnh lớn"><svg viewBox="0 0 24 24"><path d="M4 4h16v6H4zm0 8h16v6H4z"></path></svg></button>
+                    <button data-size="small" title="Ảnh nhỏ"><svg viewBox="0 0 24 24">
+                            <path d="M3 11h8V3H3v8zm0 10h8v-8H3v8zM13 3v8h8V3h-8zm0 10h8v-8h-8v8z"></path>
+                        </svg></button>
+                    <button data-size="medium" class="active" title="Ảnh vừa"><svg viewBox="0 0 24 24">
+                            <path
+                                d="M4 10h4V4H4v6zm0 10h4v-6H4v6zM10 4v6h4V4h-4zm0 10h4v-6h-4v6zM16 4v6h4V4h-4zm0 10h4v-6h-4v6z">
+                            </path>
+                        </svg></button>
+                    <button data-size="large" title="Ảnh lớn"><svg viewBox="0 0 24 24">
+                            <path d="M4 4h16v6H4zm0 8h16v6H4z"></path>
+                        </svg></button>
                 </div>
             </div>
 
@@ -73,17 +84,65 @@
 
     <footer>
         <div class="container">
-            <div class="footer-links">
-                <a href="#">Về chúng tôi</a>
-                <a href="#">Trợ giúp/FAQ</a>
-                <a href="#">Điều khoản sử dụng</a>
-                <a href="#">Chính sách riêng tư</a>
+            <div class="footer-grid"> <!-- Sử dụng grid để chia cột -->
+                <div class="footer-column footer-about">
+                    <a href="index.html" class="footer-logo-link">
+                        <img src="images/logo.png" alt="ANIME.TV Logo" class="footer-logo">
+                    </a>
+                    <p class="footer-tagline">ANIME.TV - Stream Your Dreams. Nơi đam mê Anime và Manga được chia sẻ và
+                        khám phá.</p>
+                    <p class="footer-note">Trang web được xây dựng với mục đích rèn luyện, học hỏi và không có tính
+                        thương mại hóa.</p>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Khám Phá</h4>
+                    <ul>
+                        <li><a href="index.html">Trang Chủ</a></li>
+                        <li><a href="manga.html">Truyện Tranh</a></li>
+                        <li><a href="image-gallery.html">Ảnh Anime</a></li>
+                        <li><a href="gif-collection.html">GIF Collection</a></li>
+                        <li><a href="game.html">Game Xếp Hình</a></li>
+                        <!-- Thêm link đến các trang "Duyệt", "Manga", "Games", "Tin tức" trên navbar nếu chúng khác với các link trên -->
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Thông Tin</h4>
+                    <ul>
+                        <li><a href="about.html">Về ANIME.TV</a></li>
+                        <li><a href="#">Trợ giúp / FAQ</a></li>
+                        <li><a href="#">Điều khoản sử dụng</a></li>
+                        <li><a href="#">Chính sách riêng tư</a></li>
+                        <!-- Thêm link "Liên hệ" nếu có -->
+                    </ul>
+                </div>
+
+                <div class="footer-column footer-social"> <!-- (Tùy chọn) Cho mạng xã hội hoặc thông tin thêm -->
+                    <h4>Kết Nối</h4>
+                    <div class="social-icons">
+                        <a href="#" title="Facebook" target="_blank"
+                            rel="noopener noreferrer"><svg><!-- Icon Facebook --></svg></a>
+                        <a href="#" title="Twitter" target="_blank"
+                            rel="noopener noreferrer"><svg><!-- Icon Twitter --></svg></a>
+                        <a href="#" title="GitHub" target="_blank"
+                            rel="noopener noreferrer"><svg><!-- Icon GitHub --></svg></a>
+                        <!-- Thêm các icon khác -->
+                    </div>
+                    <p class="mt-3">Email liên hệ: <a href="mailto:your-email@example.com">your-email@example.com</a>
+                    </p>
+                </div>
             </div>
-            <p>© 2024 ANIME.TV. Dựa trên ý tưởng từ Crunchyroll.</p>
+
+            <div class="footer-bottom">
+                <p>© <span id="footerCurrentYear">2024</span> ANIME.TV. Dựa trên ý tưởng từ Crunchyroll. Phát triển bởi
+                    Trần Hữu Đạt.</p>
+            </div>
         </div>
     </footer>
 
     <script src="js/data-img.js"></script> <!-- File dữ liệu ảnh mới -->
     <script src="js/image-gallery-script.js"></script> <!-- File JavaScript mới cho trang này -->
 </body>
+
 </html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi Tiết Truyện Tranh - ANIME.TV</title> <!-- Sẽ được cập nhật bằng JavaScript -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/manga-style.css">
+    <link rel="stylesheet" href="css/manga-detail-style.css"> <!-- CSS riêng cho trang chi tiết manga -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="icon" href="images/favicon.png" type="image/x-icon">
+</head>
+
+<body>
+        <header>
+        <nav class="navbar">
+            <div class="container">
+                <a href="index.html" class="navbar-logo"><img src="images/logo.png" height="60"></a>
+                <button class="hamburger" id="hamburger">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                </button>
+                <div class="navbar-menu" id="navbarMenu">
+                    <ul class="navbar-nav">
+                        <li><a href="index.html">Trang Chủ</a></li>
+                        <li><a href="image-gallery.html">Bộ sưu tập</a></li>
+                        <li><a href="gif-collection.html">Ảnh GIF</a></li>
+                        <li><a href="manga.html">Manga</a></li>
+                        <li><a href="game.html" class="active">Games</a></li>
+                        <li><a href="about.html">Giới thiệu</a></li>
+                        <li style="padding-right: 40px;"><a href="search.html">Tìm kiếm</a></li>
+                        <!-- <li style="padding-left: 40px;"><a  href="#" id="loginButton" class="login-button">Đăng Nhập</a></li> -->
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div id="featureNotification" class="notification">
+        Tính năng này đang được cập nhật!
+    </div>
+
+    <main id="manga-detail-page"> <!-- Đổi ID cho phù hợp -->
+        <section class="detail-hero-section manga-hero-section">
+            <div class="detail-hero-background" id="mangaDetailBanner"></div>
+            <div class="detail-hero-overlay"></div>
+            <div class="container detail-hero-content"> <!-- Container này sẽ là flex container -->
+                <div class="detail-hero-main"> <!-- Item 1 -->
+                    <h1 id="mangaDetailTitle" class="detail-title">Tên Truyện Tranh</h1>
+                    <div id="mangaDetailAuthor" class="detail-meta-item">
+                        <!-- Tác giả -->
+                    </div>
+                    <p id="mangaShortDescription" class="detail-short-description">
+                        Mô tả ngắn gọn...
+                    </p>
+                    <div class="detail-actions">
+                        <a href="#" id="readNowButton" class="btn btn-primary btn-lg">
+                            <!-- Icon và text -->
+                            ĐỌC NGAY
+                        </a>
+                    </div>
+                </div>
+                <div class="detail-hero-cover"> <!-- Item 2 -->
+                    <img id="mangaDetailCoverImage" src="https://via.placeholder.com/250x375?text=Manga+Cover"
+                        alt="Ảnh bìa truyện">
+                </div>
+            </div>
+        </section>
+
+        <section class="detail-content-section container">
+            <!-- Hiện tại không dùng tabs cho manga detail, bạn có thể thêm sau nếu muốn chia mục -->
+            <div class="manga-overview-content">
+                <div class="overview-grid"> <!-- Tái sử dụng grid layout -->
+                    <div class="overview-description">
+                        <h2>Mô Tả Chi Tiết</h2>
+                        <p id="fullMangaDescription">Nội dung mô tả đầy đủ của truyện...</p>
+                    </div>
+                    <div class="overview-details manga-specific-details">
+                        <h2>Thông Tin Truyện</h2>
+                        <p><strong>Tên khác:</strong> <span id="mangaAltTitle"></span></p>
+                        <p><strong>Tác giả:</strong> <span id="mangaAuthorInfo"></span></p>
+                        <p><strong>Thể loại:</strong> <span id="mangaGenres"></span></p>
+                        <p><strong>Trạng thái:</strong> <span id="mangaStatus"></span></p>
+                        <p><strong>Năm phát hành:</strong> <span id="mangaReleaseYear"></span></p>
+                        <p><strong>Số trang/chương:</strong> <span id="mangaPageChapterInfo"></span></p>
+                        <!-- Thêm thông tin khác nếu có trong data-manga.js -->
+                    </div>
+                </div>
+            </div>
+            <!-- Nếu sau này có danh sách chương, có thể thêm vào đây -->
+        </section>
+        <div  style="text-align: center;" class="navigation-back container">
+            <a href="manga.html" class="btn btn-primary btn-lg">← Quay lại Danh Sách Truyện</a>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid"> <!-- Sử dụng grid để chia cột -->
+                <div class="footer-column footer-about">
+                    <a href="index.html" class="footer-logo-link">
+                        <img src="images/logo.png" alt="ANIME.TV Logo" class="footer-logo">
+                    </a>
+                    <p class="footer-tagline">ANIME.TV - Stream Your Dreams. Nơi đam mê Anime và Manga được chia sẻ và khám phá.</p>
+                    <p class="footer-note">Trang web được xây dựng với mục đích rèn luyện, học hỏi và không có tính thương mại hóa.</p>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Khám Phá</h4>
+                    <ul>
+                        <li><a href="index.html">Trang Chủ</a></li>
+                        <li><a href="manga.html">Truyện Tranh</a></li>
+                        <li><a href="image-gallery.html">Ảnh Anime</a></li>
+                        <li><a href="gif-collection.html">GIF Collection</a></li>
+                        <li><a href="game.html">Game Xếp Hình</a></li>
+                        <!-- Thêm link đến các trang "Duyệt", "Manga", "Games", "Tin tức" trên navbar nếu chúng khác với các link trên -->
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Thông Tin</h4>
+                    <ul>
+                        <li><a href="about.html">Về ANIME.TV</a></li>
+                        <li><a href="#">Trợ giúp / FAQ</a></li>
+                        <li><a href="#">Điều khoản sử dụng</a></li>
+                        <li><a href="#">Chính sách riêng tư</a></li>
+                        <!-- Thêm link "Liên hệ" nếu có -->
+                    </ul>
+                </div>
+
+                <div class="footer-column footer-social"> <!-- (Tùy chọn) Cho mạng xã hội hoặc thông tin thêm -->
+                    <h4>Kết Nối</h4>
+                    <div class="social-icons">
+                        <a href="#" title="Facebook" target="_blank" rel="noopener noreferrer"><svg><!-- Icon Facebook --></svg></a>
+                        <a href="#" title="Twitter" target="_blank" rel="noopener noreferrer"><svg><!-- Icon Twitter --></svg></a>
+                        <a href="#" title="GitHub" target="_blank" rel="noopener noreferrer"><svg><!-- Icon GitHub --></svg></a>
+                        <!-- Thêm các icon khác -->
+                    </div>
+                    <p class="mt-3">Email liên hệ: <a href="mailto:your-email@example.com">your-email@example.com</a></p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© <span id="footerCurrentYear">2024</span> ANIME.TV. Dựa trên ý tưởng từ Crunchyroll. Phát triển bởi Trần Hữu Đạt.</p>
+            </div>
+        </div>
+    </footer>
+    <script src="js/data-manga.js"></script>
+    <script src="js/manga-detail-script.js"></script> <!-- File JavaScript mới -->
+</body>
+
+</html>

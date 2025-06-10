@@ -1,0 +1,239 @@
+/* Trong css/anime-detail-style.css (hoặc css/manga-detail-style.css) */
+
+/* --- Detail Hero Section (Style chung cho cả anime và manga detail nếu dùng chung) --- */
+.detail-hero-section {
+    position: relative;
+    width: 100%;
+    min-height: 450px; /* Điều chỉnh chiều cao tối thiểu nếu cần */
+    display: flex; /* QUAN TRỌNG: Để có thể căn chỉnh nội dung bên trong */
+    align-items: flex-end; /* Căn nội dung con xuống dưới cùng của hero section */
+    color: var(--text-color);
+    padding: 40px 0; /* Thêm padding trên dưới cho hero section */
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.detail-hero-background { /* Ảnh banner nền */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center center;
+    z-index: 1;
+}
+.detail-hero-background::after { /* Lớp phủ gradient */
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Gradient mạnh hơn ở dưới để chữ nổi bật */
+    background: linear-gradient(to top, rgba(19,20,23,1) 20%, rgba(19,20,23,0.9) 45%, rgba(19,20,23,0) 80%);
+    z-index: 2;
+}
+
+.detail-hero-content.container { /* Container cho nội dung chính của hero */
+    position: relative;
+    z-index: 3;
+    width: 100%;
+    display: flex; /* QUAN TRỌNG: Để sắp xếp .detail-hero-main và .detail-hero-cover */
+    align-items: flex-end; /* Căn các item con theo đáy */
+    gap: 30px; /* Khoảng cách giữa khối thông tin và ảnh bìa */
+}
+
+/* Khối chứa thông tin chính (tiêu đề, mô tả, nút) */
+.detail-hero-main {
+    flex-grow: 1; /* Cho phép khối này chiếm không gian còn lại */
+    max-width: 60%; /* Giới hạn chiều rộng để không quá sát ảnh bìa */
+}
+
+/* Khối chứa ảnh bìa (cho manga) */
+.detail-hero-cover {
+    flex-shrink: 0; /* Ngăn ảnh bìa bị co lại */
+    width: 250px; /* Kích thước cố định cho ảnh bìa, bạn có thể điều chỉnh */
+    /* Hoặc dùng max-width và để width: auto nếu muốn responsive hơn */
+    max-width: 280px;
+    margin-bottom: 0; /* Quan trọng nếu align-items: flex-end cho parent */
+}
+
+#mangaDetailCoverImage { /* ID của ảnh bìa manga */
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+    border: 1px solid var(--border-color, #444); /* Thêm viền nhẹ */
+    display: block;
+}
+
+
+/* Các style khác cho tiêu đề, mô tả, nút đã có từ anime-detail-style.css
+   như .detail-title, #mangaDetailAuthor, .detail-short-description, .detail-actions
+   Sẽ được áp dụng. Bạn có thể tùy chỉnh thêm nếu muốn. */
+
+#mangaDetailTitle {
+    font-size: 2.5em; /* Điều chỉnh nếu cần */
+    margin-bottom: 8px;
+}
+
+#mangaDetailAuthor {
+    font-size: 1.1em;
+    color: var(--text-secondary-color);
+    margin-bottom: 15px;
+    font-style: italic;
+}
+#mangaDetailAuthor strong {
+    color: var(--text-color);
+    font-style: normal;
+}
+
+.detail-short-description { /* Mô tả ngắn */
+    margin-bottom: 25px;
+    font-size: 1em; /* Điều chỉnh font */
+    line-height: 1.5;
+    color: #ccc; /* Màu sáng hơn một chút */
+    -webkit-line-clamp: 3; /* Giới hạn 3 dòng */
+}
+
+.detail-actions .btn-lg { /* Nút Đọc Ngay */
+    padding: 12px 25px;
+}
+.detail-actions .btn-lg svg {
+    width: 18px; /* Kích thước icon */
+    height: 18px;
+}
+
+/* Style cho phần Thông Tin Truyện / Chi Tiết */
+.overview-details, /* Nếu bạn dùng chung class này */
+.manga-specific-details { /* Hoặc class riêng cho manga */
+    /* background-color: rgba(var(--card-background-color-rgb), 0.5); /* Nền mờ nhẹ nếu muốn */
+    /* padding: 20px; */ /* Bỏ padding ở đây nếu .overview-grid đã có gap */
+    /* border-radius: 6px; */
+}
+
+.overview-details h2,
+.manga-specific-details h2 { /* Tiêu đề "Thông Tin Truyện" / "Chi Tiết" */
+    font-size: 1.8em; /* Giữ nguyên hoặc điều chỉnh */
+    font-weight: 700;
+    color: var(--text-color);
+    margin-bottom: 20px; /* Tăng khoảng cách dưới tiêu đề */
+    padding-bottom: 10px; /* Thêm padding dưới */
+    border-bottom: 1px solid var(--border-color); /* Đường kẻ phân cách nhẹ dưới tiêu đề */
+    /* Bỏ border-left nếu không muốn style giống Crunchyroll ở đây */
+    /* border-left: 4px solid var(--primary-color); */
+    /* padding-left: 10px; */
+}
+
+.overview-details p,
+.manga-specific-details p {
+    display: flex; /* Sử dụng flex để căn chỉnh label và value */
+    justify-content: space-between; /* Đẩy value sang phải nếu có không gian */
+    align-items: flex-start; /* Căn theo đầu dòng nếu value dài và xuống dòng */
+    padding: 8px 0; /* Khoảng cách trên dưới cho mỗi dòng thông tin */
+    border-bottom: 1px dashed rgba(var(--border-color-rgb), 0.3); /* Đường kẻ mờ giữa các dòng, giả sử có --border-color-rgb */
+    /* Hoặc border-bottom: 1px dashed #444954; */
+    margin-bottom: 0; /* Reset margin-bottom của p */
+    font-size: 1em; /* Kích thước chữ cho thông tin */
+    color: var(--text-secondary-color);
+    line-height: 1.5; /* Tăng line-height cho dễ đọc */
+}
+
+.overview-details p:last-child,
+.manga-specific-details p:last-child {
+    border-bottom: none; /* Bỏ đường kẻ cho dòng cuối cùng */
+}
+
+.overview-details p strong,
+.manga-specific-details p strong {
+    color: var(--text-color);
+    font-weight: 600; /* Chữ đậm vừa phải */
+    margin-right: 10px; /* Khoảng cách giữa label và value */
+    flex-shrink: 0; /* Ngăn label bị co lại */
+    /* Đặt chiều rộng cố định hoặc tối thiểu cho label nếu muốn các dấu hai chấm thẳng hàng */
+    min-width: 130px; /* Điều chỉnh giá trị này cho phù hợp */
+    /* text-align: right; */ /* Nếu muốn label căn phải */
+}
+
+.overview-details p span,
+.manga-specific-details p span {
+    flex-grow: 1; /* Cho phép value chiếm không gian còn lại */
+    text-align: left; /* Căn trái cho value, hoặc right nếu muốn */
+    color: var(--text-color); /* Màu chữ cho value có thể khác với label */
+    word-break: break-word; /* Cho phép xuống dòng nếu value quá dài */
+}
+
+/* Responsive cho phần thông tin */
+@media (max-width: 576px) {
+    .overview-details p,
+    .manga-specific-details p {
+        flex-direction: column; /* Label và value xếp chồng lên nhau trên mobile */
+        align-items: flex-start; /* Căn trái cả hai */
+        padding: 6px 0;
+    }
+    .overview-details p strong,
+    .manga-specific-details p strong {
+        margin-bottom: 3px; /* Khoảng cách nhỏ giữa label và value khi xếp chồng */
+        min-width: auto; /* Bỏ min-width trên mobile */
+    }
+    .overview-details h2,
+    .manga-specific-details h2 {
+        font-size: 1.5em;
+    }
+}
+
+
+/* Responsive cho Hero Section */
+@media (max-width: 991px) {
+    .detail-hero-content.container {
+        flex-direction: column-reverse; /* Đảo ngược thứ tự: ảnh bìa lên trên, thông tin xuống dưới */
+        align-items: center; /* Căn giữa các items */
+        text-align: center; /* Căn giữa text trong .detail-hero-main */
+    }
+    .detail-hero-main {
+        max-width: 100%; /* Chiếm toàn bộ chiều rộng */
+        margin-top: 20px; /* Khoảng cách với ảnh bìa */
+    }
+    .detail-hero-cover {
+        width: 200px; /* Ảnh bìa nhỏ hơn trên tablet/mobile */
+        margin-bottom: 0; /* Bỏ margin bottom vì đã có margin-top cho main */
+    }
+    .detail-actions {
+        justify-content: center; /* Căn giữa các nút */
+    }
+    #mangaDetailTitle {
+        font-size: 2em;
+    }
+}
+
+@media (max-width: 575px) {
+    .detail-hero-section {
+        min-height: auto; /* Cho phép chiều cao tự điều chỉnh */
+        padding: 30px 0;
+    }
+    .detail-hero-cover {
+        width: 180px;
+    }
+    #mangaDetailTitle {
+        font-size: 1.8em;
+    }
+    .detail-short-description {
+        font-size: 0.95em;
+        -webkit-line-clamp: 4; /* Có thể cho hiển thị nhiều dòng hơn */
+    }
+    .detail-actions .btn-lg {
+        padding: 10px 20px;
+        font-size: 0.95em;
+    }
+}
+
+/* --- Overview Content Section --- */
+/* Style cho .overview-grid, .overview-description, .overview-details
+   có thể giữ nguyên từ anime-detail-style.css nếu bạn muốn layout tương tự */
+
+.manga-overview-content { /* Nếu bạn dùng class này riêng */
+    padding: 30px 0;
+}
+
+/* ... (Các style khác cho phần mô tả chi tiết, thông tin truyện giữ nguyên) ... */

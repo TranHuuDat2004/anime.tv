@@ -75,7 +75,7 @@ for (let i = 1; i <= kurakonCount; i++) {
 
 // Tạo danh sách GIF cho Lycoris Recoil
 const lycorisGifs = [];
-const lycorisCount = 53;
+const lycorisCount = 159;
 for (let i = 1; i <= lycorisCount; i++) {
   lycorisGifs.push({
     id: `lycoris_recoil_${i}`,

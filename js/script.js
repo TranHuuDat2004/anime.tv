@@ -298,4 +298,12 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
     // --- Kết thúc xử lý Notification ---
+
+    // Đặt ở cuối file HTML, trước </body>, hoặc trong file script chung
+document.addEventListener('DOMContentLoaded', function() {
+    const yearSpan = document.getElementById('footerCurrentYear');
+    if (yearSpan) {
+        yearSpan.textContent = new Date().getFullYear();
+    }
+});
 });
