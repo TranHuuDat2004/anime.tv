@@ -53,6 +53,23 @@ Trang web được thiết kế với giao diện người dùng thân thiện, 
 *   **Nguồn Video (Nhúng):** Vimeo, YouTube (từ các kênh chính thức).
 *   **Dữ liệu:** Được quản lý thông qua các file JavaScript object.
 
+## Ảnh Chụp Màn Hình Giao Diện (Screenshots)
+
+Dưới đây là một số ảnh chụp màn hình các trang chính của ANIME.TV:
+
+### Trang Người Dùng
+
+| Trang Chủ (Homepage)                               | Chi Tiết Anime (Anime Detail)                             | Xem Video (Watch Video)                               |
+| :------------------------------------------------: | :------------------------------------------------------: | :--------------------------------------------------: |
+| ![Trang Chủ ANIME.TV](screenshot/main-page.PNG) | ![Chi Tiết Anime](screenshot/anime-detail.PNG) | ![Xem Video](screenshot/watch-video.PNG) |
+| **Thư Viện Manga (Manga Library)**                 | **Chi Tiết Manga (Manga Detail)**                          | **Đọc Truyện (Manga Reader)**                        |
+| ![Thư Viện Manga](screenshot/manga.PNG)    | ![Chi Tiết Manga](screenshot/manga-detail.PNG)   | ![Đọc Truyện](screenshot/reading-manga.PNG)  |
+| **Bộ Sưu Tập Ảnh (Image Gallery)**                | **Chi Tiết Ảnh (Image Detail)**                           | **Game Xếp Hình (Puzzle Game)**                      |
+| ![Bộ Sưu Tập Ảnh](screenshot/gallery.PNG) | ![Chi Tiết Ảnh](screenshot/image-detail.PNG)  | ![Game Xếp Hình](screenshot/game.PNG)      |
+| **Trang Giới Thiệu (About Page)**                  |                                                          |                                                      |
+| ![Trang Ảnh GIF](screenshot/gif.png)  |                                                          |                                                      |
+
+*Lưu ý: Các ảnh chụp màn hình trên chỉ mang tính chất minh họa và có thể được cập nhật khi giao diện phát triển.*
 
 ## Hướng Dẫn Cài Đặt và Chạy
 
