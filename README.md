@@ -1,5 +1,10 @@
 # ANIME.TV - Stream Your Dreams
 
+<p align="center">
+  <img src="images/logo.png" alt="Omacha Shop Homepage" height="50px"/>
+  <!-- Make sure the logo path is correct -->
+</p>
+
 Chào mừng bạn đến với ANIME.TV! Đây là một dự án website cá nhân được xây dựng với mục đích học hỏi, rèn luyện kỹ năng phát triển web và tạo ra một không gian để lưu trữ, khám phá nội dung liên quan đến Anime và Manga.
 
 **Lưu ý quan trọng:** Trang web này được xây dựng với mục đích chính là học tập và thực hành, hoàn toàn **không có tính thương mại hóa** hay thu lợi nhuận. Mọi nội dung video và truyện tranh đều được lấy từ các nguồn chính thức và có bản quyền nhằm tôn trọng quyền sở hữu trí tuệ.
@@ -66,8 +71,8 @@ Dưới đây là một số ảnh chụp màn hình các trang chính của ANI
 | ![Thư Viện Manga](screenshot/manga.PNG)    | ![Chi Tiết Manga](screenshot/manga-detail.PNG)   | ![Đọc Truyện](screenshot/reading-manga.PNG)  |
 | **Bộ Sưu Tập Ảnh (Image Gallery)**                | **Chi Tiết Ảnh (Image Detail)**                           | **Game Xếp Hình (Puzzle Game)**                      |
 | ![Bộ Sưu Tập Ảnh](screenshot/gallery.PNG) | ![Chi Tiết Ảnh](screenshot/image-detail.PNG)  | ![Game Xếp Hình](screenshot/game.PNG)      |
-| **Trang Giới Thiệu (About Page)**                  |                                                          |                                                      |
-| ![Trang Ảnh GIF](screenshot/gif.png)  |                                                          |                                                      |
+| **Trang Giới Thiệu (Image GIF Gallery)**                  |                                                          |                                                      |
+| ![Trang Ảnh GIF](screenshot/gif.PNG)  |                                                          |                                                      |
 
 *Lưu ý: Các ảnh chụp màn hình trên chỉ mang tính chất minh họa và có thể được cập nhật khi giao diện phát triển.*
 
