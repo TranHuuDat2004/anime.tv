@@ -63,8 +63,8 @@
 }
 
 .developer-avatar {
-    width: 120px; /* Kích thước avatar */
-    height: 120px;
+    width: 300px; /* Kích thước avatar */
+    height: 300px;
     border-radius: 50%; /* Avatar tròn */
     object-fit: cover;
     border: 3px solid var(--primary-color);
