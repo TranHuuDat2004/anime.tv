@@ -1,20 +1,18 @@
 <!DOCTYPE html>
 <html lang="vi">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Xem Phim</title>
+    <title>Điều Khoản Sử Dụng - ANIME.TV</title>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/watch-video-style.css">
+    <link rel="stylesheet" href="css/static-page-style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
     <link rel="icon" href="images/favicon.png" type="image/x-icon">
 </head>
-
 <body>
-        <header>
+    <header>
         <nav class="navbar">
             <div class="container">
                 <a href="index.html" class="navbar-logo"><img src="images/logo.png" height="60"></a>
@@ -28,11 +26,11 @@
                 </button>
                 <div class="navbar-menu" id="navbarMenu">
                     <ul class="navbar-nav">
-                        <li><a href="index.html">Trang Chủ</a></li>
+                        <li><a href="index.html" class="active">Trang Chủ</a></li>
                         <li><a href="image-gallery.html">Bộ sưu tập</a></li>
                         <li><a href="gif-collection.html">Ảnh GIF</a></li>
                         <li><a href="manga.html">Manga</a></li>
-                        <li><a href="game.html" class="active">Games</a></li>
+                        <li><a href="game.html">Games</a></li>
                         <li><a href="about.html">Giới thiệu</a></li>
                         <li style="padding-right: 40px;"><a href="search.html">Tìm kiếm</a></li>
                         <!-- <li style="padding-left: 40px;"><a  href="#" id="loginButton" class="login-button">Đăng Nhập</a></li> -->
@@ -44,54 +42,48 @@
     <div id="featureNotification" class="notification">
         Tính năng này đang được cập nhật!
     </div>
-    
-    <main id="watch-page">
-        <div class="video-player-container" id="videoPlayerWrapper">
-            <!-- Iframe sẽ được tạo và chèn vào đây bởi JavaScript -->
-        </div>
 
-        <div class="container video-info-controls">
-            <div class="episode-details">
-                <h1 id="animeTitleWatchPage">Tên Anime</h1>
-                <h2 id="episodeTitleWatchPage">Tập X: Tên tập phim</h2>
-                <p id="episodeSubDubWatchPage" class="episode-subdub-info"></p>
+    <main id="static-page" class="terms-page">
+        <div class="container">
+            <div class="static-page-header">
+                <h1 style="color: #f47521;" class="page-title">Điều Khoản Sử Dụng</h1>
+                <p class="last-updated">Cập nhật lần cuối: Ngày 10 tháng 6 năm 2025</p>
             </div>
-            <div class="episode-navigation">
-                <a href="#" id="prevEpisodeBtn" class="btn btn-secondary disabled">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <polyline points="15 18 9 12 15 6"></polyline>
-                    </svg>
-                    Tập Trước
-                </a>
-                <a href="anime-detail.html" id="backToDetailBtn" class="btn btn-secondary">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                        class="btn-icon">
-                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-                        <polyline points="9 22 9 12 15 12 15 22"></polyline>
-                    </svg>
-                    DS Tập
-                </a>
-                <a href="#" id="nextEpisodeBtn" class="btn btn-primary disabled">
-                    Tập Tiếp Theo
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <polyline points="9 18 15 12 9 6"></polyline>
-                    </svg>
-                </a>
+
+            <div class="static-content">
+                <p>Chào mừng bạn đến với ANIME.TV! Vui lòng đọc kỹ các Điều khoản Sử dụng này ("Điều khoản") trước khi sử dụng trang web ANIME.TV ("Dịch vụ") được vận hành bởi [Tên của bạn/Tên dự án] ("chúng tôi", "của chúng tôi").</p>
+                <p>Việc bạn truy cập và sử dụng Dịch vụ đồng nghĩa với việc bạn chấp nhận và đồng ý tuân thủ các Điều khoản này. Các Điều khoản này áp dụng cho tất cả khách truy cập, người dùng và những người khác truy cập hoặc sử dụng Dịch vụ.</p>
+
+                <h2>1. Mục đích của Dịch vụ</h2>
+                <p>ANIME.TV là một dự án cá nhân, phi thương mại, được tạo ra với mục đích học hỏi và chia sẻ. Dịch vụ cung cấp thông tin, liên kết nhúng đến nội dung anime, manga, hình ảnh, GIF và trò chơi giải trí liên quan.</p>
+
+                <h2>2. Nội dung</h2>
+                <p>Dịch vụ của chúng tôi cho phép bạn truy cập nội dung được nhúng từ các nền tảng của bên thứ ba (ví dụ: YouTube, Vimeo). Chúng tôi không sở hữu, kiểm soát hay chịu trách nhiệm về tính khả dụng, tính chính xác, hoặc các chính sách của nội dung hoặc trang web của bên thứ ba đó.</p>
+                <p>Bạn hiểu và đồng ý rằng ANIME.TV không chịu trách nhiệm, trực tiếp hay gián tiếp, cho bất kỳ thiệt hại hoặc tổn thất nào gây ra hoặc bị cáo buộc là gây ra bởi hoặc liên quan đến việc sử dụng hoặc dựa vào bất kỳ nội dung, hàng hóa hoặc dịch vụ nào có sẵn trên hoặc thông qua bất kỳ trang web hoặc dịch vụ nào của bên thứ ba.</p>
+                <p>Chúng tôi khuyến khích bạn đọc kỹ các điều khoản sử dụng và chính sách bảo mật của bất kỳ trang web hoặc dịch vụ nào của bên thứ ba mà bạn truy cập.</p>
+
+                <h2>3. Quyền Sở Hữu Trí Tuệ</h2>
+                <p>Bản thân Dịch vụ và nội dung gốc của nó (không bao gồm nội dung được nhúng từ bên thứ ba), các tính năng và chức năng là và sẽ vẫn là tài sản độc quyền của [Tên của bạn/Tên dự án] và các bên cấp phép của nó (nếu có).</p>
+                <p>Chúng tôi tôn trọng quyền sở hữu trí tuệ của người khác. Nếu bạn tin rằng bất kỳ nội dung nào trên Dịch vụ vi phạm bản quyền của bạn, vui lòng liên hệ với chúng tôi.</p>
+
+                <h2>4. Hành Vi Người Dùng</h2>
+                <p>Bạn đồng ý không sử dụng Dịch vụ cho bất kỳ mục đích bất hợp pháp nào hoặc theo bất kỳ cách nào có thể gây tổn hại, vô hiệu hóa, quá tải hoặc làm suy yếu Dịch vụ hoặc can thiệp vào việc sử dụng và hưởng thụ Dịch vụ của bất kỳ bên nào khác.</p>
+
+                <h2>5. Chấm dứt</h2>
+                <p>Chúng tôi có thể chấm dứt hoặc đình chỉ quyền truy cập vào Dịch vụ của mình ngay lập tức, mà không cần thông báo trước hoặc chịu trách nhiệm pháp lý, vì bất kỳ lý do gì, bao gồm nhưng không giới hạn nếu bạn vi phạm các Điều khoản.</p>
+
+                <h2>6. Giới Hạn Trách Nhiệm</h2>
+                <p>Trong phạm vi tối đa được pháp luật hiện hành cho phép, trong mọi trường hợp, [Tên của bạn/Tên dự án] sẽ không chịu trách nhiệm pháp lý cho bất kỳ thiệt hại gián tiếp, ngẫu nhiên, đặc biệt, do hậu quả hoặc mang tính trừng phạt nào, bao gồm nhưng không giới hạn, tổn thất về lợi nhuận, dữ liệu, việc sử dụng, thiện chí, hoặc các tổn thất vô hình khác, phát sinh từ (i) việc bạn truy cập hoặc sử dụng hoặc không thể truy cập hoặc sử dụng Dịch vụ; (ii) bất kỳ hành vi hoặc nội dung nào của bất kỳ bên thứ ba nào trên Dịch vụ; (iii) bất kỳ nội dung nào thu được từ Dịch vụ; và (iv) truy cập, sử dụng hoặc thay đổi trái phép các nội dung truyền hoặc nội dung của bạn, cho dù dựa trên bảo hành, hợp đồng, sai lầm dân sự (bao gồm cả sơ suất) hay bất kỳ lý thuyết pháp lý nào khác, cho dù chúng tôi đã được thông báo về khả năng xảy ra thiệt hại đó hay chưa, và ngay cả khi một biện pháp khắc phục được quy định trong tài liệu này được phát hiện là đã thất bại trong mục đích thiết yếu của nó.</p>
+
+                <h2>7. Thay đổi Điều khoản</h2>
+                <p>Chúng tôi bảo lưu quyền, theo quyết định riêng của mình, sửa đổi hoặc thay thế các Điều khoản này bất cứ lúc nào. Nếu một bản sửa đổi là quan trọng, chúng tôi sẽ cố gắng cung cấp thông báo ít nhất [ví dụ: 15 ngày] trước khi bất kỳ điều khoản mới nào có hiệu lực. Điều gì cấu thành một thay đổi quan trọng sẽ được xác định theo quyết định riêng của chúng tôi.</p>
+                <p>Bằng cách tiếp tục truy cập hoặc sử dụng Dịch vụ của chúng tôi sau khi những sửa đổi đó có hiệu lực, bạn đồng ý bị ràng buộc bởi các điều khoản đã sửa đổi. Nếu bạn không đồng ý với các điều khoản mới, vui lòng ngừng sử dụng Dịch vụ.</p>
+
+                <h2>8. Liên hệ với chúng tôi</h2>
+                <p>Nếu bạn có bất kỳ câu hỏi nào về Chính sách Riêng tư này, vui lòng liên hệ với chúng tôi: <a style="color: #f47521"  href="mailto:huudat2004.anime@gmail.com" target="_blank" rel="noopener noreferrer">huudat2004.anime@gmail.com</a>.</p>
             </div>
         </div>
     </main>
-
-    <!-- PHẦN MỚI: DANH SÁCH CÁC TẬP KHÁC -->
-    <section class="watch-page-episode-list-section container">
-        <h2 class="section-title">Các tập khác</h2>
-        <div id="watchPageSeasonContainer">
-            <!-- Danh sách tập sẽ được load vào đây -->
-        </div>
-    </section>
-    <!-- KẾT THÚC PHẦN MỚI -->
 
     <footer>
         <div class="container">
@@ -176,13 +168,5 @@
         </div>
     </footer>
     <script src="js/navbar.js"></script> <!-- Script cho navbar (hamburger menu) -->
-
-    <script src="js/data.js"></script>
-    <!-- Dữ liệu anime -->
-    <script src="js/watching-video.js"></script> <!-- Script cho trang xem video -->
-    <script src="js/notification.js"></script> <!-- Script cho thông báo -->
-
-
 </body>
-
 </html>

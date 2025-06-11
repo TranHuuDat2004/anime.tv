@@ -19,31 +19,32 @@
 }
 
 .image-view-area {
-    position: relative;
-    /* Để định vị nút prev/next */
+        position: relative;
     background-color: #000;
-    /* Nền đen cho vùng ảnh */
     display: flex;
-    /* Căn giữa ảnh */
     justify-content: center;
     align-items: center;
     border-radius: 6px;
     overflow: hidden;
-    /* Đảm bảo ảnh không tràn ra ngoài */
-    min-height: 300px;
-    /* Chiều cao tối thiểu để placeholder hiển thị */
+    /* Bỏ min-height ở đây, để aspect-ratio quyết định */
+    /* min-height: 300px; */
+
+    /* THÊM/SỬA CÁC THUỘC TÍNH SAU CHO TỶ LỆ 16:9 */
+    width: 100%; /* Cho phép nó chiếm toàn bộ chiều rộng của container cha (ví dụ: .image-detail-container hoặc .image-view-area trong grid) */
+    aspect-ratio: 16 / 9; /* Ép tỷ lệ 16:9 cho vùng hiển thị ảnh */
+    max-height: 80vh; /* Vẫn giữ giới hạn chiều cao tối đa để không quá lớn */
 }
 
 #detailed-image {
-    max-width: 100%;
-    max-height: 80vh;
-    /* Giới hạn chiều cao ảnh bằng 80% viewport height */
-    object-fit: contain;
-    /* Hiển thị toàn bộ ảnh, không cắt xén */
-    border-radius: 4px;
-    /* Bo góc nhẹ cho ảnh */
-    display: block;
-    /* Để loại bỏ khoảng trắng thừa */
+    display: block; /* Giữ nguyên */
+    width: 100%;   /* Ảnh sẽ cố gắng chiếm 100% chiều rộng của .image-view-area */
+    height: 100%;  /* Ảnh sẽ cố gắng chiếm 100% chiều cao của .image-view-area */
+    object-fit: contain; /* Hiển thị toàn bộ ảnh, có thể có viền đen nếu tỷ lệ ảnh gốc khác 16:9 */
+    /* Nếu bạn muốn ảnh luôn lấp đầy và chấp nhận bị cắt, đổi thành: object-fit: cover; */
+    border-radius: 4px; /* Giữ nguyên hoặc bỏ nếu .image-view-area đã có bo góc và overflow:hidden */
+    /* Bỏ max-width và max-height ở đây vì .image-view-area đã kiểm soát kích thước */
+    /* max-width: 100%; */
+    /* max-height: 80vh; */
 }
 
 .image-view-area .nav-arrow {
@@ -158,67 +159,72 @@
 
 /* Thêm vào css/image-detail-style.css */
 
-.other-images-in-series-section {
-    margin-top: 40px;
-    /* Khoảng cách với phần chi tiết ảnh chính */
-    padding-top: 20px;
-    border-top: 1px solid var(--border-color);
-    /* Đường kẻ phân cách nhẹ */
-}
-
-.other-images-in-series-section .section-title {
-    font-size: 1.6em;
-    margin-bottom: 20px;
-    color: var(--text-color);
-    border-left: 4px solid var(--primary-color);
-    padding-left: 10px;
-    /* Có thể bỏ border này nếu muốn khác với trang detail */
-}
-
-#other-images-gallery.view-small {
+#other-images-gallery.view-small { /* Hoặc chỉ #other-images-gallery nếu không dùng view-small */
     display: grid;
-    /* Sử dụng grid để hiển thị các ảnh thumbnail */
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 10px;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); /* Điều chỉnh minmax cho phù hợp */
+    gap: 10px; /* Khoảng cách giữa các thumbnail */
 }
 
+/* QUAN TRỌNG: Áp dụng style cho từng item trong #other-images-gallery */
 #other-images-gallery .image-item {
-    /* Có thể thêm style cụ thể cho các item thumbnail này nếu cần */
-    /* Ví dụ: giảm box-shadow khi hover */
-    transition: transform 0.15s ease-out;
-    /* Hover nhẹ hơn */
+    position: relative;
+    overflow: hidden;
+    border-radius: 4px; /* Bo góc nhỏ hơn cho thumbnail */
+    background-color: var(--card-background-color);
+    cursor: pointer;
+    transition: transform 0.15s ease-out, box-shadow 0.15s ease-out;
+
+    /* THÊM DÒNG NÀY ĐỂ ĐẶT TỶ LỆ KHUNG HÌNH CỐ ĐỊNH CHO THUMBNAIL */
+    aspect-ratio: 16 / 9;
 }
 
 #other-images-gallery .image-item:hover {
-    transform: scale(1.02);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05); /* Hiệu ứng hover nhẹ hơn */
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* Responsive cho layout màn hình lớn hơn */
+#other-images-gallery .image-item img {
+    display: block;
+    width: 100%;
+    height: 100%; /* Ảnh chiếm toàn bộ không gian của .image-item */
+    object-fit: cover; /* Lấp đầy và có thể cắt bớt để giữ tỷ lệ ảnh gốc */
+    transition: opacity 0.3s ease-in-out;
+}
+
+/* Style cho tập đang phát trên watch-page (nếu bạn thêm class 'playing-now') */
+/* Đảm bảo selector này đủ cụ thể nếu bạn dùng chung class .image-item */
+#watchPageSeasonContainer .episode-item.playing-now, /* Nếu là danh sách tập trên trang xem video */
+#other-images-gallery .image-item.current-detailed-image /* Ví dụ class cho ảnh đang xem chi tiết */ {
+    border: 2px solid var(--primary-color);
+    box-shadow: 0 0 8px rgba(var(--primary-color-rgb), 0.7);
+    transform: none;
+}
+#watchPageSeasonContainer .episode-item.playing-now:hover,
+#other-images-gallery .image-item.current-detailed-image:hover {
+    transform: none;
+}
+
+/* Trong phần Responsive @media (min-width: 992px) */
 @media (min-width: 992px) {
     .image-detail-container {
         flex-direction: row;
-        /* Sắp xếp ảnh và thông tin ngang nhau */
         align-items: flex-start;
-        /* Căn theo đỉnh */
     }
 
     .image-view-area {
         flex: 2;
-        /* Ảnh chiếm nhiều không gian hơn */
-        max-width: 60%;
-        /* Giới hạn chiều rộng ảnh */
+        max-width: 65%; /* Giới hạn chiều rộng của vùng ảnh để chừa không gian cho thông tin */
+                        /* aspect-ratio sẽ tự động tính chiều cao dựa trên chiều rộng này */
+        /* Bỏ max-height: 80vh ở đây nếu đã đặt cho #detailed-image hoặc muốn nó tự do hơn */
     }
 
     #detailed-image {
-        max-height: calc(100vh - 200px);
-        /* Đảm bảo ảnh không quá cao */
+        /* max-height: calc(100vh - 200px); */ /* Có thể bỏ dòng này, để aspect-ratio của .image-view-area quyết định */
+                                            /* Hoặc giữ lại nếu bạn muốn có giới hạn chiều cao tuyệt đối cho chính ảnh */
     }
 
     .image-info-area {
         flex: 1;
-        /* Thông tin chiếm ít không gian hơn */
         padding-left: 25px;
-        /* Khoảng cách giữa ảnh và thông tin */
     }
 }

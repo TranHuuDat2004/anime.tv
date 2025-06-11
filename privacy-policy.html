@@ -1,20 +1,18 @@
 <!DOCTYPE html>
 <html lang="vi">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Xem Phim</title>
+    <title>Chính Sách Riêng Tư - ANIME.TV</title>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/watch-video-style.css">
+    <link rel="stylesheet" href="css/static-page-style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
     <link rel="icon" href="images/favicon.png" type="image/x-icon">
 </head>
-
 <body>
-        <header>
+    <header>
         <nav class="navbar">
             <div class="container">
                 <a href="index.html" class="navbar-logo"><img src="images/logo.png" height="60"></a>
@@ -28,11 +26,11 @@
                 </button>
                 <div class="navbar-menu" id="navbarMenu">
                     <ul class="navbar-nav">
-                        <li><a href="index.html">Trang Chủ</a></li>
+                        <li><a href="index.html" class="active">Trang Chủ</a></li>
                         <li><a href="image-gallery.html">Bộ sưu tập</a></li>
                         <li><a href="gif-collection.html">Ảnh GIF</a></li>
                         <li><a href="manga.html">Manga</a></li>
-                        <li><a href="game.html" class="active">Games</a></li>
+                        <li><a href="game.html">Games</a></li>
                         <li><a href="about.html">Giới thiệu</a></li>
                         <li style="padding-right: 40px;"><a href="search.html">Tìm kiếm</a></li>
                         <!-- <li style="padding-left: 40px;"><a  href="#" id="loginButton" class="login-button">Đăng Nhập</a></li> -->
@@ -44,54 +42,64 @@
     <div id="featureNotification" class="notification">
         Tính năng này đang được cập nhật!
     </div>
-    
-    <main id="watch-page">
-        <div class="video-player-container" id="videoPlayerWrapper">
-            <!-- Iframe sẽ được tạo và chèn vào đây bởi JavaScript -->
-        </div>
 
-        <div class="container video-info-controls">
-            <div class="episode-details">
-                <h1 id="animeTitleWatchPage">Tên Anime</h1>
-                <h2 id="episodeTitleWatchPage">Tập X: Tên tập phim</h2>
-                <p id="episodeSubDubWatchPage" class="episode-subdub-info"></p>
+    <main id="static-page" class="privacy-page">
+        <div class="container">
+            <div class="static-page-header">
+                <h1 style="color: #f47521;" class="page-title">Chính Sách Riêng Tư</h1>
+                <p class="last-updated">Cập nhật lần cuối: Ngày 10 tháng 6 năm 2025</p>
             </div>
-            <div class="episode-navigation">
-                <a href="#" id="prevEpisodeBtn" class="btn btn-secondary disabled">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <polyline points="15 18 9 12 15 6"></polyline>
-                    </svg>
-                    Tập Trước
-                </a>
-                <a href="anime-detail.html" id="backToDetailBtn" class="btn btn-secondary">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                        class="btn-icon">
-                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-                        <polyline points="9 22 9 12 15 12 15 22"></polyline>
-                    </svg>
-                    DS Tập
-                </a>
-                <a href="#" id="nextEpisodeBtn" class="btn btn-primary disabled">
-                    Tập Tiếp Theo
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <polyline points="9 18 15 12 9 6"></polyline>
-                    </svg>
-                </a>
+
+            <div class="static-content">
+                <p>Chính sách Riêng tư này mô tả cách [Tên của bạn/Tên dự án] ("chúng tôi", "của chúng tôi") xử lý thông tin liên quan đến việc bạn sử dụng trang web ANIME.TV ("Dịch vụ").</p>
+                <p>ANIME.TV là một dự án cá nhân, phi thương mại và được xây dựng với mục đích học hỏi. Chúng tôi cam kết tôn trọng quyền riêng tư của bạn.</p>
+
+                <h2>1. Thông tin chúng tôi KHÔNG thu thập</h2>
+                <p>Hiện tại, Dịch vụ của chúng tôi <b>không</b> yêu cầu người dùng đăng ký tài khoản và <b>không</b> chủ động thu thập bất kỳ thông tin nhận dạng cá nhân nào (PII) như tên, địa chỉ email, địa chỉ thực, số điện thoại, v.v.</p>
+                <p>Bạn có thể duyệt và sử dụng các tính năng chính của trang web mà không cần cung cấp bất kỳ thông tin cá nhân nào.</p>
+
+                <h2>2. Thông tin được thu thập tự động (Dữ liệu phi cá nhân)</h2>
+                <p>ANIME.TV được lưu trữ trên nền tảng GitHub Pages. Khi bạn truy cập Dịch vụ của chúng tôi, máy chủ của GitHub Pages có thể tự động ghi lại một số thông tin nhật ký cơ bản. Thông tin này thường bao gồm:</p>
+                <ul>
+                    <li>Địa chỉ IP của bạn (có thể được ẩn danh hoặc rút gọn bởi GitHub)</li>
+                    <li>Loại trình duyệt và phiên bản</li>
+                    <li>Hệ điều hành</li>
+                    <li>Các trang bạn truy cập trên Dịch vụ của chúng tôi</li>
+                    <li>Thời gian và ngày truy cập</li>
+                    <li>Thời gian bạn dành cho các trang đó</li>
+                </ul>
+                <p>Dữ liệu nhật ký này được GitHub thu thập và quản lý theo <a style="color: #f47521" href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement" target="_blank" rel="noopener noreferrer">Chính sách Riêng tư của GitHub</a>. Chúng tôi (ANIME.TV) không trực tiếp thu thập, lưu trữ hay xử lý chi tiết dữ liệu nhật ký này ngoài các thống kê tổng hợp ẩn danh mà GitHub có thể cung cấp (ví dụ: số lượt xem trang).</p>
+                <p>Chúng tôi sử dụng thông tin này (nếu có qua thống kê của GitHub) để hiểu cách người dùng tương tác với Dịch vụ và để cải thiện trải nghiệm người dùng. Dữ liệu này không được liên kết với bất kỳ thông tin nhận dạng cá nhân nào từ phía chúng tôi.</p>
+
+                <h2>3. Cookies</h2>
+                <p>Dịch vụ của chúng tôi có thể sử dụng "cookies" để nâng cao trải nghiệm người dùng. Cookies là các tệp nhỏ được lưu trữ trên thiết bị của bạn. Hiện tại, chúng tôi có thể sử dụng cookies cho các mục đích sau:</p>
+                <ul>
+                    <li>Lưu trữ tùy chọn của người dùng (ví dụ: ngôn ngữ ưa thích, cài đặt chế độ xem).</li>
+                    <li>(Nếu sử dụng) Cookies từ các dịch vụ nhúng của bên thứ ba như YouTube, Vimeo để trình phát video hoạt động đúng cách. Các dịch vụ này có chính sách cookie riêng của họ.</li>
+                </ul>
+                <p>Bạn có thể chọn từ chối cookies thông qua cài đặt trình duyệt của mình, tuy nhiên, điều này có thể ảnh hưởng đến một số chức năng của Dịch vụ.</p>
+                <p>Trang web của chúng tôi không sử dụng cookies theo dõi của bên thứ ba cho mục đích quảng cáo.</p>
+
+                <h2>4. Nội dung nhúng từ các trang web khác</h2>
+                <p>Các bài viết hoặc trang trên Dịch vụ này có thể bao gồm nội dung được nhúng (ví dụ: video, hình ảnh, bài viết, v.v.) từ các trang web khác (ví dụ: YouTube, Vimeo). Nội dung được nhúng từ các trang web khác hoạt động theo cách chính xác giống như khi khách truy cập đã truy cập trang web kia.</p>
+                <p>Các trang web này có thể thu thập dữ liệu về bạn, sử dụng cookies, nhúng theo dõi của bên thứ ba bổ sung và giám sát tương tác của bạn với nội dung được nhúng đó, bao gồm cả việc theo dõi tương tác của bạn với nội dung được nhúng nếu bạn có tài khoản và đã đăng nhập vào trang web đó. Chúng tôi không kiểm soát việc thu thập dữ liệu của các trang web này.</p>
+
+                <h2>5. Liên kết đến các trang web khác</h2>
+                <p>Dịch vụ của chúng tôi có thể chứa các liên kết đến các trang web khác không do chúng tôi điều hành. Nếu bạn nhấp vào liên kết của bên thứ ba, bạn sẽ được chuyển đến trang web của bên thứ ba đó. Chúng tôi thực sự khuyên bạn nên xem lại Chính sách riêng tư của mọi trang web bạn truy cập.</p>
+                <p>Chúng tôi không có quyền kiểm soát và không chịu trách nhiệm về nội dung, chính sách bảo mật hoặc thông lệ của bất kỳ trang web hoặc dịch vụ nào của bên thứ ba.</p>
+
+                <h2>6. Bảo mật</h2>
+                <p>Chúng tôi coi trọng việc bảo vệ thông tin của bạn. Tuy nhiên, xin lưu ý rằng không có phương thức truyền qua Internet hoặc phương thức lưu trữ điện tử nào là an toàn 100%. Mặc dù chúng tôi cố gắng sử dụng các phương tiện được chấp nhận về mặt thương mại để bảo vệ thông tin của bạn (nếu có), chúng tôi không thể đảm bảo tính bảo mật tuyệt đối của nó.</p>
+
+                <h2>7. Thay đổi Chính sách Riêng tư này</h2>
+                <p>Chúng tôi có thể cập nhật Chính sách Riêng tư của mình theo thời gian. Chúng tôi sẽ thông báo cho bạn về bất kỳ thay đổi nào bằng cách đăng Chính sách Riêng tư mới trên trang này.</p>
+                <p>Bạn nên xem lại Chính sách Riêng tư này định kỳ để biết bất kỳ thay đổi nào. Các thay đổi đối với Chính sách Riêng tư này có hiệu lực khi chúng được đăng trên trang này.</p>
+
+                <h2>8. Liên hệ với chúng tôi</h2>
+                <p>Nếu bạn có bất kỳ câu hỏi nào về Chính sách Riêng tư này, vui lòng liên hệ với chúng tôi: <a style="color: #f47521"  href="mailto:huudat2004.anime@gmail.com" target="_blank" rel="noopener noreferrer">huudat2004.anime@gmail.com</a>.</p>
             </div>
         </div>
     </main>
-
-    <!-- PHẦN MỚI: DANH SÁCH CÁC TẬP KHÁC -->
-    <section class="watch-page-episode-list-section container">
-        <h2 class="section-title">Các tập khác</h2>
-        <div id="watchPageSeasonContainer">
-            <!-- Danh sách tập sẽ được load vào đây -->
-        </div>
-    </section>
-    <!-- KẾT THÚC PHẦN MỚI -->
 
     <footer>
         <div class="container">
@@ -176,13 +184,5 @@
         </div>
     </footer>
     <script src="js/navbar.js"></script> <!-- Script cho navbar (hamburger menu) -->
-
-    <script src="js/data.js"></script>
-    <!-- Dữ liệu anime -->
-    <script src="js/watching-video.js"></script> <!-- Script cho trang xem video -->
-    <script src="js/notification.js"></script> <!-- Script cho thông báo -->
-
-
 </body>
-
 </html>

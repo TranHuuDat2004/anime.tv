@@ -1,20 +1,18 @@
 <!DOCTYPE html>
 <html lang="vi">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Xem Phim</title>
+    <title>Trợ Giúp & Câu Hỏi Thường Gặp - ANIME.TV</title>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/watch-video-style.css">
+    <link rel="stylesheet" href="css/static-page-style.css"> <!-- CSS chung cho các trang tĩnh -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
     <link rel="icon" href="images/favicon.png" type="image/x-icon">
 </head>
-
 <body>
-        <header>
+    <header>
         <nav class="navbar">
             <div class="container">
                 <a href="index.html" class="navbar-logo"><img src="images/logo.png" height="60"></a>
@@ -28,11 +26,11 @@
                 </button>
                 <div class="navbar-menu" id="navbarMenu">
                     <ul class="navbar-nav">
-                        <li><a href="index.html">Trang Chủ</a></li>
+                        <li><a href="index.html" class="active">Trang Chủ</a></li>
                         <li><a href="image-gallery.html">Bộ sưu tập</a></li>
                         <li><a href="gif-collection.html">Ảnh GIF</a></li>
                         <li><a href="manga.html">Manga</a></li>
-                        <li><a href="game.html" class="active">Games</a></li>
+                        <li><a href="game.html">Games</a></li>
                         <li><a href="about.html">Giới thiệu</a></li>
                         <li style="padding-right: 40px;"><a href="search.html">Tìm kiếm</a></li>
                         <!-- <li style="padding-left: 40px;"><a  href="#" id="loginButton" class="login-button">Đăng Nhập</a></li> -->
@@ -44,54 +42,54 @@
     <div id="featureNotification" class="notification">
         Tính năng này đang được cập nhật!
     </div>
-    
-    <main id="watch-page">
-        <div class="video-player-container" id="videoPlayerWrapper">
-            <!-- Iframe sẽ được tạo và chèn vào đây bởi JavaScript -->
-        </div>
 
-        <div class="container video-info-controls">
-            <div class="episode-details">
-                <h1 id="animeTitleWatchPage">Tên Anime</h1>
-                <h2 id="episodeTitleWatchPage">Tập X: Tên tập phim</h2>
-                <p id="episodeSubDubWatchPage" class="episode-subdub-info"></p>
+    <main id="static-page" class="faq-page">
+        <div class="container">
+            <div class="static-page-header">
+                <h1 class="page-title">Trợ Giúp & Câu Hỏi Thường Gặp (FAQ)</h1>
+                <p class="last-updated">Cập nhật lần cuối: Ngày 10 tháng 6 năm 2025</p>
             </div>
-            <div class="episode-navigation">
-                <a href="#" id="prevEpisodeBtn" class="btn btn-secondary disabled">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <polyline points="15 18 9 12 15 6"></polyline>
-                    </svg>
-                    Tập Trước
-                </a>
-                <a href="anime-detail.html" id="backToDetailBtn" class="btn btn-secondary">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                        class="btn-icon">
-                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-                        <polyline points="9 22 9 12 15 12 15 22"></polyline>
-                    </svg>
-                    DS Tập
-                </a>
-                <a href="#" id="nextEpisodeBtn" class="btn btn-primary disabled">
-                    Tập Tiếp Theo
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <polyline points="9 18 15 12 9 6"></polyline>
-                    </svg>
-                </a>
+
+            <div class="faq-section">
+                <div class="faq-item">
+                    <h3 class="faq-question">1. ANIME.TV là gì?</h3>
+                    <p class="faq-answer">ANIME.TV là một trang web cá nhân được tạo ra với mục đích học hỏi và chia sẻ niềm đam mê Anime & Manga. Tại đây, bạn có thể tìm thấy thông tin, xem video (nhúng từ nguồn chính thức), duyệt ảnh, GIF và chơi game xếp hình liên quan đến hình ảnh anime.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3 class="faq-question">2. Việc sử dụng ANIME.TV có tốn phí không?</h3>
+                    <p class="faq-answer">Không. ANIME.TV là một dự án phi lợi nhuận và hoàn toàn miễn phí cho người dùng. Chúng tôi không thu bất kỳ khoản phí nào.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3 class="faq-question">3. Nguồn video/truyện tranh trên ANIME.TV từ đâu?</h3>
+                    <p class="faq-answer">Tất cả video và truyện tranh hiển thị trên ANIME.TV đều được nhúng từ các nguồn chính thức và có bản quyền như YouTube (ví dụ: kênh Ani-One, Muse Vietnam), Vimeo, hoặc các nền tảng đọc truyện hợp pháp. Chúng tôi không tự lưu trữ hay re-upload các nội dung có bản quyền.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3 class="faq-question">4. Tôi có thể yêu cầu thêm anime/manga không?</h3>
+                    <p class="faq-answer">Hiện tại, ANIME.TV là một dự án cá nhân với nguồn lực hạn chế. Tuy nhiên, bạn có thể gửi góp ý về nội dung bạn muốn xem qua [Liên kết đến trang Liên Hệ hoặc email của bạn - nếu có]. Chúng tôi sẽ cố gắng xem xét trong khả năng.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3 class="faq-question">5. Tại sao một số video/truyện không xem được?</h3>
+                    <p class="faq-answer">Do chúng tôi nhúng nội dung từ các nguồn bên ngoài, đôi khi video hoặc truyện có thể không khả dụng do thay đổi từ phía nhà cung cấp (ví dụ: video bị xóa, thay đổi quyền riêng tư, hoặc giới hạn khu vực địa lý từ kênh gốc).</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3 class="faq-question">6. Làm thế nào để báo lỗi hoặc đóng góp ý kiến?</h3>
+                    <p class="faq-answer">Nếu bạn gặp lỗi hoặc có ý kiến đóng góp để ANIME.TV tốt hơn, vui lòng [Liên kết đến trang Liên Hệ, GitHub Issues, hoặc email của bạn]. Chúng tôi rất trân trọng mọi phản hồi từ bạn.</p>
+                </div>
+
+                 <div class="faq-item">
+                    <h3 class="faq-question">7. Trang web có thu thập thông tin cá nhân của tôi không?</h3>
+                    <p class="faq-answer">ANIME.TV hiện tại không yêu cầu đăng ký tài khoản và không chủ động thu thập thông tin cá nhân nhạy cảm của người dùng. Vui lòng xem chi tiết hơn tại trang <a href="privacy-policy.html">Chính sách riêng tư</a> của chúng tôi.</p>
+                </div>
+
+                <!-- Thêm các câu hỏi và câu trả lời khác nếu cần -->
             </div>
         </div>
     </main>
-
-    <!-- PHẦN MỚI: DANH SÁCH CÁC TẬP KHÁC -->
-    <section class="watch-page-episode-list-section container">
-        <h2 class="section-title">Các tập khác</h2>
-        <div id="watchPageSeasonContainer">
-            <!-- Danh sách tập sẽ được load vào đây -->
-        </div>
-    </section>
-    <!-- KẾT THÚC PHẦN MỚI -->
 
     <footer>
         <div class="container">
@@ -176,13 +174,5 @@
         </div>
     </footer>
     <script src="js/navbar.js"></script> <!-- Script cho navbar (hamburger menu) -->
-
-    <script src="js/data.js"></script>
-    <!-- Dữ liệu anime -->
-    <script src="js/watching-video.js"></script> <!-- Script cho trang xem video -->
-    <script src="js/notification.js"></script> <!-- Script cho thông báo -->
-
-
 </body>
-
 </html>

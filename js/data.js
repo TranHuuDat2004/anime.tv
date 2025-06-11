@@ -132,8 +132,8 @@ const animeData = [
                         {
                             epNumOverall: 1, epNumInSeason: 1, title: "Your Name. (Dub)", // Tiêu đề dựa trên iframe
                             thumbnail: "images/your-name/your-name-banner.webp", // Lấy thumbnail từ Vimeo nếu có, hoặc placeholder
-                            duration: "1 hr 46 min", // Thời lượng phim
-                            videoUrl: "https://player.vimeo.com/video/1090443440?h=31b8824f10&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479",
+                            duration: "1 hr 46 min", // Thời lượng phim        
+                            videoUrl: "https://player.vimeo.com/video/1092110907?h=dffe7a185f&amp;title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479",
                             sub: false, // Dựa trên title "Dub"
                             dub: true
                         }
@@ -172,7 +172,7 @@ const animeData = [
                             epNumOverall: 1, epNumInSeason: 1, title: "Weathering With You (Dub)", // Tiêu đề dựa trên iframe
                             thumbnail: "images/weathering-with-you/weathering-with-you-banner.webp", // Lấy thumbnail từ Vimeo nếu có, hoặc placeholder
                             duration: "1 hr 52 min", // Thời lượng phim
-                            videoUrl: "https://player.vimeo.com/video/1090443652?h=f8160e0172&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479",
+                            videoUrl: "https://player.vimeo.com/video/1092110790?h=5e30f6ffb7&amp;title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479",
                             sub: false, // Dựa trên title "Dub"
                             dub: true
                         }

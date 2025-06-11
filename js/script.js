@@ -250,9 +250,24 @@ document.addEventListener('DOMContentLoaded', function () {
         // Điền dữ liệu cho các grid
         // Ví dụ: Top Picks có thể là những anime được đánh giá cao hoặc xem nhiều (cần thêm trường này vào data.js)
         // Hiện tại, chúng ta sẽ lấy ngẫu nhiên hoặc theo thứ tự
+
+         // 1. Top Picks for You (Giữ nguyên hoặc thay đổi logic nếu muốn)
         populateAnimeGrid('topPicksGrid', [...animeData].sort(() => 0.5 - Math.random()), 6); // Xáo trộn và lấy 6
         populateAnimeGrid('newUpdatesGrid', animeData.sort((a, b) => b.releaseYear - a.releaseYear), 6); // Sắp xếp theo năm mới nhất, lấy 6
 
+
+         // 2. Phim Series
+        const seriesAnime = animeData.filter(anime => anime.type && anime.type.toLowerCase() === 'series');
+        // Sắp xếp series theo năm phát hành mới nhất (tùy chọn)
+        seriesAnime.sort((a,b) => (b.releaseYear || 0) - (a.releaseYear || 0));
+        populateAnimeGrid('seriesAnimeGrid', seriesAnime, 12); // Hiển thị tối đa 12 series
+
+
+        // 3. Phim Movie
+        const movieAnime = animeData.filter(anime => anime.type && anime.type.toLowerCase() === 'movie');
+        // Sắp xếp movie theo năm phát hành mới nhất (tùy chọn)
+        movieAnime.sort((a,b) => (b.releaseYear || 0) - (a.releaseYear || 0));
+        populateAnimeGrid('movieAnimeGrid', movieAnime, 12); // Hiển thị tối đa 12 movie
         // Ví dụ thêm cho thể loại hành động (cần có animeData với genre "Action")
         // const actionAnime = animeData.filter(anime => anime.genres && anime.genres.map(g => g.toLowerCase()).includes('action'));
         // populateAnimeGrid('actionAnimeGrid', actionAnime, 6);

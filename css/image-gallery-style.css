@@ -100,17 +100,22 @@
 /* --- Image Gallery Styles --- */
 .image-gallery {
     display: grid;
-    gap: 15px; /* Khoảng cách giữa các ảnh */
+    gap: 15px;
     margin-bottom: 30px;
+    /* Bỏ object-fit ở đây, nó nên được đặt cho thẻ img */
 }
 
 .image-item {
     position: relative;
-    overflow: hidden;
+    overflow: hidden; /* QUAN TRỌNG: để object-fit hoạt động đúng với bo góc */
     border-radius: 6px;
-    background-color: var(--card-background-color); /* Nền cho ảnh nếu ảnh chưa tải */
-    cursor: pointer; /* Có thể mở ảnh full screen sau này */
+    background-color: var(--card-background-color);
+    cursor: pointer;
     transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+
+    /* THÊM DÒNG NÀY ĐỂ ĐẶT TỶ LỆ KHUNG HÌNH CỐ ĐỊNH */
+    aspect-ratio: 16 / 9; /* Tỷ lệ 16:9 */
+    /* Hoặc bạn có thể dùng 4 / 3, 3 / 2, 1 / 1 tùy theo ý muốn */
 }
 .image-item:hover {
     transform: scale(1.03);
@@ -120,16 +125,25 @@
 .image-item img {
     display: block;
     width: 100%;
-    height: 100%;
-    object-fit: cover; /* Đảm bảo ảnh lấp đầy mà không bị méo */
-    transition: opacity 0.3s ease-in-out;
+    height: 100%; /* QUAN TRỌNG: Cho phép ảnh chiếm toàn bộ chiều cao của .image-item */
+    object-fit: cover; /* QUAN TRỌNG: Ảnh sẽ lấp đầy .image-item, có thể bị cắt bớt để giữ tỷ lệ ảnh gốc */
+    /* Nếu bạn muốn thấy toàn bộ ảnh và có khoảng trống nếu tỷ lệ không khớp, dùng: object-fit: contain; */
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-out; /* Thêm transform cho hiệu ứng zoom khi hover */
 }
-.image-item img:not([src]) { /* Khi src chưa được gán (ví dụ lazy loading) */
+
+/* (Tùy chọn) Thêm hiệu ứng zoom nhẹ cho ảnh khi hover vào image-item */
+.image-item:hover img {
+    transform: scale(1.05);
+}
+
+.image-item img:not([src]) {
     opacity: 0;
 }
 
 
 /* View sizes for image gallery */
+/* Các class view-small, view-medium, view-large sẽ vẫn hoạt động để thay đổi
+   chiều rộng tối thiểu của mỗi cột, từ đó ảnh hưởng đến kích thước tổng thể của item */
 .image-gallery.view-small {
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
 }
