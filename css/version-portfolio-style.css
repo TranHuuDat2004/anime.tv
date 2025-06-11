@@ -1,0 +1,314 @@
+/* css/version-portfolio-style.css */
+#version-page .container {
+    max-width: 960px;
+    padding-top: 30px;
+    padding-bottom: 50px;
+}
+
+.version-header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding-bottom: 30px;
+    /* Tăng padding dưới để có không gian cho nút */
+    border-bottom: 1px solid var(--border-color);
+}
+
+#version-page .page-title {
+    font-size: 2.8em;
+    font-weight: 700;
+    color: var(--text-color);
+    /* Hoặc var(--primary-color) */
+    margin-bottom: 10px;
+
+}
+
+.version-header .tagline {
+    font-size: 1.2em;
+    color: var(--text-secondary-color);
+    font-style: italic;
+    margin-bottom: 25px;
+}
+
+/* Style cho container của các nút lựa chọn view */
+.version-view-options {
+    display: flex; /* Sử dụng flexbox để sắp xếp các nút */
+    justify-content: center; /* Căn giữa các nút */
+    align-items: center; /* Căn giữa theo chiều dọc nếu các nút có chiều cao khác nhau */
+    gap: 15px; /* Khoảng cách giữa các nút */
+    margin-top: 20px; /* Khoảng cách với tagline */
+}
+
+/* Style chung cho các nút/link lựa chọn view */
+.version-view-options a.btn { /* Nhắm vào thẻ a có class btn */
+    padding: 10px 20px; /* Kích thước nút */
+    font-size: 0.95em;
+    font-weight: 600;
+    border-radius: 25px; /* Bo tròn nhiều hơn cho cảm giác "pill" */
+    text-decoration: none;
+    transition: background-color 0.2s ease, color 0.2s ease, transform 0.1s ease;
+    /* Màu sắc mặc định (ví dụ: giống btn-outline-primary) */
+    color: var(--primary-color);
+    background-color: transparent;
+    border: 2px solid var(--primary-color);
+}
+
+.version-view-options a.btn:hover {
+    background-color: var(--primary-color);
+    color: var(--text-color); /* Màu chữ khi hover (thường là trắng hoặc đen tùy theme) */
+    transform: translateY(-2px); /* Hiệu ứng nhấc lên nhẹ */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Style cho nút/link đang active (trang hiện tại) */
+.version-view-options a.btn.active-version-link {
+    background-color: var(--primary-color);
+    color: var(--text-color); /* Màu chữ cho nút active */
+    font-weight: 700;
+    box-shadow: 0 2px 5px rgba(var(--primary-color-rgb), 0.3); /* Giả sử có --primary-color-rgb */
+}
+
+/* Responsive cho các nút */
+@media (max-width: 576px) {
+    .version-view-options {
+        flex-direction: column; /* Xếp chồng các nút trên màn hình nhỏ */
+        gap: 10px;
+    }
+    .version-view-options a.btn {
+        width: 100%; /* Nút chiếm toàn bộ chiều rộng */
+        max-width: 280px; /* Giới hạn chiều rộng tối đa của nút */
+        text-align: center;
+    }
+}/* Timeline Styles */
+.timeline {
+    list-style: none;
+    padding: 20px 0; /* Giữ padding cho timeline */
+    position: relative;
+}
+.timeline:before {
+    top: 0; bottom: 0; position: absolute; content: " ";
+    width: 3px; background-color: var(--border-color, #444954); /* Sử dụng màu border của ANIME.TV */
+    left: 25px; /* Đưa đường kẻ sang trái cố định cho layout 1 cột */
+    margin-left: 0;
+}
+
+.timeline > .timeline-item { /* Áp dụng cho .daily-commit-group */
+    margin-bottom: 30px;
+    position: relative;
+}
+.timeline > .timeline-item:before,
+.timeline > .timeline-item:after { content: " "; display: table; }
+.timeline > .timeline-item:after { clear: both; }
+
+.timeline > .timeline-item > .timeline-panel { /* Panel lớn cho mỗi ngày */
+    width: calc(100% - 70px); /* Chiều rộng panel, trừ không gian cho badge và lề */
+    float: right; /* Tất cả panel nằm bên phải đường kẻ */
+    border: 1px solid var(--border-color);
+    background-color: var(--card-background-color);
+    color: var(--text-color);
+    border-radius: 0.5rem; /* Giống card portfolio */
+    position: relative;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.15); /* Tăng nhẹ shadow */
+    /* Padding sẽ được đặt cho .daily-date-header và .timeline-body bên trong */
+}
+/* Mũi tên cho panel ngày */
+.timeline > .timeline-item > .timeline-panel:before {
+    position: absolute; top: 22px; left: -15px; display: inline-block;
+    border-top: 15px solid transparent;
+    border-right: 15px solid var(--border-color);
+    border-left: 0 solid var(--border-color);
+    border-bottom: 15px solid transparent; content: " ";
+}
+.timeline > .timeline-item > .timeline-panel:after {
+    position: absolute; top: 23px; left: -14px; display: inline-block;
+    border-top: 14px solid transparent;
+    border-right: 14px solid var(--card-background-color);
+    border-left: 0 solid var(--card-background-color);
+    border-bottom: 14px solid transparent; content: " ";
+}
+
+.timeline > .timeline-item > .timeline-badge {
+    color: #fff; width: 50px; height: 50px;
+    font-size: 1.5em;
+    text-align: center; position: absolute; top: 18px; left: 0;
+    margin-left: 0; /* Đặt badge trên đường kẻ bên trái */
+    background-color: var(--primary-color); /* Màu primary cho badge ngày */
+    z-index: 100; border-radius: 50%;
+    border: 3px solid var(--background-color);
+    display: flex; align-items: center; justify-content: center;
+}
+
+
+/* Header của panel ngày */
+.daily-date-header {
+    background-color: rgba(var(--primary-color-rgb, 244, 117, 33), 0.1); /* Nền nhẹ màu cam */
+    padding: 12px 20px; /* Tăng padding */
+    border-bottom: 1px solid var(--border-color);
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+}
+.daily-date-header .timeline-title {
+    margin: 0;
+    font-size: 1.35em; /* Tăng kích thước tiêu đề ngày */
+    color: var(--primary-color); /* MÀU CAM CHO TIÊU ĐỀ NGÀY */
+    font-weight: 700;
+}
+.daily-date-header .timeline-title .bi {
+    color: var(--primary-color); /* Icon cũng màu cam */
+    margin-right: 8px; /* Khoảng cách icon */
+}
+
+/* Body của panel ngày, chứa các commit entry */
+.timeline-panel .timeline-body {
+    padding: 15px 20px 20px; /* Thêm padding đáy */
+}
+
+/* Mỗi mục commit */
+.commit-entry {
+    padding: 15px 0; /* Tăng padding trên dưới cho mỗi commit */
+    border-bottom: 1px dashed rgba(var(--border-color-rgb), 0.25);
+}
+.commit-entry:last-child {
+    border-bottom: none;
+    padding-bottom: 0; /* Bỏ padding đáy cho item cuối */
+}
+.commit-entry:first-child {
+    padding-top: 5px;
+}
+
+/* Header của mỗi commit (chứa message và meta) */
+.commit-header {
+    display: flex;
+    flex-direction: column; /* Mặc định xếp chồng */
+    align-items: flex-start; /* Căn trái */
+    gap: 5px; /* Khoảng cách giữa message và meta khi xếp chồng */
+    margin-bottom: 10px; /* Khoảng cách dưới commit header */
+}
+
+/* Link bao quanh commit message */
+a.commit-message-link {
+    text-decoration: none;
+    color: inherit;
+    display: block; /* Để chiếm toàn bộ chiều rộng */
+}
+a.commit-message-link:hover h4.commit-message,
+a.commit-message-link:focus h4.commit-message {
+    color: var(--hover-color, #e6600d); /* Màu cam đậm hơn khi hover (cần định nghĩa --hover-color) */
+    text-decoration: underline;
+}
+
+/* Commit message (tiêu đề commit) */
+h4.commit-message {
+    font-size: 1.15em; /* Kích thước chữ cho commit message */
+    font-weight: 600;
+    color: var(--primary-color); /* MÀU CAM CHO TIÊU ĐỀ COMMIT */
+    margin: 0;
+    line-height: 1;
+    transition: color 0.2s ease;
+}
+
+/* Thông tin meta (tác giả, thời gian) */
+.commit-meta {
+    font-size: 0.85em; /* Tăng nhẹ kích thước meta */
+    color: var(--text-secondary-color) !important;
+    display: flex; /* Để icon và text nằm cùng hàng */
+    align-items: center; /* Căn giữa theo chiều dọc */
+    flex-wrap: wrap; /* Cho phép xuống dòng nếu cần */
+    gap: 5px 15px; /* Khoảng cách giữa các phần tử meta (dọc và ngang) */
+}
+.commit-meta .commit-author,
+.commit-meta .commit-time {
+    display: inline-flex; /* Để icon và text liền nhau */
+    align-items: center;
+}
+.commit-meta .bi {
+    margin-right: 5px; /* Khoảng cách icon với text */
+    font-size: 0.9em; /* Kích thước icon nhỏ hơn chút */
+}
+
+/* Danh sách chi tiết commit (nếu có) */
+hr.commit-details-separator {
+    border: 0;
+    height: 1px;
+    background-color: rgba(var(--border-color-rgb), 0.15); /* Mờ hơn */
+    margin: 10px 0;
+}
+ul.commit-details-list {
+    list-style-type: '- ';
+    padding-left: 20px;
+    margin-top: 8px;
+    margin-bottom: 0;
+    font-size: 0.9em;
+    color: var(--text-secondary-color);
+    line-height: 1.6;
+}
+ul.commit-details-list li {
+    margin-bottom: 5px;
+}
+
+
+/* Responsive - Điều chỉnh cho layout 2 cột trên màn hình lớn hơn */
+@media (min-width: 768px) {
+    .timeline:before {
+        left: 50%; /* Đưa đường kẻ timeline về giữa */
+        margin-left: -1.5px;
+    }
+    .timeline > .timeline-item > .timeline-panel {
+        width: 45%; /* Panel chiếm gần một nửa */
+        float: left; /* Panel đầu tiên bên trái */
+    }
+    /* Mũi tên cho panel bên trái */
+    .timeline > .timeline-item > .timeline-panel:before {
+        position: absolute; top: 22px; right: -15px; left: auto;
+        border-left: 15px solid var(--border-color);
+        border-right: 0 solid var(--border-color);
+    }
+    .timeline > .timeline-item > .timeline-panel:after {
+        position: absolute; top: 23px; right: -14px; left: auto;
+        border-left: 14px solid var(--card-background-color);
+        border-right: 0 solid var(--card-background-color);
+    }
+
+    .timeline > .timeline-item > .timeline-badge {
+        left: 50%; /* Badge nằm giữa */
+        margin-left: -25px; /* Căn giữa badge */
+    }
+
+    /* Panel bên phải cho các item chẵn (hoặc dùng class .timeline-inverted) */
+    .timeline > .timeline-item.timeline-inverted > .timeline-panel,
+    .timeline > .timeline-item:nth-child(even) > .timeline-panel {
+        float: right;
+    }
+    .timeline > .timeline-item.timeline-inverted > .timeline-panel:before,
+    .timeline > .timeline-item:nth-child(even) > .timeline-panel:before {
+        border-left-width: 0; border-right-width: 15px; left: -15px; right: auto;
+    }
+    .timeline > .timeline-item.timeline-inverted > .timeline-panel:after,
+    .timeline > .timeline-item:nth-child(even) > .timeline-panel:after {
+        border-left-width: 0; border-right-width: 14px; left: -14px; right: auto;
+    }
+
+    /* Cho commit header nằm ngang trên màn hình lớn */
+    .commit-header {
+        flex-direction: row; /* Tiêu đề và meta nằm ngang */
+        align-items: center; /* Căn giữa dọc */
+    }
+    a.commit-message-link {
+        margin-bottom: 0; /* Bỏ margin bottom khi nằm ngang */
+    }
+}
+
+/* Giữ lại responsive cho màn hình rất nhỏ nếu cần */
+@media (max-width: 575px) {
+    .daily-date-header .timeline-title {
+        font-size: 1.15em;
+    }
+    h4.commit-message {
+        font-size: 1em;
+    }
+    .timeline-panel .timeline-body {
+        padding: 10px 15px 15px;
+    }
+    .commit-entry {
+        padding: 10px 0;
+    }
+}

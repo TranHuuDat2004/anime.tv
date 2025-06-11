@@ -1,17 +1,21 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Lịch Sử Phiên Bản - ANIME.TV</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/version-style.css"> <!-- CSS riêng cho trang này -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
-    <link rel="icon" href="images/favicon.png" type="image/x-icon">
+    <link rel="icon" type="image/png" href="images/favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+
+    <link href="css/version-portfolio-style.css" rel="stylesheet" /> <!-- Giữ lại style này -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet" />
 </head>
-<body>
+
+<body class="d-flex flex-column h-100">
     <header>
         <nav class="navbar">
             <div class="container">
@@ -51,113 +55,26 @@
 
                 <!-- Bọc 2 thẻ a vào một div -->
                 <div class="version-view-options">
-                    <a href="version.html" class="btn btn-outline-primary active-version-link">Timeline Phiên Bản</a>
-                    <a href="version-github.html" class="btn btn-outline-primary">Lịch Sử Commit GitHub</a>
+                    <a href="version.html" class="btn btn-outline-primary ">Timeline Phiên Bản</a>
+                    <a href="version-github.html" class="btn btn-outline-primary active-version-link">Lịch Sử Commit GitHub</a>
                 </div>
             </div>
+        </div>
+    </main>
 
-            <div class="timeline">
-                <!-- Version 1.1.0 (Ví dụ - Dựa trên các commit gần nhất) -->
-                <div class="timeline-item">
-                    <div class="timeline-badge primary"></div>
-                    <div class="timeline-panel">
-                        <div class="timeline-heading">
-                            <h3 class="timeline-title">Phiên bản 1.1.0 <span class="release-date">(Dự kiến: 10/06/2025)</span></h3>
-                            <p><small class="text-muted"><i class="fas fa-clock"></i> Cập nhật gần đây</small></p>
-                        </div>
-                        <div class="timeline-body">
-                            <h4>Thay đổi & Cải tiến:</h4>
-                            <ul>
-                                <li>Cập nhật file README.md với thông tin chi tiết hơn và ảnh chụp màn hình.</li>
-                                <li>Thêm giấy phép (LICENSE) cho dự án.</li>
-                                <li>Cải thiện và thêm ảnh chụp màn hình vào README.</li>
-                                <li>Bổ sung template website ban đầu và cấu trúc cơ bản.</li>
-                                <li>Thêm trang quản lý và đọc truyện tranh (manga).</li>
-                                <!-- Thêm các commit khác của ngày 10/06 nếu có -->
-                            </ul>
-                        </div>
-                    </div>
+    <main class="flex-shrink-0">
+        <section class="py-5">
+            <div class="container px-4 px-lg-5 mb-5">
+
+                <!-- Timeline container để JavaScript chèn các commit vào -->
+                <div id="commit-timeline" class="timeline">
+                    <!-- Các mục commit sẽ được thêm vào đây bởi JavaScript -->
+                    <p id="loading-commits" style="text-align: center; color: var(--text-secondary-color);">Đang tải
+                        lịch sử commit...</p>
                 </div>
 
-                <!-- Version 1.0.x (Dựa trên các commit trước đó) -->
-                 <div class="timeline-item">
-                    <div class="timeline-badge info"></div>
-                    <div class="timeline-panel">
-                        <div class="timeline-heading">
-                            <h3 class="timeline-title">Cập nhật giao diện & Chức năng <span class="release-date">(08-09/06/2025)</span></h3>
-                        </div>
-                        <div class="timeline-body">
-                            <h4>Tính năng & Sửa lỗi:</h4>
-                            <ul>
-                                <li>Sửa lỗi và cải thiện thanh điều hướng (navbar), đặc biệt trên mobile.</li>
-                                <li>Thêm trò chơi ghép hình 3x3 (Jigsaw Puzzle).</li>
-                                <li>Hoàn thiện chức năng hiển thị và chi tiết hình ảnh.</li>
-                                <li>Xây dựng và tích hợp bộ sưu tập ảnh GIF.</li>
-                                <li>Thêm dữ liệu cho anime "Blue Archive".</li>
-                                <!-- Thêm các commit khác -->
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-badge warning"></div> <!-- Màu khác cho các mốc khác nhau -->
-                    <div class="timeline-panel">
-                        <div class="timeline-heading">
-                            <h3 class="timeline-title">Xây dựng nền tảng & Thêm nội dung <span class="release-date">(03-05/06/2025)</span></h3>
-                        </div>
-                        <div class="timeline-body">
-                            <h4>Tính năng & Nội dung:</h4>
-                            <ul>
-                                <li>Hoàn thiện chức năng tìm kiếm menu điều hướng.</li>
-                                <li>Thêm dữ liệu cho phim "Your Name" và "Weathering With You".</li>
-                                <li>Thiết kế banner, logo, favicon.</li>
-                                <li>Tích hợp thành công video từ Vimeo sau khi gặp sự cố với Google Drive.</li>
-                                <li>Cập nhật trang xem video (`watch-video.html`).</li>
-                                <li>Thêm phim "The Angel Next Door" (Thiên Sứ Nhà Bên).</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-
-                <!-- Version 1.0.0 - Giao diện web đầu tiên -->
-                <div class="timeline-item">
-                    <div class="timeline-badge success"></div> <!-- Màu khác cho bản phát hành lớn -->
-                    <div class="timeline-panel">
-                        <div class="timeline-heading">
-                            <h3 class="timeline-title">Phiên bản 1.0.0 - Ra Mắt <span class="release-date">(26/05/2025)</span></h3>
-                            <p><small class="text-muted">Khởi đầu hành trình!</small></p>
-                        </div>
-                        <div class="timeline-body">
-                            <h4>Tính năng chính:</h4>
-                            <ul>
-                                <li>Khởi tạo dự án ANIME.TV.</li>
-                                <li>Xây dựng cấu trúc CSS và JavaScript cơ bản.</li>
-                                <li>Thiết kế giao diện web ban đầu cho các trang chính.</li>
-                                <!-- Liệt kê các tính năng cốt lõi của phiên bản đầu tiên -->
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Thêm các mục timeline khác nếu cần -->
-                <div class="timeline-item">
-                    <div class="timeline-inverted"> <!-- Đảo vị trí panel -->
-                        <div class="timeline-badge secondary"></div>
-                        <div class="timeline-panel">
-                            <div class="timeline-heading">
-                                <h3 class="timeline-title">Khởi tạo Dự án <span class="release-date">(Trước 26/05/2025)</span></h3>
-                            </div>
-                            <div class="timeline-body">
-                                <p>Bắt đầu ý tưởng và commit đầu tiên cho ANIME.TV.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div> <!-- /.timeline -->
-        </div> <!-- /.container -->
+            </div>
+        </section>
     </main>
 
     <footer>
@@ -214,7 +131,8 @@
                                     d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
                             </svg>
                         </a>
-                        <a href="https://github.com/TranHuuDat2004/" title="GitHub" target="_blank" rel="noopener noreferrer">
+                        <a href="https://github.com/TranHuuDat2004/" title="GitHub" target="_blank"
+                            rel="noopener noreferrer">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="#F28C38"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path
@@ -244,7 +162,8 @@
     </footer>
     <script src="js/navbar.js"></script> <!-- Script cho navbar (hamburger menu) -->
 
-    <!-- Font Awesome nếu bạn muốn dùng icon cho timeline-badge hoặc các mục khác -->
-    <!-- <script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script> -->
+
+    <script src="js/version-script.js"></script> <!-- File JS mới cho trang version -->
 </body>
+
 </html>
