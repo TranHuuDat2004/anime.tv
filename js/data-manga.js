@@ -51,28 +51,38 @@ const mangaData = [
     //     readDetailLink: `manga-detail.html?id=oshi-no-ko`,
     //     readLink: "https://mangaplus.shueisha.co.jp/titles/100191"
     // },
+    // js/data-manga.js
+
+    // ... (các bộ manga khác) ...
     {
         id: "doraemon-movie-2023",
-        title: "Doraemon Movie 2023: Nobita's Sky Utopia", // Tên phim (ví dụ)
+        title: "Doraemon Movie 2023: Nobita's Sky Utopia",
         altTitle: "映画ドラえもん のび太と空の理想郷 (ユートピア)",
         author: "Fujiko F. Fujio (Original Creator)",
-        coverImage: "manga/doraemon-movie-2023/1.png", // Cần ảnh bìa
-        bannerImage: "manga/doraemon-movie-2023/banner2.jpeg", // Cần ảnh banner
+        // Ảnh bìa và banner vẫn có thể nằm trong repo chính của ANIME.TV nếu bạn muốn
+        // Hoặc bạn cũng có thể chuyển chúng sang repo ảnh và cập nhật đường dẫn tuyệt đối.
+        // Ví dụ nếu ảnh bìa cũng ở repo ảnh:
+        // coverImage: "https://raw.githubusercontent.com/Doraemon-Movie-2023/doraemon-movie-2023-assets/main/cover.jpg",
+        coverImage: "images/doraemon-movie-2023/poster.png", // Giữ lại đường dẫn cục bộ cho bìa
+        bannerImage: "images/doraemon-movie-2023/banner2.jpeg", // Giữ lại đường dẫn cục bộ cho banner
+
         description: "Nobita và những người bạn bắt đầu một cuộc phiêu lưu đến Utopia, một hòn đảo hình lưỡi liềm hoàn hảo trên bầu trời, nơi mọi người có thể sống hạnh phúc mà không gặp khó khăn gì, nhờ vào sự giúp đỡ của những chú mèo robot hoàn hảo.",
         genres: ["Adventure", "Fantasy", "Sci-Fi", "Kids"],
         status: "Hoàn thành",
-        releaseYear: 2023, // Năm phát hành manga/movie
-        // Thay vì 'chapters', chúng ta sẽ dùng thông tin 'pages' cho reader
+        releaseYear: 2023,
         pageInfo: {
-            totalPages: 152, // Tổng số trang ảnh
-            // Đường dẫn đến thư mục chứa các trang truyện, không bao gồm tên file
-            // Ví dụ: images/manga/doraemon-movie-2023/pages/
-            // Tên file sẽ được tạo động: 1.jpg, 2.jpg, ...
-            basePath: "manga/doraemon-movie-2023/",
+            totalPages: 152,
+            // ĐƯỜNG DẪN RAW ĐẾN THƯ MỤC GỐC CỦA ẢNH TRANG TRUYỆN TRÊN REPO KHÁC
+            // Giả sử các file ảnh trang truyện (1.png, 2.png,...) nằm ngay trong thư mục gốc của nhánh main
+            // của repo doraemon-movie-2023-assets
+            basePath: "https://raw.githubusercontent.com/Doraemon-Movie-2023/doraemon-movie-2023-assets/main/",
             fileExtension: ".png" // Phần mở rộng của file ảnh trang truyện
         },
+        // readDetailLink vẫn giữ nguyên nếu bạn muốn có trang chi tiết riêng
         readDetailLink: `manga-detail.html?id=doraemon-movie-2023`,
-        readLink: `manga-detail.html?id=doraemon-movie-2023` // Link để bắt đầu đọc
+        // readLink trên card manga sẽ trỏ đến trang chi tiết trước
+        readLink: `manga-detail.html?id=doraemon-movie-2023`
     }
-    // Thêm các bộ manga khác vào đây
+    // ...
 ];
+

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,6 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
     <link rel="icon" href="images/favicon.png" type="image/x-icon">
 </head>
+
 <body>
     <header class="manga-reader-header"> <!-- Header có thể khác một chút -->
         <nav class="navbar">
@@ -22,7 +24,11 @@
                 </div>
                 <div class="reader-actions">
                     <a href="manga.html" id="backToMangaList" class="btn btn-sm btn-outline-secondary">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list-ul" viewBox="0 0 16 16" style="margin-right: 5px;"><path fill-rule="evenodd" d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m-2-4A.5.5 0 0 1 3.5 7h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m-2-4A.5.5 0 0 1 1.5 3h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-list-ul" viewBox="0 0 16 16" style="margin-right: 5px;">
+                            <path fill-rule="evenodd"
+                                d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m-2-4A.5.5 0 0 1 3.5 7h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m-2-4A.5.5 0 0 1 1.5 3h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5" />
+                        </svg>
                         DS Truyện
                     </a>
                     <!-- Có thể thêm nút cài đặt (chế độ đọc,...) sau -->
@@ -32,8 +38,15 @@
     </header>
 
     <main id="manga-reader-main">
+        <!-- DÒNG THÔNG BÁO MỚI -->
+        <div class="image-quality-notice container">
+            <p><i class="bi bi-info-circle-fill"></i> Ảnh được cung cấp ở chất lượng cao nhất. Thời gian tải có thể lâu
+                hơn một chút tùy thuộc vào kết nối mạng của bạn. Mong bạn thông cảm!</p>
+        </div>
+        <!-- KẾT THÚC DÒNG THÔNG BÁO MỚI -->
         <div class="manga-page-container">
-            <img id="mangaPageImage" src="https://via.placeholder.com/800x1200?text=Loading+Page..." alt="Trang truyện hiện tại">
+            <img id="mangaPageImage" src="https://via.placeholder.com/800x1200?text=Loading+Page..."
+                alt="Trang truyện hiện tại">
         </div>
 
         <div class="manga-navigation-controls">
@@ -97,7 +110,8 @@
                                     d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
                             </svg>
                         </a>
-                        <a href="https://github.com/TranHuuDat2004/" title="GitHub" target="_blank" rel="noopener noreferrer">
+                        <a href="https://github.com/TranHuuDat2004/" title="GitHub" target="_blank"
+                            rel="noopener noreferrer">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="#F28C38"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path
@@ -130,4 +144,5 @@
     <script src="js/data-manga.js"></script>
     <script src="js/reading-manga-script.js"></script>
 </body>
+
 </html>
