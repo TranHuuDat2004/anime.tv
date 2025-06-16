@@ -77,3 +77,74 @@
     padding: 20px;
     font-size: 1.1em;
 }
+
+/* Responsive cho thanh tìm kiếm */
+@media (max-width: 576px) {
+    .search-form-section h1 {
+        /* Hoặc #search-page .page-title nếu bạn dùng class chung */
+        font-size: 2em;
+        /* Giảm kích thước tiêu đề trang một chút */
+        margin-bottom: 20px;
+    }
+
+    .search-bar-container {
+        /* Đổi tên class này từ search-form-container để rõ ràng hơn */
+        flex-direction: column;
+        border-radius: 0;
+        /* Bỏ bo tròn của container */
+        background-color: transparent;
+        overflow: visible;
+        /* Cho phép input/button có bo tròn riêng */
+        gap: 10px;
+
+        border-radius: 25px;
+        /* Khoảng cách giữa input và button khi xếp chồng */
+    }
+
+    #searchInput {
+        border-radius: 25px;
+        /* Bo tròn tất cả các góc cho input */
+        /* background-color và border đã được đặt ở style chung */
+        /* Có thể không cần thay đổi nhiều ở đây nếu style chung đã ổn */
+        padding: 12px 20px;
+        /* Đảm bảo padding nhất quán */
+    }
+
+    #searchButton {
+        width: 100%;
+        /* Nút chiếm toàn bộ chiều rộng */
+        justify-content: center;
+        /* QUAN TRỌNG: Căn giữa icon và text */
+        border-radius: 25px;
+        /* Bo tròn tất cả các góc cho button */
+        padding: 12px 20px;
+        /* Đảm bảo padding đồng đều cho nút */
+        /* Bỏ margin-right và padding-right riêng biệt */
+        /* margin-right: 20px; */
+        border-left: none;
+        /* Bỏ đường kẻ trái khi xếp chồng */
+        font-size: 1.1em;
+        /* Đảm bảo font size nhất quán */
+    }
+
+    /* Nếu bạn muốn nút có chiều cao cố định và text căn giữa hoàn hảo:
+    #searchButton {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 25px;
+        padding: 12px 15px; // Điều chỉnh padding nếu cần
+        font-size: 1.1em;
+        gap: 8px; // Giữ lại gap cho icon
+        border-left: none;
+    }
+    */
+
+    .search-results-section h2 {
+        /* Hoặc .search-results-section .section-title */
+        font-size: 1.6em;
+        /* Giảm kích thước tiêu đề kết quả */
+        margin-bottom: 15px;
+    }
+}

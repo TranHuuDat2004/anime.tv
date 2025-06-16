@@ -74,15 +74,15 @@ function initializeNavbar() {
     });
 
     // Logic cho hamburger menu (nếu bạn chưa có file navbar.js riêng)
-    const hamburger = document.getElementById('hamburger');
-    const navbarMenu = document.getElementById('navbarMenu');
+    // const hamburger = document.getElementById('hamburger');
+    // const navbarMenu = document.getElementById('navbarMenu');
 
-    if (hamburger && navbarMenu) {
-        hamburger.addEventListener('click', () => {
-            navbarMenu.classList.toggle('active'); // Class 'active' này sẽ dùng CSS để hiển thị menu
-            hamburger.classList.toggle('is-active'); // Class cho hiệu ứng nút hamburger
-        });
-    }
+    // if (hamburger && navbarMenu) {
+    //     hamburger.addEventListener('click', () => {
+    //         navbarMenu.classList.toggle('active'); // Class 'active' này sẽ dùng CSS để hiển thị menu
+    //         hamburger.classList.toggle('is-active'); // Class cho hiệu ứng nút hamburger
+    //     });
+    // }
 }
 
 // (Tùy chọn) Nếu bạn muốn kiểm soát notification từ JS
