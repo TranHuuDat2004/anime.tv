@@ -13,12 +13,15 @@
   <a href="https://tranhuudat2004.github.io/anime.tv/" target="_blank">
     <img src="https://img.shields.io/badge/Live-Demo-blueviolet?style=for-the-badge&logo=google-chrome" alt="Live Demo"/>
   </a>
+<a href="https://github.com/TranHuuDat2004/anime.tv/releases/latest" target="_blank">
+    <img src="https://img.shields.io/github/v/release/TranHuuDat2004/anime.tv?style=for-the-badge&logo=github" alt="Latest Release"/>
+  </a>
 </p>
 
 ---
 
 <details>
-<summary><strong>🇻🇳 Tiếng Việt (Nhấn để xem)</strong></summary>
+<summary><strong> Tiếng Việt (Nhấn để xem)</strong></summary>
 
 Chào mừng bạn đến với ANIME.TV! Đây là một dự án website cá nhân được xây dựng với mục đích học hỏi, rèn luyện kỹ năng phát triển web và tạo ra một không gian để lưu trữ, khám phá nội dung liên quan đến Anime và Manga.
 
@@ -76,7 +79,7 @@ Dự án này được phát hành dưới giấy phép [MIT License](LICENSE).
 </details>
 
 <details open>
-<summary><strong>🇬🇧 English (Click to view)</strong></summary>
+<summary><strong> English (Click to view)</strong></summary>
 
 Welcome to ANIME.TV! This is a personal website project built for learning, practicing web development skills, and creating a space to store and explore content related to Anime and Manga.
 
