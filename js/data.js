@@ -224,5 +224,63 @@ const animeData = [
         },
         crunchyrollTags: ["Sub", "Action", "School", "Comedy"], // Các tag phù hợp
         relatedAnime: [] // (Tùy chọn)
+    },
+
+
+    { // ANIME MỚI: SUMMER POCKETS REFLECTION BLUE (Ví dụ)
+        id: "summer-pockets",
+        title: "Summer Pockets ",
+        altTitle: "サマーポケッツ リフレクションブルー", // Tên tiếng Nhật nếu có
+        posterImage: "images/summer-pockets/summer-pockets-anime-vietsub.png", // Cần ảnh poster
+        bannerImage: "images/summer-pockets/banner2.webp", // Cần ảnh banner
+        logoImage: "images/summer-pockets/logo.png",   // Cần ảnh logo (nếu có)
+        description: "Hairi Takahara đến hòn đảo Torishirojima để sắp xếp tài sản của người bà quá cố. Tại đây, cậu gặp gỡ những cô gái và trải qua một mùa hè không thể nào quên, khám phá những bí mật của hòn đảo và tìm kiếm những ký ức mùa hè đã mất.",
+        genres: ["Slice of Life", "Drama", "Romance", "Visual Novel"],
+        rating: "PG-13", // Ước lượng
+        type: "Series",
+        status: "Đang chiếu", // Anime đang chiếu
+        releaseYear: 2025, // Năm phát hành anime (GIẢ ĐỊNH, bạn cần thay thế bằng năm thực tế)
+        episodes: {
+            // total: "Ongoing" hoặc 14 + 12 = 26 nếu bạn muốn hiển thị tổng dự kiến
+            total: "Ongoing (S1: 14, S2: 12)",
+            availableOnSite: 11, // Hiện tại có link đến tập 11 của Season 1
+            seasons: [
+                {
+                    seasonNum: 1,
+                    seasonTitle: "Season 1",
+                    episodes: [
+                        { epNumOverall: 1, epNumInSeason: 1, title: "Tập 1", thumbnail: "images/summer-pockets/s1/ep1.jpg", duration: "24 min", videoUrl: "LINK_VIMEO_HOAC_YOUTUBE_TAP_1", sub: true, dub: false },
+                        { epNumOverall: 2, epNumInSeason: 2, title: "Tập 2", thumbnail: "images/summer-pockets/s1/ep2.jpg", duration: "24 min", videoUrl: "LINK_VIMEO_HOAC_YOUTUBE_TAP_2", sub: true, dub: false },
+                        { epNumOverall: 3, epNumInSeason: 3, title: "Tập 3", thumbnail: "images/summer-pockets/s1/ep3.jpg", duration: "24 min", videoUrl: "LINK_VIMEO_HOAC_YOUTUBE_TAP_3", sub: true, dub: false },
+                        { epNumOverall: 4, epNumInSeason: 4, title: "Tập 4", thumbnail: "images/summer-pockets/s1/ep4.jpg", duration: "24 min", videoUrl: "LINK_VIMEO_HOAC_YOUTUBE_TAP_4", sub: true, dub: false },
+                        { epNumOverall: 5, epNumInSeason: 5, title: "Tập 5", thumbnail: "images/summer-pockets/s1/ep5.jpg", duration: "24 min", videoUrl: "LINK_VIMEO_HOAC_YOUTUBE_TAP_5", sub: true, dub: false },
+                        { epNumOverall: 6, epNumInSeason: 6, title: "Tập 6", thumbnail: "images/summer-pockets/s1/ep6.jpg", duration: "24 min", videoUrl: "LINK_VIMEO_HOAC_YOUTUBE_TAP_6", sub: true, dub: false },
+                        { epNumOverall: 7, epNumInSeason: 7, title: "Tập 7", thumbnail: "images/summer-pockets/s1/ep7.jpg", duration: "24 min", videoUrl: "LINK_VIMEO_HOAC_YOUTUBE_TAP_7", sub: true, dub: false },
+                        { epNumOverall: 8, epNumInSeason: 8, title: "Tập 8", thumbnail: "images/summer-pockets/s1/ep8.jpg", duration: "24 min", videoUrl: "LINK_VIMEO_HOAC_YOUTUBE_TAP_8", sub: true, dub: false },
+                        { epNumOverall: 9, epNumInSeason: 9, title: "Tập 9", thumbnail: "images/summer-pockets/s1/ep9.jpg", duration: "24 min", videoUrl: "LINK_VIMEO_HOAC_YOUTUBE_TAP_9", sub: true, dub: false },
+                        { epNumOverall: 10, epNumInSeason: 10, title: "Tập 10", thumbnail: "images/summer-pockets/s1/ep10.jpg", duration: "24 min", videoUrl: "LINK_VIMEO_HOAC_YOUTUBE_TAP_10", sub: true, dub: false },
+                        { epNumOverall: 11, epNumInSeason: 11, title: "Tập 11", thumbnail: "images/summer-pockets/s1/ep11.jpg", duration: "24 min", videoUrl: "LINK_VIMEO_HOAC_YOUTUBE_TAP_11", sub: true, dub: false },
+                        // Các tập chưa có link
+                        { epNumOverall: 12, epNumInSeason: 12, title: "Tập 12: (Chưa phát sóng)", thumbnail: "images/summer-pockets/s1/ep12_placeholder.jpg", duration: "24 min", videoUrl: "#", sub: true, dub: false },
+                        { epNumOverall: 13, epNumInSeason: 13, title: "Tập 13: (Chưa phát sóng)", thumbnail: "images/summer-pockets/s1/ep13_placeholder.jpg", duration: "24 min", videoUrl: "#", sub: true, dub: false },
+                        { epNumOverall: 14, epNumInSeason: 14, title: "Tập 14: (Chưa phát sóng)", thumbnail: "images/summer-pockets/s1/ep14_placeholder.jpg", duration: "24 min", videoUrl: "#", sub: true, dub: false }
+                    ]
+                },
+                {
+                    seasonNum: 2,
+                    seasonTitle: "Season 2",
+                    episodes: [
+                        // 12 tập của season 2, hiện tại đều là placeholder
+                        { epNumOverall: 15, epNumInSeason: 1, title: "S2 Tập 1: (Chưa phát sóng)", thumbnail: "images/summer-pockets/s2/ep1_placeholder.jpg", duration: "24 min", videoUrl: "#", sub: true, dub: false },
+                        // ... (thêm placeholder cho đến tập 12 của season 2) ...
+                        { epNumOverall: 26, epNumInSeason: 12, title: "S2 Tập 12: (Chưa phát sóng)", thumbnail: "images/summer-pockets/s2/ep12_placeholder.jpg", duration: "24 min", videoUrl: "#", sub: true, dub: false }
+                    ]
+                }
+            ]
+        },
+        crunchyrollTags: ["Sub", "Slice of Life", "Drama", "Romance"], // Các tag phù hợp
+        relatedAnime: [] // (Tùy chọn)
     }
+    // Đảm bảo có dấu phẩy nếu đây không phải là đối tượng cuối cùng trong mảng
+
 ];
