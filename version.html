@@ -1,104 +1,165 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lịch Sử Phiên Bản - ANIME.TV</title>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/version-style.css"> <!-- CSS riêng cho trang này -->
+    <link rel="stylesheet" href="css/version-style.css"> <!-- Hoặc version-portfolio-style.css -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
     <link rel="icon" href="images/favicon.png" type="image/x-icon">
+    <!-- Bootstrap Icons nếu bạn dùng cho timeline badge -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Hoặc phiên bản mới hơn nếu có -->
+    <!-- ... -->
 </head>
+</head>
+
 <body>
-    <div id="header-placeholder"></div> <!-- Placeholder cho header -->
+    <div id="header-placeholder"></div>
 
     <main id="version-page">
         <div class="container">
             <div class="version-header">
                 <h1 class="page-title">Lịch Sử Phiên Bản ANIME.TV</h1>
                 <p class="tagline">Theo dõi hành trình phát triển và các cập nhật mới nhất của trang web.</p>
-
-                <!-- Bọc 2 thẻ a vào một div -->
                 <div class="version-view-options">
-                    <a href="version.html" class="btn btn-outline-primary active-version-link">Timeline Phiên Bản</a>
-                    <a href="version-github.html" class="btn btn-outline-primary">Lịch Sử Commit GitHub</a>
+                    <a href="version.html" class="btn btn-outline-primary active-version-link">Timeline Tổng Quan</a>
+                    <a href="version-github.html" class="btn btn-outline-primary">Lịch Sử Commit Chi Tiết</a>
                 </div>
             </div>
 
             <div class="timeline">
-                <!-- Version 1.1.0 (Ví dụ - Dựa trên các commit gần nhất) -->
+                <!-- PHIÊN BẢN MỚI v1.1.0 -->
                 <div class="timeline-item">
-                    <div class="timeline-badge primary"></div>
+                    <div class="timeline-badge new"><i class="bi bi-award-fill"></i></div>
+                    <!-- Icon khác cho phiên bản -->
                     <div class="timeline-panel">
                         <div class="timeline-heading">
-                            <h3 class="timeline-title">Phiên bản 1.1.0 <span class="release-date">(Dự kiến: 10/06/2025)</span></h3>
-                            <p><small class="text-muted"><i class="fas fa-clock"></i> Cập nhật gần đây</small></p>
+                            <h3 class="timeline-title">Phiên bản 1.1.0 <span class="release-date">22/06/2025</span></h3>
+                            <p><small class="text-muted">Tính năng mới & Cải tiến Trải nghiệm!</small></p>
                         </div>
                         <div class="timeline-body">
-                            <h4>Thay đổi & Cải tiến:</h4>
+                            <h4>Tính năng nổi bật:</h4>
                             <ul>
-                                <li>Cập nhật file README.md với thông tin chi tiết hơn và ảnh chụp màn hình.</li>
-                                <li>Thêm giấy phép (LICENSE) cho dự án.</li>
-                                <li>Cải thiện và thêm ảnh chụp màn hình vào README.</li>
-                                <li>Bổ sung template website ban đầu và cấu trúc cơ bản.</li>
-                                <li>Thêm trang quản lý và đọc truyện tranh (manga).</li>
-                                <!-- Thêm các commit khác của ngày 10/06 nếu có -->
+                                <li><strong>Ra mắt trang Bảng Xếp Hạng Anime Cá Nhân (`ranking.html`):</strong>
+                                    <ul>
+                                        <li>Hiển thị các bộ anime được yêu thích theo nhiều hạng mục khác nhau (ví dụ:
+                                            Yêu thích nhất, Lãng mạn nhất, Hành động hay nhất,...).</li>
+                                        <li>Dữ liệu xếp hạng được quản lý trong `data.js` với trường `rankings` mới.
+                                        </li>
+                                        <li>Giao diện hiển thị các card anime trong từng hạng mục, có thể kèm theo huy
+                                            hiệu xếp hạng (rank badge).</li>
+                                    </ul>
+                                </li>
                             </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Version 1.0.x (Dựa trên các commit trước đó) -->
-                 <div class="timeline-item">
-                    <div class="timeline-badge info"></div>
-                    <div class="timeline-panel">
-                        <div class="timeline-heading">
-                            <h3 class="timeline-title">Cập nhật giao diện & Chức năng <span class="release-date">(08-09/06/2025)</span></h3>
-                        </div>
-                        <div class="timeline-body">
-                            <h4>Tính năng & Sửa lỗi:</h4>
+                            <h4>Cải tiến khác:</h4>
                             <ul>
-                                <li>Sửa lỗi và cải thiện thanh điều hướng (navbar), đặc biệt trên mobile.</li>
-                                <li>Thêm trò chơi ghép hình 3x3 (Jigsaw Puzzle).</li>
-                                <li>Hoàn thiện chức năng hiển thị và chi tiết hình ảnh.</li>
-                                <li>Xây dựng và tích hợp bộ sưu tập ảnh GIF.</li>
-                                <li>Thêm dữ liệu cho anime "Blue Archive".</li>
-                                <!-- Thêm các commit khác -->
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-badge warning"></div> <!-- Màu khác cho các mốc khác nhau -->
-                    <div class="timeline-panel">
-                        <div class="timeline-heading">
-                            <h3 class="timeline-title">Xây dựng nền tảng & Thêm nội dung <span class="release-date">(03-05/06/2025)</span></h3>
-                        </div>
-                        <div class="timeline-body">
-                            <h4>Tính năng & Nội dung:</h4>
-                            <ul>
-                                <li>Hoàn thiện chức năng tìm kiếm menu điều hướng.</li>
-                                <li>Thêm dữ liệu cho phim "Your Name" và "Weathering With You".</li>
-                                <li>Thiết kế banner, logo, favicon.</li>
-                                <li>Tích hợp thành công video từ Vimeo sau khi gặp sự cố với Google Drive.</li>
-                                <li>Cập nhật trang xem video (`watch-video.html`).</li>
-                                <li>Thêm phim "The Angel Next Door" (Thiên Sứ Nhà Bên).</li>
+                                <li>Cập nhật `data.js` với thông tin xếp hạng cho các anime hiện có và bổ sung dữ liệu
+                                    cho các anime mới (Hội Chứng Tuổi Thanh Xuân, Lycoris Recoil, Nokotan, Bocchi the
+                                    Rock!, Alya Bàn Bên, Spy x Family).</li>
+                                <li>Tinh chỉnh CSS cho trang chi tiết ảnh (`image-detail.html`) để các ảnh thumbnail
+                                    "Ảnh khác trong series" hiển thị đồng đều với tỷ lệ 16:9.</li>
+                                <li>Cải thiện giao diện phần "Thông Tin Truyện" trên trang chi tiết manga
+                                    (`manga-detail.html`) để dễ đọc và thoáng hơn.</li>
+                                <li>Hoàn thiện và bổ sung nội dung cho các trang thông tin: FAQ, Điều khoản sử dụng,
+                                    Chính sách riêng tư, và trang Giới thiệu.</li>
+                                <li>Tối ưu hóa việc quản lý header và footer bằng cách sử dụng file JavaScript riêng
+                                    (`header.js`, `footer.js`).</li>
+                                <li>Khắc phục các lỗi giao diện nhỏ và cải thiện trải nghiệm người dùng trên trang tìm
+                                    kiếm.</li>
                             </ul>
                         </div>
                     </div>
                 </div>
 
 
-                <!-- Version 1.0.0 - Giao diện web đầu tiên -->
+                <!-- Ví dụ: Nhóm các cập nhật gần nhất -->
                 <div class="timeline-item">
-                    <div class="timeline-badge success"></div> <!-- Màu khác cho bản phát hành lớn -->
+                    <div class="timeline-badge primary"><i class="bi bi-tools"></i></div>
                     <div class="timeline-panel">
                         <div class="timeline-heading">
-                            <h3 class="timeline-title">Phiên bản 1.0.0 - Ra Mắt <span class="release-date">(26/05/2025)</span></h3>
-                            <p><small class="text-muted">Khởi đầu hành trình!</small></p>
+                            <h3 class="timeline-title">Cải tiến & Hoàn thiện <span class="release-date">(Khoảng
+                                    17-20/06/2025)</span></h3>
+                        </div>
+                        <div class="timeline-body">
+                            <h4>Tính năng & Nội dung mới:</h4>
+                            <ul>
+                                <li>Hoàn thiện và triển khai thư viện truyện tranh (Manga) với chức năng đọc truyện.
+                                </li>
+                                <li>Bổ sung các trang thông tin quan trọng (FAQ, Điều khoản, Chính sách).</li>
+                                <li>Thêm trang lịch sử phiên bản (trang này!).</li>
+                                <li>Thêm trang xếp hạng anime cá nhân.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-badge info"><i class="bi bi-controller"></i></div>
+                    <div class="timeline-panel">
+                        <div class="timeline-heading">
+                            <h3 class="timeline-title">Mở rộng Tính năng Giải trí <span class="release-date">(Khoảng
+                                    08-12/06/2025)</span></h3>
+                        </div>
+                        <div class="timeline-body">
+                            <h4>Tính năng mới:</h4>
+                            <ul>
+                                <li>Ra mắt trò chơi ghép hình 3x3 (Jigsaw Puzzle) chủ đề anime.</li>
+                                <li>Xây dựng và tích hợp bộ sưu tập ảnh GIF động.</li>
+                                <li>Hoàn thiện chức năng hiển thị và xem chi tiết hình ảnh.</li>
+                            </ul>
+                            <h4>Nội dung mới:</h4>
+                            <ul>
+                                <li>Thêm dữ liệu anime "Blue Archive The Animation".</li>
+                                <li>Thêm dữ liệu anime "Summer Pockets Reflection Blue".</li>
+                            </ul>
+                            <h4>Cải tiến:</h4>
+                            <ul>
+                                <li>Sửa lỗi và cải thiện thanh điều hướng (navbar) trên thiết bị di động.</li>
+                                <li>Thêm thông báo (notification) trên trang.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-badge warning"><i class="bi bi-film"></i></div>
+                    <div class="timeline-panel">
+                        <div class="timeline-heading">
+                            <h3 class="timeline-title">Xây Dựng Nền Tảng & Thêm Nội Dung Phim <span
+                                    class="release-date">01-05/06/2025</span></h3>
+                        </div>
+                        <div class="timeline-body">
+                            <h4>Tính năng cốt lõi:</h4>
+                            <ul>
+                                <li>Hoàn thiện chức năng tìm kiếm trong menu điều hướng.</li>
+                                <li>Tích hợp thành công trình phát video Vimeo sau sự cố với Google Drive.</li>
+                                <li>Cập nhật và cải tiến trang xem video (`watch-video.html`).</li>
+                            </ul>
+                            <h4>Nội dung mới:</h4>
+                            <ul>
+                                <li>Thêm dữ liệu cho phim "Your Name." và "Weathering With You".</li>
+                                <li>Thêm dữ liệu cho series "Thiên Sứ Nhà Bên" (The Angel Next Door).</li>
+                            </ul>
+                            <h4>Giao diện:</h4>
+                            <ul>
+                                <li>Thiết kế banner, logo, favicon ban đầu cho ANIME.TV.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-badge success"><i class="bi bi-rocket"></i></div>
+                    <div class="timeline-panel">
+                        <div class="timeline-heading">
+                            <h3 class="timeline-title">Phiên bản 1.0.0 - ANIME.TV Ra Mắt <span
+                                    class="release-date">26/05/2025</span></h3>
+                            <p><small class="text-muted">Khởi đầu hành trình ANIME.TV!</small></p>
                         </div>
                         <div class="timeline-body">
                             <h4>Tính năng chính:</h4>
@@ -106,38 +167,35 @@
                                 <li>Khởi tạo dự án ANIME.TV.</li>
                                 <li>Xây dựng cấu trúc CSS và JavaScript cơ bản.</li>
                                 <li>Thiết kế giao diện web ban đầu cho các trang chính.</li>
-                                <!-- Liệt kê các tính năng cốt lõi của phiên bản đầu tiên -->
+                                <li>Chức năng xem video cơ bản.</li>
                             </ul>
                         </div>
                     </div>
                 </div>
 
-                <!-- Thêm các mục timeline khác nếu cần -->
-                <div class="timeline-item">
-                    <div class="timeline-inverted"> <!-- Đảo vị trí panel -->
-                        <div class="timeline-badge secondary"></div>
-                        <div class="timeline-panel">
-                            <div class="timeline-heading">
-                                <h3 class="timeline-title">Khởi tạo Dự án <span class="release-date">(Trước 26/05/2025)</span></h3>
-                            </div>
-                            <div class="timeline-body">
-                                <p>Bắt đầu ý tưởng và commit đầu tiên cho ANIME.TV.</p>
-                            </div>
+                <div class="timeline-item"> <!-- HOẶC <div class="timeline-item timeline-inverted"> -->
+                    <div class="timeline-badge secondary"><i class="bi bi-flag-fill"></i></div>
+                    <div class="timeline-panel">
+                        <div class="timeline-heading">
+                            <h3 class="timeline-title">Khởi tạo Dự án <span class="release-date">(Trước
+                                    26/05/2025)</span></h3>
+                        </div>
+                        <div class="timeline-body">
+                            <p>Bắt đầu ý tưởng, thiết lập repository và commit đầu tiên cho ANIME.TV.</p>
                         </div>
                     </div>
                 </div>
+            </div>
 
-            </div> <!-- /.timeline -->
         </div> <!-- /.container -->
     </main>
 
-    <div id="footer-placeholder"></div> <!-- Placeholder cho footer -->
+    <div id="footer-placeholder"></div>
 
-    <script src="js/header.js"></script> <!-- Nhúng header.js ở đầu (sau placeholder) -->
-    <script src="js/footer.js"></script> <!-- Script cho slideshow -->
-    <script src="js/navbar.js"></script> <!-- Script cho navbar (hamburger menu) -->
-
-    <!-- Font Awesome nếu bạn muốn dùng icon cho timeline-badge hoặc các mục khác -->
-    <!-- <script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script> -->
+    <script src="js/header.js"></script>
+    <script src="js/footer.js"></script>
+    <script src="js/navbar.js"></script>
+    <!-- <script src="js/version-script.js"></script>  Nếu bạn muốn tải động từ API sau này -->
 </body>
+
 </html>

@@ -65,7 +65,7 @@ function createSlideshow(slideshowContainerId, animeList) {
     slideshowContainer.innerHTML = ''; // Xóa nội dung cũ (nếu có)
 
     // Giới hạn số lượng slide (ví dụ: 3-5 slide)
-    const slidesData = animeList.slice(0, Math.min(animeList.length, 5)); // Lấy tối đa 5 anime đầu tiên cho slideshow
+    const slidesData = animeList.slice(0, Math.min(animeList.length, 7)); // Lấy tối đa 7 anime đầu tiên cho slideshow
 
     slidesData.forEach((anime, index) => {
         const slideDiv = document.createElement('div');
@@ -244,7 +244,7 @@ document.addEventListener('DOMContentLoaded', function () {
     if (typeof animeData !== 'undefined' && animeData.length > 0) {
         // Tạo slideshow (ví dụ: lấy 5 anime đầu tiên, hoặc anime có đánh dấu "featured")
         // Bạn có thể tạo một mảng riêng trong data.js cho anime nổi bật trên slideshow
-        const featuredAnimeForSlideshow = animeData.filter(a => a.bannerImage && a.logoImage).slice(0, 5); // Ví dụ lấy anime có banner và logo
+        const featuredAnimeForSlideshow = animeData.filter(a => a.bannerImage && a.logoImage).slice(0, 7); // Ví dụ lấy anime có banner và logo
         createSlideshow('mainSlideshow', featuredAnimeForSlideshow.length > 0 ? featuredAnimeForSlideshow : animeData);
 
         // Điền dữ liệu cho các grid

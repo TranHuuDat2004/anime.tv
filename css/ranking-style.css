@@ -1,0 +1,116 @@
+/* css/ranking-style.css */
+
+#ranking-page .container {
+    padding-top: 30px;
+    padding-bottom: 50px;
+}
+
+.ranking-header {
+    text-align: center;
+    margin-bottom: 50px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+#ranking-page .page-title {
+    font-size: 2.8em;
+    font-weight: 700;
+    color: var(--text-color); /* Hoặc var(--primary-color) */
+    margin-bottom: 10px;
+}
+
+.ranking-header .tagline {
+    font-size: 1.2em;
+    color: var(--text-secondary-color);
+    font-style: italic;
+}
+
+.ranking-category {
+    margin-bottom: 50px;
+}
+
+.ranking-category .category-title {
+    font-size: 2em; /* Tiêu đề của mỗi hạng mục */
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 25px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--primary-color);
+    display: inline-block; /* Để border bottom chỉ theo chiều dài chữ */
+}
+
+
+/* Style cho các card anime trong bảng xếp hạng (có thể tái sử dụng .anime-card) */
+.ranking-grid .anime-card {
+    /* Style hiện tại của bạn cho .anime-card nên hoạt động tốt */
+    /* Bạn có thể thêm một số hiệu ứng đặc biệt nếu muốn */
+    position: relative; /* Cần cho việc hiển thị số thứ hạng */
+}
+
+.anime-card .rank-badge {
+    position: absolute;
+    /* Điều chỉnh vị trí để không quá sát góc */
+    top: 8px;    /* Đẩy xuống một chút từ cạnh trên */
+    left: 8px;   /* Đẩy sang phải một chút từ cạnh trái */
+    /* Hoặc bạn có thể dùng giá trị âm nếu muốn nó hơi nhô ra ngoài card một chút,
+       nhưng cần đảm bảo overflow của .anime-card không phải là hidden ở góc đó.
+       Ví dụ: top: -8px; left: -8px; (cần test kỹ) */
+
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    font-size: 1.05em; /* Có thể giảm nhẹ nếu thấy to quá */
+    font-weight: bold;
+    width: 36px;  /* Giảm nhẹ kích thước badge nếu cần */
+    height: 36px; /* Giảm nhẹ kích thước badge nếu cần */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.25); /* Tăng nhẹ shadow */
+    border: 2px solid var(--card-background-color); /* Viền cùng màu nền card để tạo hiệu ứng nổi */
+    z-index: 10;
+    line-height: 1; /* Đảm bảo số căn giữa tốt hơn */
+    padding-bottom: 2px; /* Điều chỉnh nhẹ để số trông cân đối hơn trong vòng tròn */
+}
+
+/* Style cho các top rank (có thể giữ nguyên hoặc điều chỉnh màu) */
+.anime-card .rank-badge.top-1 {
+    background-color: #ffd700; /* Gold */
+    color: #333000; /* Chữ tối hơn trên nền vàng */
+    border-color: var(--card-background-color);
+}
+.anime-card .rank-badge.top-2 {
+    background-color: #c0c0c0; /* Silver */
+    color: #2c2c2c;
+    border-color: var(--card-background-color);
+}
+.anime-card .rank-badge.top-3 {
+    background-color: #cd7f32; /* Bronze */
+    color: #ffffff;
+    border-color: var(--card-background-color);
+}
+
+
+/* Responsive nếu cần */
+@media (max-width: 767px) {
+    .ranking-category .category-title {
+        font-size: 1.6em;
+    }
+    #ranking-page .page-title {
+        font-size: 2.2em;
+    }
+    .ranking-grid.anime-grid {
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        gap: 15px;
+    }
+
+    .anime-card .rank-badge {
+        width: 32px;
+        height: 32px;
+        font-size: 0.95em;
+        top: 5px;
+        left: 5px;
+        padding-bottom: 1px;
+    }
+
+}

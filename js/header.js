@@ -17,17 +17,17 @@ document.addEventListener('DOMContentLoaded', function () {
                         </svg>
                     </button>
                     <div class="navbar-menu" id="navbarMenu">
-                        <ul class="navbar-nav">
-                            <li><a href="index.html">Trang Chủ</a></li>
-                            <li><a href="image-gallery.html">Ảnh Anime</a></li>
-                            <li><a href="gif-collection.html">GIF Collection</a></li>
-                            <li><a href="manga.html">Manga</a></li>
-                            <li><a href="game.html">Games</a></li>
-                            <li><a href="about.html">Giới thiệu</a></li>
-                            <li><a href="version.html">Phiên Bản</a></li>
-                            <!-- Thêm các link FAQ, Terms, Privacy nếu muốn chúng ở navbar chính -->
-                            <!-- <li><a href="faq.html">FAQ</a></li> -->
-                            <li style="padding-right: 40px;"><a href="search.html">Tìm kiếm</a></li>
+                <ul class="navbar-nav">
+                    <li><a href="index.html">Trang Chủ</a></li>
+                    <li><a href="image-gallery.html">Ảnh Anime</a></li>
+                    <li><a href="gif-collection.html">GIF Collection</a></li>
+                    <li><a href="manga.html">Manga</a></li>
+                    <li><a href="game.html">Games</a></li>
+                    <li><a href="ranking.html" class="active">Bảng xếp hạng</a></li> <!-- Active link -->
+                    <li><a href="about.html">Giới thiệu</a></li>
+                    <li><a href="version.html">Phiên Bản</a></li>
+                    <li style="padding-right: 40px;"><a href="search.html">Tìm kiếm</a></li>
+                
                             <!-- <li style="padding-left: 40px;"><a  href="#" id="loginButton" class="login-button">Đăng Nhập</a></li> -->
                         </ul>
                     </div>

@@ -82,6 +82,7 @@
 }
 
 /* Timeline Styles (Lấy cảm hứng từ các mẫu timeline Bootstrap) */
+ /* Timeline Styles */
 .timeline {
     list-style: none;
     padding: 20px 0 20px;
@@ -89,7 +90,6 @@
 }
 
 .timeline:before {
-    /* Đường kẻ dọc chính giữa timeline */
     top: 0;
     bottom: 0;
     position: absolute;
@@ -100,24 +100,22 @@
     margin-left: -1.5px;
 }
 
-.timeline>.timeline-item {
+.timeline > .timeline-item {
     margin-bottom: 20px;
     position: relative;
 }
-
-.timeline>.timeline-item:before,
-.timeline>.timeline-item:after {
+.timeline > .timeline-item:before,
+.timeline > .timeline-item:after {
     content: " ";
     display: table;
 }
-
-.timeline>.timeline-item:after {
+.timeline > .timeline-item:after {
     clear: both;
 }
 
-.timeline>.timeline-item>.timeline-panel {
+/* Panel mặc định (sẽ là bên trái cho item lẻ) */
+.timeline > .timeline-item > .timeline-panel {
     width: 45%;
-    /* Panel chiếm gần một nửa */
     float: left;
     border: 1px solid var(--border-color, #444954);
     background-color: var(--card-background-color, #2d3038);
@@ -126,9 +124,8 @@
     position: relative;
     box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1);
 }
-
-/* Mũi tên trỏ vào đường kẻ timeline */
-.timeline>.timeline-item>.timeline-panel:before {
+/* Mũi tên cho panel bên trái */
+.timeline > .timeline-item > .timeline-panel:before {
     position: absolute;
     top: 26px;
     right: -15px;
@@ -139,8 +136,7 @@
     border-bottom: 15px solid transparent;
     content: " ";
 }
-
-.timeline>.timeline-item>.timeline-panel:after {
+.timeline > .timeline-item > .timeline-panel:after {
     position: absolute;
     top: 27px;
     right: -14px;
@@ -152,92 +148,48 @@
     content: " ";
 }
 
-
-.timeline>.timeline-item>.timeline-badge {
+/* Badge luôn ở giữa */
+.timeline > .timeline-item > .timeline-badge {
     color: #fff;
     width: 50px;
     height: 50px;
     line-height: 50px;
-    font-size: 1.4em;
+    font-size: 1.4em; /* Hoặc kích thước icon nếu dùng flex */
     text-align: center;
     position: absolute;
     top: 16px;
     left: 50%;
     margin-left: -25px;
-    background-color: #6c757d;
-    /* Màu mặc định (secondary) */
+    background-color: #6c757d; /* Màu mặc định */
     z-index: 100;
     border-radius: 50%;
     border: 3px solid var(--background-color);
-    /* Viền cùng màu nền body */
-    /* Thêm icon vào đây nếu muốn */
-    /* display: flex; align-items: center; justify-content: center; */
+    display: flex; /* Để căn giữa icon */
+    align-items: center;
+    justify-content: center;
 }
 
-/* Màu sắc cho các loại badge khác nhau */
-.timeline-badge.primary {
-    background-color: var(--primary-color) !important;
-}
-
-.timeline-badge.success {
-    background-color: #28a745 !important;
-}
-
-/* Bootstrap success */
-.timeline-badge.warning {
-    background-color: #ffc107 !important;
-}
-
-/* Bootstrap warning */
-.timeline-badge.danger {
-    background-color: #dc3545 !important;
-}
-
-/* Bootstrap danger */
-.timeline-badge.info {
-    background-color: #17a2b8 !important;
-}
-
-/* Bootstrap info */
-.timeline-badge.secondary {
-    background-color: #6c757d !important;
-}
-
-/* Bootstrap secondary */
+/* Màu sắc cho các loại badge (giữ nguyên) */
+.timeline-badge.new { background-color: #2ed5ff !important; }
+.timeline-badge.primary { background-color: var(--primary-color) !important; }
+.timeline-badge.success { background-color: #28a745 !important; }
+.timeline-badge.warning { background-color: #ffc107 !important; }
+.timeline-badge.danger  { background-color: #dc3545 !important; }
+.timeline-badge.info    { background-color: #fc96ff !important; } /* Bạn đã đổi màu info */
+.timeline-badge.secondary { background-color: #6c757d !important; }
 
 
-/* Panel bên phải cho các item chẵn (hoặc dùng class .timeline-inverted) */
-.timeline>.timeline-item:nth-child(even)>.timeline-panel {
+/* Panel bên phải cho các item CHẴN (nth-child(even)) */
+.timeline > .timeline-item:nth-child(even) > .timeline-panel {
     float: right;
 }
-
-.timeline>.timeline-item:nth-child(even)>.timeline-panel:before {
+.timeline > .timeline-item:nth-child(even) > .timeline-panel:before {
     border-left-width: 0;
     border-right-width: 15px;
     left: -15px;
     right: auto;
 }
-
-.timeline>.timeline-item:nth-child(even)>.timeline-panel:after {
-    border-left-width: 0;
-    border-right-width: 14px;
-    left: -14px;
-    right: auto;
-}
-
-/* Class để đảo ngược vị trí panel thủ công */
-.timeline>.timeline-item.timeline-inverted>.timeline-panel {
-    float: right;
-}
-
-.timeline>.timeline-item.timeline-inverted>.timeline-panel:before {
-    border-left-width: 0;
-    border-right-width: 15px;
-    left: -15px;
-    right: auto;
-}
-
-.timeline>.timeline-item.timeline-inverted>.timeline-panel:after {
+.timeline > .timeline-item:nth-child(even) > .timeline-panel:after {
     border-left-width: 0;
     border-right-width: 14px;
     left: -14px;
