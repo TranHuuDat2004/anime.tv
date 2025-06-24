@@ -380,8 +380,8 @@ const animeData = [
 
     { // ANIME MỚI: Tokidoki Bosotto Russia-go de Dereru Tonari no Alya-san (Roshidere)
         id: "roshidere",
-        title: "Alya Sometimes Hides Her Feelings in Russian",
-        altTitle: "時々ボソッとロシア語でデレる隣のアーリャさん",
+        title: "Arya Bàn Bên Thỉnh Thoảng Lại Trêu Ghẹo Tôi Bằng Tiếng Nga ",
+        altTitle: "Alya Sometimes Hides Her Feelings in Russian (時々ボソッとロシア語でデレる隣のアーリャさん)",
         posterImage: "images/roshidere/poster.jpg", // Cần ảnh
         bannerImage: "images/roshidere/banner.jpg", // Cần ảnh
         logoImage: "images/roshidere/logo.png",
@@ -391,14 +391,91 @@ const animeData = [
         type: "Series",
         status: "Đang chiếu", // Hoặc "Sắp chiếu"
         releaseYear: 2024, // Năm anime dự kiến
-        episodes: { total: "Ongoing", availableOnSite: 0, seasons: [] },
-        rankings: {
-            mostRomantic: 3,
-            cutestCharacters: 2, // Alya
-            mostAnticipated: 1
+        episodes: {
+            total: 12,
+            availableOnSite: 12,
+            seasons: [
+                {
+                    seasonNum: 1,
+                    seasonTitle: "Season 1",
+                    episodes: [
+                        {
+                            epNumOverall: 1, epNumInSeason: 1, title: "Tập 1",
+                            thumbnail: "https://img.youtube.com/vi/FSN6IRJMAEw/hqdefault.jpg",
+                            duration: "23 min", videoUrl: "https://www.youtube.com/embed/FSN6IRJMAEw?rel=0",
+                            playerType: "youtube", sub: true, dub: false
+                        },
+                        {
+                            epNumOverall: 2, epNumInSeason: 2, title: "Tập 2",
+                            thumbnail: "https://img.youtube.com/vi/AE-z0mtQCjM/hqdefault.jpg",
+                            duration: "23 min", videoUrl: "https://www.youtube.com/embed/AE-z0mtQCjM?rel=0",
+                            playerType: "youtube", sub: true, dub: false
+                        },
+                        {
+                            epNumOverall: 3, epNumInSeason: 3, title: "Tập 3",
+                            thumbnail: "https://img.youtube.com/vi/a5ZWxLNAH4Q/hqdefault.jpg",
+                            duration: "23 min", videoUrl: "https://www.youtube.com/embed/a5ZWxLNAH4Q?rel=0",
+                            playerType: "youtube", sub: true, dub: false
+                        },
+                        {
+                            epNumOverall: 4, epNumInSeason: 4, title: "Tập 4",
+                            thumbnail: "https://img.youtube.com/vi/9NBIvUI4LgM/hqdefault.jpg",
+                            duration: "23 min", videoUrl: "https://www.youtube.com/embed/9NBIvUI4LgM?rel=0",
+                            playerType: "youtube", sub: true, dub: false
+                        },
+                        {
+                            epNumOverall: 5, epNumInSeason: 5, title: "Tập 5",
+                            thumbnail: "https://img.youtube.com/vi/XTQlOTyWBs8/hqdefault.jpg",
+                            duration: "23 min", videoUrl: "https://www.youtube.com/embed/XTQlOTyWBs8?rel=0",
+                            playerType: "youtube", sub: true, dub: false
+                        },
+                        {
+                            epNumOverall: 6, epNumInSeason: 6, title: "Tập 6",
+                            thumbnail: "https://img.youtube.com/vi/STeGLrdWO18/hqdefault.jpg",
+                            duration: "23 min", videoUrl: "https://www.youtube.com/embed/STeGLrdWO18?rel=0",
+                            playerType: "youtube", sub: true, dub: false
+                        },
+                        {
+                            epNumOverall: 7, epNumInSeason: 7, title: "Tập 7",
+                            thumbnail: "https://img.youtube.com/vi/wDWTxNieSXA/hqdefault.jpg",
+                            duration: "23 min", videoUrl: "https://www.youtube.com/embed/wDWTxNieSXA?rel=0",
+                            playerType: "youtube", sub: true, dub: false
+                        },
+                        {
+                            epNumOverall: 8, epNumInSeason: 8, title: "Tập 8",
+                            thumbnail: "https://img.youtube.com/vi/r1xQ4HDJSNc/hqdefault.jpg",
+                            duration: "23 min", videoUrl: "https://www.youtube.com/embed/r1xQ4HDJSNc?rel=0",
+                            playerType: "youtube", sub: true, dub: false
+                        },
+                        {
+                            epNumOverall: 9, epNumInSeason: 9, title: "Tập 9",
+                            thumbnail: "https://img.youtube.com/vi/UNZQ9SDnixo/hqdefault.jpg",
+                            duration: "23 min", videoUrl: "https://www.youtube.com/embed/UNZQ9SDnixo?rel=0",
+                            playerType: "youtube", sub: true, dub: false
+                        },
+                        {
+                            epNumOverall: 10, epNumInSeason: 10, title: "Tập 10",
+                            thumbnail: "https://img.youtube.com/vi/EWp31P5Dujk/hqdefault.jpg",
+                            duration: "23 min", videoUrl: "https://www.youtube.com/embed/EWp31P5Dujk?rel=0",
+                            playerType: "youtube", sub: true, dub: false
+                        },
+                        {
+                            epNumOverall: 11, epNumInSeason: 11, title: "Tập 11",
+                            thumbnail: "https://img.youtube.com/vi/E5g2DPXlXhM/hqdefault.jpg",
+                            duration: "23 min", videoUrl: "https://www.youtube.com/embed/E5g2DPXlXhM?rel=0",
+                            playerType: "youtube", sub: true, dub: false
+                        },
+                        {
+                            epNumOverall: 12, epNumInSeason: 12, title: "Tập 12",
+                            thumbnail: "https://img.youtube.com/vi/UNSaEMJVLbw/hqdefault.jpg",
+                            duration: "23 min", videoUrl: "https://www.youtube.com/embed/UNSaEMJVLbw?rel=0",
+                            playerType: "youtube", sub: true, dub: false
+                        }
+                    ]
+                }
+            ]
         },
-        crunchyrollTags: ["Sub", "Romance", "Comedy"],
-        relatedAnime: []
+
     },
 
 

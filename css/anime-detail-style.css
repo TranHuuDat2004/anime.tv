@@ -591,6 +591,50 @@
     }
 }
 
+/* Màn hình Mobile Lớn (ví dụ: dưới 768px) */
+@media (max-width: 768px) {
+    #episodesTab .episode-list,
+    #watchPageSeasonContainer .episode-list {
+        grid-template-columns: repeat(3, 1fr); /* 3 cột */
+        gap: 10px;
+    }
+    #episodesTab .episode-title,
+    #watchPageSeasonContainer .episode-title {
+        font-size: 0.8em; /* Giảm nữa nếu cần */
+        min-height: 2em; /* (0.8em * 1.2 * 2) */
+    }
+     #episodesTab .episode-number,
+    #watchPageSeasonContainer .episode-number {
+        font-size: 0.75em;
+    }
+    /* Nếu bạn có hiển thị duration/subdub, cũng có thể giảm font ở đây */
+}
+
+/* Màn hình Mobile Nhỏ (ví dụ: dưới 576px) */
+@media (max-width: 576px) {
+    #episodesTab .episode-list,
+    #watchPageSeasonContainer .episode-list {
+        grid-template-columns: repeat(2, 1fr); /* 2 cột - đây là thay đổi quan trọng */
+        gap: 10px;
+    }
+    /* Khi chỉ còn 2 cột, có thể tăng lại font size một chút cho dễ đọc */
+    #episodesTab .episode-title,
+    #watchPageSeasonContainer .episode-title {
+        font-size: 0.9em;
+        min-height: 2.2em;
+    }
+     #episodesTab .episode-number,
+    #watchPageSeasonContainer .episode-number {
+        font-size: 0.8em;
+    }
+    /* Thông tin duration và sub/dub có thể cần ẩn đi hoàn toàn ở kích thước này
+       để card không bị quá dài nếu bạn vẫn hiển thị chúng trên watchPage */
+    #watchPageSeasonContainer .episode-duration-subdub-wrapper {
+        /* display: none; */ /* Bỏ comment nếu muốn ẩn hẳn */
+        /* font-size: 0.7em; */ /* Hoặc giảm font */
+    }
+}
+
 .btn.disabled {
     background-color: #555 !important;
     border-color: #444 !important;
