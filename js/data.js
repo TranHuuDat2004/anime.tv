@@ -214,13 +214,71 @@ const animeData = [
         type: "Series",
         status: "Đang chiếu", // Hoặc tùy theo season bạn muốn tập trung
         releaseYear: 2022, // Năm bắt đầu chiếu anime
-        episodes: { total: "Ongoing", availableOnSite: 0, seasons: [] }, // Cập nhật thông tin tập
+        // Trong data.js, phần episodes của "spy-x-family"
+
+        episodes: {
+            total: 37,
+            availableOnSite: 37,
+            seasons: [
+                {
+                    seasonNum: 1,
+                    seasonTitle: "Season 1 (Lồng Tiếng)", // Thêm chú thích (Lồng Tiếng) nếu muốn
+                    episodes: [
+                        // Tập 1-25 (Dubbed)
+                        { epNumOverall: 1, epNumInSeason: 1, title: "Tập 1", thumbnail: "https://img.youtube.com/vi/rSKunCzOows/hqdefault.jpg", duration: "24 min", videoUrl: "https://www.youtube.com/embed/rSKunCzOows?rel=0", playerType: "youtube", sub: false, dub: true },
+                        { epNumOverall: 2, epNumInSeason: 2, title: "Tập 2", thumbnail: "https://img.youtube.com/vi/tw34XM-LGzo/hqdefault.jpg", duration: "24 min", videoUrl: "https://www.youtube.com/embed/tw34XM-LGzo?rel=0", playerType: "youtube", sub: false, dub: true },
+                        { epNumOverall: 3, epNumInSeason: 3, title: "Tập 3", thumbnail: "https://img.youtube.com/vi/BeSyI9PpQvc/hqdefault.jpg", duration: "24 min", videoUrl: "https://www.youtube.com/embed/BeSyI9PpQvc?rel=0", playerType: "youtube", sub: false, dub: true },
+                        { epNumOverall: 4, epNumInSeason: 4, title: "Tập 4", thumbnail: "https://img.youtube.com/vi/4ruyZJHvV3E/hqdefault.jpg", duration: "24 min", videoUrl: "https://www.youtube.com/embed/4ruyZJHvV3E?rel=0", playerType: "youtube", sub: false, dub: true },
+                        { epNumOverall: 5, epNumInSeason: 5, title: "Tập 5", thumbnail: "https://img.youtube.com/vi/lBiKKMF25OU/hqdefault.jpg", duration: "24 min", videoUrl: "https://www.youtube.com/embed/lBiKKMF25OU?rel=0", playerType: "youtube", sub: false, dub: true },
+                        { epNumOverall: 6, epNumInSeason: 6, title: "Tập 6", thumbnail: "https://img.youtube.com/vi/LDcF3pv8Hts/hqdefault.jpg", duration: "24 min", videoUrl: "https://www.youtube.com/embed/LDcF3pv8Hts?rel=0", playerType: "youtube", sub: false, dub: true },
+                        { epNumOverall: 7, epNumInSeason: 7, title: "Tập 7", thumbnail: "https://img.youtube.com/vi/3vY8TaDrYrA/hqdefault.jpg", duration: "24 min", videoUrl: "https://www.youtube.com/embed/3vY8TaDrYrA?rel=0", playerType: "youtube", sub: false, dub: true },
+                        { epNumOverall: 8, epNumInSeason: 8, title: "Tập 8", thumbnail: "https://img.youtube.com/vi/7RkPV7w5OzY/hqdefault.jpg", duration: "24 min", videoUrl: "https://www.youtube.com/embed/7RkPV7w5OzY?rel=0", playerType: "youtube", sub: false, dub: true },
+                        { epNumOverall: 9, epNumInSeason: 9, title: "Tập 9", thumbnail: "https://img.youtube.com/vi/DqQbOmqz7fQ/hqdefault.jpg", duration: "24 min", videoUrl: "https://www.youtube.com/embed/DqQbOmqz7fQ?rel=0", playerType: "youtube", sub: false, dub: true },
+                        { epNumOverall: 10, epNumInSeason: 10, title: "Tập 10", thumbnail: "https://img.youtube.com/vi/Gsq0HsYzC-E/hqdefault.jpg", duration: "24 min", videoUrl: "https://www.youtube.com/embed/Gsq0HsYzC-E?rel=0", playerType: "youtube", sub: false, dub: true },
+                        { epNumOverall: 11, epNumInSeason: 11, title: "Tập 11", thumbnail: "https://img.youtube.com/vi/wGgoxpx-sxk/hqdefault.jpg", duration: "24 min", videoUrl: "https://www.youtube.com/embed/wGgoxpx-sxk?rel=0", playerType: "youtube", sub: false, dub: true },
+                        { epNumOverall: 12, epNumInSeason: 12, title: "Tập 12", thumbnail: "https://img.youtube.com/vi/2z1WgUH4OLs/hqdefault.jpg", duration: "24 min", videoUrl: "https://www.youtube.com/embed/2z1WgUH4OLs?rel=0", playerType: "youtube", sub: false, dub: true },
+                        { epNumOverall: 13, epNumInSeason: 13, title: "Tập 13", thumbnail: "https://img.youtube.com/vi/Z1RpHAyh-wE/hqdefault.jpg", duration: "24 min", videoUrl: "https://www.youtube.com/embed/Z1RpHAyh-wE?rel=0", playerType: "youtube", sub: false, dub: true },
+                        { epNumOverall: 14, epNumInSeason: 14, title: "Tập 14", thumbnail: "https://img.youtube.com/vi/HGVnJWRLV6Q/hqdefault.jpg", duration: "24 min", videoUrl: "https://www.youtube.com/embed/HGVnJWRLV6Q?rel=0", playerType: "youtube", sub: false, dub: true },
+                        { epNumOverall: 15, epNumInSeason: 15, title: "Tập 15", thumbnail: "https://img.youtube.com/vi/nDcZUj7q_3s/hqdefault.jpg", duration: "24 min", videoUrl: "https://www.youtube.com/embed/nDcZUj7q_3s?rel=0", playerType: "youtube", sub: false, dub: true },
+                        { epNumOverall: 16, epNumInSeason: 16, title: "Tập 16", thumbnail: "https://img.youtube.com/vi/MtE4oB2-LIg/hqdefault.jpg", duration: "24 min", videoUrl: "https://www.youtube.com/embed/MtE4oB2-LIg?rel=0", playerType: "youtube", sub: false, dub: true },
+                        { epNumOverall: 17, epNumInSeason: 17, title: "Tập 17", thumbnail: "https://img.youtube.com/vi/77AIlL3EQG0/hqdefault.jpg", duration: "24 min", videoUrl: "https://www.youtube.com/embed/77AIlL3EQG0?rel=0", playerType: "youtube", sub: false, dub: true },
+                        { epNumOverall: 18, epNumInSeason: 18, title: "Tập 18", thumbnail: "https://img.youtube.com/vi/gxAJ0F0Dvs4/hqdefault.jpg", duration: "24 min", videoUrl: "https://www.youtube.com/embed/gxAJ0F0Dvs4?rel=0", playerType: "youtube", sub: false, dub: true },
+                        { epNumOverall: 19, epNumInSeason: 19, title: "Tập 19", thumbnail: "https://img.youtube.com/vi/ILKOJdXQh7Q/hqdefault.jpg", duration: "24 min", videoUrl: "https://www.youtube.com/embed/ILKOJdXQh7Q?rel=0", playerType: "youtube", sub: false, dub: true },
+                        { epNumOverall: 20, epNumInSeason: 20, title: "Tập 20", thumbnail: "https://img.youtube.com/vi/tqL2YOXacIM/hqdefault.jpg", duration: "24 min", videoUrl: "https://www.youtube.com/embed/tqL2YOXacIM?rel=0", playerType: "youtube", sub: false, dub: true },
+                        { epNumOverall: 21, epNumInSeason: 21, title: "Tập 21", thumbnail: "https://img.youtube.com/vi/hR0SykO5h-c/hqdefault.jpg", duration: "24 min", videoUrl: "https://www.youtube.com/embed/hR0SykO5h-c?rel=0", playerType: "youtube", sub: false, dub: true },
+                        { epNumOverall: 22, epNumInSeason: 22, title: "Tập 22", thumbnail: "https://img.youtube.com/vi/yZVySlYY2CY/hqdefault.jpg", duration: "24 min", videoUrl: "https://www.youtube.com/embed/yZVySlYY2CY?rel=0", playerType: "youtube", sub: false, dub: true },
+                        { epNumOverall: 23, epNumInSeason: 23, title: "Tập 23", thumbnail: "https://img.youtube.com/vi/JMKFazr1NmU/hqdefault.jpg", duration: "24 min", videoUrl: "https://www.youtube.com/embed/JMKFazr1NmU?rel=0", playerType: "youtube", sub: false, dub: true },
+                        { epNumOverall: 24, epNumInSeason: 24, title: "Tập 24", thumbnail: "https://img.youtube.com/vi/Z6Sq7HkyuEw/hqdefault.jpg", duration: "24 min", videoUrl: "https://www.youtube.com/embed/Z6Sq7HkyuEw?rel=0", playerType: "youtube", sub: false, dub: true },
+                        { epNumOverall: 25, epNumInSeason: 25, title: "Tập 25", thumbnail: "https://img.youtube.com/vi/8j21lXY9Bvs/hqdefault.jpg", duration: "24 min", videoUrl: "https://www.youtube.com/embed/8j21lXY9Bvs?rel=0", playerType: "youtube", sub: false, dub: true }
+                    ]
+                },
+                {
+                    seasonNum: 2,
+                    seasonTitle: "Season 2 (Lồng Tiếng)", // Thêm chú thích (Lồng Tiếng) nếu muốn
+                    episodes: [
+                        // Tập 26-37 (Tương ứng tập 1-12 của Season 2 - Dubbed)
+                        { epNumOverall: 26, epNumInSeason: 1, title: "Tập 1 (S2)", thumbnail: "https://img.youtube.com/vi/32KI-9qqBkg/hqdefault.jpg", duration: "24 min", videoUrl: "https://www.youtube.com/embed/32KI-9qqBkg?rel=0", playerType: "youtube", sub: false, dub: true },
+                        { epNumOverall: 27, epNumInSeason: 2, title: "Tập 2 (S2)", thumbnail: "https://img.youtube.com/vi/xOiISUmT2sw/hqdefault.jpg", duration: "24 min", videoUrl: "https://www.youtube.com/embed/xOiISUmT2sw?rel=0", playerType: "youtube", sub: false, dub: true },
+                        { epNumOverall: 28, epNumInSeason: 3, title: "Tập 3 (S2)", thumbnail: "https://img.youtube.com/vi/gnv_cyugR7s/hqdefault.jpg", duration: "24 min", videoUrl: "https://www.youtube.com/embed/gnv_cyugR7s?rel=0", playerType: "youtube", sub: false, dub: true },
+                        { epNumOverall: 29, epNumInSeason: 4, title: "Tập 4 (S2)", thumbnail: "https://img.youtube.com/vi/Je8N7M0R97s/hqdefault.jpg", duration: "24 min", videoUrl: "https://www.youtube.com/embed/Je8N7M0R97s?rel=0", playerType: "youtube", sub: false, dub: true },
+                        { epNumOverall: 30, epNumInSeason: 5, title: "Tập 5 (S2)", thumbnail: "https://img.youtube.com/vi/RL1c1WjnfwI/hqdefault.jpg", duration: "24 min", videoUrl: "https://www.youtube.com/embed/RL1c1WjnfwI?rel=0", playerType: "youtube", sub: false, dub: true },
+                        { epNumOverall: 31, epNumInSeason: 6, title: "Tập 6 (S2)", thumbnail: "https://img.youtube.com/vi/TAkZW4EEVIw/hqdefault.jpg", duration: "24 min", videoUrl: "https://www.youtube.com/embed/TAkZW4EEVIw?rel=0", playerType: "youtube", sub: false, dub: true },
+                        { epNumOverall: 32, epNumInSeason: 7, title: "Tập 7 (S2)", thumbnail: "https://img.youtube.com/vi/wLgzavOKByw/hqdefault.jpg", duration: "24 min", videoUrl: "https://www.youtube.com/embed/wLgzavOKByw?rel=0", playerType: "youtube", sub: false, dub: true },
+                        { epNumOverall: 33, epNumInSeason: 8, title: "Tập 8 (S2)", thumbnail: "https://img.youtube.com/vi/LRdORGPoTB8/hqdefault.jpg", duration: "24 min", videoUrl: "https://www.youtube.com/embed/LRdORGPoTB8?rel=0", playerType: "youtube", sub: false, dub: true },
+                        { epNumOverall: 34, epNumInSeason: 9, title: "Tập 9 (S2)", thumbnail: "https://img.youtube.com/vi/jb0caw-vlqo/hqdefault.jpg", duration: "24 min", videoUrl: "https://www.youtube.com/embed/jb0caw-vlqo?rel=0", playerType: "youtube", sub: false, dub: true },
+                        { epNumOverall: 35, epNumInSeason: 10, title: "Tập 10 (S2)", thumbnail: "https://img.youtube.com/vi/VcZTBLdj9k0/hqdefault.jpg", duration: "24 min", videoUrl: "https://www.youtube.com/embed/VcZTBLdj9k0?rel=0", playerType: "youtube", sub: false, dub: true },
+                        { epNumOverall: 36, epNumInSeason: 11, title: "Tập 11 (S2)", thumbnail: "https://img.youtube.com/vi/Vgx7I_vWcoY/hqdefault.jpg", duration: "24 min", videoUrl: "https://www.youtube.com/embed/Vgx7I_vWcoY?rel=0", playerType: "youtube", sub: false, dub: true },
+                        { epNumOverall: 37, epNumInSeason: 12, title: "Tập 12 (S2)", thumbnail: "https://img.youtube.com/vi/H4PO9pl20cA/hqdefault.jpg", duration: "24 min", videoUrl: "https://www.youtube.com/embed/H4PO9pl20cA?rel=0", playerType: "youtube", sub: false, dub: true }
+                    ]
+                }
+            ]
+        },
+        crunchyrollTags: ["Sub | Dub", "Action", "Comedy", "Slice of Life"],
         rankings: {
             bestComedy: 2,
             overallFavorite: 5,
-            bestAction: 2 // Có những pha hành động thú vị
+            bestAction: 2
         },
-        crunchyrollTags: ["Sub | Dub", "Action", "Comedy"],
         relatedAnime: []
     },
 
@@ -361,7 +419,7 @@ const animeData = [
         altTitle: "ぼっち・ざ・ろっく!",
         posterImage: "images/bocchi-the-rock/poster.jpg", // Cần ảnh
         bannerImage: "images/bocchi-the-rock/banner1.webp", // Cần ảnh1
-        logoImage: "images/bocchi-the-rock/logo.png",
+        logoImage: "images/bocchi-the-rock/logo-bocchi.png",
         description: "Hitori Gotoh, biệt danh \"Bocchi-chan\", là một nữ sinh trung học mắc chứng sợ xã hội cực độ, ước mơ được nổi tiếng và kết bạn thông qua việc chơi guitar. Dù kỹ năng guitar của cô rất cừ (khi chơi một mình và đăng video ẩn danh lên mạng), cô lại không thể chơi trước mặt người khác. Mọi thứ thay đổi khi cô tình cờ gặp Nijika Ijichi, một tay trống đang tìm kiếm một guitarist cho ban nhạc Kessoku Band của mình.",
         genres: ["Slice of Life", "Comedy", "Music", "School"],
         rating: "PG-13",
