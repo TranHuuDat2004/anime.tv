@@ -1,7 +1,9 @@
 <div align="center">
+
 <p align="center">
   <img src="screenshot/animetv_resized.png" alt="ANIME.TV Logo"/>
 </p>
+
 # ANIME.TV - Stream Your Dreams
 *Một không gian để khám phá và thưởng thức Anime & Manga*
 
