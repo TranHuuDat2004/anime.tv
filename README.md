@@ -1,10 +1,10 @@
-9<div align="center">
+<div align="center">
 
 # ANIME.TV - Stream Your Dreams
 *Một không gian để khám phá và thưởng thức Anime & Manga*
 
 <p align="center">
-  <img src="images/logo.png" alt="ANIME.TV Logo" height="50px"/>
+  <img src="screenshot/main-page-spy.PNG" alt="ANIME.TV Logo"/>
 </p>
 
 </div>
