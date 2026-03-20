@@ -1,0 +1,15 @@
+{
+  "id": "genshin",
+  "title": "Genshin",
+  "altTitle": "原神",
+  "posterImage": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/small/b154765-RhfBamIEdCN0.jpg",
+  "bannerImage": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/b154765-RhfBamIEdCN0.jpg",
+  "logoImage": "",
+  "description": "A long-term collaboration project with studio ufotable for the video game Genshin Impact. Let's step into this vast magical world of adventure together!",
+  "genres": [
+    "Adventure",
+    "Fantasy"
+  ],
+  "type": "Series",
+  "status": "Chưa phát hành"
+}
