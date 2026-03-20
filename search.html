@@ -98,7 +98,15 @@
             }
 
             async function performSearch() {
-                const searchTerm = searchInput.value.trim().toLowerCase();
+                const searchTermRaw = searchInput.value.trim();
+                const searchTerm = searchTermRaw.toLowerCase();
+                const normalizeForSearch = (s) => {
+                    // Chuẩn hóa để match "gotoubun" với "go-toubun" (bỏ dấu cách/dấu gạch/ ký tự đặc biệt)
+                    return String(s || '')
+                        .toLowerCase()
+                        .replace(/[^a-z0-9]+/g, '');
+                };
+                const qNorm = normalizeForSearch(searchTermRaw);
                 searchResultsGrid.innerHTML = ''; // Xóa kết quả cũ
                 noResultsMessage.style.display = 'none'; // Ẩn thông báo không có kết quả
 
@@ -109,15 +117,32 @@
 
                 const results = (typeof animeData !== 'undefined' && animeData)
                     ? animeData.filter(anime => {
-                    // Ảnh GIF trong title, altTitle
+                    const idNorm = normalizeForSearch(anime.id);
+                    // Match theo id (slug) để gom đúng franchise
+                    if (idNorm && qNorm && idNorm.includes(qNorm)) return true;
+
+                    // Match theo title, altTitle
                     if (anime.title && anime.title.toLowerCase().includes(searchTerm)) {
                         return true;
                     }
                     if (anime.altTitle && anime.altTitle.toLowerCase().includes(searchTerm)) {
                         return true;
                     }
+
+                    // Match theo phiên bản chuẩn hóa (đỡ phụ thuộc dấu - hoặc dấu cách)
+                    const titleNorm = normalizeForSearch(anime.title);
+                    if (titleNorm && qNorm && titleNorm.includes(qNorm)) return true;
+                    const altTitleNorm = normalizeForSearch(anime.altTitle);
+                    if (altTitleNorm && qNorm && altTitleNorm.includes(qNorm)) return true;
+
                     // Ảnh GIF trong genres (thể loại)
                     if (anime.genres && anime.genres.some(genre => genre.toLowerCase().includes(searchTerm))) {
+                        return true;
+                    }
+                    if (anime.genres && anime.genres.some(genre => {
+                        const gNorm = normalizeForSearch(genre);
+                        return gNorm && qNorm && gNorm.includes(qNorm);
+                    })) {
                         return true;
                     }
                     // (Tùy chọn) Ảnh GIF trong description
