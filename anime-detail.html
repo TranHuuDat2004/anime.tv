@@ -103,7 +103,7 @@
 
         async function fetchAnimeDetailsFromAniList({ animeId, query }) {
             try {
-                const response = await fetch('/api/anilist-ensure', {
+                const response = await fetch('https://anime-tv-eta.vercel.app/api/anilist-ensure', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ query: query || animeId, slug: animeId }),

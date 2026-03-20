@@ -73,7 +73,8 @@ async function aniSearchTopMatch(query) {
         format
         status
         startDate { year }
-        coverImage { large medium }
+        bannerImage
+        coverImage { extraLarge large medium }
       }
     }
   `;
@@ -238,9 +239,36 @@ async function githubCreateBranch(token, branchName, fromBranch = DEFAULT_BRANCH
 async function githubPutFile(token, filePath, content, branchName, message) {
   const owner = process.env.GITHUB_OWNER;
   const repo = process.env.GITHUB_REPO;
-  const url = `https://api.github.com/repos/${owner}/${repo}/contents/${encodeURIComponent(filePath)}`;
+  
+  // Lấy SHA của file nếu đã tồn tại trên branch này
+  let targetSha = undefined;
+  try {
+    const getUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${encodeURIComponent(filePath)}?ref=${encodeURIComponent(branchName)}`;
+    const getResp = await fetch(getUrl, {
+      method: 'GET',
+      headers: {
+        Accept: 'application/vnd.github+json',
+        Authorization: `Bearer ${token}`
+      }
+    });
+    if (getResp.ok) {
+      const getData = await getResp.json();
+      targetSha = getData.sha;
+    }
+  } catch(e) {}
 
+  const url = `https://api.github.com/repos/${owner}/${repo}/contents/${encodeURIComponent(filePath)}`;
   const contentBase64 = Buffer.from(content, 'utf-8').toString('base64');
+  
+  const bodyData = {
+    message,
+    content: contentBase64,
+    branch: branchName,
+  };
+  if (targetSha) {
+    bodyData.sha = targetSha;
+  }
+
   const resp = await fetch(url, {
     method: 'PUT',
     headers: {
@@ -248,11 +276,7 @@ async function githubPutFile(token, filePath, content, branchName, message) {
       Authorization: `Bearer ${token}`,
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({
-      message,
-      content: contentBase64,
-      branch: branchName,
-    }),
+    body: JSON.stringify(bodyData),
   });
 
   if (!resp.ok) {
@@ -302,8 +326,8 @@ async function ensureOrCreateAnimeJson({ token, query, slug }) {
   const existing = await githubGetFile(token, filePath);
 
   const description = (media.description || '').trim();
-  const posterImage = media.coverImage?.medium || '';
-  const bannerImage = media.coverImage?.large || '';
+  const posterImage = media.coverImage?.extraLarge || media.coverImage?.large || media.coverImage?.medium || '';
+  const bannerImage = media.bannerImage || media.coverImage?.extraLarge || '';
   const titleEnglish = media.title?.english || media.title?.romaji || media.title?.native || resolvedSlug;
   const altTitle = media.title?.native || media.title?.romaji || media.title?.english || '';
 
@@ -415,6 +439,28 @@ module.exports = async (req, res) => {
 
     await githubCreateBranch(token, branchName, DEFAULT_BRANCH);
     await githubPutFile(token, ensure.filePath, ensure.newContent, branchName, `chore: add AniList description for ${ensure.anime.id}`);
+
+    if (ensure.created) {
+      try {
+        const listFile = await githubGetFile(token, 'data/anime-list.json');
+        if (listFile) {
+          let list = [];
+          try { list = JSON.parse(listFile.content); } catch (e) {}
+          if (!list.some(a => a.id === ensure.anime.id)) {
+            list.push({
+              id: ensure.anime.id,
+              title: ensure.anime.title,
+              posterImage: ensure.anime.posterImage || '',
+              type: ensure.anime.type || 'Series'
+            });
+            const newListContent = JSON.stringify(list, null, 2) + '\n';
+            await githubPutFile(token, 'data/anime-list.json', newListContent, branchName, `chore: add ${ensure.anime.id} to anime-list`);
+          }
+        }
+      } catch (e) {
+        console.error("Lỗi cập nhật list:", e);
+      }
+    }
 
     const pr = await githubCreatePR(token, {
       branchName,
