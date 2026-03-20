@@ -101,6 +101,22 @@
             }
         }
 
+        async function fetchAnimeDetailsFromAniList({ animeId, query }) {
+            try {
+                const response = await fetch('/api/anilist-ensure', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ query: query || animeId, slug: animeId }),
+                });
+                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                const payload = await response.json();
+                return payload?.anime || null;
+            } catch (error) {
+                console.error(`Lỗi khi fetch AniList cho ${animeId}:`, error);
+                return null;
+            }
+        }
+
         // JavaScript cho Tabs
         function openTab(evt, tabName) {
             var i, tabcontent, tablinks;
@@ -119,6 +135,7 @@
         document.addEventListener('DOMContentLoaded', async function () {
             const urlParams = new URLSearchParams(window.location.search);
             const animeId = urlParams.get('id');
+            const queryParam = urlParams.get('q') || '';
 
             if (!animeId) {
                 document.getElementById('animeTitle').textContent = "Không tìm thấy Anime";
@@ -128,7 +145,14 @@
                 return;
             }
 
-            const anime = await fetchAnimeDetails(animeId);
+            let anime = await fetchAnimeDetails(animeId);
+
+            const needAniListFallback = !anime || !anime.description || String(anime.description).trim().length === 0;
+            if (needAniListFallback) {
+                const queryForApi = queryParam || (anime && anime.title) || animeId;
+                const fromApi = await fetchAnimeDetailsFromAniList({ animeId, query: queryForApi });
+                if (fromApi) anime = fromApi;
+            }
 
             if (!anime) {
                 document.getElementById('animeTitle').textContent = `Không tìm thấy Anime với ID: ${animeId}`;
@@ -141,7 +165,8 @@
             document.title = `${anime.title} - Chi tiết Anime`;
 
             // --- HERO SECTION ---
-            document.querySelector('.detail-hero-background').style.backgroundImage = `url('${anime.bannerImage}')`;
+            const bgBanner = anime.bannerImage || 'https://via.placeholder.com/1920x600?text=Anime';
+            document.querySelector('.detail-hero-background').style.backgroundImage = `url('${bgBanner}')`;
             if (anime.logoImage && anime.logoImage !== "") {
                 document.getElementById('animeLogo').src = anime.logoImage;
                 document.getElementById('animeLogo').alt = `${anime.title} Logo`;
@@ -171,7 +196,8 @@
                 crunchyTagsContainer.style.display = 'none';
             }
 
-            document.getElementById('animeShortDescription').textContent = anime.description.substring(0, 200) + (anime.description.length > 200 ? "..." : "");
+            const descText = String(anime.description || '');
+            document.getElementById('animeShortDescription').textContent = descText.substring(0, 200) + (descText.length > 200 ? "..." : "");
 
             // Nút XEM NGAY đã bị xóa khỏi HTML, nên không cần logic này nữa
 

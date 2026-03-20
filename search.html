@@ -97,7 +97,7 @@
                 return card;
             }
 
-            function performSearch() {
+            async function performSearch() {
                 const searchTerm = searchInput.value.trim().toLowerCase();
                 searchResultsGrid.innerHTML = ''; // Xóa kết quả cũ
                 noResultsMessage.style.display = 'none'; // Ẩn thông báo không có kết quả
@@ -107,14 +107,8 @@
                     return;
                 }
 
-                if (typeof animeData === 'undefined' || !animeData) {
-                    console.error("animeData không tồn tại.");
-                    noResultsMessage.textContent = "Lỗi tải dữ liệu anime.";
-                    noResultsMessage.style.display = 'block';
-                    return;
-                }
-
-                const results = animeData.filter(anime => {
+                const results = (typeof animeData !== 'undefined' && animeData)
+                    ? animeData.filter(anime => {
                     // Ảnh GIF trong title, altTitle
                     if (anime.title && anime.title.toLowerCase().includes(searchTerm)) {
                         return true;
@@ -131,14 +125,57 @@
                     //     return true;
                     // }
                     return false;
-                });
+                })
+                    : [];
 
                 if (results.length > 0) {
                     results.forEach(anime => {
                         const card = createAnimeCard(anime);
                         searchResultsGrid.appendChild(card);
                     });
-                } else {
+                    return;
+                }
+
+                // Fallback: gọi AniList qua Vercel để tạo/điền data (khi chưa có trong JSON)
+                try {
+                    noResultsMessage.textContent = 'Đang tìm trên AniList...';
+                    noResultsMessage.style.display = 'block';
+
+                    const resp = await fetch('/api/anilist-ensure', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ query: searchInput.value.trim() }),
+                    });
+
+                    if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+                    const payload = await resp.json();
+
+                    if (!payload || !payload.anime) {
+                        noResultsMessage.textContent = `Không tìm thấy kết quả nào cho "${searchInput.value.trim()}".`;
+                        noResultsMessage.style.display = 'block';
+                        return;
+                    }
+
+                    const anime = payload.anime;
+                    // Card link sang trang chi tiết, truyền lại query để detail page có thể fetch lại nếu JSON chưa kịp được merge
+                    const card = createAnimeCard(anime);
+                    const a = card.querySelector('a');
+                    if (a) {
+                        a.href = `anime-detail.html?id=${encodeURIComponent(anime.id)}&q=${encodeURIComponent(searchInput.value.trim())}`;
+                        const titleA = card.querySelector('h3 a');
+                        if (titleA) titleA.href = a.href;
+                    }
+
+                    searchResultsGrid.appendChild(card);
+
+                    if (payload.prUrl) {
+                        noResultsMessage.textContent = `Đã tạo PR cập nhật dữ liệu. ${payload.prUrl}`;
+                        noResultsMessage.style.display = 'block';
+                    } else {
+                        noResultsMessage.textContent = `Đã tạo dữ liệu (nếu cần).`;
+                        noResultsMessage.style.display = 'block';
+                    }
+                } catch (e) {
                     noResultsMessage.textContent = `Không tìm thấy kết quả nào cho "${searchInput.value.trim()}".`;
                     noResultsMessage.style.display = 'block';
                 }
