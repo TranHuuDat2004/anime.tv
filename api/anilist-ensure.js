@@ -65,7 +65,7 @@ async function aniSearchTopMatch(query) {
 
   const queryText = `
     query ($search: String) {
-      Media(search: $search, type: ANIME, sort: SEARCH_MATCH, first: 1) {
+      Media(search: $search, type: ANIME, sort: SEARCH_MATCH) {
         id
         title { english romaji native }
         description(asHtml: false)
