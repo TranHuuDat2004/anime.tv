@@ -1,0 +1,25 @@
+name: Auto-merge AniList PRs
+
+on:
+  pull_request:
+    types: [opened, synchronize, ready_for_review]
+
+permissions:
+  pull-requests: write
+  contents: write
+
+jobs:
+  automerge:
+    # Chỉ auto-merge các PR do API tạo (nhánh bắt đầu bằng auto/anilist-desc-)
+    if: startsWith(github.head_ref, 'auto/anilist-desc-')
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Enable auto-merge
+        uses: peter-evans/enable-pull-request-automerge@v3
+        with:
+          pull-request-number: ${{ github.event.pull_request.number }}
+          merge-method: squash
+          # Mặc định action sẽ đợi required checks/reviews (nếu repo bạn bật branch protection).
+          token: ${{ secrets.GITHUB_TOKEN }}
+
