@@ -153,18 +153,25 @@
                 })
                     : [];
 
+                // Hiển thị kết quả local trước
+                let localIds = new Set();
                 if (results.length > 0) {
                     results.forEach(anime => {
+                        localIds.add(anime.id);
                         const card = createAnimeCard(anime);
                         searchResultsGrid.appendChild(card);
                     });
-                    return;
                 }
 
-                // Fallback: Gọi trực tiếp GraphQL API của AniList
+                // Luôn gọi GraphQL API của AniList để bổ sung thêm kết quả (nếu có)
                 try {
-                    noResultsMessage.textContent = 'Đang tìm kiếm trên AniList...';
-                    noResultsMessage.style.display = 'block';
+                    if (results.length === 0) {
+                        noResultsMessage.textContent = 'Đang tìm kiếm trên AniList...';
+                        noResultsMessage.style.display = 'block';
+                    } else {
+                        noResultsMessage.textContent = 'Đang tìm thêm trên AniList...';
+                        noResultsMessage.style.display = 'block';
+                    }
 
                     const anilistQuery = `
                       query ($search: String) {
@@ -196,10 +203,15 @@
                         return;
                     }
 
+                    let addedFromAniList = 0;
                     mediaList.forEach(media => {
                         const title = media.title.english || media.title.romaji || media.title.native;
                         const slug = title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
                         
+                        // Bỏ qua nếu đã có trong kết quả local
+                        if (localIds.has(slug)) return;
+                        
+                        addedFromAniList++;
                         const anime = {
                             id: slug,
                             title: title,
@@ -216,8 +228,13 @@
                         searchResultsGrid.appendChild(card);
                     });
 
-                    noResultsMessage.textContent = `Kết quả từ AniList. Click để xem (sẽ tự tải dữ liệu mới nếu chưa có).`;
-                    noResultsMessage.style.display = 'block';
+                    if (results.length === 0 && addedFromAniList === 0) {
+                        noResultsMessage.textContent = `Không tìm thấy kết quả nào cho "${searchInput.value.trim()}".`;
+                    } else {
+                        noResultsMessage.textContent = 'Đã tải xong kết quả từ AniList.';
+                        // Bạn cũng có thể dùng: noResultsMessage.style.display = 'none'; nếu không muốn hiện text này
+                        setTimeout(() => noResultsMessage.style.display = 'none', 3000);
+                    }
                 } catch (e) {
                     noResultsMessage.textContent = `Không tìm thấy kết quả nào cho "${searchInput.value.trim()}".`;
                     noResultsMessage.style.display = 'block';
