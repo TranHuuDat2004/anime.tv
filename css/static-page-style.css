@@ -1,0 +1,95 @@
+/* css/static-page-style.css */
+
+#static-page .container {
+    max-width: 900px; /* Giới hạn chiều rộng nội dung cho dễ đọc */
+    padding-top: 30px;
+    padding-bottom: 50px;
+}
+
+.static-page-header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+#static-page .page-title {
+    font-size: 2.5em;
+    font-weight: 700;
+    color: var(--text-color); /* Hoặc var(--primary-color) */
+    margin-bottom: 10px;
+}
+
+.static-page-header .last-updated,
+#static-page .tagline /* Nếu bạn dùng tagline ở trang khác */ {
+    font-size: 0.95em;
+    color: var(--text-secondary-color);
+    font-style: italic;
+}
+
+.static-content,
+.faq-section {
+    font-size: 1.05em;
+    line-height: 1.7;
+    color: var(--text-secondary-color);
+}
+
+.static-content h2,
+.faq-section h2 { /* Tiêu đề cấp 2 trong nội dung */
+    font-size: 1.8em;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-top: 30px;
+    margin-bottom: 15px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border-color);
+}
+.static-content h2:first-child,
+.faq-section h2:first-child {
+    margin-top: 0;
+}
+
+
+.static-content p,
+.faq-answer {
+    margin-bottom: 1.2em;
+}
+
+.static-content ul {
+    list-style-type: disc;
+    padding-left: 25px;
+    margin-bottom: 1.2em;
+}
+.static-content ul li {
+    margin-bottom: 0.5em;
+}
+
+
+/* Riêng cho FAQ */
+.faq-item {
+    margin-bottom: 30px;
+    padding: 20px;
+    background-color: var(--card-background-color);
+    border-radius: 8px;
+    border-left: 4px solid var(--primary-color);
+}
+.faq-question {
+    font-size: 1.3em;
+    font-weight: 600;
+    color: var(--text-color);
+    margin-top: 0;
+    margin-bottom: 10px;
+    cursor: pointer; /* Nếu bạn muốn làm hiệu ứng xổ ra/vào sau này */
+}
+.faq-answer {
+    padding-left: 10px;
+    border-left: 2px solid var(--border-color);
+    margin-left: 5px;
+}
+.faq-answer a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+.faq-answer a:hover {
+    text-decoration: underline;
+}

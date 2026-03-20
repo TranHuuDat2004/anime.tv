@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bộ Sưu Tập GIF Anime - ANIME.TV</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/gif.css"> <!-- CSS của trang GIF (đã chỉnh sửa) -->
+    <!-- Link tới Font Awesome nếu bạn dùng icon, hoặc bỏ đi -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> -->
+    <!-- Link tới font của ANIME.TV nếu có -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+    <!-- Ví dụ font Lato -->
+    <link rel="icon" href="PATH_TO_YOUR_ANIME_TV_FAVICON.png" type="image/x-icon"> <!-- Favicon của ANIME.TV -->
+</head>
+
+<body>
+    <div id="header-placeholder"></div> <!-- Placeholder cho header -->
+    <div class="full-width-content">
+        <div class="controls-container inner-container">
+            <h1 style="text-align: center; margin-bottom: 25px; font-size: 2.2em; color: var(--anime-tv-text);">Bộ Sưu
+                Tập Ảnh GIF</h1>
+            <div id="series-navigation">
+                <!-- Các nút lọc series -->
+            </div>
+            <div id="view-options">
+                <p>Chọn kích thước ảnh:</p>
+                <button data-size="small">Ảnh Nhỏ</button>
+                <button data-size="medium" class="active">Ảnh Vừa</button> <!-- active class được JS quản lý -->
+                <button data-size="large">Ảnh Lớn</button>
+            </div>
+            <input type="text" id="search-bar" placeholder="Tìm kiếm GIF theo tên nhân vật, series hoặc tag...">
+        </div>
+
+        <div id="gif-gallery" class="view-medium inner-container">
+            <!-- Thêm inner-container để gallery cũng được giới hạn chiều rộng -->
+            <p class="placeholder-text" id="loading-message">Đang tải danh sách GIF...</p>
+        </div>
+        <!-- NÚT XEM THÊM -->
+        <div id="load-more-container" class="inner-container"
+            style="text-align: center; margin-top: 30px; margin-bottom: 30px; display: none;">
+            <button id="loadMoreButton" class="btn btn-primary">Xem Thêm GIF</button>
+            <!-- Tái sử dụng class btn từ ANIME.TV nếu có -->
+        </div>
+
+
+        <!-- PHẦN TỬ MỚI CHO THÔNG BÁO -->
+        <div id="all-gifs-loaded-message" class="placeholder-text"
+            style="display: none; text-align: center; margin-top: 20px; padding: 15px; background-color: var(--card-background-color, #2d3038); border-radius: 5px; color: var(--text-secondary-color, #adb0b5);">
+            Bạn đã xem hết tất cả GIF rồi! 🎉
+        </div>
+    </div>
+
+    <div id="footer-placeholder"></div> <!-- Placeholder cho footer -->
+
+    <script src="js/header.js"></script> <!-- Nhúng header.js ở đầu (sau placeholder) -->
+    <script src="js/footer.js"></script> <!-- Script cho slideshow -->
+    <script src="js/navbar.js"></script> <!-- Script cho navbar (hamburger menu) -->
+
+    <script src="js/data-gif.js"></script> <!-- Dữ liệu GIF của bạn -->
+    <script src="js/fetch-gif.js"></script> <!-- Script của trang GIF -->
+
+</body>
+
+</html>

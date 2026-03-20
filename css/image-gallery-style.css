@@ -1,0 +1,195 @@
+/* css/image-gallery-style.css */
+
+#image-gallery-page .page-title {
+    font-size: 2.2em;
+    margin-bottom: 25px;
+    border-left: 5px solid var(--primary-color);
+    padding-left: 15px;
+    color: var(--text-color);
+}
+
+/* Tái sử dụng hoặc điều chỉnh style cho gallery-controls, search-bar, series-navigation, view-options
+   từ file style.css của trang GIF nếu bạn có, hoặc định nghĩa mới. */
+
+.gallery-controls {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 30px;
+    gap: 15px;
+}
+
+.search-bar { /* Chung cho cả image và gif search bar */
+    padding: 10px 15px;
+    border: 1px solid var(--border-color);
+    background-color: var(--card-background-color);
+    color: var(--text-color);
+    border-radius: 5px;
+    font-size: 1em;
+    flex-grow: 1; /* Cho phép search bar co giãn */
+    min-width: 250px; /* Chiều rộng tối thiểu */
+}
+.search-bar:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(var(--primary-color-rgb), 0.3); /* Giả sử bạn có --primary-color-rgb */
+}
+
+
+.series-navigation {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px; /* Khoảng cách nếu xuống dòng */
+    margin-bottom: 10px;
+}
+.series-navigation button {
+    padding: 8px 15px;
+    background-color: var(--card-background-color);
+    color: var(--text-secondary-color);
+    border: 1px solid var(--border-color);
+    border-radius: 20px; /* Bo tròn hơn */
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+    font-weight: 500;
+}
+.series-navigation button:hover {
+    background-color: #3a3e47;
+    color: var(--text-color);
+}
+.series-navigation button.active {
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    border-color: var(--primary-color);
+    font-weight: bold;
+}
+
+
+.view-options {
+    display: flex;
+    gap: 5px;
+}
+.view-options button {
+    background-color: var(--card-background-color);
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary-color);
+    padding: 8px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.view-options button svg {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+}
+.view-options button:hover {
+    background-color: #3a3e47;
+    color: var(--text-color);
+}
+.view-options button.active {
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    border-color: var(--primary-color);
+}
+
+
+/* --- Image Gallery Styles --- */
+.image-gallery {
+    display: grid;
+    gap: 15px;
+    margin-bottom: 30px;
+    /* Bỏ object-fit ở đây, nó nên được đặt cho thẻ img */
+}
+
+.image-item {
+    position: relative;
+    overflow: hidden; /* QUAN TRỌNG: để object-fit hoạt động đúng với bo góc */
+    border-radius: 6px;
+    background-color: var(--card-background-color);
+    cursor: pointer;
+    transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+
+    /* THÊM DÒNG NÀY ĐỂ ĐẶT TỶ LỆ KHUNG HÌNH CỐ ĐỊNH */
+    aspect-ratio: 16 / 9; /* Tỷ lệ 16:9 */
+    /* Hoặc bạn có thể dùng 4 / 3, 3 / 2, 1 / 1 tùy theo ý muốn */
+}
+.image-item:hover {
+    transform: scale(1.03);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+}
+
+.image-item img {
+    display: block;
+    width: 100%;
+    height: 100%; /* QUAN TRỌNG: Cho phép ảnh chiếm toàn bộ chiều cao của .image-item */
+    object-fit: cover; /* QUAN TRỌNG: Ảnh sẽ lấp đầy .image-item, có thể bị cắt bớt để giữ tỷ lệ ảnh gốc */
+    /* Nếu bạn muốn thấy toàn bộ ảnh và có khoảng trống nếu tỷ lệ không khớp, dùng: object-fit: contain; */
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-out; /* Thêm transform cho hiệu ứng zoom khi hover */
+}
+
+/* (Tùy chọn) Thêm hiệu ứng zoom nhẹ cho ảnh khi hover vào image-item */
+.image-item:hover img {
+    transform: scale(1.05);
+}
+
+.image-item img:not([src]) {
+    opacity: 0;
+}
+
+
+/* View sizes for image gallery */
+/* Các class view-small, view-medium, view-large sẽ vẫn hoạt động để thay đổi
+   chiều rộng tối thiểu của mỗi cột, từ đó ảnh hưởng đến kích thước tổng thể của item */
+.image-gallery.view-small {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+}
+.image-gallery.view-medium {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+}
+.image-gallery.view-large {
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+}
+
+/* Style cho nút "Xem thêm" và thông báo đã tải hết (có thể tái sử dụng từ trang GIF) */
+#image-load-more-container {
+    text-align: center;
+    margin-top: 20px;
+}
+#imageLoadMoreButton { /* ID đã đổi */
+    /* Style nút giống các nút btn khác */
+}
+
+#all-images-loaded-message { /* ID đã đổi */
+    /* Style như trong file GIF */
+}
+
+.placeholder-text { /* chung cho các thông báo */
+    text-align: center;
+    margin-top: 20px;
+    padding: 15px;
+    background-color: var(--card-background-color, #2d3038);
+    border-radius: 5px;
+    color: var(--text-secondary-color, #adb0b5);
+}
+
+/* Responsive cho gallery controls nếu cần */
+@media (max-width: 768px) {
+    .gallery-controls {
+        flex-direction: column;
+        align-items: stretch; /* Các control chiếm toàn bộ chiều rộng */
+    }
+    .search-bar {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    .series-navigation {
+        justify-content: center; /* Căn giữa các nút series */
+    }
+    .view-options {
+        align-self: center; /* Căn giữa view options */
+    }
+}

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Lịch Sử Phiên Bản - ANIME.TV</title>
+    <link rel="icon" type="image/png" href="images/favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+
+    <link href="css/version-portfolio-style.css" rel="stylesheet" /> <!-- Giữ lại style này -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet" />
+</head>
+
+<body class="d-flex flex-column h-100">
+    <div id="header-placeholder"></div> <!-- Placeholder cho header -->
+
+    <main id="version-page">
+        <div class="container">
+            <div class="version-header">
+                <h1 class="page-title">Lịch Sử Phiên Bản ANIME.TV</h1>
+                <p class="tagline">Theo dõi hành trình phát triển và các cập nhật mới nhất của trang web.</p>
+
+                <!-- Bọc 2 thẻ a vào một div -->
+                <div class="version-view-options">
+                    <a href="version.html" class="btn btn-outline-primary ">Timeline Phiên Bản</a>
+                    <a href="version-github.html" class="btn btn-outline-primary active-version-link">Lịch Sử Commit GitHub</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <main class="flex-shrink-0">
+        <section class="py-5">
+            <div class="container px-4 px-lg-5 mb-5">
+
+                <!-- Timeline container để JavaScript chèn các commit vào -->
+                <div id="commit-timeline" class="timeline">
+                    <!-- Các mục commit sẽ được thêm vào đây bởi JavaScript -->
+                    <p id="loading-commits" style="text-align: center; color: var(--text-secondary-color);">Đang tải
+                        lịch sử commit...</p>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <div id="footer-placeholder"></div> <!-- Placeholder cho footer -->
+
+    <script src="js/header.js"></script> <!-- Nhúng header.js ở đầu (sau placeholder) -->
+    <script src="js/footer.js"></script> <!-- Script cho slideshow -->
+    <script src="js/navbar.js"></script> <!-- Script cho navbar (hamburger menu) -->
+
+
+    <script src="js/version-script.js"></script> <!-- File JS mới cho trang version -->
+</body>
+
+</html>

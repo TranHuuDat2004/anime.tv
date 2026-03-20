@@ -1,0 +1,47 @@
+{
+    "id": "weathering-with-you",
+    "title": "Weathering With You",
+    "altTitle": "Tenki no Ko (天気の子)",
+    "posterImage": "images/weathering-with-you/weathering-with-you-poster.jpg",
+    "bannerImage": "images/weathering-with-you/weathering-with-you-banner.jpg",
+    "logoImage": "images/weathering-with-you/logo.webp",
+    "description": "Hodaka Morishima, một nam sinh trung học, bỏ nhà ở một hòn đảo xa xôi để đến Tokyo. Cậu nhanh chóng rơi vào cảnh túng thiếu và tìm được việc làm tại một tạp chí nhỏ chuyên viết về những điều huyền bí. Một ngày nọ, Hodaka gặp Hina Amano, một cô gái có khả năng kỳ diệu: điều khiển thời tiết. Cùng nhau, họ bắt đầu một công việc kinh doanh \"cô gái nắng\" để mang lại ánh nắng cho mọi người, nhưng sức mạnh của Hina lại đi kèm với một cái giá.",
+    "genres": [
+        "Drama",
+        "Fantasy",
+        "Romance",
+        "Slice of Life"
+    ],
+    "rankings": {
+        "mostEmotional": 3,
+        "bestArtDirection": 2
+    },
+    "rating": "PG-13",
+    "type": "Movie",
+    "status": "Hoàn thành",
+    "releaseYear": 2019,
+    "episodes": {
+        "total": 1,
+        "availableOnSite": 1,
+        "seasons": [
+            {
+                "seasonNum": 1,
+                "seasonTitle": "Movie",
+                "episodes": []
+            }
+        ]
+    },
+    "crunchyrollTags": [
+        "Dub",
+        "Drama",
+        "Fantasy",
+        "Romance"
+    ],
+    "relatedAnime": [
+        {
+            "id": "your-name",
+            "title": "Your Name.",
+            "posterImage": "https://m.media-amazon.com/images/M/MV5BODRmZDVmNzUtZDA4ZC00NjhkLWI2M2UtN2M0ZDIzNDcxYThjL2ltYWdlXkEyXkFqcGdeQXVyNTk0MzMzODA@._V1_FMjpg_UX1000_.jpg"
+        }
+    ]
+}

@@ -1,0 +1,35 @@
+{
+    "id": "nokotan-my-deer",
+    "title": "My Deer Friend Nokotan",
+    "altTitle": "しかのこのこのここしたんたん",
+    "posterImage": "images/nokotan/poster.jpg",
+    "bannerImage": "images/nokotan/banner.jpg",
+    "logoImage": "",
+    "description": "Koshi Torako là một nữ sinh trung học nổi tiếng, xinh đẹp và luôn cố gắng giữ hình tượng hoàn hảo. Tuy nhiên, cuộc sống của cô bị đảo lộn khi một học sinh chuyển trường bí ẩn tên Shikanoko Noko (biệt danh Nokotan) xuất hiện với cặp sừng hươu trên đầu và những hành động kỳ quặc. Nokotan bằng cách nào đó biết được quá khứ du côn của Torako và bắt đầu đeo bám cô, kéo theo vô số tình huống dở khóc dở cười.",
+    "genres": [
+        "Comedy",
+        "School",
+        "Slice of Life",
+        "Gag Humor"
+    ],
+    "rating": "PG-13",
+    "type": "Series",
+    "status": "Đang chiếu",
+    "releaseYear": 2024,
+    "episodes": {
+        "total": "Ongoing",
+        "availableOnSite": 0,
+        "seasons": []
+    },
+    "rankings": {
+        "mostRelaxing": 1,
+        "bestComedy": 1,
+        "mostAnticipated": 3
+    },
+    "crunchyrollTags": [
+        "Sub",
+        "Comedy",
+        "School"
+    ],
+    "relatedAnime": []
+}

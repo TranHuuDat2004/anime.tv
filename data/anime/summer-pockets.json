@@ -1,0 +1,35 @@
+{
+    "id": "summer-pockets",
+    "title": "Summer Pockets ",
+    "altTitle": "サマーポケッツ リフレクションブルー",
+    "posterImage": "images/summer-pockets/summer-pockets-anime-vietsub.png",
+    "bannerImage": "images/summer-pockets/banner2.webp",
+    "logoImage": "images/summer-pockets/logo.png",
+    "description": "Hairi Takahara đến hòn đảo Torishirojima để sắp xếp tài sản của người bà quá cố. Tại đây, cậu gặp gỡ những cô gái và trải qua một mùa hè không thể nào quên, khám phá những bí mật của hòn đảo và tìm kiếm những ký ức mùa hè đã mất.",
+    "genres": [
+        "Slice of Life",
+        "Drama",
+        "Romance",
+        "Visual Novel"
+    ],
+    "rankings": {
+        "mostRelaxing": 2,
+        "mostEmotional": 5
+    },
+    "rating": "PG-13",
+    "type": "Series",
+    "status": "Đang chiếu",
+    "releaseYear": 2025,
+    "episodes": {
+        "total": "Ongoing (S1: 14, S2: 12)",
+        "availableOnSite": 11,
+        "seasons": []
+    },
+    "crunchyrollTags": [
+        "Sub",
+        "Slice of Life",
+        "Drama",
+        "Romance"
+    ],
+    "relatedAnime": []
+}

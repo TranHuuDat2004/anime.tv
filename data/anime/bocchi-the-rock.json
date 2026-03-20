@@ -1,0 +1,36 @@
+{
+    "id": "bocchi-the-rock",
+    "title": "Bocchi the Rock!",
+    "altTitle": "ぼっち・ざ・ろっく!",
+    "posterImage": "images/bocchi-the-rock/poster.jpg",
+    "bannerImage": "images/bocchi-the-rock/banner1.webp",
+    "logoImage": "images/bocchi-the-rock/logo-bocchi.png",
+    "description": "Hitori Gotoh, biệt danh \"Bocchi-chan\", là một nữ sinh trung học mắc chứng sợ xã hội cực độ, ước mơ được nổi tiếng và kết bạn thông qua việc chơi guitar. Dù kỹ năng guitar của cô rất cừ (khi chơi một mình và đăng video ẩn danh lên mạng), cô lại không thể chơi trước mặt người khác. Mọi thứ thay đổi khi cô tình cờ gặp Nijika Ijichi, một tay trống đang tìm kiếm một guitarist cho ban nhạc Kessoku Band của mình.",
+    "genres": [
+        "Slice of Life",
+        "Comedy",
+        "Music",
+        "School"
+    ],
+    "rating": "PG-13",
+    "type": "Series",
+    "status": "Hoàn thành",
+    "releaseYear": 2022,
+    "episodes": {
+        "total": 12,
+        "availableOnSite": 0,
+        "seasons": []
+    },
+    "rankings": {
+        "bestSliceOfLife": 1,
+        "bestMusic": 1,
+        "overallFavorite": 3
+    },
+    "crunchyrollTags": [
+        "Sub | Dub",
+        "Slice of Life",
+        "Music",
+        "Comedy"
+    ],
+    "relatedAnime": []
+}

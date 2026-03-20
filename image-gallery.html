@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bộ Sưu Tập Ảnh Anime - ANIME.TV</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/image-gallery-style.css"> <!-- CSS riêng cho trang này -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="icon" href="images/favicon.png" type="image/x-icon">
+</head>
+
+<body>
+    <div id="header-placeholder"></div> <!-- Placeholder cho header -->
+    <main id="image-gallery-page">
+        <div class="container">
+            <h1 class="page-title">Bộ Sưu Tập Ảnh Anime</h1>
+
+            <div class="gallery-controls">
+                <input type="text" id="image-search-bar" class="search-bar"
+                    placeholder="Tìm kiếm ảnh theo tiêu đề, tags, series...">
+                <div id="image-series-navigation" class="series-navigation">
+                    <!-- Nút lọc series sẽ được tạo bởi JavaScript -->
+                </div>
+                <div id="image-view-options" class="view-options">
+                    <button data-size="small" title="Ảnh nhỏ"><svg viewBox="0 0 24 24">
+                            <path d="M3 11h8V3H3v8zm0 10h8v-8H3v8zM13 3v8h8V3h-8zm0 10h8v-8h-8v8z"></path>
+                        </svg></button>
+                    <button data-size="medium" class="active" title="Ảnh vừa"><svg viewBox="0 0 24 24">
+                            <path
+                                d="M4 10h4V4H4v6zm0 10h4v-6H4v6zM10 4v6h4V4h-4zm0 10h4v-6h-4v6zM16 4v6h4V4h-4zm0 10h4v-6h-4v6z">
+                            </path>
+                        </svg></button>
+                    <button data-size="large" title="Ảnh lớn"><svg viewBox="0 0 24 24">
+                            <path d="M4 4h16v6H4zm0 8h16v6H4z"></path>
+                        </svg></button>
+                </div>
+            </div>
+
+            <div id="image-collection-gallery" class="image-gallery view-medium">
+                <!-- Các mục ảnh sẽ được chèn vào đây bởi JavaScript -->
+            </div>
+
+            <div id="image-load-more-container" style="display: none;">
+                <button id="imageLoadMoreButton" class="btn">Xem thêm ảnh</button>
+            </div>
+            <div id="all-images-loaded-message" class="placeholder-text" style="display: none;">
+                Bạn đã xem hết tất cả ảnh rồi! 🖼️
+            </div>
+        </div>
+    </main>
+
+    <div id="footer-placeholder"></div> <!-- Placeholder cho footer -->
+
+    <script src="js/header.js"></script> <!-- Nhúng header.js ở đầu (sau placeholder) -->
+    <script src="js/footer.js"></script> <!-- Script cho slideshow -->
+    <script src="js/navbar.js"></script> <!-- Script cho navbar (hamburger menu) -->
+
+    <script src="js/data-img.js"></script> <!-- File dữ liệu ảnh mới -->
+    <script src="js/image-gallery-script.js"></script> <!-- File JavaScript mới cho trang này -->
+</body>
+
+</html>

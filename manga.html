@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danh Sách Truyện Tranh - ANIME.TV</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Có thể tạo file css/manga-style.css riêng hoặc dùng chung style với anime-list -->
+
+    <link rel="stylesheet" href="css/manga-style.css"> 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="icon" href="images/favicon.png" type="image/x-icon">
+</head>
+<body>
+    <div id="header-placeholder"></div> <!-- Placeholder cho header -->
+
+    <main id="manga-list-page">
+        <div class="container">
+            <h1 class="page-title">Thư Viện Truyện Tranh</h1>
+
+            <div class="filter-controls mb-4"> <!-- Thêm bộ lọc nếu cần sau này -->
+                <input type="text" id="manga-search-bar" class="search-bar" placeholder="Tìm kiếm truyện theo tên, tác giả, thể loại...">
+                <!-- Có thể thêm select để lọc theo status, genre,... -->
+            </div>
+
+            <div id="manga-grid" class="anime-grid"> <!-- Tái sử dụng class anime-grid -->
+                <!-- Các card manga sẽ được chèn vào đây bởi JavaScript -->
+            </div>
+
+            <div id="manga-load-more-container" style="display: none; text-align: center; margin-top: 30px;">
+                <button id="mangaLoadMoreButton" class="btn btn-primary">Xem thêm truyện</button>
+            </div>
+            <div id="all-manga-loaded-message" class="placeholder-text" style="display: none;">
+                Bạn đã xem hết tất cả truyện rồi! 📖
+            </div>
+
+        </div>
+    </main>
+
+    <div id="footer-placeholder"></div> <!-- Placeholder cho footer -->
+
+    <script src="js/header.js"></script> <!-- Nhúng header.js ở đầu (sau placeholder) -->
+    <script src="js/footer.js"></script> <!-- Script cho slideshow -->
+    <script src="js/navbar.js"></script> <!-- Script cho navbar (hamburger menu) -->
+    <script src="js/data-manga.js"></script>
+    <script src="js/manga-script.js"></script> <!-- File JavaScript mới cho trang này -->
+</body>
+</html>

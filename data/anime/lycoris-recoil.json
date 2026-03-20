@@ -1,0 +1,33 @@
+{
+    "id": "lycoris-recoil",
+    "title": "Lycoris Recoil",
+    "altTitle": "リコリス・リコイル",
+    "posterImage": "images/lycoris-recoil/poster.webp",
+    "bannerImage": "images/lycoris-recoil/banner2.jpg",
+    "logoImage": "images/lycoris-recoil/logo.png",
+    "description": "Tại quán cà phê LycoReco theo phong cách Nhật Bản, các đơn đặt hàng không chỉ dừng lại ở cà phê ngon và đồ ngọt. Từ việc giao hàng đến chăm sóc trẻ em, đọc truyện hay dạy tiếng Nhật, quán cà phê này có thể đáp ứng mọi yêu cầu! Tuy nhiên, đằng sau vẻ ngoài bình thường là một tổ chức bí mật gồm các nữ điệp viên được gọi là \"Lycoris\", chuyên thực hiện các nhiệm vụ tiêu diệt tội phạm và khủng bố để giữ gìn hòa bình cho Nhật Bản. Chisato Nishikigi, một Lycoris tự do và tài năng, cùng với Takina Inoue, một Lycoris nghiêm túc bị điều chuyển, làm việc cùng nhau tại LycoReco.",
+    "genres": [
+        "Action",
+        "Slice of Life",
+        "Girls with Guns"
+    ],
+    "rating": "PG-13",
+    "type": "Series",
+    "status": "Hoàn thành",
+    "releaseYear": 2022,
+    "episodes": {
+        "total": 13,
+        "availableOnSite": 0,
+        "seasons": []
+    },
+    "rankings": {
+        "bestAction": 1,
+        "cutestCharacters": 1
+    },
+    "crunchyrollTags": [
+        "Sub | Dub",
+        "Action",
+        "Slice of Life"
+    ],
+    "relatedAnime": []
+}

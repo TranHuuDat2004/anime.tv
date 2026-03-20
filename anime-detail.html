@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi tiết Anime</title> <!-- Sẽ được cập nhật bằng JavaScript -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/anime-detail-style.css"> <!-- CSS riêng cho trang này -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="icon" href="images/favicon.png" type="image/x-icon">
+</head>
+
+
+<body>
+    <div id="header-placeholder"></div> <!-- Placeholder cho header -->
+
+    <main id="anime-detail-page">
+        <section class="detail-hero-section">
+            <div class="detail-hero-background">
+                <!-- Ảnh banner sẽ được đặt làm background bằng CSS/JS -->
+            </div>
+            <div class="detail-hero-overlay"></div>
+            <div class="container detail-hero-content">
+                <div class="detail-hero-main">
+                    <img src="https://via.placeholder.com/300x100?text=Anime+Logo" alt="Anime Logo" id="animeLogo"
+                        class="detail-anime-logo">
+                    <h1 id="animeTitle" class="detail-title">Tên Anime</h1>
+                    <div id="animeCrunchyTags" class="detail-crunchy-tags">
+                        <!-- Tags: Sub | Dub, Genre1, Genre2 -->
+                    </div>
+                    <p id="animeShortDescription" class="detail-short-description">
+                        Mô tả ngắn gọn về anime sẽ được hiển thị ở đây...
+                    </p>
+                    <!-- Nút XEM NGAY đã bị xóa -->
+                </div>
+            </div>
+        </section>
+
+        <section class="detail-content-section container">
+            <nav class="detail-tabs">
+                <button class="tab-link active" onclick="openTab(event, 'overviewTab')">Tổng Quan</button>
+                <!-- Tab Danh Sách Tập đã bị xóa -->
+                <button class="tab-link" onclick="openTab(event, 'relatedTab')">Liên Quan</button>
+            </nav>
+
+            <div id="overviewTab" class="tab-content" style="display: block;">
+                <div class="overview-grid">
+                    <div class="overview-description">
+                        <h2>Mô Tả</h2>
+                        <p id="fullDescription">Nội dung mô tả đầy đủ của anime...</p>
+                    </div>
+                    <div class="overview-details">
+                        <h2>Chi Tiết</h2>
+                        <p><strong>Tên khác:</strong> <span id="altTitle"></span></p>
+                        <p><strong>Thể loại:</strong> <span id="genres"></span></p>
+                        <p><strong>Đánh giá:</strong> <span id="rating"></span></p>
+                        <p><strong>Loại:</strong> <span id="type"></span></p>
+                        <p><strong>Trạng thái:</strong> <span id="status"></span></p>
+                        <p><strong>Năm phát hành:</strong> <span id="releaseYear"></span></p>
+                        <p><strong>Tổng số tập:</strong> <span id="totalEpisodes"></span></p>
+                    </div>
+                </div>
+                <div class="copyright-note">
+                    <p><strong>Lưu ý về bản quyền:</strong> Trang web này chỉ cung cấp thông tin tổng hợp về anime. Chúng tôi không lưu trữ hoặc cung cấp trực tiếp các video. Các liên kết xem phim (nếu có) sẽ dẫn đến các nền tảng bên ngoài. Chúng tôi khuyến khích bạn xem anime trên các nền tảng hợp pháp để ủng hộ nhà sản xuất.</p>
+                </div>
+            </div>
+
+            <!-- Tab Danh Sách Tập đã bị xóa -->
+
+            <div id="relatedTab" class="tab-content">
+                <h2>Anime Liên Quan</h2>
+                <div id="relatedAnimeGrid" class="anime-grid related-anime-grid">
+                    <!-- Anime liên quan sẽ được load vào đây -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="footer-placeholder"></div> <!-- Placeholder cho footer -->
+
+    <script src="js/header.js"></script> <!-- Nhúng header.js ở đầu (sau placeholder) -->
+    <script src="js/footer.js"></script> <!-- Script cho slideshow -->
+    <script src="js/navbar.js"></script> <!-- Script cho navbar (hamburger menu) -->
+
+
+    <script>
+        // Hàm tải dữ liệu chi tiết cho một anime
+        async function fetchAnimeDetails(animeId) {
+            try {
+                const response = await fetch(`data/anime/${animeId}.json`);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return await response.json();
+            } catch (error) {
+                console.error(`Lỗi khi tải chi tiết cho anime ${animeId}:`, error);
+                return null;
+            }
+        }
+
+        // JavaScript cho Tabs
+        function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tab-link");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+        document.addEventListener('DOMContentLoaded', async function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            const animeId = urlParams.get('id');
+
+            if (!animeId) {
+                document.getElementById('animeTitle').textContent = "Không tìm thấy Anime";
+                document.getElementById('fullDescription').textContent = "Vui lòng cung cấp ID anime trong URL (ví dụ: anime-detail.html?id=one-piece).";
+                document.querySelector('.detail-hero-section').style.display = 'none';
+                document.querySelector('.detail-content-section .detail-tabs').style.display = 'none';
+                return;
+            }
+
+            const anime = await fetchAnimeDetails(animeId);
+
+            if (!anime) {
+                document.getElementById('animeTitle').textContent = `Không tìm thấy Anime với ID: ${animeId}`;
+                document.getElementById('fullDescription').textContent = "Anime bạn tìm kiếm không tồn tại trong cơ sở dữ liệu hoặc có lỗi khi tải.";
+                document.querySelector('.detail-hero-section').style.display = 'none';
+                document.querySelector('.detail-content-section .detail-tabs').style.display = 'none';
+                return;
+            }
+
+            document.title = `${anime.title} - Chi tiết Anime`;
+
+            // --- HERO SECTION ---
+            document.querySelector('.detail-hero-background').style.backgroundImage = `url('${anime.bannerImage}')`;
+            if (anime.logoImage && anime.logoImage !== "") {
+                document.getElementById('animeLogo').src = anime.logoImage;
+                document.getElementById('animeLogo').alt = `${anime.title} Logo`;
+                document.getElementById('animeLogo').style.display = 'block';
+            } else {
+                document.getElementById('animeLogo').style.display = 'none';
+            }
+            document.getElementById('animeTitle').textContent = anime.title;
+
+            const crunchyTagsContainer = document.getElementById('animeCrunchyTags');
+            crunchyTagsContainer.innerHTML = '';
+            if (anime.crunchyrollTags && anime.crunchyrollTags.length > 0) {
+                anime.crunchyrollTags.forEach((tagText, index) => {
+                    const tagSpan = document.createElement('span');
+                    tagSpan.className = 'tag-item';
+                    tagSpan.textContent = tagText;
+                    crunchyTagsContainer.appendChild(tagSpan);
+                    if (index < anime.crunchyrollTags.length - 1) {
+                        const separator = document.createElement('span');
+                        separator.className = 'tag-separator';
+                        separator.textContent = '•';
+                        crunchyTagsContainer.appendChild(separator);
+                    }
+                });
+                crunchyTagsContainer.style.display = 'flex';
+            } else {
+                crunchyTagsContainer.style.display = 'none';
+            }
+
+            document.getElementById('animeShortDescription').textContent = anime.description.substring(0, 200) + (anime.description.length > 200 ? "..." : "");
+
+            // Nút XEM NGAY đã bị xóa khỏi HTML, nên không cần logic này nữa
+
+            // --- OVERVIEW TAB ---
+            document.getElementById('fullDescription').textContent = anime.description;
+            document.getElementById('altTitle').textContent = anime.altTitle || 'N/A';
+            document.getElementById('genres').textContent = anime.genres ? anime.genres.join(', ') : 'N/A';
+            document.getElementById('rating').textContent = anime.rating || 'N/A';
+            document.getElementById('type').textContent = anime.type || 'N/A';
+            document.getElementById('status').textContent = anime.status || 'N/A';
+            document.getElementById('releaseYear').textContent = anime.releaseYear || 'N/A';
+            document.getElementById('totalEpisodes').textContent = anime.episodes ? `${anime.episodes.total} (Có ${anime.episodes.availableOnSite} tập trên trang)` : 'N/A';
+
+            // Tab EPISODES đã bị xóa khỏi HTML, nên không cần logic này nữa
+
+            // --- RELATED ANIME TAB ---
+            const relatedGrid = document.getElementById('relatedAnimeGrid');
+            relatedGrid.innerHTML = '';
+            if (anime.relatedAnime && anime.relatedAnime.length > 0) {
+                anime.relatedAnime.forEach(rel => {
+                    const poster = rel.posterImage || 'https://via.placeholder.com/200x300?text=N/A';
+
+                    const animeCard = document.createElement('div');
+                    animeCard.className = 'anime-card';
+                    animeCard.innerHTML = `
+                        <a href="anime-detail.html?id=${rel.id}">
+                            <img src="${poster}" alt="${rel.title}">
+                            <div class="anime-card-overlay">
+                                <span class="play-icon">►</span>
+                            </div>
+                        </a>
+                        <h3><a href="anime-detail.html?id=${rel.id}">${rel.title}</a></h3>
+                        ${rel.type ? `<p>${rel.type}</p>` : ''}
+                    `;
+                    relatedGrid.appendChild(animeCard);
+                });
+            } else {
+                relatedGrid.innerHTML = '<p>Không có anime liên quan.</p>';
+            }
+        });
+    </script>
+        <script src="js/notification.js"></script> <!-- Script cho thông báo -->
+
+</body>
+
+</html>

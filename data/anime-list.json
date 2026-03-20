@@ -1,0 +1,69 @@
+
+[
+  {
+    "id": "thien-su-nha-ben",
+    "title": "Thiên Sứ Nhà Bên",
+    "posterImage": "images/thien-su-nha-ben/poster.webp",
+    "type": "Series"
+  },
+  {
+    "id": "your-name",
+    "title": "Your Name.",
+    "posterImage": "images/your-name/your-name.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": "weathering-with-you",
+    "title": "Weathering With You",
+    "posterImage": "images/weathering-with-you/weathering-with-you-poster.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": "spy-x-family",
+    "title": "Spy x Family",
+    "posterImage": "images/spy-x-family/poster.jpg",
+    "type": "Series"
+  },
+  {
+    "id": "summer-pockets",
+    "title": "Summer Pockets ",
+    "posterImage": "images/summer-pockets/summer-pockets-anime-vietsub.png",
+    "type": "Series"
+  },
+  {
+    "id": "seishun-buta-yarou",
+    "title": "Hội Chứng Tuổi Thanh Xuân",
+    "posterImage": "images/seishun-buta-yarou/poster.jpg",
+    "type": "Series"
+  },
+  {
+    "id": "lycoris-recoil",
+    "title": "Lycoris Recoil",
+    "posterImage": "images/lycoris-recoil/poster.webp",
+    "type": "Series"
+  },
+  {
+    "id": "nokotan-my-deer",
+    "title": "My Deer Friend Nokotan",
+    "posterImage": "images/nokotan/poster.jpg",
+    "type": "Series"
+  },
+  {
+    "id": "bocchi-the-rock",
+    "title": "Bocchi the Rock!",
+    "posterImage": "images/bocchi-the-rock/poster.jpg",
+    "type": "Series"
+  },
+  {
+    "id": "roshidere",
+    "title": "Arya Bàn Bên Thỉnh Thoảng Lại Trêu Ghẹo Tôi Bằng Tiếng Nga ",
+    "posterImage": "images/roshidere/poster.jpg",
+    "type": "Series"
+  },
+  {
+    "id": "blue-archive-animation",
+    "title": "Blue Archive The Animation",
+    "posterImage": "images/blue-archive/poster.jpg",
+    "type": "Series"
+  }
+]

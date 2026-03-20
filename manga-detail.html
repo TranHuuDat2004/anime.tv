@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi Tiết Truyện Tranh - ANIME.TV</title> <!-- Sẽ được cập nhật bằng JavaScript -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/manga-style.css">
+    <link rel="stylesheet" href="css/manga-detail-style.css"> <!-- CSS riêng cho trang chi tiết manga -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="icon" href="images/favicon.png" type="image/x-icon">
+</head>
+
+<body>
+    <div id="header-placeholder"></div> <!-- Placeholder cho header -->
+
+    <main id="manga-detail-page"> <!-- Đổi ID cho phù hợp -->
+        <section class="detail-hero-section manga-hero-section">
+            <div class="detail-hero-background" id="mangaDetailBanner"></div>
+            <div class="detail-hero-overlay"></div>
+            <div class="container detail-hero-content"> <!-- Container này sẽ là flex container -->
+                <div class="detail-hero-main"> <!-- Item 1 -->
+                    <h1 id="mangaDetailTitle" class="detail-title">Tên Truyện Tranh</h1>
+                    <div id="mangaDetailAuthor" class="detail-meta-item">
+                        <!-- Tác giả -->
+                    </div>
+                    <p id="mangaShortDescription" class="detail-short-description">
+                        Mô tả ngắn gọn...
+                    </p>
+                    <div class="detail-actions">
+                        <a href="#" id="readNowButton" class="btn btn-primary btn-lg">
+                            <!-- Icon và text -->
+                            ĐỌC NGAY
+                        </a>
+                    </div>
+                </div>
+                <div class="detail-hero-cover"> <!-- Item 2 -->
+                    <img id="mangaDetailCoverImage" src="https://via.placeholder.com/250x375?text=Manga+Cover"
+                        alt="Ảnh bìa truyện">
+                </div>
+            </div>
+        </section>
+
+        <section class="detail-content-section container">
+            <!-- Hiện tại không dùng tabs cho manga detail, bạn có thể thêm sau nếu muốn chia mục -->
+            <div class="manga-overview-content">
+                <div class="overview-grid"> <!-- Tái sử dụng grid layout -->
+                    <div class="overview-description">
+                        <h2>Mô Tả Chi Tiết</h2>
+                        <p id="fullMangaDescription">Nội dung mô tả đầy đủ của truyện...</p>
+                    </div>
+                    <div class="overview-details manga-specific-details">
+                        <h2>Thông Tin Truyện</h2>
+                        <p><strong>Tên khác:</strong> <span id="mangaAltTitle"></span></p>
+                        <p><strong>Tác giả:</strong> <span id="mangaAuthorInfo"></span></p>
+                        <p><strong>Thể loại:</strong> <span id="mangaGenres"></span></p>
+                        <p><strong>Trạng thái:</strong> <span id="mangaStatus"></span></p>
+                        <p><strong>Năm phát hành:</strong> <span id="mangaReleaseYear"></span></p>
+                        <p><strong>Số trang/chương:</strong> <span id="mangaPageChapterInfo"></span></p>
+                        <!-- Thêm thông tin khác nếu có trong data-manga.js -->
+                    </div>
+                </div>
+            </div>
+            <!-- Nếu sau này có danh sách chương, có thể thêm vào đây -->
+        </section>
+        <div  style="text-align: center;" class="navigation-back container">
+            <a href="manga.html" class="btn btn-primary btn-lg">← Quay lại Danh Sách Truyện</a>
+        </div>
+    </main>
+
+    <div id="footer-placeholder"></div> <!-- Placeholder cho footer -->
+
+    <script src="js/header.js"></script> <!-- Nhúng header.js ở đầu (sau placeholder) -->
+    <script src="js/footer.js"></script> <!-- Script cho slideshow -->
+    <script src="js/navbar.js"></script> <!-- Script cho navbar (hamburger menu) -->
+
+    <script src="js/data-manga.js"></script>
+    <script src="js/manga-detail-script.js"></script> <!-- File JavaScript mới -->
+</body>
+
+</html>

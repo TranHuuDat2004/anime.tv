@@ -1,0 +1,48 @@
+{
+    "id": "your-name",
+    "title": "Your Name.",
+    "altTitle": "Kimi no Na wa. (君の名は。)",
+    "posterImage": "images/your-name/your-name.jpg",
+    "bannerImage": "images/your-name/your-name-banner.jpg",
+    "logoImage": "images/your-name/logo.svg",
+    "description": "Mitsuha Miyamizu, một nữ sinh trung học ở một vùng nông thôn buồn tẻ, mơ ước cuộc sống nhộn nhịp ở Tokyo. Taki Tachibana, một nam sinh trung học ở Tokyo, làm thêm tại một nhà hàng Ý và khao khát trở thành kiến trúc sư hoặc nghệ sĩ. Một ngày nọ, hai người đột nhiên hoán đổi cơ thể cho nhau. Họ phải tìm cách thích nghi với cuộc sống mới và giao tiếp qua những ghi chú. Khi họ bắt đầu hiểu nhau hơn, một sự kiện bất ngờ xảy ra và mối liên kết của họ bị thử thách.",
+    "genres": [
+        "Drama",
+        "Romance",
+        "Supernatural",
+        "School"
+    ],
+    "rankings": {
+        "mostEmotional": 1,
+        "bestArtDirection": 1,
+        "overallFavorite": 1
+    },
+    "rating": "PG-13",
+    "type": "Movie",
+    "status": "Hoàn thành",
+    "releaseYear": 2016,
+    "episodes": {
+        "total": 1,
+        "availableOnSite": 1,
+        "seasons": [
+            {
+                "seasonNum": 1,
+                "seasonTitle": "Movie",
+                "episodes": []
+            }
+        ]
+    },
+    "crunchyrollTags": [
+        "Dub",
+        "Drama",
+        "Romance",
+        "Supernatural"
+    ],
+    "relatedAnime": [
+        {
+            "id": "weathering-with-you",
+            "title": "Weathering With You",
+            "posterImage": "https://m.media-amazon.com/images/M/MV5BNzE4ZWRhNTgtYjQ4Mi00鮮やかでYTMwLTliZTY1YmQ0MTM0L2ltYWdlXkEyXkFqcGdeQXVyNzYxODU5OQ@@._V1_.jpg"
+        }
+    ]
+}

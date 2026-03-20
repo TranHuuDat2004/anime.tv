@@ -1,0 +1,230 @@
+/* css/image-detail-style.css */
+
+#image-detail-page .container {
+    max-width: 1200px;
+    /* Hoặc kích thước bạn muốn */
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.image-detail-container {
+    display: flex;
+    flex-direction: column;
+    /* Mặc định, sẽ thay đổi cho màn hình lớn */
+    gap: 25px;
+    background-color: var(--card-background-color);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.image-view-area {
+        position: relative;
+    background-color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 6px;
+    overflow: hidden;
+    /* Bỏ min-height ở đây, để aspect-ratio quyết định */
+    /* min-height: 300px; */
+
+    /* THÊM/SỬA CÁC THUỘC TÍNH SAU CHO TỶ LỆ 16:9 */
+    width: 100%; /* Cho phép nó chiếm toàn bộ chiều rộng của container cha (ví dụ: .image-detail-container hoặc .image-view-area trong grid) */
+    aspect-ratio: 16 / 9; /* Ép tỷ lệ 16:9 cho vùng hiển thị ảnh */
+    max-height: 80vh; /* Vẫn giữ giới hạn chiều cao tối đa để không quá lớn */
+}
+
+#detailed-image {
+    display: block; /* Giữ nguyên */
+    width: 100%;   /* Ảnh sẽ cố gắng chiếm 100% chiều rộng của .image-view-area */
+    height: 100%;  /* Ảnh sẽ cố gắng chiếm 100% chiều cao của .image-view-area */
+    object-fit: contain; /* Hiển thị toàn bộ ảnh, có thể có viền đen nếu tỷ lệ ảnh gốc khác 16:9 */
+    /* Nếu bạn muốn ảnh luôn lấp đầy và chấp nhận bị cắt, đổi thành: object-fit: cover; */
+    border-radius: 4px; /* Giữ nguyên hoặc bỏ nếu .image-view-area đã có bo góc và overflow:hidden */
+    /* Bỏ max-width và max-height ở đây vì .image-view-area đã kiểm soát kích thước */
+    /* max-width: 100%; */
+    /* max-height: 80vh; */
+}
+
+.image-view-area .nav-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 1.5em;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: background-color 0.2s;
+    z-index: 10;
+    opacity: 0.7;
+}
+
+.image-view-area .nav-arrow:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+    opacity: 1;
+}
+
+.image-view-area .prev-arrow {
+    left: 15px;
+}
+
+.image-view-area .next-arrow {
+    right: 15px;
+}
+
+
+.image-info-area {
+    color: var(--text-color);
+}
+
+#image-title {
+    font-size: 2em;
+    margin-bottom: 10px;
+    color: var(--text-color);
+}
+
+.image-info-area .series-name {
+    font-size: 1.1em;
+    color: var(--text-secondary-color);
+    margin-bottom: 15px;
+}
+
+.image-info-area .series-name span {
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+.tags-container {
+    margin-bottom: 20px;
+    font-size: 0.95em;
+}
+
+.tags-container strong {
+    color: var(--text-color);
+}
+
+#image-tags .tag {
+    display: inline-block;
+    background-color: var(--primary-color-transparent, rgba(244, 117, 33, 0.2));
+    /* Giả sử bạn có biến này */
+    color: var(--primary-color);
+    padding: 4px 10px;
+    border-radius: 15px;
+    margin-right: 8px;
+    margin-bottom: 8px;
+    font-size: 0.9em;
+}
+
+#image-tags .tag:hover {
+    background-color: var(--primary-color);
+    color: var(--text-color);
+}
+
+
+.actions-container {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+    /* Cho phép xuống dòng trên mobile */
+}
+
+.actions-container .btn {
+    /* Style chung cho nút đã có trong style.css */
+}
+
+.actions-container .btn svg {
+    margin-right: 8px;
+}
+
+.navigation-back {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.btn.btn-outline {
+    background-color: transparent;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+}
+
+.btn.btn-outline:hover {
+    background-color: var(--primary-color);
+    color: var(--text-color);
+}
+
+/* Thêm vào css/image-detail-style.css */
+
+#other-images-gallery.view-small { /* Hoặc chỉ #other-images-gallery nếu không dùng view-small */
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); /* Điều chỉnh minmax cho phù hợp */
+    gap: 10px; /* Khoảng cách giữa các thumbnail */
+}
+
+/* QUAN TRỌNG: Áp dụng style cho từng item trong #other-images-gallery */
+#other-images-gallery .image-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 4px; /* Bo góc nhỏ hơn cho thumbnail */
+    background-color: var(--card-background-color);
+    cursor: pointer;
+    transition: transform 0.15s ease-out, box-shadow 0.15s ease-out;
+
+    /* THÊM DÒNG NÀY ĐỂ ĐẶT TỶ LỆ KHUNG HÌNH CỐ ĐỊNH CHO THUMBNAIL */
+    aspect-ratio: 16 / 9;
+}
+
+#other-images-gallery .image-item:hover {
+    transform: scale(1.05); /* Hiệu ứng hover nhẹ hơn */
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+}
+
+#other-images-gallery .image-item img {
+    display: block;
+    width: 100%;
+    height: 100%; /* Ảnh chiếm toàn bộ không gian của .image-item */
+    object-fit: cover; /* Lấp đầy và có thể cắt bớt để giữ tỷ lệ ảnh gốc */
+    transition: opacity 0.3s ease-in-out;
+}
+
+/* Style cho tập đang phát trên watch-page (nếu bạn thêm class 'playing-now') */
+/* Đảm bảo selector này đủ cụ thể nếu bạn dùng chung class .image-item */
+#watchPageSeasonContainer .episode-item.playing-now, /* Nếu là danh sách tập trên trang xem video */
+#other-images-gallery .image-item.current-detailed-image /* Ví dụ class cho ảnh đang xem chi tiết */ {
+    border: 2px solid var(--primary-color);
+    box-shadow: 0 0 8px rgba(var(--primary-color-rgb), 0.7);
+    transform: none;
+}
+#watchPageSeasonContainer .episode-item.playing-now:hover,
+#other-images-gallery .image-item.current-detailed-image:hover {
+    transform: none;
+}
+
+/* Trong phần Responsive @media (min-width: 992px) */
+@media (min-width: 992px) {
+    .image-detail-container {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+
+    .image-view-area {
+        flex: 2;
+        max-width: 65%; /* Giới hạn chiều rộng của vùng ảnh để chừa không gian cho thông tin */
+                        /* aspect-ratio sẽ tự động tính chiều cao dựa trên chiều rộng này */
+        /* Bỏ max-height: 80vh ở đây nếu đã đặt cho #detailed-image hoặc muốn nó tự do hơn */
+    }
+
+    #detailed-image {
+        /* max-height: calc(100vh - 200px); */ /* Có thể bỏ dòng này, để aspect-ratio của .image-view-area quyết định */
+                                            /* Hoặc giữ lại nếu bạn muốn có giới hạn chiều cao tuyệt đối cho chính ảnh */
+    }
+
+    .image-info-area {
+        flex: 1;
+        padding-left: 25px;
+    }
+}

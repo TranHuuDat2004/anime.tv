@@ -1,0 +1,37 @@
+{
+    "id": "seishun-buta-yarou",
+    "title": "Hội Chứng Tuổi Thanh Xuân",
+    "altTitle": "Seishun Buta Yarou wa Bunny Girl Senpai no Yume wo Minai (青春ブタ野郎はバニーガール先輩の夢を見ない)",
+    "posterImage": "images/seishun-buta-yarou/poster.jpg",
+    "bannerImage": "images/seishun-buta-yarou/banner.jpg",
+    "logoImage": "",
+    "description": "Sakuta Azusagawa, một học sinh trung học, bất ngờ gặp Mai Sakurajima, một đàn chị nổi tiếng và là diễn viên, đang lang thang trong thư viện trong bộ đồ thỏ bunny mà không ai khác nhìn thấy. Sakuta khám phá ra Mai đang mắc phải \"Hội chứng tuổi vị thành niên\", một hiện tượng siêu nhiên bí ẩn ảnh hưởng đến những người trẻ tuổi. Cậu quyết định giúp Mai và dần dần khám phá ra nhiều trường hợp tương tự xung quanh mình.",
+    "genres": [
+        "Supernatural",
+        "Romance",
+        "Drama",
+        "School",
+        "Slice of Life"
+    ],
+    "rating": "PG-13",
+    "type": "Series",
+    "status": "Hoàn thành",
+    "releaseYear": 2018,
+    "episodes": {
+        "total": 13,
+        "availableOnSite": 0,
+        "seasons": []
+    },
+    "rankings": {
+        "mostEmotional": 2,
+        "mostRomantic": 2,
+        "overallFavorite": 4
+    },
+    "crunchyrollTags": [
+        "Sub",
+        "Supernatural",
+        "Romance",
+        "Drama"
+    ],
+    "relatedAnime": []
+}

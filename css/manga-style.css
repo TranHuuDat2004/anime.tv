@@ -1,0 +1,227 @@
+/* css/anime-list-style.css (Hoặc css/manga-style.css) */
+/* Style này có thể được chia sẻ với trang danh sách anime nếu layout tương tự */
+
+#manga-list-page .page-title {
+    /* Hoặc #anime-list-page .page-title */
+    font-size: 2.2em;
+    margin-bottom: 25px;
+    border-left: 5px solid var(--primary-color);
+    padding-left: 15px;
+    color: var(--text-color);
+}
+
+.filter-controls {
+    margin-bottom: 30px;
+    /* Thêm style cho search bar nếu cần, có thể dùng chung với các trang khác */
+}
+
+.anime-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 20px;
+}
+
+@media (min-width: 576px) {
+    .anime-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+}
+
+@media (min-width: 768px) {
+    .anime-grid {
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    }
+}
+
+@media (min-width: 992px) {
+    .anime-grid {
+        /* Có thể tăng minmax để card to hơn trên màn hình lớn */
+        grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    }
+}
+
+
+.manga-card {
+    /* Class riêng cho card manga, hoặc dùng chung .anime-card nếu giống hệt */
+    background-color: var(--card-background-color);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+    display: flex;
+    /* Để dễ dàng căn chỉnh nội dung bên trong */
+    flex-direction: column;
+}
+
+.manga-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.manga-card a.manga-cover-link {
+    /* Link bọc ảnh bìa */
+    display: block;
+    position: relative;
+}
+
+.manga-card .manga-cover-image {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 2 / 3;
+    /* Tỷ lệ phổ biến cho bìa truyện */
+    object-fit: cover;
+    display: block;
+}
+
+
+.manga-card a.manga-cover-link:hover .manga-card-overlay {
+    opacity: 1;
+}
+
+.manga-card .play-icon {
+    /* Có thể đổi thành icon "đọc" hoặc "chi tiết" */
+    font-size: 3em;
+    color: var(--primary-color);
+}
+
+
+.manga-card .manga-info {
+    padding: 15px;
+    flex-grow: 1;
+    /* Để phần info chiếm không gian còn lại */
+    display: flex;
+    flex-direction: column;
+}
+
+.manga-card .manga-title {
+    font-size: 1.1em;
+    font-weight: 700;
+    color: var(--text-color);
+    margin: 0 0 8px 0;
+    /* Giới hạn 2 dòng cho tiêu đề */
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-height: 2.6em;
+    /* Đảm bảo không gian cho 2 dòng */
+    line-height: 1.3;
+}
+
+.manga-card .manga-title a {
+    color: inherit;
+    text-decoration: none;
+}
+
+
+
+.manga-card .manga-author,
+.manga-card .manga-status {
+    font-size: 0.85em;
+    color: var(--text-secondary-color);
+    margin-bottom: 5px;
+}
+
+.manga-card .manga-genres {
+    font-size: 0.8em;
+    color: var(--text-secondary-color);
+    margin-top: auto;
+    /* Đẩy genres xuống dưới cùng của .manga-info */
+    padding-top: 8px;
+    /* Giới hạn số dòng cho genres nếu cần */
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    /* Hiển thị tối đa 1 dòng tags */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.manga-card .manga-genres .genre-tag {
+    display: inline-block;
+    background-color: rgba(var(--primary-color-rgb), 0.15);
+    /* Giả sử có biến này */
+    color: var(--primary-color);
+    padding: 2px 6px;
+    border-radius: 3px;
+    margin-right: 4px;
+    margin-bottom: 4px;
+}
+
+
+/* Style cho nút "Xem thêm" và thông báo đã tải hết (tái sử dụng từ các trang khác) */
+#manga-load-more-container .btn {
+    /* ... */
+}
+
+#all-manga-loaded-message {
+    /* ... */
+}
+
+.placeholder-text {
+    grid-column: 1 / -1;
+    /* Để text chiếm toàn bộ chiều rộng grid */
+    text-align: center;
+    padding: 40px 20px;
+    font-size: 1.2em;
+    color: var(--anime-tv-text-secondary);
+}
+
+.filter-controls {
+    display: flex; /* Để dễ dàng căn chỉnh các control bên trong nếu có nhiều */
+    margin-bottom: 30px;
+    /* background-color: var(--card-background-color); */ /* Tùy chọn: thêm nền cho cả khu vực control */
+    /* padding: 15px; */
+    /* border-radius: 8px; */
+}
+
+.search-bar { /* Style chung cho các thanh tìm kiếm */
+    flex-grow: 1; /* Cho phép thanh tìm kiếm chiếm hết không gian còn lại */
+    padding: 12px 18px; /* Tăng padding một chút */
+    font-size: 1em;
+    color: var(--text-color);
+    background-color: var(--card-background-color); /* Nền tối hơn */
+    border: 1px solid var(--border-color);
+    border-radius: 25px; /* Bo tròn nhiều hơn */
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.search-bar::placeholder {
+    color: var(--text-secondary-color);
+    opacity: 0.8;
+}
+
+.search-bar:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(var(--primary-color-rgb), 0.25); /* Giả sử bạn có --primary-color-rgb */
+    /* Hoặc box-shadow: 0 0 8px rgba(244, 117, 33, 0.5); */
+}
+
+/* Nếu bạn có thêm các select filter sau này */
+.filter-controls select {
+    padding: 12px 15px;
+    margin-left: 15px; /* Khoảng cách với search bar */
+    background-color: var(--card-background-color);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    border-radius: 25px;
+    font-size: 0.95em;
+    outline: none;
+}
+.filter-controls select:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(var(--primary-color-rgb), 0.25);
+}
+
+/* Responsive cho filter controls */
+@media (max-width: 576px) {
+    .filter-controls {
+        flex-direction: column; /* Xếp chồng trên mobile */
+        gap: 15px; /* Khoảng cách giữa search bar và các filter khác (nếu có) */
+    }
+    .filter-controls select {
+        margin-left: 0;
+        width: 100%; /* Chiếm toàn bộ chiều rộng */
+    }
+}

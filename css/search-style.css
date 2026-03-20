@@ -1,0 +1,150 @@
+/* Thêm vào style.css hoặc tạo file search-style.css và link vào search.html */
+
+#search-page .container {
+    padding-top: 30px;
+    padding-bottom: 50px;
+}
+
+.search-form-section {
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.search-form-section h1 {
+    font-size: 2.5em;
+    margin-bottom: 25px;
+    color: var(--text-color);
+}
+
+.search-bar-container {
+    display: flex;
+    max-width: 700px;
+    margin: 0 auto;
+    border: 1px solid var(--border-color);
+    border-radius: 25px; /* Bo tròn nhiều hơn */
+    overflow: hidden; /* Để bo tròn áp dụng cho input và button bên trong */
+    background-color: var(--card-background-color);
+}
+
+#searchInput {
+    flex-grow: 1;
+    padding: 12px 20px;
+    border: none;
+    outline: none;
+    font-size: 1.1em;
+    background-color: transparent;
+    color: var(--text-color);
+}
+
+#searchInput::placeholder {
+    color: var(--text-secondary-color);
+}
+
+#searchButton {
+    padding: 10px 25px;
+    border: none;
+    /* background-color: var(--primary-color); */ /* Đã có class btn btn-primary */
+    /* color: var(--text-color); */
+    cursor: pointer;
+    font-size: 1.1em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-top-right-radius: 25px; /* Chỉ bo góc cho nút */
+    border-bottom-right-radius: 25px;
+    border-left: 1px solid var(--border-color); /* Đường kẻ giữa input và button */
+}
+/* #searchButton:hover {
+    background-color: var(--hover-color);
+} */
+
+.search-results-section h2 {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+    border-left: 4px solid var(--primary-color);
+    padding-left: 10px;
+    color: var(--text-color);
+}
+
+/* Tái sử dụng .anime-grid từ style.css chung */
+/* .anime-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 20px;
+} */
+
+#noResultsMessage {
+    padding: 20px;
+    font-size: 1.1em;
+}
+
+/* Responsive cho thanh tìm kiếm */
+@media (max-width: 576px) {
+    .search-form-section h1 {
+        /* Hoặc #search-page .page-title nếu bạn dùng class chung */
+        font-size: 2em;
+        /* Giảm kích thước tiêu đề trang một chút */
+        margin-bottom: 20px;
+    }
+
+    .search-bar-container {
+        /* Đổi tên class này từ search-form-container để rõ ràng hơn */
+        flex-direction: column;
+        border-radius: 0;
+        /* Bỏ bo tròn của container */
+        background-color: transparent;
+        overflow: visible;
+        /* Cho phép input/button có bo tròn riêng */
+        gap: 10px;
+
+        border-radius: 25px;
+        /* Khoảng cách giữa input và button khi xếp chồng */
+    }
+
+    #searchInput {
+        border-radius: 25px;
+        /* Bo tròn tất cả các góc cho input */
+        /* background-color và border đã được đặt ở style chung */
+        /* Có thể không cần thay đổi nhiều ở đây nếu style chung đã ổn */
+        padding: 12px 20px;
+        /* Đảm bảo padding nhất quán */
+    }
+
+    #searchButton {
+        width: 100%;
+        /* Nút chiếm toàn bộ chiều rộng */
+        justify-content: center;
+        /* QUAN TRỌNG: Căn giữa icon và text */
+        border-radius: 25px;
+        /* Bo tròn tất cả các góc cho button */
+        padding: 12px 20px;
+        /* Đảm bảo padding đồng đều cho nút */
+        /* Bỏ margin-right và padding-right riêng biệt */
+        /* margin-right: 20px; */
+        border-left: none;
+        /* Bỏ đường kẻ trái khi xếp chồng */
+        font-size: 1.1em;
+        /* Đảm bảo font size nhất quán */
+    }
+
+    /* Nếu bạn muốn nút có chiều cao cố định và text căn giữa hoàn hảo:
+    #searchButton {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 25px;
+        padding: 12px 15px; // Điều chỉnh padding nếu cần
+        font-size: 1.1em;
+        gap: 8px; // Giữ lại gap cho icon
+        border-left: none;
+    }
+    */
+
+    .search-results-section h2 {
+        /* Hoặc .search-results-section .section-title */
+        font-size: 1.6em;
+        /* Giảm kích thước tiêu đề kết quả */
+        margin-bottom: 15px;
+    }
+}
