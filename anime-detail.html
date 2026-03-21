@@ -15,6 +15,10 @@
 
 
 <body>
+    <div id="loadingOverlay" class="loading-overlay">
+        <div class="spinner"></div>
+        <p class="loading-message" id="loadingMessage">Đang xử lý, vui lòng chờ...</p>
+    </div>
     <div id="header-placeholder"></div> <!-- Placeholder cho header -->
 
     <main id="anime-detail-page">
@@ -117,6 +121,22 @@
             }
         }
 
+        function showLoading(message) {
+            const loadingOverlay = document.getElementById('loadingOverlay');
+            const loadingMessage = document.getElementById('loadingMessage');
+            if (loadingOverlay && loadingMessage) {
+                loadingMessage.textContent = message;
+                loadingOverlay.classList.add('show');
+            }
+        }
+
+        function hideLoading() {
+            const loadingOverlay = document.getElementById('loadingOverlay');
+            if (loadingOverlay) {
+                loadingOverlay.classList.remove('show');
+            }
+        }
+
         // JavaScript cho Tabs
         function openTab(evt, tabName) {
             var i, tabcontent, tablinks;
@@ -149,9 +169,14 @@
 
             const needAniListFallback = !anime || !anime.description || String(anime.description).trim().length === 0;
             if (needAniListFallback) {
-                const queryForApi = queryParam || (anime && anime.title) || animeId;
-                const fromApi = await fetchAnimeDetailsFromAniList({ animeId, query: queryForApi });
-                if (fromApi) anime = fromApi;
+                showLoading('Đang đọc dữ liệu từ AniList, vui lòng chờ...');
+                try {
+                    const queryForApi = queryParam || (anime && anime.title) || animeId;
+                    const fromApi = await fetchAnimeDetailsFromAniList({ animeId, query: queryForApi });
+                    if (fromApi) anime = fromApi;
+                } finally {
+                    hideLoading();
+                }
             }
 
             if (!anime) {

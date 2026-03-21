@@ -13,6 +13,10 @@
     <link rel="icon" href="images/favicon.png" type="image/x-icon">
 </head>
 <body>
+    <div id="loadingOverlay" class="loading-overlay">
+        <div class="spinner"></div>
+        <p class="loading-message" id="loadingMessage">Đang xử lý, vui lòng chờ...</p>
+    </div>
     <div id="header-placeholder"></div> <!-- Placeholder cho header -->
 
     <main id="search-page">
@@ -56,6 +60,17 @@
             const searchButton = document.getElementById('searchButton');
             const searchResultsGrid = document.getElementById('searchResultsGrid');
             const noResultsMessage = document.getElementById('noResultsMessage');
+            const loadingOverlay = document.getElementById('loadingOverlay');
+            const loadingMessage = document.getElementById('loadingMessage');
+
+            function showLoading(message) {
+                loadingMessage.textContent = message;
+                loadingOverlay.classList.add('show');
+            }
+
+            function hideLoading() {
+                loadingOverlay.classList.remove('show');
+            }
 
             // Hàm tạo anime card (tái sử dụng từ script.js của index.html nếu có thể, hoặc định nghĩa lại)
             function createAnimeCard(anime) {
@@ -115,6 +130,8 @@
                     return;
                 }
 
+                showLoading('Đang tìm kiếm dữ liệu trên AniList, vui lòng chờ...');
+
                 const results = (typeof animeData !== 'undefined' && animeData)
                     ? animeData.filter(anime => {
                     const idNorm = normalizeForSearch(anime.id);
@@ -165,13 +182,13 @@
 
                 // Luôn gọi GraphQL API của AniList để bổ sung thêm kết quả (nếu có)
                 try {
-                    if (results.length === 0) {
-                        noResultsMessage.textContent = 'Đang tìm kiếm trên AniList...';
-                        noResultsMessage.style.display = 'block';
-                    } else {
-                        noResultsMessage.textContent = 'Đang tìm thêm trên AniList...';
-                        noResultsMessage.style.display = 'block';
-                    }
+                    // if (results.length === 0) {
+                    //     noResultsMessage.textContent = 'Đang tìm kiếm trên AniList...';
+                    //     noResultsMessage.style.display = 'block';
+                    // } else {
+                    //     noResultsMessage.textContent = 'Đang tìm thêm trên AniList...';
+                    //     noResultsMessage.style.display = 'block';
+                    // }
 
                     const anilistQuery = `
                       query ($search: String) {
@@ -238,6 +255,8 @@
                 } catch (e) {
                     noResultsMessage.textContent = `Không tìm thấy kết quả nào cho "${searchInput.value.trim()}".`;
                     noResultsMessage.style.display = 'block';
+                } finally {
+                    hideLoading();
                 }
             }
 
