@@ -160,5 +160,11 @@
     "title": "Amagami SS",
     "posterImage": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/nx8676-rpRpE8lD4tbw.png",
     "type": "Series"
+  },
+  {
+    "id": "amagami-ss-plus",
+    "title": "Amagami SS+ plus",
+    "posterImage": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx11235-feAiunvtvMdq.jpg",
+    "type": "Series"
   }
 ]
