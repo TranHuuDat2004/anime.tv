@@ -88,5 +88,11 @@
     "title": "Oshi No Ko",
     "posterImage": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx150672-WqmmwZ4nMzAy.png",
     "type": "Series"
+  },
+  {
+    "id": "a-silent-voice",
+    "title": "A Silent Voice",
+    "posterImage": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx20954-sYRfE5jQRtSB.jpg",
+    "type": "Movie"
   }
 ]
