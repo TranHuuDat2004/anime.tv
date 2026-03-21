@@ -82,5 +82,11 @@
     "title": "Tune In to the Midnight Heart",
     "posterImage": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx187942-c2cZvunJGfiE.jpg",
     "type": "Series"
+  },
+  {
+    "id": "oshi-no-ko",
+    "title": "Oshi No Ko",
+    "posterImage": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx150672-WqmmwZ4nMzAy.png",
+    "type": "Series"
   }
 ]
