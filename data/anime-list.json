@@ -246,6 +246,12 @@
     "type": "Series"
   },
   {
+
+    "id": "summer-pockets-tsumugi-wenders-hen",
+    "title": "Summer Pockets: Tsumugi Wenders-hen",
+    "posterImage": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx206609-yjGQHzfaBqWC.jpg",
+    "type": "Movie"
+
     "id": "summer-pockets-naruse-shiroha-hen",
     "title": "Summer Pockets: Naruse Shiroha-hen",
     "posterImage": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx206611-mUgYGyHxPzrk.jpg",
@@ -274,5 +280,6 @@
     "title": "Charlotte: Strong People",
     "posterImage": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx21339-Og6xNXlz1pgd.png",
     "type": "Series"
+
   }
 ]
