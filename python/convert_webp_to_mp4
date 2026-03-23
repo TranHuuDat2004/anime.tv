@@ -1,0 +1,47 @@
+import cv2
+import numpy as np
+from PIL import Image
+import os
+
+def convert_webp_to_mp4(webp_path, mp4_path):
+    print(f"Loading {webp_path}...")
+    img = Image.open(webp_path)
+    
+    # Get frame count and dimensions
+    n_frames = getattr(img, "n_frames", 1)
+    width, height = img.size
+    print(f"Frames: {n_frames}, Resolution: {width}x{height}")
+    
+    # Try to find frame duration (ms)
+    duration = img.info.get('duration', 50)  # Default 20 FPS (50ms)
+    if duration == 0: duration = 50
+    fps = 1000 / duration
+    print(f"Detected duration: {duration}ms, FPS: {fps}")
+    
+    # Initialize VideoWriter
+    # Use mp4v codec for MP4
+    fourcc = cv2.VideoWriter_fourcc(*'mp4v')
+    out = cv2.VideoWriter(mp4_path, fourcc, fps, (width, height))
+    
+    try:
+        for i in range(n_frames):
+            img.seek(i)
+            # Convert PIL Image to RGB then to BGR for OpenCV
+            frame = img.convert("RGB")
+            frame_np = np.array(frame)
+            frame_bgr = cv2.cvtColor(frame_np, cv2.COLOR_RGB2BGR)
+            out.write(frame_bgr)
+            if i % 10 == 0:
+                print(f"Processing frame {i}/{n_frames}...")
+    finally:
+        out.release()
+    
+    print(f"Successfully saved to {mp4_path}")
+
+if __name__ == "__main__":
+    src = "demo/loading-demo.webp"
+    dst = "demo/loading-demo.mp4"
+    if os.path.exists(src):
+        convert_webp_to_mp4(src, dst)
+    else:
+        print(f"Source file {src} not found!")
