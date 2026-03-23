@@ -11,5 +11,20 @@
     "posterImage": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/15323.jpg",
     "type": "Series"
 
+
+
+  },
+  {
+    "id": "zenless-zone-zero-a-frightful-night",
+    "title": "Zenless Zone Zero: A Frightful Night",
+    "posterImage": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx204407-mBoLy8DRtTX0.jpg",
+    "type": "Series"
+  },
+  {
+    "id": "humanity-has-declined",
+    "title": "Humanity Has Declined",
+    "posterImage": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx10357-JJvq6G2S01kl.png",
+    "type": "Series"
+
   }
 ]
