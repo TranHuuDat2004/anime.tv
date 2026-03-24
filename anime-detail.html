@@ -91,6 +91,60 @@
 
 
     <script>
+        /**
+         * Chỉ cho phép các HTML tag an toàn trong description từ JSON.
+         * Các tag khác sẽ bị strip bỏ, còn <br>, <i>, <b>, <em>, <strong> giữ lại.
+         */
+        function sanitizeDescription(html) {
+            if (!html) return '';
+            // Dùng DOMParser để parse HTML thô thành DOM, sau đó duyệt lại
+            const doc = new DOMParser().parseFromString(html, 'text/html');
+            const ALLOWED_TAGS = new Set(['BR', 'I', 'B', 'EM', 'STRONG']);
+
+            function processNode(node) {
+                if (node.nodeType === Node.TEXT_NODE) {
+                    return document.createTextNode(node.textContent);
+                }
+                if (node.nodeType === Node.ELEMENT_NODE) {
+                    if (ALLOWED_TAGS.has(node.tagName)) {
+                        const el = document.createElement(node.tagName.toLowerCase());
+                        node.childNodes.forEach(child => {
+                            const processed = processNode(child);
+                            if (processed) el.appendChild(processed);
+                        });
+                        return el;
+                    } else {
+                        // Strip tag nhưng giữ nội dung bên trong
+                        const frag = document.createDocumentFragment();
+                        node.childNodes.forEach(child => {
+                            const processed = processNode(child);
+                            if (processed) frag.appendChild(processed);
+                        });
+                        return frag;
+                    }
+                }
+                return null;
+            }
+
+            const frag = document.createDocumentFragment();
+            doc.body.childNodes.forEach(child => {
+                const processed = processNode(child);
+                if (processed) frag.appendChild(processed);
+            });
+
+            const wrapper = document.createElement('div');
+            wrapper.appendChild(frag);
+            return wrapper.innerHTML;
+        }
+
+        /** Lấy text thuần (không có HTML tag) từ chuỗi HTML */
+        function stripHtml(html) {
+            if (!html) return '';
+            const tmp = document.createElement('div');
+            tmp.innerHTML = html;
+            return tmp.textContent || tmp.innerText || '';
+        }
+
         // Hàm tải dữ liệu chi tiết cho một anime
         async function fetchAnimeDetails(animeId) {
             try {
@@ -221,13 +275,15 @@
                 crunchyTagsContainer.style.display = 'none';
             }
 
-            const descText = String(anime.description || '');
+            // Strip HTML tags để lấy text thuần cho đoạn mô tả ngắn (hero section)
+            const descText = stripHtml(String(anime.description || ''));
             document.getElementById('animeShortDescription').textContent = descText.substring(0, 200) + (descText.length > 200 ? "..." : "");
 
             // Nút XEM NGAY đã bị xóa khỏi HTML, nên không cần logic này nữa
 
             // --- OVERVIEW TAB ---
-            document.getElementById('fullDescription').textContent = anime.description;
+            // Dùng innerHTML để <br> và các tag an toàn được render đúng
+            document.getElementById('fullDescription').innerHTML = sanitizeDescription(String(anime.description || ''));
             document.getElementById('altTitle').textContent = anime.altTitle || 'N/A';
             document.getElementById('genres').textContent = anime.genres ? anime.genres.join(', ') : 'N/A';
             document.getElementById('rating').textContent = anime.rating || 'N/A';
