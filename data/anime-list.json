@@ -10,5 +10,11 @@
     "title": "Tom and Jerry: Forbidden Compass",
     "posterImage": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx206919-IQ3RsJ0wPEsp.jpg",
     "type": "Movie"
+  },
+  {
+    "id": "aiura",
+    "title": "AIURA",
+    "posterImage": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx17082-aibgI1fdiFzS.jpg",
+    "type": "Series"
   }
 ]
