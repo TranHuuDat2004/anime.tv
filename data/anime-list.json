@@ -34,5 +34,11 @@
     "title": "K-ON!: The Movie",
     "posterImage": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx9617-Z2RA1TIkcNEg.png",
     "type": "Movie"
+  },
+  {
+    "id": "k-on-season-2",
+    "title": "K-ON! Season 2",
+    "posterImage": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx7791-4tnomla2mMDp.png",
+    "type": "Series"
   }
 ]
