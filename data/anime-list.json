@@ -64,5 +64,11 @@
     "title": "My Teen Romantic Comedy SNAFU",
     "posterImage": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx14813-3mNvcKNEQcDs.jpg",
     "type": "Series"
+  },
+  {
+    "id": "one-piece",
+    "title": "ONE PIECE",
+    "posterImage": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx21-ELSYx3yMPcKM.jpg",
+    "type": "Series"
   }
 ]
