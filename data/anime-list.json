@@ -76,5 +76,11 @@
     "title": "JUJUTSU KAISEN",
     "posterImage": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx113415-LHBAeoZDIsnF.jpg",
     "type": "Series"
+  },
+  {
+    "id": "jujutsu-kaisen-0",
+    "title": "JUJUTSU KAISEN 0",
+    "posterImage": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx131573-rpl82vDEDRm6.jpg",
+    "type": "Movie"
   }
 ]
