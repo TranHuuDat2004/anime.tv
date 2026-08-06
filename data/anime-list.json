@@ -70,5 +70,11 @@
     "title": "ONE PIECE",
     "posterImage": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx21-ELSYx3yMPcKM.jpg",
     "type": "Series"
+  },
+  {
+    "id": "jujutsu-kaisen",
+    "title": "JUJUTSU KAISEN",
+    "posterImage": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx113415-LHBAeoZDIsnF.jpg",
+    "type": "Series"
   }
 ]
