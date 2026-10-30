@@ -106,5 +106,11 @@
     "title": "An Adventurer’s Daily Grind at Age 29",
     "posterImage": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx192261-oaqwOjlr64ki.jpg",
     "type": "Series"
+  },
+  {
+    "id": "dragon-ball",
+    "title": "Dragon Ball",
+    "posterImage": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx223-scE5uJfXqqj8.png",
+    "type": "Series"
   }
 ]
